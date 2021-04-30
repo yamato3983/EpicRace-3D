@@ -5,18 +5,35 @@ using UnityEngine.AI;
 
 public class Goal : MonoBehaviour
 {
-    public Transform target;
-    NavMeshAgent agent;
+    [SerializeField]
+    GameObject TargetObject;
+
+    [SerializeField]
+    NavMeshAgent nav_mesh_agent;
 
     // Start is called before the first frame update
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        
+        nav_mesh_agent = GetComponent<NavMeshAgent>();
+
+        //nav_mesh_agent.SetDestination(TargetObject.transform.position);
     }
 
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(target.position);
+        nav_mesh_agent.SetDestination(TargetObject.transform.position);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //目標地点に到達
+        if (other.tag == "Goal")
+        {
+            //ナビゲーションを止める
+            NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
+            nav_mesh_agent.isStopped = true;
+        }
     }
 }
