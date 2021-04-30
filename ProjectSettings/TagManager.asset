@@ -9,6 +9,9 @@ TagManager:
   - Dead
   - CPU
   - Spawn
+  - Gimmick_Bridge
+  - Gimmick
+  - Gimmick_Roll
   layers:
   - Default
   - TransparentFX
