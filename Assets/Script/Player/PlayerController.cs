@@ -6,12 +6,13 @@ public class PlayerController : MonoBehaviour
 {
     public Transform target;
     NavMeshAgent agent;
-    int flg = 0;
+    int flg = 0;   
 
     void Start()
     {
-       agent = GetComponent<NavMeshAgent>();
-        
+        Vector3 tmp = GameObject.Find("Player").transform.position;
+        Debug.Log(tmp);
+        agent = GetComponent<NavMeshAgent>();     
     }
 
     void Update()
