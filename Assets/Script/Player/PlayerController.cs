@@ -4,15 +4,17 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-    public Transform target;
+    [SerializeField]
+    GameObject GoalLine_PL;	// 移動予定地のオブジェクト
+    //public Transform target = GameObject.Find("GoalLine_PL").transform;
     NavMeshAgent agent;
-    int flg = 0;   
+    int flg = 0;
 
     void Start()
     {
-        Vector3 tmp = GameObject.Find("Player").transform.position;
-        Debug.Log(tmp);
-        agent = GetComponent<NavMeshAgent>();     
+        //Vector3 tmp = GameObject.Find("Player").transform.position;
+        //Debug.Log(tmp);
+        agent = GetComponent<NavMeshAgent>();
     }
 
     void Update()
@@ -28,7 +30,7 @@ public class PlayerController : MonoBehaviour
         if (flg == 1)
         {
             agent.GetComponent<NavMeshAgent>().isStopped = false;
-            agent.SetDestination(target.position);
+            agent.SetDestination(GoalLine_PL.transform.position);
         }
         else if (flg == 0)
         {
