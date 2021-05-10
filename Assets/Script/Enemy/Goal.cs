@@ -17,13 +17,13 @@ public class Goal : MonoBehaviour
         
         nav_mesh_agent = GetComponent<NavMeshAgent>();
 
-        //nav_mesh_agent.SetDestination(TargetObject.transform.position);
+        nav_mesh_agent.SetDestination(TargetObject.transform.position);
     }
 
     // Update is called once per frame
     void Update()
     {
-        nav_mesh_agent.SetDestination(TargetObject.transform.position);
+        //nav_mesh_agent.SetDestination(TargetObject.transform.position);
     }
 
     private void OnTriggerEnter(Collider other)
