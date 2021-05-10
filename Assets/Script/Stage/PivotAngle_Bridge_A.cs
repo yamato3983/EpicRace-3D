@@ -61,7 +61,7 @@ public class PivotAngle_Bridge_A : MonoBehaviour
         {
 
             //w’è‚µ‚½•ûŒü‚É‚ä‚Á‚­‚è‰ñ“]‚·‚éê‡
-            transform.rotation = Quaternion.RotateTowards(rot, Quaternion.Euler(0, 0, 90f), step);
+            transform.rotation = Quaternion.RotateTowards(rot, Quaternion.Euler(0, 0, -90f), step);
             Debug.Log("1‰ñ–Ú");
         }
 
