@@ -12,6 +12,7 @@ TagManager:
   - Gimmick_Bridge
   - Gimmick
   - Gimmick_Roll
+  - judge
   layers:
   - Default
   - TransparentFX
