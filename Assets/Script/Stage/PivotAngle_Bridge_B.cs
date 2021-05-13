@@ -11,12 +11,12 @@ public class PivotAngle_Bridge_B : MonoBehaviour
     private float angle;
 
     [SerializeField]
-    private float step = 0;            //何度ずつ動かすか
+    private float step;            //何度ずつ動かすか
 
     private Vector3 pos;          //座標
     private Quaternion rot;       //角度
 
-    private float speed = 120f;
+    private float speed;
     private float timeCount; //時間カウント
 
     /**********************************************
@@ -42,12 +42,11 @@ public class PivotAngle_Bridge_B : MonoBehaviour
 
     private void Start()
     {
-        /*Observable.Timer(TimeSpan.FromSeconds(2)).Subscribe(_ => Debug.Log("2秒遅れて実行"));
-        テキストを受け取るとそれをログに出す関数を登録
-        sub_bool.Where(AngleFlag == true ==");
-        実行
-        sub_string.OnNext("オラオラオラ");
-        */
+        //初期化
+        step = 0;
+        speed = 120f;
+
+
     }
 
     void Update()

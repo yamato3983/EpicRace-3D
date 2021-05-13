@@ -11,13 +11,15 @@ public class PivotAngle_Roll_A : MonoBehaviour
     private float angle;
 
     [SerializeField]
-    private float step = 0;            //何度ずつ動かすか
+    private float step;            //何度ずつ動かすか
 
     private Vector3 pos;          //座標
     private Quaternion rot;       //角度
 
-    private float speed = 120f;
+    private float speed;
     private float timeCount; //時間カウント
+
+    public bool gimmickFlag_Roll;
 
     /**********************************************
      Subjectというクラスに実装されている機能として
@@ -42,12 +44,12 @@ public class PivotAngle_Roll_A : MonoBehaviour
 
     private void Start()
     {
-        /*Observable.Timer(TimeSpan.FromSeconds(2)).Subscribe(_ => Debug.Log("2秒遅れて実行"));
-        テキストを受け取るとそれをログに出す関数を登録
-        sub_bool.Where(AngleFlag == true ==");
-        実行
-        sub_string.OnNext("オラオラオラ");
-        */
+        //初期化
+        step = 0;
+        speed = 120f;
+
+        //最初は普通
+        gimmickFlag_Roll = true;
     }
 
     void Update()
@@ -63,23 +65,44 @@ public class PivotAngle_Roll_A : MonoBehaviour
             //指定した方向にゆっくり回転する場合
             transform.rotation = Quaternion.RotateTowards(rot, Quaternion.Euler(180, 0, 0), step);
             Debug.Log("1回目");
+
+            //回転状態
+            gimmickFlag_Roll = false;
+            Debug.Log("回転ギミック"+ gimmickFlag_Roll);
         }
 
-        if (timeCount >= 5f && timeCount <= 8)
+        if (timeCount >= 5f && timeCount <= 8f)
+        {
+            Debug.Log("グラグ切り替えの為何もしない");
+
+            //回転停止
+            gimmickFlag_Roll = true;
+            Debug.Log("回転ギミック" + gimmickFlag_Roll);
+
+        }
+        if(timeCount >= 9f && timeCount <= 12f)
         {
             //指定した方向にゆっくり回転する場合
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, 0f), step);
             Debug.Log("2回目");
 
+            //回転状態
+            gimmickFlag_Roll = false;
+            Debug.Log("回転ギミック" + gimmickFlag_Roll);
         }
 
-        if (timeCount >= 8f)
+        if (timeCount >= 12f)
         {
             timeCount = 0;
             Debug.Log("タイムリセット");
         }
 
 
+    }
+
+    public bool Gimmick_Flag_Roll()
+    {
+        return gimmickFlag_Roll;
     }
 }
 
