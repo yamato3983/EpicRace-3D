@@ -5,6 +5,16 @@ TagManager:
   serializedVersion: 2
   tags:
   - Shootable
+  - Goal
+  - CPU
+  - judge
+  - Stage
+  - Gimmick
+  - Dead
+  - Gimmick_Roll
+  - Gimmick_Bridge
+  - judge2
+  - Dead_02
   layers:
   - Default
   - TransparentFX
