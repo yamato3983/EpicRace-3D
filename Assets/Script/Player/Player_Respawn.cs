@@ -4,29 +4,33 @@ using UnityEngine;
 
 public class Player_Respawn : MonoBehaviour
 {
-    public GameObject Player;
-    public bool isDead = false;
+    GameObject Player;
+    PlayerController PLScript;
+    private float time = 0.0f;
 
-    private void OnTriggerEnter(Collider other)
+    // Start is called before the first frame update
+    void Start()
     {
-       
-        if (other.gameObject.tag == "Dead")
-        {
-            Destroy(this.gameObject);
-            Debug.Log("死にました");
-            isDead = true;
-        }
-       
-        if (isDead == true)
-        {
-            Debug.Log("isDeadがtrueになりました");
-            GameObject obj = (GameObject)Resources.Load("Player");
+        Player = GameObject.Find("Player");
+        PLScript = Player.GetComponent<PlayerController>();
+    }
 
-            // プレハブを元にオブジェクトを生成する
-            GameObject instance = (GameObject)Instantiate(obj,
-                                                          new Vector3(9.2f, 3.2f, 1.0f),
-                                                          Quaternion.identity);
-            isDead = false;
+    // Update is called once per frame
+    void Update()
+    {
+        bool PDead = PLScript.Dead;
+        if (PDead == true)
+        {
+            time += Time.deltaTime;
+            if (time >= 3.0f)
+            {
+                time = 0.0f;
+                PLScript.agent.updatePosition = true;
+                Player.gameObject.SetActive(true);
+                PDead = false;
+            }
         }
+
+
     }
 }
