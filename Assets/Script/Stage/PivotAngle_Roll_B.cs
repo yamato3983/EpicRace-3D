@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
 
-public class PivotAngle_Roll_B: MonoBehaviour
+public class PivotAngle_Roll_B : MonoBehaviour
 {
 
     [SerializeField]
@@ -19,6 +19,7 @@ public class PivotAngle_Roll_B: MonoBehaviour
     private float speed;
     private float timeCount; //ŽžŠÔƒJƒEƒ“ƒg
 
+    public bool gimmickFlag_Roll; //‰ñ“]ƒMƒ~ƒbƒNƒtƒ‰ƒO
 
     /**********************************************
      Subject‚Æ‚¢‚¤ƒNƒ‰ƒX‚ÉŽÀ‘•‚³‚ê‚Ä‚¢‚é‹@”\‚Æ‚µ‚Ä
@@ -62,12 +63,19 @@ public class PivotAngle_Roll_B: MonoBehaviour
             //Žw’è‚µ‚½•ûŒü‚É‚ä‚Á‚­‚è‰ñ“]‚·‚éê‡
             transform.rotation = Quaternion.RotateTowards(rot, Quaternion.Euler(-180, 0, 0), step);
             Debug.Log("1‰ñ–Ú");
+
+            //‰ñ“]ó‘Ô
+            gimmickFlag_Roll = false;
+            Debug.Log("‰ñ“]ƒMƒ~ƒbƒN" + gimmickFlag_Roll);
         }
 
         if (timeCount >= 5f && timeCount <= 8f)
         {
             Debug.Log("ƒOƒ‰ƒOØ‚è‘Ö‚¦‚Ìˆ×‰½‚à‚µ‚È‚¢");
 
+            //‰ñ“]ó‘Ô
+            gimmickFlag_Roll = true;
+            Debug.Log("‰ñ“]ƒMƒ~ƒbƒN" + gimmickFlag_Roll);
 
         }
         if (timeCount >= 9f && timeCount <= 12f)
@@ -75,6 +83,10 @@ public class PivotAngle_Roll_B: MonoBehaviour
             //Žw’è‚µ‚½•ûŒü‚É‚ä‚Á‚­‚è‰ñ“]‚·‚éê‡
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, 0f), step);
             Debug.Log("2‰ñ–Ú");
+
+            //‰ñ“]’âŽ~
+            gimmickFlag_Roll = true;
+            Debug.Log("‰ñ“]ƒMƒ~ƒbƒN" + gimmickFlag_Roll);
 
         }
 
@@ -84,7 +96,10 @@ public class PivotAngle_Roll_B: MonoBehaviour
             Debug.Log("ƒ^ƒCƒ€ƒŠƒZƒbƒg");
         }
 
-
+    }
+    public bool Gimmick_Flag_Roll()
+    {
+        return gimmickFlag_Roll;
     }
 
 }
