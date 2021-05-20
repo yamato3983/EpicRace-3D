@@ -11,10 +11,11 @@ public class Goal : MonoBehaviour
     [SerializeField]
     NavMeshAgent nav_mesh_agent;
 
+    //public Enemymove script_NPC;
+
     // Start is called before the first frame update
     void Start()
     {
-        
         nav_mesh_agent = GetComponent<NavMeshAgent>();
 
         nav_mesh_agent.SetDestination(TargetObject.transform.position);
@@ -22,7 +23,7 @@ public class Goal : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    { 
         //nav_mesh_agent.SetDestination(TargetObject.transform.position);
     }
 
