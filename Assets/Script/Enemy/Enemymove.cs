@@ -35,7 +35,7 @@ public class Enemymove : MonoBehaviour
 		agentRigidbody.isKinematic = true;
 
 		//ギミック橋の左側
-        PivotBridge_A = GameObject.Find("PivotBridge_A");
+		PivotBridge_A = GameObject.Find("PivotBridge_A");
 
 		//ギミック橋の右側
 		PivotBridge_B = GameObject.Find("PivotBridge_B");
@@ -50,8 +50,8 @@ public class Enemymove : MonoBehaviour
 		animator.SetFloat("Speed", agent.velocity.sqrMagnitude);
 	}
 
-    //死亡処理
-    private void OnTriggerEnter(Collider other)
+	//死亡処理
+	private void OnTriggerEnter(Collider other)
 	{
 		var agentRigidbody = agent.GetComponent<Rigidbody>();
 
@@ -73,7 +73,7 @@ public class Enemymove : MonoBehaviour
 
 		//ギミックの通過判定
 		if (other.tag == "judge")
-        {
+		{
 			NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
 
 			//橋のスクリプトから参照させる用(左)
@@ -87,8 +87,8 @@ public class Enemymove : MonoBehaviour
 			//2パターンの処理(0と1)
 			int value = Random.Range(0, 2);
 
-            switch (value)
-            {
+			switch (value)
+			{
 				//止める(一時的にNavmeshを止めて数秒後にONにする)
 				case 0:
 					//ナビゲーションを止める
@@ -97,11 +97,11 @@ public class Enemymove : MonoBehaviour
 					//5秒後にCall関数を実行する
 					Invoke("Call", 5f);
 
-			        break;
+					break;
 
 				//進行する(NavmeshはON状態)
 				case 1:
-					
+
 					nav_mesh_agent.isStopped = false;
 
 					break;
@@ -131,7 +131,7 @@ public class Enemymove : MonoBehaviour
 		}
 
 		if (other.tag == "judge2")
-        {
+		{
 			NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
 
 			//橋のスクリプトから参照させる用
@@ -145,7 +145,7 @@ public class Enemymove : MonoBehaviour
 			{
 				//止める(一時的にNavmeshを止めて数秒後にONにする)
 				case 0:
-					
+
 					//ナビゲーションを止める
 					nav_mesh_agent.isStopped = true;
 
@@ -156,7 +156,7 @@ public class Enemymove : MonoBehaviour
 
 				//進行する(NavmeshはON状態)
 				case 1:
-					
+
 					nav_mesh_agent.isStopped = false;
 
 					break;
