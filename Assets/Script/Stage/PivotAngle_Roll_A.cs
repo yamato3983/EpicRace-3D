@@ -61,14 +61,14 @@ public class PivotAngle_Roll_A : MonoBehaviour
 
         if (timeCount >= 0f && timeCount <= 2)
         {
+            //‰ñ“]ó‘Ô
+            gimmickFlag_Roll = false;
+            Debug.Log("‰ñ“]ƒMƒ~ƒbƒN" + gimmickFlag_Roll);
 
             //w’è‚µ‚½•ûŒü‚É‚ä‚Á‚­‚è‰ñ“]‚·‚éê‡
             transform.rotation = Quaternion.RotateTowards(rot, Quaternion.Euler(180, 0, 0), step);
             Debug.Log("1‰ñ–Ú");
 
-            //‰ñ“]ó‘Ô
-            gimmickFlag_Roll = false;
-            Debug.Log("‰ñ“]ƒMƒ~ƒbƒN"+ gimmickFlag_Roll);
         }
 
         if (timeCount >= 3f && timeCount <= 5f)
@@ -82,19 +82,25 @@ public class PivotAngle_Roll_A : MonoBehaviour
         }
         if(timeCount >= 6f && timeCount <= 8f)
         {
+            //‰ñ“]ó‘Ô
+            gimmickFlag_Roll = false;
+            Debug.Log("‰ñ“]ƒMƒ~ƒbƒN" + gimmickFlag_Roll);
+
             //w’è‚µ‚½•ûŒü‚É‚ä‚Á‚­‚è‰ñ“]‚·‚éê‡
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, 0f), step);
             Debug.Log("2‰ñ–Ú");
 
-            //‰ñ“]ó‘Ô
-            gimmickFlag_Roll = false;
-            Debug.Log("‰ñ“]ƒMƒ~ƒbƒN" + gimmickFlag_Roll);
+      
         }
 
         if (timeCount >= 10f)
         {
             timeCount = 0;
             Debug.Log("ƒ^ƒCƒ€ƒŠƒZƒbƒg");
+
+            //‰ñ“]’â~
+            gimmickFlag_Roll = true;
+            Debug.Log("‰ñ“]ƒMƒ~ƒbƒN" + gimmickFlag_Roll);
         }
 
 

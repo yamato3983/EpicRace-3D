@@ -60,13 +60,15 @@ public class PivotAngle_Roll_B : MonoBehaviour
         if (timeCount >= 0f && timeCount <= 2)
         {
 
+            //‰ñ“]ó‘Ô
+            gimmickFlag_Roll = false;
+            Debug.Log("‰ñ“]ƒMƒ~ƒbƒN" + gimmickFlag_Roll);
+
             //Žw’è‚µ‚½•ûŒü‚É‚ä‚Á‚­‚è‰ñ“]‚·‚éê‡
             transform.rotation = Quaternion.RotateTowards(rot, Quaternion.Euler(-180, 0, 0), step);
             Debug.Log("1‰ñ–Ú");
 
-            //‰ñ“]ó‘Ô
-            gimmickFlag_Roll = false;
-            Debug.Log("‰ñ“]ƒMƒ~ƒbƒN" + gimmickFlag_Roll);
+         
         }
 
         if (timeCount >= 3f && timeCount <= 5f)
@@ -80,13 +82,16 @@ public class PivotAngle_Roll_B : MonoBehaviour
         }
         if (timeCount >= 6f && timeCount <= 8f)
         {
-            //Žw’è‚µ‚½•ûŒü‚É‚ä‚Á‚­‚è‰ñ“]‚·‚éê‡
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, 0f), step);
-            Debug.Log("2‰ñ–Ú");
 
             //‰ñ“]’âŽ~
             gimmickFlag_Roll = false;
             Debug.Log("‰ñ“]ƒMƒ~ƒbƒN" + gimmickFlag_Roll);
+
+            //Žw’è‚µ‚½•ûŒü‚É‚ä‚Á‚­‚è‰ñ“]‚·‚éê‡
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, 0f), step);
+            Debug.Log("2‰ñ–Ú");
+
+            
 
         }
 
@@ -94,6 +99,10 @@ public class PivotAngle_Roll_B : MonoBehaviour
         {
             timeCount = 0;
             Debug.Log("ƒ^ƒCƒ€ƒŠƒZƒbƒg");
+
+            //‰ñ“]ó‘Ô
+            gimmickFlag_Roll = true;
+            Debug.Log("‰ñ“]ƒMƒ~ƒbƒN" + gimmickFlag_Roll);
         }
 
     }
