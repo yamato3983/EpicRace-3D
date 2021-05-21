@@ -57,7 +57,7 @@ public class PivotAngle_Roll_B : MonoBehaviour
         step = speed * Time.deltaTime;
         rot = this.transform.rotation;
 
-        if (timeCount >= 2f && timeCount <= 4)
+        if (timeCount >= 0f && timeCount <= 2)
         {
 
             //指定した方向にゆっくり回転する場合
@@ -69,7 +69,7 @@ public class PivotAngle_Roll_B : MonoBehaviour
             Debug.Log("回転ギミック" + gimmickFlag_Roll);
         }
 
-        if (timeCount >= 5f && timeCount <= 8f)
+        if (timeCount >= 3f && timeCount <= 5f)
         {
             Debug.Log("グラグ切り替えの為何もしない");
 
@@ -78,19 +78,19 @@ public class PivotAngle_Roll_B : MonoBehaviour
             Debug.Log("回転ギミック" + gimmickFlag_Roll);
 
         }
-        if (timeCount >= 9f && timeCount <= 12f)
+        if (timeCount >= 6f && timeCount <= 8f)
         {
             //指定した方向にゆっくり回転する場合
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, 0f), step);
             Debug.Log("2回目");
 
             //回転停止
-            gimmickFlag_Roll = true;
+            gimmickFlag_Roll = false;
             Debug.Log("回転ギミック" + gimmickFlag_Roll);
 
         }
 
-        if (timeCount >= 12f)
+        if (timeCount >= 10f)
         {
             timeCount = 0;
             Debug.Log("タイムリセット");
