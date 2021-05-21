@@ -4,6 +4,12 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
+    // Animator コンポーネント
+    private Animator animator;
+
+    // 設定したフラグの名前
+    private const string key_isRun = "isRun";
+
     private float time = 0.0f;
 
     public GameObject RP;
@@ -20,7 +26,7 @@ public class PlayerController : MonoBehaviour
     public NavMeshAgent agent;
     int flg = 0;      //進むか止まるかのフラグ
     Vector3 tmp;
-    Rigidbody rb;
+    public Rigidbody rb;
 
     public bool Dead = false;
 
@@ -30,6 +36,9 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        // 自分に設定されているAnimatorコンポーネントを習得する
+        this.animator = GetComponent<Animator>();
+
         rb = GetComponent<Rigidbody>();
 
         RP = GameObject.Find("RespawnPoint");
@@ -40,24 +49,34 @@ public class PlayerController : MonoBehaviour
         PB_B = GameObject.Find("PivotBridge_B");
         PB_B_Script = PB_B.GetComponent<PivotAngle_Bridge_B>();
 
+
         agent = GetComponent<NavMeshAgent>();
+
+        var agentRigidbody = agent.GetComponent<Rigidbody>();
+        //RigidodyのKinematicをスタート時はONにする
+        agentRigidbody.isKinematic = true;
     }
 
     private void OnTriggerStay(Collider other)
     {
         bool bridgeAflg = PB_A_Script.gimmickFlag_Bridge;
         bool bridgeBflg = PB_B_Script.gimmickFlag_Bridge;
+        var agentRigidbody = agent.GetComponent<Rigidbody>();
 
         if (other.tag == "Gimmick_Bridge" && bridgeBflg == false)
         {
             Debug.Log("落ちる！！");
+
             /*
             NavMeshAgent agent = GetComponent<NavMeshAgent>();
             agent.GetComponent<NavMeshAgent>().isStopped = true;
             */
-            agent.updatePosition = false;
+            //NavmeshもRigidodyのKinematicもOFF
+            agent.enabled = false;
+            agentRigidbody.isKinematic = false;
             flg = 0;
         }
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -70,6 +89,10 @@ public class PlayerController : MonoBehaviour
             this.gameObject.SetActive(false);
             agent.Warp(new Vector3(tmp.x, tmp.y, tmp.z));
             Dead = true;
+
+            //NavmeshとRigidodyのKinematicがON
+            agentRigidbody.isKinematic = true;
+            agent.enabled = true;
         }
        
         if (other.tag == "Goal")
@@ -82,14 +105,20 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
+    
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            // WaitからRunに遷移する
+            this.animator.SetBool(key_isRun, true);
             flg = 1;
         }
 
         else if (Input.GetKeyUp(KeyCode.Space))
-        { flg = 0; }
+        {
+            // RunからWaitに遷移する
+            this.animator.SetBool(key_isRun, false);
+            flg = 0;
+        }
 
         if (flg == 1)
         {
@@ -100,15 +129,5 @@ public class PlayerController : MonoBehaviour
         {
             agent.GetComponent<NavMeshAgent>().isStopped = true;
         }
-        /*
-        if (Dead == true)
-        {
-            Debug.Log("Deadが動いている"+Dead);
-            agent.updatePosition = true;
-            this.gameObject.SetActive(true);
-            Dead = false;
-        }
-        */
-
     }
 }

@@ -7,12 +7,14 @@ public class Player_Respawn : MonoBehaviour
     GameObject Player;
     PlayerController PLScript;
     private float time = 0.0f;
+    Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        Player = GameObject.Find("Player");
+        Player = GameObject.Find("unitychan");
         PLScript = Player.GetComponent<PlayerController>();
+        rb = PLScript.rb;
     }
 
     // Update is called once per frame
@@ -25,7 +27,7 @@ public class Player_Respawn : MonoBehaviour
             if (time >= 3.0f)
             {
                 time = 0.0f;
-                PLScript.agent.updatePosition = true;
+                PLScript.agent.enabled = true ;
                 Player.gameObject.SetActive(true);
                 PDead = false;
             }
