@@ -16,12 +16,19 @@ public class Enemymove : MonoBehaviour
 	GameObject PivotBridge_A;
 	GameObject PivotBridge_B;
 
+	//A
 	public PivotAngle_Bridge_A script_b1;
+	//B
 	public PivotAngle_Bridge_B script_b2;
 
 	//ギミック2番目のロール用
 	GameObject PivotRoll_A;
+	GameObject PivotRoll_B;
+
+	//A
 	public PivotAngle_Roll_A script_r1;
+	//B
+	public PivotAngle_Roll_B script_r2;
 
 	void Start()
 	{
@@ -40,8 +47,11 @@ public class Enemymove : MonoBehaviour
 		//ギミック橋の右側
 		PivotBridge_B = GameObject.Find("PivotBridge_B");
 
-
+		//ギミックロールの左側
 		PivotRoll_A = GameObject.Find("PivotRoll_A");
+
+		//ギミックロールの右側
+		PivotRoll_B = GameObject.Find("PivotRoll_B");
 	}
 
 	void Update()
@@ -59,7 +69,7 @@ public class Enemymove : MonoBehaviour
 		if (other.tag == "Dead")
 		{
 			//リスポーン地点の処理
-			agent.Warp(new Vector3(9.0f, 5.0f, -1.5f));
+			agent.Warp(new Vector3(8.0f, 5.0f, -1.5f));
 
 			//ナビゲーション関連の機能
 			NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
@@ -84,23 +94,27 @@ public class Enemymove : MonoBehaviour
 			PivotBridge_B = GameObject.Find("PivotBridge_B");
 			script_b2 = PivotBridge_B.GetComponent<PivotAngle_Bridge_B>();
 
-			//2パターンの処理(0と1)
-			int value = Random.Range(0, 2);
+			//2パターンの処理(0～6)
+			int value = Random.Range(0, 6);
 
 			switch (value)
 			{
 				//止める(一時的にNavmeshを止めて数秒後にONにする)
 				case 0:
+				case 1:
+				case 2:
 					//ナビゲーションを止める
 					nav_mesh_agent.isStopped = true;
 
-					//5秒後にCall関数を実行する
-					Invoke("Call", 5f);
+					//3秒後にCall関数を実行する
+					Invoke("Call", 3f);
 
 					break;
 
 				//進行する(NavmeshはON状態)
-				case 1:
+				case 3:
+				case 4:
+				case 5:
 
 					nav_mesh_agent.isStopped = false;
 
@@ -115,12 +129,20 @@ public class Enemymove : MonoBehaviour
 			agent.enabled = false;
 			agentRigidbody.isKinematic = false;
 		}
+
+		if (script_b2.gimmickFlag_Bridge == false && other.tag == "Gimmick_Bridge")
+		{
+			//NavmeshもRigidodyのKinematicもOFF
+			agent.enabled = false;
+			agentRigidbody.isKinematic = false;
+		}
+
 		/********************************************/
 		//死亡ゾーンに入った時の処理(ギミック2番目)
 		if (other.tag == "Dead_02")
 		{
 			//リスポーン地点の処理(ギミック2番目で落下した時）
-			agent.Warp(new Vector3(-22.0f, 5.0f, -1.5f));
+			agent.Warp(new Vector3(-22f, 5.0f, -1.5f));
 
 			//ナビゲーション関連の機能
 			NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
@@ -130,33 +152,40 @@ public class Enemymove : MonoBehaviour
 			agent.enabled = true;
 		}
 
+		//ギミック2番目通過判定
 		if (other.tag == "judge2")
 		{
 			NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
 
-			//橋のスクリプトから参照させる用
+			//橋ロールAのスクリプトから参照させる用
 			PivotRoll_A = GameObject.Find("PivotRoll_A");
 			script_r1 = PivotRoll_A.GetComponent<PivotAngle_Roll_A>();
 
-			//2パターンの処理(0と1)
-			int value = Random.Range(0, 2);
+			//橋ロールBのスクリプトから参照させる用
+			PivotRoll_B = GameObject.Find("PivotRoll_B");
+			script_r2 = PivotRoll_B.GetComponent<PivotAngle_Roll_B>();
+
+			//2パターンの処理(0～5)
+			int value = 0; Random.Range(0, 6);
 
 			switch (value)
 			{
 				//止める(一時的にNavmeshを止めて数秒後にONにする)
 				case 0:
-
+				case 1:
+				case 2:
 					//ナビゲーションを止める
 					nav_mesh_agent.isStopped = true;
 
 					//5秒後にCall関数を実行する
-					Invoke("Call", 5f);
+					Invoke("Call", 3f);
 
 					break;
 
 				//進行する(NavmeshはON状態)
-				case 1:
-
+				case 4:
+				case 5:
+				case 6:
 					nav_mesh_agent.isStopped = false;
 
 					break;
@@ -165,6 +194,13 @@ public class Enemymove : MonoBehaviour
 
 		//橋が下がってる状態で橋の上に乗ってる状態の処理
 		if (script_r1.gimmickFlag_Roll == false && other.tag == "Gimmick_Roll")
+		{
+			//NavmeshもRigidodyのKinematicもOFF
+			agent.enabled = false;
+			agentRigidbody.isKinematic = false;
+		}
+
+		if (script_r2.gimmickFlag_Roll == false && other.tag == "Gimmick_Roll")
 		{
 			//NavmeshもRigidodyのKinematicもOFF
 			agent.enabled = false;

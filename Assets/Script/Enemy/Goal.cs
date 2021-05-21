@@ -23,12 +23,26 @@ public class Goal : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { 
-        //nav_mesh_agent.SetDestination(TargetObject.transform.position);
+    {
+       
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        //ギミック1回目で落下した時に再度目標地点に向かうようにする
+        if(other.tag == "judge")
+        {
+            nav_mesh_agent = GetComponent<NavMeshAgent>();
+            nav_mesh_agent.SetDestination(TargetObject.transform.position);
+        }
+
+        //ギミック2回目で落下した時に再度目標地点に向かうようにする
+        if (other.tag == "judge2")
+        {
+            nav_mesh_agent = GetComponent<NavMeshAgent>();
+            nav_mesh_agent.SetDestination(TargetObject.transform.position);
+        }
+
         //目標地点に到達
         if (other.tag == "Goal")
         {
