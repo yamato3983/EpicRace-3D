@@ -30,6 +30,9 @@ public class Enemymove : MonoBehaviour
 	//B
 	public PivotAngle_Roll_B script_r2;
 
+	GameObject GemeObject;
+	public Countdown script_t1;
+
 	void Start()
 	{
 		NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
@@ -37,6 +40,9 @@ public class Enemymove : MonoBehaviour
 
 		agent = GetComponent<NavMeshAgent>();
 		animator = GetComponent<Animator>();
+
+		//開始時はNavmeshを切る
+		nav_mesh_agent.isStopped = true;
 
 		//RigidodyのKinematicをスタート時はONにする
 		agentRigidbody.isKinematic = true;
@@ -58,6 +64,12 @@ public class Enemymove : MonoBehaviour
 	{
 		//アニメーションに設定した二つの値の切り替え
 		animator.SetFloat("Speed", agent.velocity.sqrMagnitude);
+
+		//カウントダウンが0のときに走り出す
+		if (script_t1.startflg == true)
+		{
+			nav_mesh_agent.isStopped = false;
+		}
 	}
 
 	//死亡処理
@@ -177,7 +189,7 @@ public class Enemymove : MonoBehaviour
 					//ナビゲーションを止める
 					nav_mesh_agent.isStopped = true;
 
-					//5秒後にCall関数を実行する
+					//3秒後にCall関数を実行する
 					Invoke("Call", 3f);
 
 					break;
