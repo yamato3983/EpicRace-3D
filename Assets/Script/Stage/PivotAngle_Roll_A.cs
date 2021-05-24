@@ -19,6 +19,7 @@ public class PivotAngle_Roll_A : MonoBehaviour
     private float speed;
     private float timeCount; //時間カウント
 
+    [SerializeField]
     public bool gimmickFlag_Roll;
 
     /**********************************************
@@ -61,17 +62,19 @@ public class PivotAngle_Roll_A : MonoBehaviour
 
         if (timeCount >= 0f && timeCount <= 2)
         {
-            //回転状態
-            gimmickFlag_Roll = false;
-            Debug.Log("回転ギミック" + gimmickFlag_Roll);
+        
 
             //指定した方向にゆっくり回転する場合
             transform.rotation = Quaternion.RotateTowards(rot, Quaternion.Euler(180, 0, 0), step);
             Debug.Log("1回目");
 
+            //回転状態
+            gimmickFlag_Roll = false;
+            Debug.Log("回転ギミック" + gimmickFlag_Roll);
+
         }
 
-        if (timeCount >= 3f && timeCount <= 5f)
+        if (timeCount >= 2.1f && timeCount <= 5f)
         {
             Debug.Log("グラグ切り替えの為何もしない");
 
@@ -80,7 +83,7 @@ public class PivotAngle_Roll_A : MonoBehaviour
             Debug.Log("回転ギミック" + gimmickFlag_Roll);
 
         }
-        if(timeCount >= 6f && timeCount <= 8f)
+        if(timeCount >= 5.1f && timeCount <= 8f)
         {
             //回転状態
             gimmickFlag_Roll = false;
@@ -90,17 +93,24 @@ public class PivotAngle_Roll_A : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, 0f), step);
             Debug.Log("2回目");
 
-      
         }
 
-        if (timeCount >= 10f)
+        if (timeCount >= 8.1f && timeCount <= 10f)
         {
-            timeCount = 0;
-            Debug.Log("タイムリセット");
+
+            Debug.Log("グラグ切り替えの為何もしない");
 
             //回転停止
             gimmickFlag_Roll = true;
             Debug.Log("回転ギミック" + gimmickFlag_Roll);
+
+
+        }
+        if(timeCount >= 10.1f)
+        {
+            //タイマーリセット
+            timeCount = 0;
+            Debug.Log("タイムリセット");
         }
 
 
