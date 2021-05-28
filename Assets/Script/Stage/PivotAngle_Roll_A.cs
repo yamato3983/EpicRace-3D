@@ -22,26 +22,13 @@ public class PivotAngle_Roll_A : MonoBehaviour
     [SerializeField]
     public bool gimmickFlag_Roll;
 
-    /**********************************************
-     Subjectというクラスに実装されている機能として
-     処理を登録(購読)するSubscribeと処理を実行するOnNextというメソッドがある
-
-     Subscribe:メッセージの受け取り時に実行する関数を登録
-     OnNext:Subscribeで登録された関数にメッセージを渡して実行する
-     **********************************************/
-
-    /*引数にstringが渡せるSubjectを定義(intやbool等の型も可能)
-    Subject<string> sub_string = new Subject<string>();
-
-    //引数にboolが渡せるSubjectを定義
-    Subject<bool> sub_bool = new Subject<bool>();
-
-    /*Subjectのうち、IObsevableだけを公開して、処理を登録出来るようにする
-    public IObserver<string> Observer
+    public enum Gimmick
     {
-        get { return _subject; }
+        MOVE, //稼働
+        STOP  //停止中
     }
-    */
+
+    Gimmick gimmick = Gimmick.STOP; //最初は停止してる
 
     private void Start()
     {
@@ -49,8 +36,6 @@ public class PivotAngle_Roll_A : MonoBehaviour
         step = 0;
         speed = 120f;
 
-        //最初は普通
-        gimmickFlag_Roll = true;
     }
 
     void Update()
@@ -60,59 +45,64 @@ public class PivotAngle_Roll_A : MonoBehaviour
         step = speed * Time.deltaTime;
         rot = this.transform.rotation;
 
-        if (timeCount >= 0f && timeCount <= 2)
+        if (timeCount >= 0f && timeCount <= 1.5f)
         {
-        
+
 
             //指定した方向にゆっくり回転する場合
             transform.rotation = Quaternion.RotateTowards(rot, Quaternion.Euler(180, 0, 0), step);
             Debug.Log("1回目");
 
             //回転状態
-            gimmickFlag_Roll = false;
-            Debug.Log("回転ギミック" + gimmickFlag_Roll);
+            //gimmickFlag_Roll = false;
+            //Debug.Log("回転ギミック" + gimmickFlag_Roll);
+
+            gimmick = Gimmick.MOVE;
 
         }
 
-        if (timeCount >= 2.1f && timeCount <= 5f)
+        if (timeCount >= 2f && timeCount <= 3.5f)
         {
             Debug.Log("グラグ切り替えの為何もしない");
 
-            //回転停止
-            gimmickFlag_Roll = true;
-            Debug.Log("回転ギミック" + gimmickFlag_Roll);
+            gimmick = Gimmick.STOP;
 
         }
-        if(timeCount >= 5.1f && timeCount <= 8f)
+        if (timeCount >= 5f && timeCount <= 6.5f)
         {
-            //回転状態
-            gimmickFlag_Roll = false;
-            Debug.Log("回転ギミック" + gimmickFlag_Roll);
+ 
+            gimmick = Gimmick.MOVE;
 
             //指定した方向にゆっくり回転する場合
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, 0f), step);
+            transform.rotation = Quaternion.RotateTowards(rot, Quaternion.Euler(0, 0, 0), step);
             Debug.Log("2回目");
 
         }
 
-        if (timeCount >= 8.1f && timeCount <= 10f)
+        if (timeCount >= 6.5f && timeCount <= 8f)
         {
 
             Debug.Log("グラグ切り替えの為何もしない");
 
-            //回転停止
-            gimmickFlag_Roll = true;
-            Debug.Log("回転ギミック" + gimmickFlag_Roll);
-
+            gimmick = Gimmick.STOP;
 
         }
-        if(timeCount >= 10.1f)
+        if (timeCount >= 9.5f)
         {
             //タイマーリセット
             timeCount = 0;
             Debug.Log("タイムリセット");
         }
 
+        switch (gimmick)
+        {
+            case Gimmick.MOVE:
+                gimmickFlag_Roll = false;
+                break;
+            case Gimmick.STOP:
+                gimmickFlag_Roll = true;
+                break;
+        }
 
     }
 

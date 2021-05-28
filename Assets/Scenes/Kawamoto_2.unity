@@ -160,6 +160,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6519602165633513347, guid: 8fbf610659d5d3746aa3c110c554a7d9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7087841817999221865, guid: 8fbf610659d5d3746aa3c110c554a7d9,
         type: 3}
       propertyPath: m_Enabled
@@ -1497,6 +1502,11 @@ PrefabInstance:
         type: 3}
       propertyPath: isActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952670060219542395, guid: a73f494f05f7f864b8dd1f0e5eafd5fc,
+        type: 3}
+      propertyPath: m_uvSpeed
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5952670060219542395, guid: a73f494f05f7f864b8dd1f0e5eafd5fc,
         type: 3}
