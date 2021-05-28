@@ -28,6 +28,10 @@ public class Countdown : MonoBehaviour
 		seconds = (int)totalTime;
 		timerText.text = seconds.ToString();
 
+		if(totalTime > 1)
+        {
+			startflg = false;
+		}
 		//0‚Ì‚Æ‚«‚É‰æ–Ê‚ÉGO‚Æ‚¢‚¤•¶š‚ğo‚µ‚½‚¢‚½‚ß
 		if (totalTime <= 1)
 		{
