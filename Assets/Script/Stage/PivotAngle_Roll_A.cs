@@ -48,29 +48,27 @@ public class PivotAngle_Roll_A : MonoBehaviour
         if (timeCount >= 0f && timeCount <= 1.5f)
         {
 
+            //ギミックの状態を動いてる状態に
+            gimmick = Gimmick.MOVE;
 
             //指定した方向にゆっくり回転する場合
             transform.rotation = Quaternion.RotateTowards(rot, Quaternion.Euler(180, 0, 0), step);
             Debug.Log("1回目");
-
-            //回転状態
-            //gimmickFlag_Roll = false;
-            //Debug.Log("回転ギミック" + gimmickFlag_Roll);
-
-            gimmick = Gimmick.MOVE;
-
+            
         }
 
-        if (timeCount >= 2f && timeCount <= 3.5f)
+        if (timeCount >= 1.5f && timeCount <= 3.0f)
         {
             Debug.Log("グラグ切り替えの為何もしない");
 
+            //ギミックの状態を止まってる状態に
             gimmick = Gimmick.STOP;
 
         }
-        if (timeCount >= 5f && timeCount <= 6.5f)
+        if (timeCount >= 3.0f && timeCount <= 4.5f)
         {
- 
+
+            //ギミックの状態を動いてる状態に
             gimmick = Gimmick.MOVE;
 
             //指定した方向にゆっくり回転する場合
@@ -79,15 +77,16 @@ public class PivotAngle_Roll_A : MonoBehaviour
 
         }
 
-        if (timeCount >= 6.5f && timeCount <= 8f)
+        if (timeCount >= 4.5f && timeCount <= 6f)
         {
 
             Debug.Log("グラグ切り替えの為何もしない");
 
+            //ギミックの状態を止まってる状態に
             gimmick = Gimmick.STOP;
 
         }
-        if (timeCount >= 9.5f)
+        if (timeCount >= 7.5f)
         {
             //タイマーリセット
             timeCount = 0;
@@ -96,9 +95,11 @@ public class PivotAngle_Roll_A : MonoBehaviour
 
         switch (gimmick)
         {
+            //動いてる状態
             case Gimmick.MOVE:
                 gimmickFlag_Roll = false;
                 break;
+            //止まってる状態
             case Gimmick.STOP:
                 gimmickFlag_Roll = true;
                 break;
@@ -106,6 +107,7 @@ public class PivotAngle_Roll_A : MonoBehaviour
 
     }
 
+    //ギミックフラグのゲッター
     public bool Gimmick_Flag_Roll()
     {
         return gimmickFlag_Roll;
