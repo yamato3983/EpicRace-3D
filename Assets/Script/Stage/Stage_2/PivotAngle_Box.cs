@@ -19,7 +19,7 @@ public class PivotAngle_Box : MonoBehaviour
     private float speed;
     private float timeCount; //時間カウント
 
-    public bool gimmickFlag_Bridge;   //true:橋が架かってる false:橋が下りてる
+    public bool gimmickFlag_Box;   //true:橋が架かってる false:橋が下りてる
 
 
     private void Start()
@@ -29,16 +29,16 @@ public class PivotAngle_Box : MonoBehaviour
         speed = 120f;
 
         //最初は通れる
-        gimmickFlag_Bridge = true;
+        gimmickFlag_Box = true;
     }
 
     void Update()
     {
-        timeCount += Time.deltaTime;  //最後のフレームからの経過時間を加算
+        timeCount += Time.deltaTime;   //最後のフレームからの経過時間を加算
+        step = speed * Time.deltaTime; //スピードと最終フレームの時間を掛け合わせる
+        rot = this.transform.rotation; //現在のRotationを取得
 
-        step = speed * Time.deltaTime;
-        rot = this.transform.rotation;
-
+        //0～2秒
         if (timeCount >= 0f && timeCount <= 2f)
         {
 
@@ -47,10 +47,11 @@ public class PivotAngle_Box : MonoBehaviour
             Debug.Log("1回目");
 
             //橋が下りてる状態
-            gimmickFlag_Bridge = false;
-            Debug.Log("落とし穴ギミック:" + gimmickFlag_Bridge);
+            gimmickFlag_Box = false;
+            Debug.Log("落とし穴ギミック:" + gimmickFlag_Box);
         }
 
+        //2～4秒
         if (timeCount >= 2f && timeCount <= 4f)
         {
             //橋を上げる
@@ -58,10 +59,11 @@ public class PivotAngle_Box : MonoBehaviour
             Debug.Log("2回目");
 
             //橋が上がってる状態
-            gimmickFlag_Bridge = true;
-            Debug.Log("落とし穴ギミック:" + gimmickFlag_Bridge);
+            gimmickFlag_Box = true;
+            Debug.Log("落とし穴ギミック:" + gimmickFlag_Box);
         }
 
+        //秒
         if (timeCount >= 6f)
         {
             timeCount = 0;
@@ -72,9 +74,9 @@ public class PivotAngle_Box : MonoBehaviour
     }
 
     //ギミックフラグのゲッター
-    public bool Get_gimmickFlag_Bridge()
+    public bool Get_gimmickFlag_Box()
     {
-        return gimmickFlag_Bridge;
+        return gimmickFlag_Box;
     }
 }
 

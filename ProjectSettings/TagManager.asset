@@ -16,6 +16,8 @@ TagManager:
   - judge2
   - Dead_02
   - Respawn2
+  - Gimmick_Box
+  - Gimmick_Conveyer
   layers:
   - Default
   - TransparentFX

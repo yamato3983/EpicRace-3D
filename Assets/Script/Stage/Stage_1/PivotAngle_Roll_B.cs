@@ -45,7 +45,8 @@ public class PivotAngle_Roll_B : MonoBehaviour
         step = speed * Time.deltaTime;
         rot = this.transform.rotation;
 
-        if (timeCount >= 0f && timeCount <= 3f)
+        //0`3•b
+        if (timeCount >= 0f && timeCount <= 3.5f)
         {
 
             //ƒMƒ~ƒbƒN‚Ìó‘Ô‚ğ“®‚¢‚Ä‚éó‘Ô‚É
@@ -57,7 +58,8 @@ public class PivotAngle_Roll_B : MonoBehaviour
 
         }
 
-        if (timeCount >= 3f && timeCount <= 6f)
+        //3`6•b
+        if (timeCount >= 3.5f && timeCount <= 7f)
         {
             Debug.Log("ƒOƒ‰ƒOØ‚è‘Ö‚¦‚Ìˆ×‰½‚à‚µ‚È‚¢");
 
@@ -65,7 +67,9 @@ public class PivotAngle_Roll_B : MonoBehaviour
             gimmick = Gimmick.STOP;
 
         }
-        if (timeCount >= 6f && timeCount <= 9f)
+
+        //6`9•b
+        if (timeCount >= 7f && timeCount <= 10.5f)
         {
 
             //ƒMƒ~ƒbƒN‚Ìó‘Ô‚ğ“®‚¢‚Ä‚éó‘Ô‚É
@@ -77,7 +81,8 @@ public class PivotAngle_Roll_B : MonoBehaviour
 
         }
 
-        if (timeCount >= 9f && timeCount <= 12f)
+        //9`12•b
+        if (timeCount >= 10.5f && timeCount <= 14f)
         {
 
             Debug.Log("ƒOƒ‰ƒOØ‚è‘Ö‚¦‚Ìˆ×‰½‚à‚µ‚È‚¢");
@@ -86,7 +91,9 @@ public class PivotAngle_Roll_B : MonoBehaviour
             gimmick = Gimmick.STOP;
 
         }
-        if (timeCount >= 12f)
+
+        //12•b
+        if (timeCount >= 14f)
         {
             //ƒ^ƒCƒ}[ƒŠƒZƒbƒg
             timeCount = 0;

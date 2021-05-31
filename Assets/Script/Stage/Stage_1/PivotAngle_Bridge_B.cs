@@ -19,28 +19,8 @@ public class PivotAngle_Bridge_B : MonoBehaviour
     private float speed;
     private float timeCount; //時間カウント
 
-    public bool gimmickFlag_Bridge;   //true:橋が架かってる false:橋が下りてる
+    public bool gimmickFlag_Box;   //true:橋が架かってる false:橋が下りてる
 
-    /**********************************************
-     Subjectというクラスに実装されている機能として
-     処理を登録(購読)するSubscribeと処理を実行するOnNextというメソッドがある
-
-     Subscribe:メッセージの受け取り時に実行する関数を登録
-     OnNext:Subscribeで登録された関数にメッセージを渡して実行する
-     **********************************************/
-
-    /*引数にstringが渡せるSubjectを定義(intやbool等の型も可能)
-    Subject<string> sub_string = new Subject<string>();
-
-    //引数にboolが渡せるSubjectを定義
-    Subject<bool> sub_bool = new Subject<bool>();
-
-    /*Subjectのうち、IObsevableだけを公開して、処理を登録出来るようにする
-    public IObserver<string> Observer
-    {
-        get { return _subject; }
-    }
-    */
 
     private void Start()
     {
@@ -49,7 +29,7 @@ public class PivotAngle_Bridge_B : MonoBehaviour
         speed = 120f;
 
         //最初は橋が架かってる
-        gimmickFlag_Bridge = true;
+        gimmickFlag_Box = true;
     }
 
     void Update()
@@ -59,6 +39,7 @@ public class PivotAngle_Bridge_B : MonoBehaviour
         step = speed * Time.deltaTime;
         rot = this.transform.rotation;
 
+        //2～4秒
         if (timeCount >= 2f && timeCount <= 4)
         {
 
@@ -67,10 +48,11 @@ public class PivotAngle_Bridge_B : MonoBehaviour
             Debug.Log("1回目");
 
             //橋が下りてる状態
-            gimmickFlag_Bridge = false;
-            Debug.Log("橋ギミック:" + gimmickFlag_Bridge);
+            gimmickFlag_Box = false;
+            Debug.Log("橋ギミック:" + gimmickFlag_Box);
         }
 
+        //5～8秒
         if (timeCount >= 5f && timeCount <= 8)
         {
             //橋を上げる
@@ -78,10 +60,11 @@ public class PivotAngle_Bridge_B : MonoBehaviour
             Debug.Log("2回目");
 
             //橋が上がってる状態
-            gimmickFlag_Bridge = true;
-            Debug.Log("橋ギミック:" + gimmickFlag_Bridge);
+            gimmickFlag_Box = true;
+            Debug.Log("橋ギミック:" + gimmickFlag_Box);
         }
 
+        //8秒
         if (timeCount >= 8f)
         {
             timeCount = 0;
@@ -92,8 +75,8 @@ public class PivotAngle_Bridge_B : MonoBehaviour
     }
 
     //ギミックフラグのゲッター
-    public bool Get_gimmickFlag_Bridge()
+    public bool Get_gimmickFlag_Box()
     {
-        return gimmickFlag_Bridge;
+        return gimmickFlag_Box;
     }
 }
