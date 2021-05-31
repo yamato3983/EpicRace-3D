@@ -24,6 +24,10 @@ public class Gimmick_Conveyer : MonoBehaviour
 
     private List<Rigidbody> _rigidbodies = new List<Rigidbody>();
 
+    //UVスクロール速度
+    [SerializeField]
+    private float m_uvSpeed = 0.5f;
+
     private void Start()
     {
         //方向の正規化
@@ -32,6 +36,9 @@ public class Gimmick_Conveyer : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //ウィンウィン
+        ScrollUV();
+
         if (isActive == true)
         {
             convSpeed = 0;
@@ -55,14 +62,32 @@ public class Gimmick_Conveyer : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        //当たった奴にRigifBodyをぶち込んでやるぜぇぇぇぇぇぇ
         var rigidBody = collision.gameObject.GetComponent<Rigidbody>();
         _rigidbodies.Add(rigidBody);
     }
 
     void OnCollisionExit(Collision collision)
     {
+        //離れてもRigidBodyをぶちこんでやるぜぇぇぇぇｌ
+        //まぁ元からついてたら全然意味ないんですけど…
         var rigidBody = collision.gameObject.GetComponent<Rigidbody>();
         _rigidbodies.Remove(rigidBody);
+    }
+
+    //テクスチャのUV値をスクロールさせて、ベルトコンベアの見た目を表現する。
+    void ScrollUV()
+    {
+        //アタッチされてるマテリアルテクスチャを、m_uvSpeedとタイムを掛けて動かす
+        var material = GetComponent<Renderer>().material;
+        Vector2 offset = material.mainTextureOffset;
+
+        //右側(プレイヤーの進行方向と逆向きに動かす)
+        offset += Vector2.right * m_uvSpeed * Time.deltaTime;
+
+        material.mainTextureOffset = offset;
+
+       
     }
 
 }
