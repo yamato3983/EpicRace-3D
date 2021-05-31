@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
 
     public bool Dead = false;
+    public bool Cflg = false;
 
     //[SerializeField] NavMeshAgent nav_mesh_agent;
     //public bool Dead = false;
@@ -45,7 +46,10 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        Player = GameObject.Find("unitychan");
+        Cflg = false;
+        Player = GameObject.Find("unitychan"); 
+
+       
 
         // 自分に設定されているAnimatorコンポーネントを習得する
         this.animator = GetComponent<Animator>();
@@ -71,6 +75,8 @@ public class PlayerController : MonoBehaviour
 
         agent = GetComponent<NavMeshAgent>();
 
+        agent.speed = 4.0f;
+
         var agentRigidbody = agent.GetComponent<Rigidbody>();
         //RigidodyのKinematicをスタート時はONにする
         agentRigidbody.isKinematic = true;
@@ -91,6 +97,7 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Gimmick_Bridge" && bridgeBflg == false || other.tag == "Gimmick_Roll" && rollBflg == false)
         {
             Debug.Log("落ちる！！");
+            //Cflg = false;
 
             //NavmeshもRigidodyのKinematicもOFF
             agent.enabled = false;
@@ -122,6 +129,7 @@ public class PlayerController : MonoBehaviour
             this.gameObject.SetActive(false);
             agent.Warp(new Vector3(tmp2.x, tmp2.y, tmp2.z));
             Dead = true;
+            Cflg = true;
 
             //NavmeshとRigidodyのKinematicがON
             agentRigidbody.isKinematic = true;
@@ -134,11 +142,16 @@ public class PlayerController : MonoBehaviour
             agent.isStopped = true;
             Debug.Log("ゴーーール");
         }
+
+        if (other.gameObject.tag == "Respawn2")
+        {
+            Debug.Log("Respawn2にふれた");
+            Cflg = true;
+        }
     }
 
     void Update()
     {
-    
         if (Input.GetKeyDown(KeyCode.Space))
         {
             // WaitからRunに遷移する
@@ -160,13 +173,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (flg == 0)
         {
+            agent.velocity = Vector3.zero;
             agent.GetComponent<NavMeshAgent>().isStopped = true;
         }
-
-        if (Player == null)
-        {
-
-        }
-
     }
 }
