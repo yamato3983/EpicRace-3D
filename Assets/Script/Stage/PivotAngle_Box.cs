@@ -39,7 +39,7 @@ public class PivotAngle_Box : MonoBehaviour
         step = speed * Time.deltaTime;
         rot = this.transform.rotation;
 
-        if (timeCount >= 2f && timeCount <= 4)
+        if (timeCount >= 0f && timeCount <= 2f)
         {
 
             //橋を下す
@@ -51,7 +51,7 @@ public class PivotAngle_Box : MonoBehaviour
             Debug.Log("落とし穴ギミック:" + gimmickFlag_Bridge);
         }
 
-        if (timeCount >= 5f && timeCount <= 8)
+        if (timeCount >= 2f && timeCount <= 4f)
         {
             //橋を上げる
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, 0f), step);
@@ -62,7 +62,7 @@ public class PivotAngle_Box : MonoBehaviour
             Debug.Log("落とし穴ギミック:" + gimmickFlag_Bridge);
         }
 
-        if (timeCount >= 8f)
+        if (timeCount >= 6f)
         {
             timeCount = 0;
             Debug.Log("タイムリセット");

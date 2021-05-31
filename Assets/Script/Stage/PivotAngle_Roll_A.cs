@@ -16,8 +16,8 @@ public class PivotAngle_Roll_A : MonoBehaviour
     private Vector3 pos;          //座標
     private Quaternion rot;       //角度
 
-    private float speed;
-    private float timeCount; //時間カウント
+    private float speed;          //何秒掛けて動かすか
+    private float timeCount;      //時間カウント
 
     [SerializeField]
     public bool gimmickFlag_Roll;
@@ -34,7 +34,7 @@ public class PivotAngle_Roll_A : MonoBehaviour
     {
         //初期化
         step = 0;
-        speed = 120f;
+        speed = 60f;
 
     }
 
@@ -45,7 +45,7 @@ public class PivotAngle_Roll_A : MonoBehaviour
         step = speed * Time.deltaTime;
         rot = this.transform.rotation;
 
-        if (timeCount >= 0f && timeCount <= 1.5f)
+        if (timeCount >= 0f && timeCount <= 3f)
         {
 
             //ギミックの状態を動いてる状態に
@@ -57,7 +57,7 @@ public class PivotAngle_Roll_A : MonoBehaviour
             
         }
 
-        if (timeCount >= 1.5f && timeCount <= 3.0f)
+        if (timeCount >= 3f && timeCount <= 6f)
         {
             Debug.Log("グラグ切り替えの為何もしない");
 
@@ -65,11 +65,12 @@ public class PivotAngle_Roll_A : MonoBehaviour
             gimmick = Gimmick.STOP;
 
         }
-        if (timeCount >= 3.0f && timeCount <= 4.5f)
+        if (timeCount >= 6f && timeCount <= 9f)
         {
 
             //ギミックの状態を動いてる状態に
             gimmick = Gimmick.MOVE;
+ 
 
             //指定した方向にゆっくり回転する場合
             transform.rotation = Quaternion.RotateTowards(rot, Quaternion.Euler(0, 0, 0), step);
@@ -77,7 +78,7 @@ public class PivotAngle_Roll_A : MonoBehaviour
 
         }
 
-        if (timeCount >= 4.5f && timeCount <= 6f)
+        if (timeCount >= 9f && timeCount <= 12f)
         {
 
             Debug.Log("グラグ切り替えの為何もしない");
@@ -86,7 +87,7 @@ public class PivotAngle_Roll_A : MonoBehaviour
             gimmick = Gimmick.STOP;
 
         }
-        if (timeCount >= 7.5f)
+        if (timeCount >= 12f)
         {
             //タイマーリセット
             timeCount = 0;
@@ -106,6 +107,7 @@ public class PivotAngle_Roll_A : MonoBehaviour
         }
 
     }
+
 
     //ギミックフラグのゲッター
     public bool Gimmick_Flag_Roll()
