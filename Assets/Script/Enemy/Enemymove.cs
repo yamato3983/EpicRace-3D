@@ -130,6 +130,7 @@ public class Enemymove : MonoBehaviour
 				case 0:
 				case 1:
 				case 2:
+				case 3:
 					//ナビゲーションを止める
 					nav_mesh_agent.isStopped = true;
 
@@ -139,10 +140,9 @@ public class Enemymove : MonoBehaviour
 					break;
 
 				//進行する(NavmeshはON状態)
-				case 3:
 				case 4:
 				case 5:
-
+					//ナビゲーションを止めない
 					nav_mesh_agent.isStopped = false;
 
 					break;
@@ -201,6 +201,7 @@ public class Enemymove : MonoBehaviour
 				case 0:
 				case 1:
 				case 2:
+				case 3:
 					//ナビゲーションを止める
 					nav_mesh_agent.isStopped = true;
 
@@ -212,7 +213,6 @@ public class Enemymove : MonoBehaviour
 				//進行する(NavmeshはON状態)
 				case 4:
 				case 5:
-				case 6:
 					nav_mesh_agent.isStopped = false;
 
 					break;
