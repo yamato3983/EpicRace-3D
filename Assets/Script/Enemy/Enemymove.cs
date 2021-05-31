@@ -42,7 +42,7 @@ public class Enemymove : MonoBehaviour
 		animator = GetComponent<Animator>();
 
 		//開始時はNavmeshを切る
-		nav_mesh_agent.isStopped = true;
+		StartCoroutine("Dush");
 
 		//RigidodyのKinematicをスタート時はONにする
 		agentRigidbody.isKinematic = true;
@@ -64,6 +64,21 @@ public class Enemymove : MonoBehaviour
 	{
 		//アニメーションに設定した二つの値の切り替え
 		animator.SetFloat("Speed", agent.velocity.sqrMagnitude);
+	}
+
+	//コルーチンでスタート時の挙動を処理してる
+	private IEnumerator Dush()
+    {
+		NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
+
+		//カウントダウン中はストップしてる
+		if(script_t1.startflg == false)
+        {
+			nav_mesh_agent.isStopped = true;
+		}
+
+		//とりあえず4秒にしてるけど変更するかも
+		yield return new WaitForSeconds(4.0f);
 
 		//カウントダウンが0のときに走り出す
 		if (script_t1.startflg == true)
@@ -72,7 +87,7 @@ public class Enemymove : MonoBehaviour
 		}
 	}
 
-	//死亡処理
+	//タグの判定
 	private void OnTriggerEnter(Collider other)
 	{
 		var agentRigidbody = agent.GetComponent<Rigidbody>();
@@ -97,7 +112,7 @@ public class Enemymove : MonoBehaviour
 		if (other.tag == "judge")
 		{
 			NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
-
+			
 			//橋のスクリプトから参照させる用(左)
 			PivotBridge_A = GameObject.Find("PivotBridge_A");
 			script_b1 = PivotBridge_A.GetComponent<PivotAngle_Bridge_A>();
@@ -115,6 +130,7 @@ public class Enemymove : MonoBehaviour
 				case 0:
 				case 1:
 				case 2:
+				case 3:
 					//ナビゲーションを止める
 					nav_mesh_agent.isStopped = true;
 
@@ -124,10 +140,9 @@ public class Enemymove : MonoBehaviour
 					break;
 
 				//進行する(NavmeshはON状態)
-				case 3:
 				case 4:
 				case 5:
-
+					//ナビゲーションを止めない
 					nav_mesh_agent.isStopped = false;
 
 					break;
@@ -178,7 +193,7 @@ public class Enemymove : MonoBehaviour
 			script_r2 = PivotRoll_B.GetComponent<PivotAngle_Roll_B>();
 
 			//2パターンの処理(0～5)
-			int value = 0; Random.Range(0, 6);
+			int value =　Random.Range(0, 6);
 
 			switch (value)
 			{
@@ -186,6 +201,7 @@ public class Enemymove : MonoBehaviour
 				case 0:
 				case 1:
 				case 2:
+				case 3:
 					//ナビゲーションを止める
 					nav_mesh_agent.isStopped = true;
 
@@ -197,7 +213,6 @@ public class Enemymove : MonoBehaviour
 				//進行する(NavmeshはON状態)
 				case 4:
 				case 5:
-				case 6:
 					nav_mesh_agent.isStopped = false;
 
 					break;
@@ -223,6 +238,7 @@ public class Enemymove : MonoBehaviour
 	//何秒後かに呼び出すための処理
 	void Call()
 	{
+		//動き出す
 		NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
 		nav_mesh_agent.isStopped = false;
 	}

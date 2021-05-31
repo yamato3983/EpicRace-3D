@@ -28,7 +28,12 @@ public class Countdown : MonoBehaviour
 		seconds = (int)totalTime;
 		timerText.text = seconds.ToString();
 
-		//0のときに画面にGOという文字を出したいため
+		//2秒以上はスタートフラグはfalseにしてる
+		if(totalTime > 1)
+        {
+			startflg = false;
+		}
+		//0のときに画面にGOという文字を出したいため/フラグはtrue
 		if (totalTime <= 1)
 		{
 			timerText.text = "GO";
