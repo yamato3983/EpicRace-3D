@@ -14,12 +14,12 @@ public class CameraController : MonoBehaviour
     }
 
     void Update()
-    {   
-            Vector3 targetCamPos = target.position + offset;
-            transform.position = Vector3.Lerp(
-                transform.position,
-                targetCamPos,
-                Time.deltaTime * smoothing
-            );
+    {
+        Vector3 targetCamPos = target.position + offset;
+        transform.position = Vector3.Lerp(
+            transform.position,
+            targetCamPos,
+            Time.deltaTime * smoothing
+        );
     }
 }

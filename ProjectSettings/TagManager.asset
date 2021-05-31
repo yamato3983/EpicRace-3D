@@ -15,7 +15,6 @@ TagManager:
   - Gimmick_Bridge
   - judge2
   - Dead_02
-  - Respawn2
   layers:
   - Default
   - TransparentFX
