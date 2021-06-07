@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
 
-public class Enemymove : MonoBehaviour
+public class NPC_move01 : MonoBehaviour
 {
 	[SerializeField, HideInInspector] NavMeshAgent agent;
 	[SerializeField, HideInInspector] Animator animator;
