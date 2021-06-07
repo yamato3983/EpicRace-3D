@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 5952670060219542395}
   m_Layer: 0
   m_Name: Gimmick_Conveyer
-  m_TagString: Gimmick_Bridge
+  m_TagString: Gimmick_Conveyer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -298,6 +298,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b379f984b65e8a47a46f23fb95bdeea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_uvSpeed: 1
+  m_movePower: 500
+  m_speedUpPower: 100
+  m_speedUpTime: 3
 --- !u!65 &5581432899069297191
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -693,7 +697,7 @@ GameObject:
   - component: {fileID: 1314334892850317239}
   m_Layer: 0
   m_Name: PivotBox
-  m_TagString: Gimmick_Bridge
+  m_TagString: Gimmick_Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -744,7 +748,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angle: 0
   step: 0
-  gimmickFlag_Bridge: 0
+  gimmickFlag_Box: 0
 --- !u!1 &5581432897857752185
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,7 +1022,7 @@ GameObject:
   - component: {fileID: 5581432898529101859}
   m_Layer: 0
   m_Name: Gimmick_Box
-  m_TagString: Gimmick_Bridge
+  m_TagString: Gimmick_Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
