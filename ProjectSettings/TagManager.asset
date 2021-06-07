@@ -16,6 +16,7 @@ TagManager:
   - judge2
   - Dead_02
   - Respawn2
+  - EndGimmick
   layers:
   - Default
   - TransparentFX
