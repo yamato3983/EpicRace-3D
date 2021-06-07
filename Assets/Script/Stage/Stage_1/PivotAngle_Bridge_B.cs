@@ -19,7 +19,7 @@ public class PivotAngle_Bridge_B : MonoBehaviour
     private float speed;
     private float timeCount; //時間カウント
 
-    public bool gimmickFlag_Box;   //true:橋が架かってる false:橋が下りてる
+    public bool gimmickFlag_Bridge;   //true:橋が架かってる false:橋が下りてる
 
 
     private void Start()
@@ -29,7 +29,7 @@ public class PivotAngle_Bridge_B : MonoBehaviour
         speed = 120f;
 
         //最初は橋が架かってる
-        gimmickFlag_Box = true;
+        gimmickFlag_Bridge = true;
     }
 
     void Update()
@@ -48,8 +48,8 @@ public class PivotAngle_Bridge_B : MonoBehaviour
             Debug.Log("1回目");
 
             //橋が下りてる状態
-            gimmickFlag_Box = false;
-            Debug.Log("橋ギミック:" + gimmickFlag_Box);
+            gimmickFlag_Bridge = false;
+            Debug.Log("橋ギミック:" + gimmickFlag_Bridge);
         }
 
         //5～8秒
@@ -60,8 +60,8 @@ public class PivotAngle_Bridge_B : MonoBehaviour
             Debug.Log("2回目");
 
             //橋が上がってる状態
-            gimmickFlag_Box = true;
-            Debug.Log("橋ギミック:" + gimmickFlag_Box);
+            gimmickFlag_Bridge = true;
+            Debug.Log("橋ギミック:" + gimmickFlag_Bridge);
         }
 
         //8秒
@@ -77,6 +77,6 @@ public class PivotAngle_Bridge_B : MonoBehaviour
     //ギミックフラグのゲッター
     public bool Get_gimmickFlag_Box()
     {
-        return gimmickFlag_Box;
+        return gimmickFlag_Bridge;
     }
 }

@@ -4,90 +4,87 @@ using UnityEngine;
 
 public class Gimmick_Conveyer : MonoBehaviour
 {
-    //コンベアが動いているか
-    public bool isActive = false;
-
-    //コンベアの初期設定速度
-    public float convSpeed = 3.0f;
-
-    //現在のコンベアの速度
-    public float ConveyerSpeed { get { return _convSpeed; } }
-
-    private float _convSpeed = 0;
-
-    //コンベアの動く方向
-    public Vector3 ConveyerDirection = Vector3.forward;
-
-    //コンベアが物を運ぶ力(加速力)
     [SerializeField]
-    private float pushPower = 50f;
-
-    private List<Rigidbody> _rigidbodies = new List<Rigidbody>();
-
-    //UVスクロール速度
+    private float m_uvSpeed = 1.0f;
     [SerializeField]
-    private float m_uvSpeed = 0.5f;
+    private float m_movePower = 500.0f;
+    [SerializeField]
+    private float m_speedUpPower = 100.0f;
+    [SerializeField]
+    private float m_speedUpTime = 3.0f;
 
-    private void Start()
+    private Renderer m_render = null;
+
+    private List<Rigidbody> m_hitObjects = new List<Rigidbody>();
+
+    void Awake()
     {
-        //方向の正規化
-        ConveyerDirection = ConveyerDirection.normalized;
+        m_render = GetComponent<Renderer>();
     }
 
-    private void FixedUpdate()
+    void Start()
     {
-        //ウィンウィン
+        StartCoroutine(SpeedUp(m_speedUpTime));
+    }
+
+    void Update()
+    {
         ScrollUV();
+    }
 
-        if (isActive == true)
+    void OnCollisionEnter(Collision other)
+    {
+        var body = other.gameObject.GetComponent<Rigidbody>();
+        if (body != null)
         {
-            convSpeed = 0;
-        }
+            Vector3 addPower = transform.forward * m_movePower;
+            body.AddForce(addPower, ForceMode.Acceleration);
 
-        //消滅したオブジェクトは削除
-        _rigidbodies.RemoveAll(r => r == null);
-
-        foreach (var r in _rigidbodies)
-        {
-            //物体の移動速度のベルトコンベア方向の成分だけ取り出す
-            var objectSpeed = Vector3.Dot(r.velocity, ConveyerDirection);
-
-            //目標値以下なら加速する
-            if (objectSpeed < Mathf.Abs(convSpeed))
-            {
-                r.AddForce(ConveyerDirection * pushPower, ForceMode.Acceleration);
-            }
+            m_hitObjects.Add(body);
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionExit(Collision other)
     {
-        //当たった奴にRigifBodyをぶち込んでやるぜぇぇぇぇぇぇ
-        var rigidBody = collision.gameObject.GetComponent<Rigidbody>();
-        _rigidbodies.Add(rigidBody);
+        var body = other.gameObject.GetComponent<Rigidbody>();
+        if (body != null)
+        {
+            Vector3 addPower = transform.forward * m_movePower;
+            body.AddForce(-addPower, ForceMode.Acceleration);
+
+            m_hitObjects.Remove(body);
+        }
     }
 
-    void OnCollisionExit(Collision collision)
-    {
-        //離れてもRigidBodyをぶちこんでやるぜぇぇぇぇｌ
-        //まぁ元からついてたら全然意味ないんですけど…
-        var rigidBody = collision.gameObject.GetComponent<Rigidbody>();
-        _rigidbodies.Remove(rigidBody);
-    }
-
-    //テクスチャのUV値をスクロールさせて、ベルトコンベアの見た目を表現する。
+    /// <summary>
+    /// テクスチャのUV値をスクロールさせて、ベルトコンベアの見た目を表現する
+    /// </summary>
     void ScrollUV()
     {
-        //アタッチされてるマテリアルテクスチャを、m_uvSpeedとタイムを掛けて動かす
-        var material = GetComponent<Renderer>().material;
+        var material = m_render.material;
         Vector2 offset = material.mainTextureOffset;
-
-        //右側(プレイヤーの進行方向と逆向きに動かす)
-        offset += Vector2.right * m_uvSpeed * Time.deltaTime;
-
+        offset += Vector2.up * m_uvSpeed * Time.deltaTime;
         material.mainTextureOffset = offset;
+    }
 
-       
+    IEnumerator SpeedUp(float i_time)
+    {
+        while (true)
+        {
+            // 一定時間ごとにスピードアップ
+            yield return new WaitForSeconds(i_time);
+            m_movePower += m_speedUpPower;
+
+            // 現在乗っているオブジェクトに対してスピードアップ分力を加える
+            Vector3 addPower = transform.forward * m_speedUpPower;
+            foreach (var body in m_hitObjects)
+            {
+                if (body != null)
+                {
+                    body.AddForce(addPower, ForceMode.Acceleration);
+                }
+            }
+        }
     }
 
 }
