@@ -15,7 +15,7 @@ public class NPC_move02 : MonoBehaviour
 	//Vector3 WalkTargetPoint;
 	[SerializeField] float Speed;
 
-	private bool conbeyer;
+	private bool conveyer;
 
 	//橋関連で必要なもの
 	//ギミック1番目の箱用
@@ -53,7 +53,7 @@ public class NPC_move02 : MonoBehaviour
 		//ギミックコンベアー
 		Gimmick_Conveyer = GameObject.Find("Gimmick_Conveyer");
 
-		conbeyer = false;
+		conveyer = false;
 
 	}
 
@@ -62,7 +62,7 @@ public class NPC_move02 : MonoBehaviour
 		//アニメーションに設定した二つの値の切り替え
 		animator.SetFloat("Speed", agent.velocity.sqrMagnitude);
 
-		if (conbeyer == true)
+		if (conveyer == true)
 		{
 			//rb.AddForce(transform.forward * Speed);
 		}
@@ -158,41 +158,6 @@ public class NPC_move02 : MonoBehaviour
 
 		/********************************************/
 		//ギミック2番目通過判定
-		if (other.tag == "judge2")
-		{
-			NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
-
-			//橋ロールAのスクリプトから参照させる用
-			Gimmick_Conveyer = GameObject.Find("Gimmick_Conveyer");
-			script_c = Gimmick_Conveyer.GetComponent<Gimmick_Conveyer>();
-
-
-			//2パターンの処理(0～5)
-			int value = Random.Range(0, 6);
-
-			switch (value)
-			{
-				//止める(一時的にNavmeshを止めて数秒後にONにする)
-				case 0:
-				case 1:
-				case 2:
-				case 3:
-					//ナビゲーションを止める
-					nav_mesh_agent.isStopped = true;
-
-					//3秒後にCall関数を実行する
-					Invoke("Call", 3f);
-
-					break;
-
-				//進行する(NavmeshはON状態)
-				case 4:
-				case 5:
-					nav_mesh_agent.isStopped = false;
-					break;
-			}
-		}
-
 		//橋が下がってる状態で橋の上に乗ってる状態の処理
 		if (other.tag == "Conveyer")
 		{
@@ -200,10 +165,10 @@ public class NPC_move02 : MonoBehaviour
 
 			//agent.SetDestination(Target.transform.position);
 
-			conbeyer = true;
+			conveyer = true;
 
 			Debug.Log("速度低下");
-			Debug.Log("速度低下"+ Speed);
+			Debug.Log("速度低下" + Speed);
 			agent.speed = 2;
 
 			//NavmeshもRigidodyのKinematicもOFF
@@ -211,12 +176,11 @@ public class NPC_move02 : MonoBehaviour
 			//agentRigidbody.isKinematic = true;
 			//agent.enabled = false;
 		}
-		else
-        {
-			conbeyer = false;
-			agent.speed = 4;
-		}
 
+		if (other.tag != "Conveyer")
+		{
+			conveyer = false;
+		}
 	}
 
 	//何秒後かに呼び出すための処理
