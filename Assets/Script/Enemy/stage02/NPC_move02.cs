@@ -11,9 +11,9 @@ public class NPC_move02 : MonoBehaviour
 	//GameObject Target;
 	[SerializeField, HideInInspector] Animator animator;
 	[SerializeField] NavMeshAgent nav_mesh_agent;
-	[SerializeField] Rigidbody rb;
+	//[SerializeField] Rigidbody rb;
 	//Vector3 WalkTargetPoint;
-	[SerializeField] float Speed;
+	//[SerializeField] float Speed;
 
 	private bool conveyer;
 
@@ -121,7 +121,7 @@ public class NPC_move02 : MonoBehaviour
 
 
 			//2パターンの処理(0～6)
-			int value = Random.Range(0, 6);
+			int value = 5;// Random.Range(0, 6);
 
 			switch (value)
 			{
@@ -149,7 +149,7 @@ public class NPC_move02 : MonoBehaviour
 		}
 
 		//橋が下がってる状態で橋の上に乗ってる状態の処理
-		if (script_b.gimmickFlag_Box != true && other.tag == "Box")
+		if (script_b.gimmickFlag_Box != true && other.tag == "Gimmick_Box")
 		{
 			//NavmeshもRigidodyのKinematicもOFF
 			agent.enabled = false;
@@ -159,28 +159,29 @@ public class NPC_move02 : MonoBehaviour
 		/********************************************/
 		//ギミック2番目通過判定
 		//橋が下がってる状態で橋の上に乗ってる状態の処理
-		if (other.tag == "Conveyer")
+		if (other.tag == "Gimmick_Conveyer")
 		{
-			agent = GetComponent<NavMeshAgent>();
-
-			//agent.SetDestination(Target.transform.position);
-
 			conveyer = true;
-
-			Debug.Log("速度低下");
-			Debug.Log("速度低下" + Speed);
-			agent.speed = 2;
 
 			//NavmeshもRigidodyのKinematicもOFF
 			//var agentRigidbody = agent.GetComponent<Rigidbody>();
 			//agentRigidbody.isKinematic = true;
 			//agent.enabled = false;
 		}
-
-		if (other.tag != "Conveyer")
+		else if (other.tag != "Gimmick_Conveyer")
 		{
 			conveyer = false;
 		}
+
+		if (conveyer == true)
+        {
+			agent.speed = 2;
+		}
+
+		else if(conveyer == false)
+        {
+			agent.speed = 4;
+        }
 	}
 
 	//何秒後かに呼び出すための処理
