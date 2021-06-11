@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
 
-public class NPC_move02 : MonoBehaviour
+public class CPU_move02 : MonoBehaviour
 {
 	[SerializeField, HideInInspector] NavMeshAgent agent;
 	//GameObject Target;

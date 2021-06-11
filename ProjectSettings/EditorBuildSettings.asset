@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/StartScene.unity
     guid: a716871d1fab75d4a8fbe461c42a0f89
   - enabled: 1
-    path: Assets/Scenes/Stage01.unity
-    guid: f3324931402b56746ab66427df63202e
+    path: Assets/Scenes/urabe01.unity
+    guid: 7285998f83d08f54cb3a3902dbbcd840
+  - enabled: 1
+    path: Assets/Scenes/urabe02.unity
+    guid: 7a387829b9a327b45b8983ab068aea70
+  - enabled: 1
+    path: Assets/Scenes/Clear_CPU.unity
+    guid: 2b8c2744445b05449943aa42c5003ee5
   m_configObjects: {}
