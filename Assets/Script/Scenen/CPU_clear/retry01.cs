@@ -3,10 +3,15 @@ using UnityEngine.SceneManagement;
 
 public class retry01 : MonoBehaviour
 {
-
-    public void OnClickStartButton()
+    private void Start()
     {
-        SceneManager.LoadScene("urabe01");
+        
     }
+    public void OnClickStartButton()
+    { 
+        //NPCがゴールしたらシーンを変更する
 
+        SceneManager.LoadScene("urabe01");
+      
+    }
 }

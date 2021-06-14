@@ -9,10 +9,12 @@ public class Goal_01 : MonoBehaviour
     GameObject Enemy;
     public CPU_move01 script_cm01;
 
+    public bool stage01;
+   
     // Start is called before the first frame update
     void Start()
     {
-
+        stage01 = false;
     }
 
     // Update is called once per frame
@@ -24,6 +26,7 @@ public class Goal_01 : MonoBehaviour
         //NPCがゴールしたらシーンを変更する
         if (script_cm01.goal == true)
         {
+            stage01 = true;
             SceneManager.LoadScene("Clear_CPU", LoadSceneMode.Single);
         }
     }
