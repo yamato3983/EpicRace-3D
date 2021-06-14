@@ -92,7 +92,7 @@ public class CPU_move02 : MonoBehaviour
 	//タグの判定
 	private void OnTriggerEnter(Collider other)
 	{
-		//var agentRigidbody = agent.GetComponent<Rigidbody>();
+		
 
 		//死亡ゾーンに入った時の処理(ギミックの1番目)
 		if (other.tag == "Dead")
@@ -121,7 +121,7 @@ public class CPU_move02 : MonoBehaviour
 
 
 			//2パターンの処理(0～6)
-			int value = 5;// Random.Range(0, 6);
+			int value = Random.Range(0, 6);
 
 			switch (value)
 			{

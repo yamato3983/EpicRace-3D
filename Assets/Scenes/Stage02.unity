@@ -1332,6 +1332,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1577146590518868346, guid: a73f494f05f7f864b8dd1f0e5eafd5fc,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1932623734264836736, guid: a73f494f05f7f864b8dd1f0e5eafd5fc,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2103393774618474120, guid: a73f494f05f7f864b8dd1f0e5eafd5fc,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1366,6 +1376,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 89.413
+      objectReference: {fileID: 0}
+    - target: {fileID: 2957583504541066359, guid: a73f494f05f7f864b8dd1f0e5eafd5fc,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4853714772148046227, guid: a73f494f05f7f864b8dd1f0e5eafd5fc,
         type: 3}
@@ -1466,6 +1481,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5581432898128135693, guid: a73f494f05f7f864b8dd1f0e5eafd5fc,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5581432898604290071, guid: a73f494f05f7f864b8dd1f0e5eafd5fc,
         type: 3}
