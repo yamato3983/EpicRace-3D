@@ -7,30 +7,42 @@ public class GimmickHammer : MonoBehaviour
     [SerializeField] Transform pivot; //‰ñ“]’†S
     [SerializeField] Transform bob;   //U‚èŽq
 
-    float angularVelocity;
-    float angularAcceleration;
-    float angularAccelerationValue;
+    float gravity = 0.3f;
+    float rad = -0.5f * Mathf.PI;
+    float R = 220f;
+    float angularVelocity = 1.0f;         //Šp‘¬“x
+    float angularAcceleration = 1.0f;      //Šp‰Á‘¬“x
+    float angularAccelerationValue = 0f;
 
     public Vector3 GetCurrentVelocity()
     {
-        float r = Vector3.Distance(pivot.position, bob.position);
-        Vector3 dir = bob.position - pivot.position;
-        Vector3 velocityDir = new Vector3(-dir.y, dir.x);
+        float r = Vector2.Distance(pivot.position, bob.position);
+        Vector2 dir = bob.position - pivot.position;
+        Vector2 velocityDir = new Vector2(dir.y, dir.x);
         velocityDir.Normalize();
         return (r * angularVelocity * velocityDir);
     }
 
     void FixedUpdate()
     {
+
+        //angularAccelerationValue = (-1 * gravity / R) * Mathf.Sin(rad);
+
         angularVelocity += angularAcceleration * Time.deltaTime;
+
         bob.RotateAround(pivot.position, Vector3.forward, angularVelocity);
-        if (bob.position.x > pivot.position.x)
+
+        if (bob.position.x < pivot.position.x)
         {
             angularAcceleration = -angularAccelerationValue;
         }
-        else
+        else if (bob.position.x > pivot.position.x)
         {
             angularAcceleration = angularAccelerationValue;
         }
+
+
     }
+
 }
+    
