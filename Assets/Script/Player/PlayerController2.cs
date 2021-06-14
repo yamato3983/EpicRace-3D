@@ -3,7 +3,7 @@ using UnityEngine.AI;
 using System.Collections;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController2 : MonoBehaviour
 {
     GameObject HP;
     //imageのコンポーネント
@@ -17,27 +17,21 @@ public class PlayerController : MonoBehaviour
 
     private float time = 0.0f;
 
+    //リスポーンポイントを格納する変数
     public GameObject RP;
     public GameObject RP2;
 
+    //プレイヤーを格納する変数
     GameObject Player;
 
-    //PivotBridgeが入る変数
-    GameObject PB_A;
-    GameObject PB_B;
-    PivotAngle_Bridge_A PB_A_Script; //PivotAngle_Bridge_Aが入る変数
-    PivotAngle_Bridge_B PB_B_Script; //PivotAngle_Bridge_Bが入る変数
-
-    //PivotRollが入る変数
-    GameObject PR_A;
-    GameObject PR_B;
-    PivotAngle_Roll_A PR_A_Script;
-    PivotAngle_Roll_B PR_B_Script;
+    GameObject PB;//箱ギミックを格納する変数
+    PivotAngle_Box PB_Script;//PivotAngle_Boxが入る変数
 
     [SerializeField]
     GameObject GoalLine_PL;	// 移動予定地のオブジェクト
-    //public Transform target = GameObject.Find("GoalLine_PL").transform;
+
     public NavMeshAgent agent;
+
     int flg = 1;      //進むか止まるかのフラグ
 
     Vector3 tmp, tmp2;//リスポーンポイントの座標が入る変数
@@ -50,10 +44,6 @@ public class PlayerController : MonoBehaviour
     public GameObject timer;
     public Countdown t1;
     private float timeToEnableInputs;
-
-    //[SerializeField] NavMeshAgent nav_mesh_agent;
-    //public bool Dead = false;
-
 
     void Start()
     {
@@ -85,17 +75,9 @@ public class PlayerController : MonoBehaviour
         tmp = RP.transform.position;
         tmp2 = RP2.transform.position;
 
-        //ステージギミックからデータを受け取る
-        PB_A = GameObject.Find("PivotBridge_A");
-        PB_A_Script = PB_A.GetComponent<PivotAngle_Bridge_A>();
-        PB_B = GameObject.Find("PivotBridge_B");
-        PB_B_Script = PB_B.GetComponent<PivotAngle_Bridge_B>();
-
-        PR_A = GameObject.Find("PivotRoll_A");
-        PR_A_Script = PR_A.GetComponent<PivotAngle_Roll_A>();
-        PR_B = GameObject.Find("PivotRoll_B");
-        PR_B_Script = PR_B.GetComponent<PivotAngle_Roll_B>();
-
+        PB = GameObject.Find("PivotBox");
+        PB_Script = PB.GetComponent<PivotAngle_Box>();
+        
         var agentRigidbody = agent.GetComponent<Rigidbody>();
         //RigidodyのKinematicをスタート時はONにする
         agentRigidbody.isKinematic = true;
@@ -103,17 +85,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        //橋のギミックのフラグを代入
-        bool bridgeAflg = PB_A_Script.gimmickFlag_Bridge;
-        bool bridgeBflg = PB_B_Script.gimmickFlag_Bridge;
-
-        //回転ギミックのフラグを代入
-        bool rollAflg = PR_A_Script.gimmickFlag_Roll;
-        bool rollBflg = PR_B_Script.gimmickFlag_Roll;
+        bool boxflg = PB_Script.gimmickFlag_Box;
 
         var agentRigidbody = agent.GetComponent<Rigidbody>();
 
-        if (other.tag == "Gimmick_Bridge" && bridgeBflg == false || other.tag == "Gimmick_Roll" && rollBflg == false)
+        if (other.tag == "Gimmick_Box" && boxflg == false)
         {
             Debug.Log("落ちる！！");
             //Cflg = false;
@@ -123,6 +99,15 @@ public class PlayerController : MonoBehaviour
             agentRigidbody.isKinematic = false;
             flg = 0;
         }
+        if (other.tag == "Gimmick_Conveyer")
+        {
+            agent.speed = 2.0f;
+        }
+        else
+        {
+            agent.speed = 4.0f;
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -149,7 +134,7 @@ public class PlayerController : MonoBehaviour
             agent.Warp(new Vector3(tmp2.x, tmp2.y, tmp2.z));
             Dead = true;
             flg = 0;
-           
+
 
             //NavmeshとRigidodyのKinematicがON
             agentRigidbody.isKinematic = true;
@@ -170,7 +155,7 @@ public class PlayerController : MonoBehaviour
             Cflg = true;
         }
 
-        if(other.gameObject.tag == "EndGimmick")
+        if (other.gameObject.tag == "EndGimmick")
         {
             Debug.Log("EndGimmickにふれた");
             Cflg = false;
@@ -234,7 +219,7 @@ public class PlayerController : MonoBehaviour
             {
                 // RunからWaitに遷移する
                 this.animator.SetBool(key_isRun, false);
-               
+
             }
         }
     }
