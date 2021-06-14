@@ -27,7 +27,7 @@ public class StartButton : MonoBehaviour
     {
         // GameScene‚ğƒ[ƒh
         //SceneManager.LoadScene("Stage01");
-        SceneManager.LoadScene("urabe_Stage01");
+        SceneManager.LoadScene("urabe01");
     }
 
 }

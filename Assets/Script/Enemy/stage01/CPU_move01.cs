@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
 
-public class NPC_move01 : MonoBehaviour
+public class CPU_move01 : MonoBehaviour
 {
 	[SerializeField, HideInInspector] NavMeshAgent agent;
 	[SerializeField, HideInInspector] Animator animator;
@@ -30,8 +30,12 @@ public class NPC_move01 : MonoBehaviour
 	//B
 	public PivotAngle_Roll_B script_r2;
 
+	//カウントダウン用
 	GameObject GemeObject;
 	public Countdown script_t1;
+
+	//NPCがゴールをしたかどうか
+	public bool goal;
 
 	void Start()
 	{
@@ -58,6 +62,8 @@ public class NPC_move01 : MonoBehaviour
 
 		//ギミックロールの右側
 		PivotRoll_B = GameObject.Find("PivotRoll_B");
+
+		goal = false;
 	}
 
 	void Update()
@@ -233,6 +239,12 @@ public class NPC_move01 : MonoBehaviour
 			agent.enabled = false;
 			agentRigidbody.isKinematic = false;
 		}
+
+		//ゴールしたら
+		if(other.tag == "Goal")
+        {
+			goal = true;
+        }
 	}
 
 	//何秒後かに呼び出すための処理
