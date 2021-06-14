@@ -385,7 +385,7 @@ PrefabInstance:
     - target: {fileID: 2159886090315387285, guid: 59a971262e3f2d442bb682f38dccba26,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.53
+      value: -5.2
       objectReference: {fileID: 0}
     - target: {fileID: 2159886090551328205, guid: 59a971262e3f2d442bb682f38dccba26,
         type: 3}
@@ -395,7 +395,42 @@ PrefabInstance:
     - target: {fileID: 2159886090551328205, guid: 59a971262e3f2d442bb682f38dccba26,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.59
+      value: -4.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159886091906339524, guid: 59a971262e3f2d442bb682f38dccba26,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -79.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159886091906339524, guid: 59a971262e3f2d442bb682f38dccba26,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159886091906339524, guid: 59a971262e3f2d442bb682f38dccba26,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159886091906339524, guid: 59a971262e3f2d442bb682f38dccba26,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159886091906339524, guid: 59a971262e3f2d442bb682f38dccba26,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159886091906339524, guid: 59a971262e3f2d442bb682f38dccba26,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159886091906339524, guid: 59a971262e3f2d442bb682f38dccba26,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6791965086780043327, guid: 59a971262e3f2d442bb682f38dccba26,
         type: 3}
