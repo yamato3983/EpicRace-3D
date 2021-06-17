@@ -31,7 +31,9 @@ public class CPU_move02 : MonoBehaviour
 	GameObject GemeObject;
 	public Countdown script_t1;
 
-	
+	//NPC‚ªƒS[ƒ‹‚ğ‚µ‚½‚©‚Ç‚¤‚©
+	public bool goal;
+
 	void Start()
 	{
 		NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
@@ -53,6 +55,7 @@ public class CPU_move02 : MonoBehaviour
 
 		conveyer = false;
 
+		goal = false;
 	}
 
 	void Update()
@@ -170,6 +173,12 @@ public class CPU_move02 : MonoBehaviour
         {
 			agent.speed = 4;
         }
+
+		//ƒS[ƒ‹‚µ‚½‚ç
+		if (other.tag == "Goal")
+		{
+			goal = true;
+		}
 	}
 
 	//‰½•bŒã‚©‚ÉŒÄ‚Ño‚·‚½‚ß‚Ìˆ—

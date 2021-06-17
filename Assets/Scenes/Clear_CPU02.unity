@@ -1047,7 +1047,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2086763670}
-        m_TargetAssemblyTypeName: retry01, Assembly-CSharp
+        m_TargetAssemblyTypeName: retry02, Assembly-CSharp
         m_MethodName: OnClickStartButton
         m_Mode: 1
         m_Arguments:
@@ -1105,7 +1105,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2086763665}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd1ce1734ce094f4085fce51a28065e7, type: 3}
+  m_Script: {fileID: 11500000, guid: be5442be02d98384392800bda0513d4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &4149657643491922 stripped
@@ -1179,7 +1179,7 @@ PrefabInstance:
     - target: {fileID: 6254513052345338736, guid: 3b4402b8e63230343b86f1221b20250d,
         type: 3}
       propertyPath: m_Name
-      value: NPC_clear
+      value: CPU_clear
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b4402b8e63230343b86f1221b20250d, type: 3}

@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Clear_player.unity
     guid: 6064680eebbf7a24b8271c76ed79eca2
+  - enabled: 1
+    path: Assets/Scenes/Clear_CPU02.unity
+    guid: fea5510f7c80788468c2c868729d066b
   m_configObjects: {}
