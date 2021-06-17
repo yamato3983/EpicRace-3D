@@ -17,6 +17,9 @@ TagManager:
   - Dead_02
   - Respawn2
   - EndGimmick
+  - Intermediate
+  - Intermediate02
+  - Intermediate03
   layers:
   - Default
   - TransparentFX

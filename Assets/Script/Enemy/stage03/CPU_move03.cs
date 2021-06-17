@@ -5,54 +5,26 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
 
-public class CPU_move02 : MonoBehaviour
+public class CPU_move03 : MonoBehaviour
 {
 	[SerializeField, HideInInspector] NavMeshAgent agent;
 	[SerializeField, HideInInspector] Animator animator;
 	[SerializeField] NavMeshAgent nav_mesh_agent;
-
-	//コンベアーに乗ってるか
-	private bool conveyer;
-
-	//橋関連で必要なもの
-	//ギミック1番目の箱用
-	GameObject PivotBox;
-
-	//箱
-	public PivotAngle_Box script_b;
-
-	//ギミック2番目のベルトコンベアー用
-	GameObject Gimmick_Conveyer;
-
-	//ベルトコンベアー
-	public Gimmick_Conveyer script_c;
-
+	
 	//カウントダウン用
 	GameObject GemeObject;
 	public Countdown script_t1;
 
-	
+
 	void Start()
 	{
 		NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
-		
+
 		agent = GetComponent<NavMeshAgent>();
 		animator = GetComponent<Animator>();
 
 		//開始時はNavmeshを切る
 		StartCoroutine("Dush");
-
-		//RigidodyのKinematicをスタート時はONにする
-		//agentRigidbody.isKinematic = true;
-
-		//ギミックコンベアー
-		PivotBox = GameObject.Find("PivotBox");
-
-		//ギミックコンベアー
-		Gimmick_Conveyer = GameObject.Find("Gimmick_Conveyer");
-
-		conveyer = false;
-
 	}
 
 	void Update()
@@ -60,10 +32,6 @@ public class CPU_move02 : MonoBehaviour
 		//アニメーションに設定した二つの値の切り替え
 		animator.SetFloat("Speed", agent.velocity.sqrMagnitude);
 
-		if (conveyer == true)
-		{
-			//rb.AddForce(transform.forward * Speed);
-		}
 	}
 
 	//コルーチンでスタート時の挙動を処理してる
@@ -90,12 +58,13 @@ public class CPU_move02 : MonoBehaviour
 	//タグの判定
 	private void OnTriggerEnter(Collider other)
 	{
-	
+
+
 		//死亡ゾーンに入った時の処理(ギミックの1番目)
 		if (other.tag == "Dead")
 		{
 			//リスポーン地点の処理
-			agent.Warp(new Vector3(8.0f, 5.0f, -1.5f));
+			agent.Warp(new Vector3(-8.5f, 5f, 16.5f));
 
 			//ナビゲーション関連の機能
 			NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
@@ -110,21 +79,13 @@ public class CPU_move02 : MonoBehaviour
 		{
 			NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
 
-			//箱のスクリプトから参照させる用
-			PivotBox = GameObject.Find("PivotBox");
-			script_b = PivotBox.GetComponent<PivotAngle_Box>();
-
-
 			//2パターンの処理(0～6)
-			int value = Random.Range(0, 6);
+			int value = Random.Range(0, 3);
 
 			switch (value)
 			{
 				//止める(一時的にNavmeshを止めて数秒後にONにする)
 				case 0:
-				case 1:
-				case 2:
-				case 3:
 					//ナビゲーションを止める
 					nav_mesh_agent.isStopped = true;
 
@@ -134,8 +95,8 @@ public class CPU_move02 : MonoBehaviour
 					break;
 
 				//進行する(NavmeshはON状態)
-				case 4:
-				case 5:
+				case 1:
+				case 2:
 					//ナビゲーションを止めない
 					nav_mesh_agent.isStopped = false;
 
@@ -143,36 +104,11 @@ public class CPU_move02 : MonoBehaviour
 			}
 		}
 
-		//橋が下がってる状態で橋の上に乗ってる状態の処理
-		if (script_b.gimmickFlag_Box != true && other.tag == "Gimmick_Box")
-		{	
-			agent.enabled = false;
-		}
-
 		/********************************************/
 		//ギミック2番目通過判定
-		//橋が下がってる状態で橋の上に乗ってる状態の処理
-		if (other.tag == "Gimmick_Conveyer")
-		{
-			conveyer = true;
-		}
-		else if (other.tag != "Gimmick_Conveyer")
-		{
-			conveyer = false;
-		}
 
-		if (conveyer == true)
-        {
-			agent.speed = 2;
-		}
-
-		else if(conveyer == false)
-        {
-			agent.speed = 4;
-        }
 	}
-
-	//何秒後かに呼び出すための処理
+		//何秒後かに呼び出すための処理
 	void Call()
 	{
 		//動き出す
