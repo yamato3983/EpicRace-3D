@@ -3,7 +3,7 @@ using UnityEngine.AI;
 using System.Collections;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController3 : MonoBehaviour
 {
     GameObject HP;
     //imageのコンポーネント
@@ -21,18 +21,6 @@ public class PlayerController : MonoBehaviour
     public GameObject RP2;
 
     GameObject Player;
-
-    //PivotBridgeが入る変数
-    GameObject PB_A;
-    GameObject PB_B;
-    PivotAngle_Bridge_A PB_A_Script; //PivotAngle_Bridge_Aが入る変数
-    PivotAngle_Bridge_B PB_B_Script; //PivotAngle_Bridge_Bが入る変数
-
-    //PivotRollが入る変数
-    GameObject PR_A;
-    GameObject PR_B;
-    PivotAngle_Roll_A PR_A_Script;
-    PivotAngle_Roll_B PR_B_Script;
 
     [SerializeField]
     GameObject GoalLine_PL;	// 移動予定地のオブジェクト
@@ -85,22 +73,11 @@ public class PlayerController : MonoBehaviour
         tmp = RP.transform.position;
         tmp2 = RP2.transform.position;
 
-        //ステージギミックからデータを受け取る
-        PB_A = GameObject.Find("PivotBridge_A");
-        PB_A_Script = PB_A.GetComponent<PivotAngle_Bridge_A>();
-        PB_B = GameObject.Find("PivotBridge_B");
-        PB_B_Script = PB_B.GetComponent<PivotAngle_Bridge_B>();
-
-        PR_A = GameObject.Find("PivotRoll_A");
-        PR_A_Script = PR_A.GetComponent<PivotAngle_Roll_A>();
-        PR_B = GameObject.Find("PivotRoll_B");
-        PR_B_Script = PR_B.GetComponent<PivotAngle_Roll_B>();
-
         var agentRigidbody = agent.GetComponent<Rigidbody>();
         //RigidodyのKinematicをスタート時はONにする
         agentRigidbody.isKinematic = true;
     }
-
+    /*
     private void OnTriggerStay(Collider other)
     {
         //橋のギミックのフラグを代入
@@ -124,7 +101,7 @@ public class PlayerController : MonoBehaviour
             flg = 0;
         }
     }
-
+    */
     private void OnTriggerEnter(Collider other)
     {
         var agentRigidbody = agent.GetComponent<Rigidbody>();
@@ -149,7 +126,7 @@ public class PlayerController : MonoBehaviour
             agent.Warp(new Vector3(tmp2.x, tmp2.y, tmp2.z));
             Dead = true;
             flg = 0;
-           
+
 
             //NavmeshとRigidodyのKinematicがON
             agentRigidbody.isKinematic = true;
@@ -170,7 +147,7 @@ public class PlayerController : MonoBehaviour
             Cflg = true;
         }
 
-        if(other.gameObject.tag == "EndGimmick")
+        if (other.gameObject.tag == "EndGimmick")
         {
             Debug.Log("EndGimmickにふれた");
             Cflg = false;
@@ -234,7 +211,7 @@ public class PlayerController : MonoBehaviour
             {
                 // RunからWaitに遷移する
                 this.animator.SetBool(key_isRun, false);
-               
+
             }
         }
     }

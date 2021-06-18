@@ -37,7 +37,7 @@ public class PlayerController2 : MonoBehaviour
     Vector3 tmp, tmp2;//リスポーンポイントの座標が入る変数
     public Rigidbody rb;
 
-    bool Gflg = false;
+    public bool Gflg = false;
     public bool Dead = false;
     public bool Cflg = false;
 
