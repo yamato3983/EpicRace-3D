@@ -20,6 +20,7 @@ TagManager:
   - Intermediate
   - Intermediate02
   - Intermediate03
+  - Intermediate04
   layers:
   - Default
   - TransparentFX
