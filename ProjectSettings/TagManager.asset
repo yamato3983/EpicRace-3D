@@ -21,6 +21,7 @@ TagManager:
   - Intermediate02
   - Intermediate03
   - Intermediate04
+  - Ground
   layers:
   - Default
   - TransparentFX

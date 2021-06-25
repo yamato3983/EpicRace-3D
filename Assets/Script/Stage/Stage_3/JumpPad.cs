@@ -49,6 +49,9 @@ public class JumpPad : MonoBehaviour
             //ジャンプ台の色を青
             //マテリアル変更
             this.GetComponent<Renderer>().material.color = Color.blue;
+
+            //ジャンプフラグOFF
+            Gimmick_Jump = true;
         }
         if(timeCount > 5f)
         {
