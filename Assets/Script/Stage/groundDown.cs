@@ -15,7 +15,14 @@ public class groundDown : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //ƒvƒŒƒCƒ„[‚ªG‚ê‚½
         if (other.CompareTag("Player"))
+        {
+            Invoke("gravityChange", 4.0f);
+        }
+
+        //CPU‚ªG‚ê‚½
+        if(other.CompareTag("CPU"))
         {
             Invoke("gravityChange", 4.0f);
         }
