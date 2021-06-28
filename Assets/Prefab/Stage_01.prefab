@@ -61,6 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angle: 0
   step: 0
+  gimmickFlag_Bridge: 0
 --- !u!1 &8529341911470720760
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,7 +283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angle: 0
   step: 0
-  gimmickFlag_Box: 0
+  gimmickFlag_Bridge: 0
 --- !u!1 &9198571888724516223
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,7 +298,7 @@ GameObject:
   - component: {fileID: 9198571888724516221}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Stage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -885,6 +886,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angle: 0
   step: 0
+  gimmickFlag_Roll: 0
 --- !u!1 &9198571889295453116
 GameObject:
   m_ObjectHideFlags: 0

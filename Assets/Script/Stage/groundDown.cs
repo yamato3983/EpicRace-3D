@@ -19,6 +19,11 @@ public class groundDown : MonoBehaviour
         {
             Invoke("gravityChange", 4.0f);
         }
+
+        if(other.CompareTag("Ground"))
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void gravityChange()
