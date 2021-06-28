@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GimmickHammer : MonoBehaviour
+public class GimmickHammer_2 : MonoBehaviour
 {
     [SerializeField] Transform pivot; //‰ñ“]’†S
+
     [SerializeField] Transform bob;   //U‚èŽq
 
     float gravity = 0.5f;
@@ -28,22 +29,22 @@ public class GimmickHammer : MonoBehaviour
 
         //angularAccelerationValue = (-1 * gravity / R) * Mathf.Sin(rad);
 
-        angularVelocity += angularAcceleration * Time.deltaTime;
+        angularVelocity -= angularAcceleration * Time.deltaTime;
 
         //(’†S,‰ñ“]Ž²,‰ñ“]Šp“x)
         bob.RotateAround(pivot.position, Vector3.forward, angularVelocity);
 
         if (bob.position.x > pivot.position.x)
         {
-            angularAcceleration = -5.0f;
+            angularAcceleration = 5.0f;
         }
         else if (bob.position.x < pivot.position.x)
         {
-            angularAcceleration = 5.0f;
+            angularAcceleration = -5.0f;
         }
 
 
     }
 
 }
-    
+
