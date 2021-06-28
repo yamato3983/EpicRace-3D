@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player_Respawn2 : MonoBehaviour
 {
     GameObject Player2;
-    PlayerController3 PLScript2;
+    PlayerController2 PLScript2;
     private float time2 = 0.0f;
     Rigidbody rb2;
 
@@ -13,7 +13,7 @@ public class Player_Respawn2 : MonoBehaviour
     void Start()
     {
         Player2 = GameObject.Find("unitychan");
-        PLScript2 = Player2.GetComponent<PlayerController3>();
+        PLScript2 = Player2.GetComponent<PlayerController2>();
         rb2 = PLScript2.rb;
     }
 
