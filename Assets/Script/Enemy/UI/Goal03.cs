@@ -18,6 +18,9 @@ public class Goal03 : MonoBehaviour
     GameObject TargetObject3;
 
     [SerializeField]
+    GameObject TargetObject4;
+
+    [SerializeField]
     NavMeshAgent nav_mesh_agent;
 
     //public Enemymove script_NPC;
@@ -49,7 +52,7 @@ public class Goal03 : MonoBehaviour
         if (other.tag == "judge2")
         {
             nav_mesh_agent = GetComponent<NavMeshAgent>();
-            nav_mesh_agent.SetDestination(TargetObject.transform.position);
+            nav_mesh_agent.SetDestination(TargetObject4.transform.position);
         }
 
        if(other.tag == "Intermediate")
@@ -71,6 +74,13 @@ public class Goal03 : MonoBehaviour
             nav_mesh_agent = GetComponent<NavMeshAgent>();
 
             nav_mesh_agent.SetDestination(TargetObject3.transform.position);
+        }
+
+        if (other.tag == "Intermediate04")
+        {
+            nav_mesh_agent = GetComponent<NavMeshAgent>();
+
+            nav_mesh_agent.SetDestination(TargetObject4.transform.position);
         }
 
         //目標地点に到達

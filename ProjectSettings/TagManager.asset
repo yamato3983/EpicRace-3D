@@ -21,6 +21,10 @@ TagManager:
   - Intermediate02
   - Intermediate03
   - Intermediate04
+  - jump
+  - Gimmick_Conveyer
+  - Gimmick_Box
+  - Landing
   layers:
   - Default
   - TransparentFX

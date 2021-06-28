@@ -16,23 +16,8 @@ MonoBehaviour:
   TargetObject1: {fileID: 0}
   TargetObject2: {fileID: 0}
   TargetObject3: {fileID: 0}
+  TargetObject4: {fileID: 0}
   nav_mesh_agent: {fileID: 0}
---- !u!114 &886723792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4685155296817172059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1b078bbebc9c44b9e510bf377c197, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 0}
-  animator: {fileID: 0}
-  nav_mesh_agent: {fileID: 4685155296817172063}
-  script_t1: {fileID: 0}
 --- !u!1001 &1981377454125627871
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -117,12 +102,6 @@ PrefabInstance:
 --- !u!1 &4685155296817172059 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6519602165633513348, guid: 8fbf610659d5d3746aa3c110c554a7d9,
-    type: 3}
-  m_PrefabInstance: {fileID: 1981377454125627871}
-  m_PrefabAsset: {fileID: 0}
---- !u!195 &4685155296817172063 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 6519602165633513344, guid: 8fbf610659d5d3746aa3c110c554a7d9,
     type: 3}
   m_PrefabInstance: {fileID: 1981377454125627871}
   m_PrefabAsset: {fileID: 0}
