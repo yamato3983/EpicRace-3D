@@ -25,6 +25,8 @@ TagManager:
   - Gimmick_Conveyer
   - Gimmick_Box
   - Landing
+  - Ground
+  - Intermediate05
   layers:
   - Default
   - TransparentFX
