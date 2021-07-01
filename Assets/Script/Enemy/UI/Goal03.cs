@@ -20,8 +20,8 @@ public class Goal03 : MonoBehaviour
     [SerializeField]
     GameObject TargetObject4;
 
-    [SerializeField]
-    GameObject TargetObject5;
+    //[SerializeField]
+    //GameObject TargetObject5;
 
     [SerializeField]
     NavMeshAgent nav_mesh_agent;
@@ -86,12 +86,12 @@ public class Goal03 : MonoBehaviour
             nav_mesh_agent.SetDestination(TargetObject4.transform.position);
         }
 
-        if (other.tag == "Intermediate05")
+        /*if (other.tag == "Intermediate05")
         {
             nav_mesh_agent = GetComponent<NavMeshAgent>();
 
             nav_mesh_agent.SetDestination(TargetObject5.transform.position);
-        }
+        }*/
 
         //目標地点に到達
         if (other.tag == "Goal")

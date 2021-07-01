@@ -41,7 +41,7 @@ public class CPU_move03 : MonoBehaviour
 	GameObject GemeObject;
 	public Countdown script_t1;
 
-	
+
 	void Start()
 	{
 		NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
@@ -66,7 +66,7 @@ public class CPU_move03 : MonoBehaviour
 		//アニメーションに設定した二つの値の切り替え
 		animator.SetFloat("Speed", agent.velocity.sqrMagnitude);
 
-			//rb.AddForce(transform.up * 10.0f, ForceMode.Impulse);
+		//rb.AddForce(transform.up * 10.0f, ForceMode.Impulse);
 	}
 
 	//コルーチンでスタート時の挙動を処理してる
@@ -144,7 +144,7 @@ public class CPU_move03 : MonoBehaviour
 			NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
 
 			//ジャンプ台のスクリプトから参照させる用
-			JumpPad = GameObject.Find("JumpPad");
+			JumpPad = GameObject.Find("JumpPad_CPU");
 			jump_script = JumpPad.GetComponent<JumpPad>();
 
 			//2パターンの処理(0～5)
@@ -175,8 +175,8 @@ public class CPU_move03 : MonoBehaviour
 		}
 
 		//着地
-		if(other.tag == "Landing")
-        {
+		if (other.tag == "Landing")
+		{
 			NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
 			nav_mesh_agent.isStopped = false;
 			//Debug.Log("la"+ nav_mesh_agent.isStopped);
@@ -188,7 +188,7 @@ public class CPU_move03 : MonoBehaviour
 
 	//タグがすり抜けたらジャンプ
 	private void OnTriggerStay(Collider other)
-    {
+	{
 		if (other.tag == "jump")
 		{
 			if (jump_script.Gimmick_Jump == true)
@@ -201,7 +201,11 @@ public class CPU_move03 : MonoBehaviour
 
 				rb.isKinematic = false;
 
-				Jump(j_target.position);
+				//ジャンプする力
+				Vector3 force = new Vector3(0.0f, 0.3f, 0.18f);
+
+				rb.AddForce(force, ForceMode.Impulse);
+				//Jump(j_target.position);
 				j_flg = true;
 			}
 		}
@@ -216,10 +220,10 @@ public class CPU_move03 : MonoBehaviour
 
 		rb = GetComponent<Rigidbody>();
 	}
-
+}
 
 	//ジャンプするための処理
-	private void Jump(Vector3 i_targetPos)
+	/*private void Jump(Vector3 i_targetPos)
 	{
 		// とりあえず適当に60度でかっ飛ばすとするよ！
 		JumpFixedTime(i_targetPos, 10.0f);
@@ -331,10 +335,10 @@ public class CPU_move03 : MonoBehaviour
 	private void InstantiateShootObject(Vector3 i_shootVector)
 	{
 		//ジャンプする力
-		Vector3 force = new Vector3(0.0f, 0.56f, 0.18f);  
+		//Vector3 force = new Vector3(0.0f, 0.56f, 0.18f);  
 
-		rb.AddForce(force, ForceMode.Impulse);
+		//rb.AddForce(force, ForceMode.Impulse);
 	}
-}
+}*/
 
 
