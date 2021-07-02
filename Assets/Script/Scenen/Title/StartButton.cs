@@ -17,17 +17,17 @@ public class StartButton : MonoBehaviour
     void Update()
     {
         //タップ用処理
-        /*if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0))
         {
-            SceneManager.LoadScene("Main");
-        }*/
+            SceneManager.LoadScene("Stage01");
+        }
     }
 
     void StartGame()
     {
         // GameSceneをロード
-        //SceneManager.LoadScene("Stage01");
-        SceneManager.LoadScene("urabe01");
+        SceneManager.LoadScene("Stage01");
+        //SceneManager.LoadScene("urabe01");
     }
 
 }
