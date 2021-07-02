@@ -149,7 +149,7 @@ public class PlayerController : MonoBehaviour
             agent.Warp(new Vector3(tmp2.x, tmp2.y, tmp2.z));
             Dead = true;
             flg = 0;
-           
+
 
             //Navmesh‚ÆRigidody‚ÌKinematic‚ªON
             agentRigidbody.isKinematic = true;
@@ -170,7 +170,7 @@ public class PlayerController : MonoBehaviour
             Cflg = true;
         }
 
-        if(other.gameObject.tag == "EndGimmick")
+        if (other.gameObject.tag == "EndGimmick")
         {
             Debug.Log("EndGimmick‚É‚Ó‚ê‚½");
             Cflg = false;
@@ -186,20 +186,13 @@ public class PlayerController : MonoBehaviour
             {
                 if (gaugeCtrl.fillAmount > 0.0f)
                 {
-                    if (Input.GetKey(KeyCode.Space))
+                    if (Input.GetMouseButton(0))
                     {
                         gaugeCtrl.fillAmount -= 0.0005f;
-                    }
-
-                    if (Input.GetKeyDown(KeyCode.Space))
-                    {
-                        // Wait‚©‚çRun‚É‘JˆÚ‚·‚é
-                        //this.animator.SetBool(key_isRun, true);
                         flg = 0;
                     }
 
-
-                    else if (Input.GetKeyUp(KeyCode.Space))
+                    else
                     {
                         // Run‚©‚çWait‚É‘JˆÚ‚·‚é
                         //this.animator.SetBool(key_isRun, false);
@@ -234,7 +227,7 @@ public class PlayerController : MonoBehaviour
             {
                 // Run‚©‚çWait‚É‘JˆÚ‚·‚é
                 this.animator.SetBool(key_isRun, false);
-               
+
             }
         }
     }

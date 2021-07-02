@@ -77,7 +77,7 @@ public class PlayerController2 : MonoBehaviour
 
         PB = GameObject.Find("PivotBox");
         PB_Script = PB.GetComponent<PivotAngle_Box>();
-        
+
         var agentRigidbody = agent.GetComponent<Rigidbody>();
         //Rigidody‚ÌKinematic‚ðƒXƒ^[ƒgŽž‚ÍON‚É‚·‚é
         agentRigidbody.isKinematic = true;
@@ -171,20 +171,13 @@ public class PlayerController2 : MonoBehaviour
             {
                 if (gaugeCtrl.fillAmount > 0.0f)
                 {
-                    if (Input.GetKey(KeyCode.Space))
+                    if (Input.GetMouseButton(0))
                     {
                         gaugeCtrl.fillAmount -= 0.0005f;
-                    }
-
-                    if (Input.GetKeyDown(KeyCode.Space))
-                    {
-                        // Wait‚©‚çRun‚É‘JˆÚ‚·‚é
-                        //this.animator.SetBool(key_isRun, true);
                         flg = 0;
                     }
 
-
-                    else if (Input.GetKeyUp(KeyCode.Space))
+                    else
                     {
                         // Run‚©‚çWait‚É‘JˆÚ‚·‚é
                         //this.animator.SetBool(key_isRun, false);

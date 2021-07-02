@@ -42,18 +42,19 @@ public class PlayerController3 : MonoBehaviour
     [SerializeField]
     private float m_jumpTime = 0.0f;
 
-   
-    public GameObject JumpEnd;
-    public GameObject JumpPad;
-    Vector3 JumpPos;
-    //　オフメッシュリンクを使用中かどうか
-    private bool isUseOffmeshLink;
+    [SerializeField]
+    private Transform jumpPoint = null;
+
+    [SerializeField]
+    private Transform j_target = null;
+
+    public bool j_flg;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
 
-        agent.speed = 6.0f;
+        agent.speed = 5.0f;
         HP = GameObject.Find("HP");
         gaugeCtrl = HP.GetComponent<Image>();
         gaugeCtrl.fillAmount = 1.0f;
@@ -79,15 +80,13 @@ public class PlayerController3 : MonoBehaviour
         tmp = RP.transform.position;
         tmp2 = RP2.transform.position;
 
-        JumpEnd = GameObject.Find("JumpEnd");
-        JumpPad = GameObject.Find("JumpPad");
-        JumpPos = JumpPad.transform.position;
+        j_flg = false;
 
         var agentRigidbody = agent.GetComponent<Rigidbody>();
         //RigidodyのKinematicをスタート時はONにする
         agentRigidbody.isKinematic = true;
     }
-   
+
     private void OnTriggerEnter(Collider other)
     {
         var agentRigidbody = agent.GetComponent<Rigidbody>();
@@ -127,14 +126,7 @@ public class PlayerController3 : MonoBehaviour
             Gflg = true;
         }
 
-        if (other.tag == "Jump")
-        {
-            agentRigidbody.isKinematic = false;
-            agent.enabled = false;
-            OffMeshLinkProcess(Player.transform.position);
-        }
-
-            if (other.gameObject.tag == "Respawn2")
+        if (other.gameObject.tag == "Respawn2")
         {
             Debug.Log("Respawn2にふれた");
             Cflg = true;
@@ -147,19 +139,25 @@ public class PlayerController3 : MonoBehaviour
         }
     }
 
-    protected IEnumerator OffMeshLinkProcess(Vector3 i_targetPos)
+    private void OnTriggerStay(Collider other)
     {
-        rb.isKinematic = false;
-        rb.velocity = Vector3.zero;
+        //if (other.tag == "jump")
+        //{
+        //    agent.autoTraverseOffMeshLink = false;
+        //    agent.isStopped = true;
 
+        //    Debug.Log("ジャンプ");
+
+        //    rb.isKinematic = false;
+
+        //    Jump(j_target.position);
+        //    j_flg = true;
+        //}
+    }
+
+    private void Jump(Vector3 i_targetPos)
+    {
         ShootFixedTime(i_targetPos, m_jumpTime);
-
-        yield return new WaitForSeconds(m_jumpTime);
-
-        transform.position = i_targetPos;
-
-        rb.isKinematic = true;
-        rb.velocity = Vector3.zero;
     }
 
     private void ShootFixedTime(Vector3 i_targetPosition, float i_time)
@@ -203,7 +201,7 @@ public class PlayerController3 : MonoBehaviour
 
         float v0Square = v_x * v_x + v_y * v_y;
         // 負数を平方根計算すると虚数になってしまう。
-        
+
         if (v0Square <= 0.0f)
         {
             return 0.0f;
@@ -242,7 +240,7 @@ public class PlayerController3 : MonoBehaviour
         float distance = Vector2.Distance(targetPos, startPos);
 
         float x = distance;
-        
+
         float g = -Physics.gravity.y;
         float y0 = transform.position.y;
         float y = i_targetPosition.y;
@@ -257,7 +255,7 @@ public class PlayerController3 : MonoBehaviour
     private void SetRigidbody(Vector3 i_shootVector)
     {
         // 速さベクトルのままAddForce()を渡してはいけないぞ。力(速さ×重さ)に変換するんだ
-        Vector3 force = new Vector3(0.0f, 5.0f, 1.5f);  //与える力;
+        Vector3 force = new Vector3(0.0f, 0.56f, 0.18f);  //与える力;
 
         rb.AddForce(force, ForceMode.Impulse);
     }
@@ -268,24 +266,17 @@ public class PlayerController3 : MonoBehaviour
 
         if (Time.time >= this.timeToEnableInputs)
         {
-            if (Gflg == false && Dead == false)
+            if (Gflg == false && Dead == false && j_flg == false)
             {
                 if (gaugeCtrl.fillAmount > 0.0f)
                 {
-                    if (Input.GetKey(KeyCode.Space))
+                    if (Input.GetMouseButton(0))
                     {
                         gaugeCtrl.fillAmount -= 0.0005f;
-                    }
-
-                    if (Input.GetKeyDown(KeyCode.Space))
-                    {
-                        // WaitからRunに遷移する
-                        //this.animator.SetBool(key_isRun, true);
                         flg = 0;
                     }
 
-
-                    else if (Input.GetKeyUp(KeyCode.Space))
+                    else
                     {
                         // RunからWaitに遷移する
                         //this.animator.SetBool(key_isRun, false);
@@ -312,7 +303,7 @@ public class PlayerController3 : MonoBehaviour
                 }
             }
 
-           
+
             /*
             //　オフメッシュリンク使用時に自分で移動を制御
             if (agent.isOnOffMeshLink)
@@ -324,7 +315,7 @@ public class PlayerController3 : MonoBehaviour
             }
             */
 
-                if (Dead == true)
+            if (Dead == true)
             {
                 // RunからWaitに遷移する
                 this.animator.SetBool(key_isRun, false);
