@@ -7,11 +7,19 @@ public class retry02 : MonoBehaviour
     {
 
     }
+    void Update()
+    {
+        //タップ用処理
+        if (Input.GetMouseButtonDown(0))
+        {
+            SceneManager.LoadScene("Stage02");
+        }
+    }
+
     public void OnClickStartButton()
     {
         //NPCがゴールしたらシーンを変更する
-
-        SceneManager.LoadScene("urabe02");
+        SceneManager.LoadScene("Stage02");
 
     }
 }
