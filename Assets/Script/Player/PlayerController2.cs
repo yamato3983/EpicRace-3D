@@ -49,7 +49,7 @@ public class PlayerController2 : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
 
-        agent.speed = 4.0f;
+        agent.speed = 5.0f;
         HP = GameObject.Find("HP");
         gaugeCtrl = HP.GetComponent<Image>();
         gaugeCtrl.fillAmount = 1.0f;
@@ -173,7 +173,7 @@ public class PlayerController2 : MonoBehaviour
                 {
                     if (Input.GetMouseButton(0))
                     {
-                        gaugeCtrl.fillAmount -= 0.0005f;
+                        gaugeCtrl.fillAmount -= 0.001f;
                         flg = 0;
                     }
 
