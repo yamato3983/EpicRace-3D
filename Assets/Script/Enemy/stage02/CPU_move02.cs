@@ -31,6 +31,8 @@ public class CPU_move02 : MonoBehaviour
 	GameObject GemeObject;
 	public Countdown script_t1;
 
+	GameObject Enemy;
+
 	//NPCがゴールをしたかどうか
 	public bool goal;
 
@@ -98,12 +100,14 @@ public class CPU_move02 : MonoBehaviour
 		if (other.tag == "Dead")
 		{
 			//リスポーン地点の処理
-			agent.Warp(new Vector3(8.0f, 5.0f, -1.5f));
+			/*agent.Warp(new Vector3(8.0f, 5.0f, -1.5f));
 
 			//ナビゲーション関連の機能
 			NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
 
-			agent.enabled = true;
+			agent.enabled = true;*/
+
+			Destroy(Enemy);
 		}
 
 		/*********ギミック1の処理*************/
@@ -150,6 +154,13 @@ public class CPU_move02 : MonoBehaviour
 		if (script_b.gimmickFlag_Box != true && other.tag == "Gimmick_Box")
 		{	
 			agent.enabled = false;
+
+			agent.Warp(new Vector3(8.0f, 5.0f, -1.5f));
+
+			//ナビゲーション関連の機能
+			NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
+
+			agent.enabled = true;
 		}
 
 		/********************************************/

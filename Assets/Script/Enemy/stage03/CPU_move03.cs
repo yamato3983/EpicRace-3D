@@ -29,6 +29,8 @@ public class CPU_move03 : MonoBehaviour
 	[SerializeField]
 	private float m_jumpTime = 0.0f;
 
+	GameObject Enemy;
+
 	//ジャンプ台用のスクリプト
 	GameObject JumpPad;
 	public JumpPad jump_script;
@@ -95,6 +97,19 @@ public class CPU_move03 : MonoBehaviour
 	{
 		//死亡ゾーンに入った時の処理(ギミックの1番目)
 		if (other.tag == "Dead")
+		{
+			//リスポーン地点の処理
+			/*agent.Warp(new Vector3(-8.5f, 5f, 16.5f));
+
+			//ナビゲーション関連の機能
+			NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
+
+			agent.enabled = true;*/
+
+			Destroy(Enemy);
+		}
+
+		if (other.tag == "Hammer")
 		{
 			//リスポーン地点の処理
 			agent.Warp(new Vector3(-8.5f, 5f, 16.5f));
@@ -183,6 +198,18 @@ public class CPU_move03 : MonoBehaviour
 			rb.isKinematic = true;
 			//agent.enabled = false;
 			nav_mesh_agent.CompleteOffMeshLink();
+		}
+
+		//ぐるぐるのドーナツに当たったら
+		if (other.tag == "Ring")
+		{
+			//リスポーン地点の処理
+			agent.Warp(new Vector3(1.7f, 5f, 43f));
+
+			//ナビゲーション関連の機能
+			NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
+
+			agent.enabled = true;
 		}
 	}
 
