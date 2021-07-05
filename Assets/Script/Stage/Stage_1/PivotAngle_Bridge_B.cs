@@ -52,24 +52,22 @@ public class PivotAngle_Bridge_B : MonoBehaviour
         }
 
         //5～8秒
-        if (timeCount >= 5f && timeCount <= 7.5)
+        if (timeCount >= 5f && timeCount <= 5.75f)
         {
             //橋を上げる
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, 0f), step);
             Debug.Log("2回目");
 
+        }
+        if(timeCount >= 5.75f)
+        {
             //橋が上がってる状態
             gimmickFlag_Bridge = true;
             Debug.Log("橋ギミック:" + gimmickFlag_Bridge);
-        }
 
-        //8秒
-        if (timeCount >= 7.6f)
-        {
             timeCount = 0;
             Debug.Log("タイムリセット");
         }
-
 
     }
 
