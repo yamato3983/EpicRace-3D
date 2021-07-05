@@ -9,7 +9,7 @@ public class GimmickHammer_2 : MonoBehaviour
     [SerializeField] Transform bob;   //U‚èŽq
 
     float gravity = 0.5f;
-    float rad = -0.3f * Mathf.PI;
+    float rad = 0.3f * Mathf.PI;
     float R = 180f;
     float angularVelocity = 1.0f;         //Šp‘¬“x
     float angularAcceleration = 8.0f;      //Šp‰Á‘¬“x
@@ -36,11 +36,11 @@ public class GimmickHammer_2 : MonoBehaviour
 
         if (bob.position.x > pivot.position.x)
         {
-            angularAcceleration = 5.0f;
+            angularAcceleration = 8.0f;
         }
         else if (bob.position.x < pivot.position.x)
         {
-            angularAcceleration = -5.0f;
+            angularAcceleration = -8.0f;
         }
 
 

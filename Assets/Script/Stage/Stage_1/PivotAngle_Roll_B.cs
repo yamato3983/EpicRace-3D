@@ -58,7 +58,7 @@ public class PivotAngle_Roll_B : MonoBehaviour
         }
 
         //3～6秒
-        if (timeCount >= 3.5f && timeCount <= 7f)
+        if (timeCount >= 3.0f && timeCount <= 6.4f)
         {
             Debug.Log("グラグ切り替えの為何もしない");
 
@@ -68,7 +68,7 @@ public class PivotAngle_Roll_B : MonoBehaviour
         }
 
         //6～9秒
-        if (timeCount >= 7f && timeCount <= 10.5f)
+        if (timeCount >= 6.5f && timeCount <= 10.0f)
         {
 
             //ギミックの状態を動いてる状態に
@@ -81,7 +81,7 @@ public class PivotAngle_Roll_B : MonoBehaviour
         }
 
         //9～12秒
-        if (timeCount >= 10.5f && timeCount <= 14f)
+        if (timeCount >= 10.0f && timeCount <= 13f)
         {
 
             Debug.Log("グラグ切り替えの為何もしない");
@@ -92,7 +92,7 @@ public class PivotAngle_Roll_B : MonoBehaviour
         }
 
         //12秒
-        if (timeCount >= 14f)
+        if (timeCount >= 13f)
         {
             //タイマーリセット
             timeCount = 0;

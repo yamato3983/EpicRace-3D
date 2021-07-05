@@ -92,9 +92,7 @@ Transform:
   m_Children:
   - {fileID: 448370655128476110}
   - {fileID: 448370656004659064}
-  - {fileID: 448370655532849121}
   - {fileID: 6371291765792537934}
-  - {fileID: 6255390107100382392}
   - {fileID: 448370654835795441}
   m_Father: {fileID: 448370655523787492}
   m_RootOrder: 1
@@ -351,7 +349,7 @@ Transform:
   - {fileID: 448370655285238160}
   - {fileID: 448370654315037107}
   m_Father: {fileID: 448370654479987786}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &448370654878455290
 GameObject:
@@ -701,11 +699,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 448370655532849126}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.8669462, y: -0.029999971, z: -0.3535812}
+  m_LocalPosition: {x: 1.4799995, y: 0.120000124, z: -0.049999714}
   m_LocalScale: {x: 3, y: 0.2, z: 5}
   m_Children: []
-  m_Father: {fileID: 448370654479987786}
-  m_RootOrder: 2
+  m_Father: {fileID: 448370656004659064}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &448370655532849122
 MeshFilter:
@@ -1019,7 +1017,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3.3469458, y: -0.14999986, z: -0.30358148}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 448370655532849121}
   m_Father: {fileID: 448370654479987786}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1327,11 +1326,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135265129724216851}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.0930538, y: -0.0400002, z: -0.3535812}
+  m_LocalPosition: {x: -1.5199995, y: 0.109999895, z: -0.049999714}
   m_LocalScale: {x: 3, y: 0.20000003, z: 5}
   m_Children: []
-  m_Father: {fileID: 448370654479987786}
-  m_RootOrder: 4
+  m_Father: {fileID: 6371291765792537934}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7061818341308163682
 MeshFilter:
@@ -1423,9 +1422,10 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.6130533, y: -0.14999986, z: -0.30358148}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 6255390107100382392}
   m_Father: {fileID: 448370654479987786}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8990415889097543930
 MonoBehaviour:
