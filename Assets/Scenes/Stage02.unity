@@ -1511,6 +1511,11 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5581432898579127163, guid: a73f494f05f7f864b8dd1f0e5eafd5fc,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5581432898604290071, guid: a73f494f05f7f864b8dd1f0e5eafd5fc,
         type: 3}
       propertyPath: m_StaticEditorFlags

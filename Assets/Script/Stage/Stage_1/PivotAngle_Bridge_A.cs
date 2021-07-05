@@ -52,7 +52,7 @@ public class PivotAngle_Bridge_A : MonoBehaviour
         }
 
         //5～8秒
-        if (timeCount >= 5f && timeCount <= 7.5)
+        if (timeCount >= 5f && timeCount <= 5.75)
         {
             //橋を上げる
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, 0f), step);
@@ -64,7 +64,7 @@ public class PivotAngle_Bridge_A : MonoBehaviour
         }
 
         //8秒
-        if (timeCount >= 7.6f)
+        if (timeCount >= 5.75f)
         {
             timeCount = 0;
             Debug.Log("タイムリセット");
