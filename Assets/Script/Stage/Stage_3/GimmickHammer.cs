@@ -8,7 +8,7 @@ public class GimmickHammer : MonoBehaviour
     [SerializeField] Transform bob;   //êUÇËéq
 
     float gravity = 0.5f;
-    float rad = -0.3f * Mathf.PI;
+    float rad = 0.3f * Mathf.PI;
     float R = 180f;
     float angularVelocity = 1.0f;         //äpë¨ìx
     float angularAcceleration = 8.0f;      //äpâ¡ë¨ìx
