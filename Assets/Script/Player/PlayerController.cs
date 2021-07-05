@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
         gaugeCtrl.fillAmount = 1.0f;
 
         //カメラのフラグ初期はメインの為false
-        Cflg = false;
+        Cflg = true;
 
         Player = GameObject.Find("unitychan");
 
@@ -113,14 +113,24 @@ public class PlayerController : MonoBehaviour
 
         var agentRigidbody = agent.GetComponent<Rigidbody>();
 
-        if (other.tag == "Gimmick_Bridge" && bridgeBflg == false || other.tag == "Gimmick_Roll" && rollBflg == false)
+        if (other.tag == "Gimmick_Bridge" && bridgeBflg == false)
         {
-            Debug.Log("落ちる！！");
-            //Cflg = false;
+            Debug.Log("死んだ！！");
+            this.gameObject.SetActive(false);
+            agent.Warp(new Vector3(tmp.x, tmp.y, tmp.z));
+            Dead = true;
 
             //NavmeshもRigidodyのKinematicもOFF
-            agent.enabled = false;
-            agentRigidbody.isKinematic = false;
+            //agent.enabled = false;
+            //agentRigidbody.isKinematic = false;
+            flg = 0;
+        }
+        if(other.tag == "Gimmick_Roll" && rollBflg == false)
+        {
+            Debug.Log("死んだ！！");
+            this.gameObject.SetActive(false);
+            agent.Warp(new Vector3(tmp2.x, tmp2.y, tmp2.z));
+            Dead = true;
             flg = 0;
         }
     }
@@ -184,8 +194,10 @@ public class PlayerController : MonoBehaviour
         {
             if (Gflg == false && Dead == false)
             {
+                Cflg = false;
                 if (gaugeCtrl.fillAmount > 0.0f)
                 {
+
                     if (Input.GetMouseButton(0))
                     {
                         gaugeCtrl.fillAmount -= 0.001f;
