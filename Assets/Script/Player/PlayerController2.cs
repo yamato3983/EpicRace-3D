@@ -73,7 +73,7 @@ public class PlayerController2 : MonoBehaviour
         RP = GameObject.Find("RespawnPoint");
         RP2 = GameObject.Find("RespawnPoint2");
         tmp = RP.transform.position;
-        tmp2 = RP2.transform.position;
+        //tmp2 = RP2.transform.position;
 
         PB = GameObject.Find("PivotBox");
         PB_Script = PB.GetComponent<PivotAngle_Box>();
@@ -105,7 +105,7 @@ public class PlayerController2 : MonoBehaviour
         }
         else
         {
-            agent.speed = 4.0f;
+            agent.speed = 5.0f;
         }
 
     }

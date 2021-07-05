@@ -20,17 +20,20 @@ public class Player_Respawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //bool PDead = PLScript.Dead;
-        if (PLScript.Dead == true)
+        if (GameObject.Find("RespawnPoint"))
         {
-            time += Time.deltaTime;
-            if (time >= 1.0f)
+            //bool PDead = PLScript.Dead;
+            if (PLScript.Dead == true)
             {
-                time = 0.0f;
-                PLScript.agent.enabled = true;
-                Player.gameObject.SetActive(true);
-                //PDead = false;
-                PLScript.Dead = false;
+                time += Time.deltaTime;
+                if (time >= 1.0f)
+                {
+                    time = 0.0f;
+                    PLScript.agent.enabled = true;
+                    Player.gameObject.SetActive(true);
+                    //PDead = false;
+                    PLScript.Dead = false;
+                }
             }
         }
 

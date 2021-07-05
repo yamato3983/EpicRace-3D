@@ -24,7 +24,7 @@ public class Player_Respawn2 : MonoBehaviour
         if (PLScript2.Dead == true)
         {
             time2 += Time.deltaTime;
-            if (time2 >= 3.0f)
+            if (time2 >= 1.0f)
             {
                 time2 = 0.0f;
                 PLScript2.agent.enabled = true;
