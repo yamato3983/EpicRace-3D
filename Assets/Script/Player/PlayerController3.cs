@@ -272,7 +272,7 @@ public class PlayerController3 : MonoBehaviour
                 {
                     if (Input.GetMouseButton(0))
                     {
-                        gaugeCtrl.fillAmount -= 0.0005f;
+                        gaugeCtrl.fillAmount -= 0.001f;
                         flg = 0;
                     }
 
