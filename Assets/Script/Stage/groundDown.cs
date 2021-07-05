@@ -7,6 +7,8 @@ public class groundDown : MonoBehaviour
 
     Rigidbody rd; //リジッドボディ
 
+    public Countdown script_t1; //カウントダウンのやつ
+
     private void Start()
     {
         //オブジェクトのRigidbodyを取得
@@ -18,13 +20,13 @@ public class groundDown : MonoBehaviour
         //プレイヤーが触れた時
         if (other.CompareTag("Player"))
         {
-            Invoke("gravityChange", 4.0f);
+            Invoke("gravityChange", 8.0f);
         }
 
         //CPUが触れた時
         if(other.CompareTag("CPU"))
         {
-            Invoke("gravityChange", 4.0f);
+            Invoke("gravityChange", 8.0f);
         }
 
         if(other.CompareTag("Ground"))
