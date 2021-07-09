@@ -43,6 +43,8 @@ public class CPU_move03 : MonoBehaviour
 	GameObject GemeObject;
 	public Countdown script_t1;
 
+	//NPC‚ªƒS[ƒ‹‚ğ‚µ‚½‚©‚Ç‚¤‚©
+	public bool goal;
 
 	void Start()
 	{
@@ -61,6 +63,8 @@ public class CPU_move03 : MonoBehaviour
 		rb.isKinematic = true;
 
 		j_flg = false;
+
+		goal = false;
 	}
 
 	void Update()
@@ -210,6 +214,12 @@ public class CPU_move03 : MonoBehaviour
 			NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
 
 			agent.enabled = true;
+		}
+
+		//ƒS[ƒ‹‚µ‚½‚ç
+		if (other.tag == "Goal")
+		{
+			goal = true;
 		}
 	}
 

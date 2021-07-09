@@ -7,7 +7,7 @@ using UnityEngine.AI;
 
 public class CPU_move01 : MonoBehaviour
 {
-	[SerializeField, HideInInspector] NavMeshAgent agent;
+	[SerializeField, HideInInspector] public NavMeshAgent agent;
 	[SerializeField, HideInInspector] Animator animator;
 	[SerializeField] NavMeshAgent nav_mesh_agent;
 
@@ -34,8 +34,15 @@ public class CPU_move01 : MonoBehaviour
 	GameObject GemeObject;
 	public Countdown script_t1;
 
-	GameObject Enemy;
+	public GameObject Enemy;
 
+	public GameObject rp1;
+	public GameObject rp2;
+	public Rigidbody rb;
+
+	Vector3 pos1, pos2;
+
+	public bool dead;
 	//NPCがゴールをしたかどうか
 	public bool goal;
 
@@ -43,6 +50,8 @@ public class CPU_move01 : MonoBehaviour
 	{
 		NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
 		var agentRigidbody = agent.GetComponent<Rigidbody>();
+
+		Enemy = GameObject.Find("Enemy");
 
 		agent = GetComponent<NavMeshAgent>();
 		animator = GetComponent<Animator>();
@@ -65,6 +74,13 @@ public class CPU_move01 : MonoBehaviour
 		//ギミックロールの右側
 		PivotRoll_B = GameObject.Find("PivotRoll_B");
 
+		//リスポーン
+		rp1 = GameObject.Find("RespawnCPU");
+		rp2 = GameObject.Find("RespawnCPU2");
+		pos1 = rp1.transform.position;
+		pos2 = rp2.transform.position;
+
+		dead = false;
 		goal = false;
 	}
 
@@ -86,7 +102,7 @@ public class CPU_move01 : MonoBehaviour
 		}
 
 		//とりあえず4秒にしてるけど変更するかも
-		yield return new WaitForSeconds(4.0f);
+		yield return new WaitForSeconds(3.0f);
 
 		//カウントダウンが0のときに走り出す
 		if (script_t1.startflg == true)
@@ -103,16 +119,18 @@ public class CPU_move01 : MonoBehaviour
 		//死亡ゾーンに入った時の処理(ギミックの1番目)
 		if (other.tag == "Dead")
 		{
-			//リスポーン地点の処理
-			/*agent.Warp(new Vector3(8.0f, 5.0f, -1.5f));
-
-			//ナビゲーション関連の機能
-			NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
+			
+			//dead = true;
+			/*this.gameObject.SetActive(false);
+			agent.Warp(new Vector3(pos1.x, pos1.y, pos1.z));
 
 			//NavmeshとRigidodyのKinematicがON
+			NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
+			nav_mesh_agent.isStopped = false;
 			agentRigidbody.isKinematic = true;
-			agent.enabled = true;*/
-			Destroy(Enemy);
+			agent.enabled = true;
+
+			dead = true;*/
 		}
 
 		/*********ギミック1の処理*************/
@@ -131,7 +149,7 @@ public class CPU_move01 : MonoBehaviour
 			script_b2 = PivotBridge_B.GetComponent<PivotAngle_Bridge_B>();
 
 			//2パターンの処理(0～6)
-			int value = Random.Range(0, 6);
+			int value = 4;// Random.Range(0, 6);
 
 			switch (value)
 			{
@@ -165,15 +183,16 @@ public class CPU_move01 : MonoBehaviour
 			agent.enabled = false;
 			agentRigidbody.isKinematic = false;
 
-			//リスポーン地点の処理
-			agent.Warp(new Vector3(8.0f, 5.0f, -1.5f));
-
 			//ナビゲーション関連の機能
 			NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
 
+			agent.Warp(new Vector3(pos1.x, pos1.y, pos1.z));
+			
 			//NavmeshとRigidodyのKinematicがON
-			agentRigidbody.isKinematic = true;
+			nav_mesh_agent.isStopped = false;
 			agent.enabled = true;
+			dead = true;
+
 		}
 
 		if (script_b2.gimmickFlag_Bridge == false && other.tag == "Gimmick_Bridge")
@@ -182,31 +201,24 @@ public class CPU_move01 : MonoBehaviour
 			agent.enabled = false;
 			agentRigidbody.isKinematic = false;
 
-			//リスポーン地点の処理
-			agent.Warp(new Vector3(8.0f, 5.0f, -1.5f));
-
 			//ナビゲーション関連の機能
 			NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
 
+			agent.Warp(new Vector3(pos1.x, pos1.y, pos1.z));
+			
+
 			//NavmeshとRigidodyのKinematicがON
-			agentRigidbody.isKinematic = true;
+			//agentRigidbody.isKinematic = true;
+			nav_mesh_agent.isStopped = false;
 			agent.enabled = true;
+			dead = true;
 		}
 
 		/********************************************/
 		//死亡ゾーンに入った時の処理(ギミック2番目)
 		if (other.tag == "Dead_02")
 		{
-			//リスポーン地点の処理(ギミック2番目で落下した時）
-			/*agent.Warp(new Vector3(-22f, 5.0f, -1.5f));
-
-			//ナビゲーション関連の機能
-			NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
-
-			//NavmeshとRigidodyのKinematicがON
-			agentRigidbody.isKinematic = true;
-			agent.enabled = true;*/
-			Destroy(Enemy);
+			
 		}
 
 		//ギミック2番目通過判定
@@ -256,15 +268,15 @@ public class CPU_move01 : MonoBehaviour
 			agent.enabled = false;
 			agentRigidbody.isKinematic = false;
 
-			//リスポーン地点の処理(ギミック2番目で落下した時）
-			agent.Warp(new Vector3(-22f, 5.0f, -1.5f));
-
 			//ナビゲーション関連の機能
 			NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
 
+			agent.Warp(new Vector3(pos2.x, pos2.y, pos2.z));
+
 			//NavmeshとRigidodyのKinematicがON
-			agentRigidbody.isKinematic = true;
+			nav_mesh_agent.isStopped = false;
 			agent.enabled = true;
+			dead = true;
 		}
 
 		if (script_r2.gimmickFlag_Roll == false && other.tag == "Gimmick_Roll")
@@ -273,15 +285,16 @@ public class CPU_move01 : MonoBehaviour
 			agent.enabled = false;
 			agentRigidbody.isKinematic = false;
 
-			//リスポーン地点の処理(ギミック2番目で落下した時）
-			agent.Warp(new Vector3(-22f, 5.0f, -1.5f));
-
 			//ナビゲーション関連の機能
 			NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
 
+			agent.Warp(new Vector3(pos2.x, pos2.y, pos2.z));
+
 			//NavmeshとRigidodyのKinematicがON
-			agentRigidbody.isKinematic = true;
+			nav_mesh_agent.isStopped = false;
 			agent.enabled = true;
+			dead = true;
+
 		}
 
 		//ゴールしたら

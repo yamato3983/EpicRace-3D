@@ -31,8 +31,15 @@ public class CPU_move02 : MonoBehaviour
 	GameObject GemeObject;
 	public Countdown script_t1;
 
-	GameObject Enemy;
+	public GameObject Enemy;
 
+	public GameObject rp1;
+	
+	public Rigidbody rb;
+
+	Vector3 pos1;
+
+	public bool dead;
 	//NPCがゴールをしたかどうか
 	public bool goal;
 
@@ -56,6 +63,13 @@ public class CPU_move02 : MonoBehaviour
 		Gimmick_Conveyer = GameObject.Find("Gimmick_Conveyer");
 
 		conveyer = false;
+
+		//リスポーン
+		rp1 = GameObject.Find("RespawnCPU");
+		
+		pos1 = rp1.transform.position;
+
+		dead = false;
 
 		goal = false;
 	}
@@ -95,7 +109,8 @@ public class CPU_move02 : MonoBehaviour
 	//タグの判定
 	private void OnTriggerEnter(Collider other)
 	{
-	
+		var agentRigidbody = agent.GetComponent<Rigidbody>();
+
 		//死亡ゾーンに入った時の処理(ギミックの1番目)
 		if (other.tag == "Dead")
 		{
@@ -107,7 +122,7 @@ public class CPU_move02 : MonoBehaviour
 
 			agent.enabled = true;*/
 
-			Destroy(Enemy);
+			//Destroy(Enemy);
 		}
 
 		/*********ギミック1の処理*************/
@@ -151,16 +166,21 @@ public class CPU_move02 : MonoBehaviour
 		}
 
 		//橋が下がってる状態で橋の上に乗ってる状態の処理
-		if (script_b.gimmickFlag_Box != true && other.tag == "Gimmick_Box")
-		{	
+		if (script_b.gimmickFlag_Box == false && other.tag == "Gimmick_Box")
+		{
+			//NavmeshもRigidodyのKinematicもOFF
 			agent.enabled = false;
-
-			agent.Warp(new Vector3(8.0f, 5.0f, -1.5f));
+			agentRigidbody.isKinematic = false;
 
 			//ナビゲーション関連の機能
 			NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
 
+			agent.Warp(new Vector3(pos1.x, pos1.y, pos1.z));
+
+			//NavmeshとRigidodyのKinematicがON
+			nav_mesh_agent.isStopped = false;
 			agent.enabled = true;
+			dead = true;
 		}
 
 		/********************************************/

@@ -43,6 +43,18 @@ public class Goal : MonoBehaviour
             nav_mesh_agent.SetDestination(TargetObject.transform.position);
         }
 
+        if (other.tag == "Respawn")
+        {
+            nav_mesh_agent = GetComponent<NavMeshAgent>();
+            nav_mesh_agent.SetDestination(TargetObject.transform.position);
+        }
+
+        if (other.tag == "Respawn2")
+        {
+            nav_mesh_agent = GetComponent<NavMeshAgent>();
+            nav_mesh_agent.SetDestination(TargetObject.transform.position);
+        }
+
         //目標地点に到達
         if (other.tag == "Goal")
         {

@@ -29,4 +29,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stage03.unity
     guid: 44bdedd5f9c768d478e23739dde3a7e8
+  - enabled: 1
+    path: Assets/Scenes/Clear_CPU03.unity
+    guid: 898e556a07db7ad4cb4b2ed2975e4f6c
+  - enabled: 1
+    path: Assets/Scenes/Clear_player03.unity
+    guid: 42d0934acca141e45b548bb7e56a51c0
   m_configObjects: {}
