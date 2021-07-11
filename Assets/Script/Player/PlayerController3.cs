@@ -104,6 +104,19 @@ public class PlayerController3 : MonoBehaviour
             agent.enabled = true;
         }
 
+        if (other.gameObject.tag == "Hammer")
+        {
+            Debug.Log("死んだ！！");
+            this.gameObject.SetActive(false);
+            agent.Warp(new Vector3(tmp.x, tmp.y, tmp.z));
+            Dead = true;
+            flg = 0;
+
+            //NavmeshとRigidodyのKinematicがON
+            agentRigidbody.isKinematic = true;
+            agent.enabled = true;
+        }
+
         if (other.gameObject.tag == "Dead_02")
         {
             Debug.Log("死んだ！！(回転");
@@ -272,7 +285,7 @@ public class PlayerController3 : MonoBehaviour
                 {
                     if (Input.GetMouseButton(0))
                     {
-                        gaugeCtrl.fillAmount -= 0.001f;
+                        gaugeCtrl.fillAmount -= 0.0013f;
                         flg = 0;
                     }
 
