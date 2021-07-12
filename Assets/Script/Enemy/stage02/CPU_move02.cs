@@ -138,7 +138,7 @@ public class CPU_move02 : MonoBehaviour
 
 
 			//2ƒpƒ^[ƒ“‚Ìˆ—(0`6)
-			int value = Random.Range(0, 6);
+			int value = 1;
 
 			switch (value)
 			{
