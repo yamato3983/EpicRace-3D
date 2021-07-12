@@ -33,7 +33,7 @@ public class PivotAngle_Roll_B : MonoBehaviour
     {
         //‰Šú‰»
         step = 0;
-        speed = 60f;
+        speed = 70f;
 
     }
 

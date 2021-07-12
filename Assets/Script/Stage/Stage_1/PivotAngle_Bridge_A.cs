@@ -25,7 +25,7 @@ public class PivotAngle_Bridge_A : MonoBehaviour
     {
         //‰Šú‰»
         step = 0;
-        speed = 120f;
+        speed = 130f;
 
         //Å‰‚Í‹´‚ª‰Ë‚©‚Á‚Ä‚é
         gimmickFlag_Bridge = true;
