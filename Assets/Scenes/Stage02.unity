@@ -654,6 +654,11 @@ PrefabInstance:
       propertyPath: TargetObject
       value: 
       objectReference: {fileID: 1970544884}
+    - target: {fileID: 8443182245232893789, guid: 04c1824fc3492df41a60f8e26a86a679,
+        type: 3}
+      propertyPath: m_Speed
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8443182245232893790, guid: 04c1824fc3492df41a60f8e26a86a679,
         type: 3}
       propertyPath: m_RootOrder

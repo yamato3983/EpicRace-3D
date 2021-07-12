@@ -149,6 +149,7 @@ public class CPU_move02 : MonoBehaviour
 				case 3:
 					//ナビゲーションを止める
 					nav_mesh_agent.isStopped = true;
+					agentRigidbody.isKinematic = true;
 
 					//3秒後にCall関数を実行する
 					Invoke("Call", 3f);
@@ -188,6 +189,7 @@ public class CPU_move02 : MonoBehaviour
 		//橋が下がってる状態で橋の上に乗ってる状態の処理
 		if (other.tag == "Gimmick_Conveyer")
 		{
+			agentRigidbody.isKinematic = true;
 			conveyer = true;
 		}
 		else if (other.tag != "Gimmick_Conveyer")
@@ -202,7 +204,7 @@ public class CPU_move02 : MonoBehaviour
 
 		else if(conveyer == false)
         {
-			agent.speed = 4;
+			agent.speed = 5;
         }
 
 		//ゴールしたら
