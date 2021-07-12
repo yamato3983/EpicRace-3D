@@ -997,6 +997,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 9198571888988767126}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1982995062 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7434273726854977094, guid: 5048254d938b4e44fb0ffc666de913a8,
+    type: 3}
+  m_PrefabInstance: {fileID: 7434273725447536048}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94d1118441cf730408fd39e3ece3f971, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2029901726
 GameObject:
   m_ObjectHideFlags: 0
@@ -1425,13 +1437,38 @@ PrefabInstance:
     - target: {fileID: 7434273726854977091, guid: 5048254d938b4e44fb0ffc666de913a8,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7434273726854977091, guid: 5048254d938b4e44fb0ffc666de913a8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7434273726854977091, guid: 5048254d938b4e44fb0ffc666de913a8,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1648231903}
+      objectReference: {fileID: 1982995062}
+    - target: {fileID: 7434273726854977091, guid: 5048254d938b4e44fb0ffc666de913a8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7434273726854977091, guid: 5048254d938b4e44fb0ffc666de913a8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClickStartButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 7434273726854977091, guid: 5048254d938b4e44fb0ffc666de913a8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: StartButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7434273726854977091, guid: 5048254d938b4e44fb0ffc666de913a8,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7434273726983779450, guid: 5048254d938b4e44fb0ffc666de913a8,
         type: 3}
       propertyPath: m_IsActive
