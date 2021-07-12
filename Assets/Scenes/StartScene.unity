@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.46169513, g: 0.5124164, b: 0.58993304, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -636,14 +636,14 @@ RectTransform:
   m_GameObject: {fileID: 1448931821}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 1389399792}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 195}
+  m_AnchoredPosition: {x: 0, y: 644}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1448931823
@@ -679,7 +679,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: EpicRun
+  m_Text: UnityRun
 --- !u!222 &1448931824
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -822,6 +822,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1115094371}
   smoothing: 5
+  angle: 0
+  step: 0
 --- !u!114 &1648231903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1390,6 +1392,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7434273726229476652, guid: 5048254d938b4e44fb0ffc666de913a8,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7434273726334394834, guid: 5048254d938b4e44fb0ffc666de913a8,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1398,22 +1405,22 @@ PrefabInstance:
     - target: {fileID: 7434273726854977090, guid: 5048254d938b4e44fb0ffc666de913a8,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7434273726854977090, guid: 5048254d938b4e44fb0ffc666de913a8,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7434273726854977090, guid: 5048254d938b4e44fb0ffc666de913a8,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7434273726854977090, guid: 5048254d938b4e44fb0ffc666de913a8,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -136.1
+      value: -506
       objectReference: {fileID: 0}
     - target: {fileID: 7434273726854977091, guid: 5048254d938b4e44fb0ffc666de913a8,
         type: 3}
