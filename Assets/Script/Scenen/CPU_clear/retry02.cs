@@ -10,10 +10,10 @@ public class retry02 : MonoBehaviour
     void Update()
     {
         //タップ用処理
-        if (Input.GetMouseButtonDown(0))
-        {
-            SceneManager.LoadScene("Stage02");
-        }
+       // if (Input.GetMouseButtonDown(0))
+        //{
+           // SceneManager.LoadScene("Stage02");
+       // }
     }
 
     public void OnClickStartButton()
