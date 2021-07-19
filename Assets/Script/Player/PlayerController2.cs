@@ -179,6 +179,7 @@ public class PlayerController2 : MonoBehaviour
 
                     else
                     {
+                        gaugeCtrl.fillAmount += 0.0005f;
                         // Run‚©‚çWait‚É‘JˆÚ‚·‚é
                         //this.animator.SetBool(key_isRun, false);
                         flg = 1;
