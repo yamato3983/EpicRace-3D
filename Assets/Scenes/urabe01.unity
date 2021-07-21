@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.46169513, g: 0.5124164, b: 0.58993304, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -510,6 +510,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1115094371}
   smoothing: 5
+  angle: 0
+  step: 0
 --- !u!81 &511046515
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1204,6 +1206,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1115094371}
   smoothing: 5
+  angle: 0
+  step: 0
 --- !u!1 &1807190736
 GameObject:
   m_ObjectHideFlags: 0
@@ -1714,6 +1718,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Speed
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6519602165633513344, guid: 8fbf610659d5d3746aa3c110c554a7d9,
+        type: 3}
+      propertyPath: m_AutoBraking
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6519602165633513349, guid: 8fbf610659d5d3746aa3c110c554a7d9,
         type: 3}
