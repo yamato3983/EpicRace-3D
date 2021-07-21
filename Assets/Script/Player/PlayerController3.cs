@@ -299,6 +299,7 @@ public class PlayerController3 : MonoBehaviour
                 }
                 else if (gaugeCtrl.fillAmount == 0.0f)
                 {
+                    gaugeCtrl.fillAmount += 0.0005f;
                     flg = 1;
                 }
                 if (flg == 1)

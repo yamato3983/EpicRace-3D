@@ -659,12 +659,12 @@ PrefabInstance:
     - target: {fileID: 2492197247038633261, guid: 4f594fc61f2f05e438787e8157d47ea4,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 500
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 2492197247038633261, guid: 4f594fc61f2f05e438787e8157d47ea4,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 500
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 2492197247038633261, guid: 4f594fc61f2f05e438787e8157d47ea4,
         type: 3}
@@ -704,12 +704,12 @@ PrefabInstance:
     - target: {fileID: 2492197247038633261, guid: 4f594fc61f2f05e438787e8157d47ea4,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -300
+      value: -150
       objectReference: {fileID: 0}
     - target: {fileID: 2492197247038633261, guid: 4f594fc61f2f05e438787e8157d47ea4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -700
+      value: -300
       objectReference: {fileID: 0}
     - target: {fileID: 2492197247038633261, guid: 4f594fc61f2f05e438787e8157d47ea4,
         type: 3}
@@ -834,6 +834,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: 0.49999982
+      objectReference: {fileID: 0}
+    - target: {fileID: 5766839902011379921, guid: 59a971262e3f2d442bb682f38dccba26,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5766839902011379921, guid: 59a971262e3f2d442bb682f38dccba26,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 6776664964277821030, guid: 59a971262e3f2d442bb682f38dccba26,
         type: 3}
@@ -1278,7 +1288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RP: {fileID: 361141754}
   RP2: {fileID: 22671768}
-  GoalLine_PL: {fileID: 0}
+  GoalLine_PL: {fileID: 1949392459}
   agent: {fileID: 0}
   rb: {fileID: 0}
   Gflg: 0
@@ -1749,6 +1759,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1807190736}
   m_CullTransparentMesh: 1
+--- !u!1 &1949392459 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2159886090367213475, guid: 59a971262e3f2d442bb682f38dccba26,
+    type: 3}
+  m_PrefabInstance: {fileID: 566396711}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2029901726
 GameObject:
   m_ObjectHideFlags: 0
