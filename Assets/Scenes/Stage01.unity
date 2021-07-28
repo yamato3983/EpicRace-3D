@@ -231,6 +231,16 @@ PrefabInstance:
       propertyPath: gameclear_player
       value: 
       objectReference: {fileID: 1115094366}
+    - target: {fileID: 448370655039654551, guid: 4f950286d51c66847832788d6a9280d8,
+        type: 3}
+      propertyPath: m_Name
+      value: DeadZone
+      objectReference: {fileID: 0}
+    - target: {fileID: 448370655223655249, guid: 4f950286d51c66847832788d6a9280d8,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 448370655523787492, guid: 4f950286d51c66847832788d6a9280d8,
         type: 3}
       propertyPath: m_RootOrder
@@ -290,6 +300,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stage_01_TRUE
+      objectReference: {fileID: 0}
+    - target: {fileID: 448370656110668386, guid: 4f950286d51c66847832788d6a9280d8,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f950286d51c66847832788d6a9280d8, type: 3}

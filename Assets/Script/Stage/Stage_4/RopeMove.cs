@@ -12,7 +12,7 @@ public class RopeMove : MonoBehaviour
     private float angle = 0f;
 
     //動き始める時間
-    private float startTime = 5f;
+    private float startTime;
 
     //揺れ動く間隔？時間？
     [SerializeField]
@@ -35,9 +35,21 @@ public class RopeMove : MonoBehaviour
         //スムーズな角度を計算
         angle = Mathf.SmoothStep(angle, direction * limitAngle, t);
 
-        transform.eulerAngles = new Vector3(0f, 0f, angle);
+        //角度変更
+        transform.eulerAngles = new Vector3(angle, 0f, 0f);
 
-        
+        //角度が指定した角度と1度の差になったら反転
+        if (Mathf.Abs(Mathf.DeltaAngle(angle, direction * limitAngle)) < 1f)
+        {
+            direction *= -1;
+            startTime = Time.time;
+        }
 
+    }
+
+    //進んでいる向き
+    public int GetDirection()
+    {
+        return direction;
     }
 }
