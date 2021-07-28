@@ -29,7 +29,7 @@ public class Player_Respawn : MonoBehaviour
                 if (time >= 1.0f)
                 {
                     time = 0.0f;
-                    PLScript.agent.enabled = true;
+                    //PLScript.agent.enabled = true;
                     Player.gameObject.SetActive(true);
                     //PDead = false;
                     PLScript.Dead = false;

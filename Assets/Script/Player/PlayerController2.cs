@@ -30,7 +30,7 @@ public class PlayerController2 : MonoBehaviour
     [SerializeField]
     GameObject GoalLine_PL;	// 移動予定地のオブジェクト
 
-    public NavMeshAgent agent;
+    //public NavMeshAgent agent;
 
     int flg = 1;      //進むか止まるかのフラグ
 
@@ -45,11 +45,14 @@ public class PlayerController2 : MonoBehaviour
     public Countdown t1;
     private float timeToEnableInputs;
 
+    //navmeshなしでやるための変数
+    float speed;
+
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        //agent = GetComponent<NavMeshAgent>();
 
-        agent.speed = 5.0f;
+        //agent.speed = 5.0f;
         HP = GameObject.Find("HP");
         gaugeCtrl = HP.GetComponent<Image>();
         gaugeCtrl.fillAmount = 1.0f;
@@ -78,16 +81,18 @@ public class PlayerController2 : MonoBehaviour
         PB = GameObject.Find("PivotBox");
         PB_Script = PB.GetComponent<PivotAngle_Box>();
 
-        var agentRigidbody = agent.GetComponent<Rigidbody>();
+        var agentRigidbody = GetComponent<Rigidbody>();
         //RigidodyのKinematicをスタート時はONにする
-        agentRigidbody.isKinematic = true;
+        agentRigidbody.isKinematic = false;
+
+        speed = 5.0f;
     }
 
     private void OnTriggerStay(Collider other)
     {
         bool boxflg = PB_Script.gimmickFlag_Box;
 
-        var agentRigidbody = agent.GetComponent<Rigidbody>();
+        var agentRigidbody = GetComponent<Rigidbody>();
 
         if (other.tag == "Gimmick_Box" && boxflg == false)
         {
@@ -95,56 +100,56 @@ public class PlayerController2 : MonoBehaviour
             //Cflg = false;
 
             //NavmeshもRigidodyのKinematicもOFF
-            agent.enabled = false;
+            //agent.enabled = false;
             agentRigidbody.isKinematic = false;
             flg = 0;
         }
         if (other.tag == "Gimmick_Conveyer")
         {
-            agent.speed = 2.0f;
+            speed = 2.0f;
         }
         else
         {
-            agent.speed = 5.0f;
+            speed = 5.0f;
         }
 
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        var agentRigidbody = agent.GetComponent<Rigidbody>();
+        var agentRigidbody = GetComponent<Rigidbody>();
 
         if (other.gameObject.tag == "Dead")
         {
             Debug.Log("死んだ！！");
             this.gameObject.SetActive(false);
-            agent.Warp(new Vector3(tmp.x, tmp.y, tmp.z));
+            Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
             Dead = true;
             flg = 0;
 
             //NavmeshとRigidodyのKinematicがON
             agentRigidbody.isKinematic = true;
-            agent.enabled = true;
+            //agent.enabled = true;
         }
 
         if (other.gameObject.tag == "Dead_02")
         {
             Debug.Log("死んだ！！(回転");
             this.gameObject.SetActive(false);
-            agent.Warp(new Vector3(tmp2.x, tmp2.y, tmp2.z));
+            Player.transform.position = new Vector3(tmp2.x, tmp2.y, tmp2.z);
             Dead = true;
             flg = 0;
 
 
             //NavmeshとRigidodyのKinematicがON
             agentRigidbody.isKinematic = true;
-            agent.enabled = true;
+            //agent.enabled = true;
         }
 
         if (other.tag == "Goal")
         {
-            NavMeshAgent agent = GetComponent<NavMeshAgent>();
-            agent.isStopped = true;
+            //NavMeshAgent agent = GetComponent<NavMeshAgent>();
+            //agent.isStopped = true;
             Debug.Log("ゴーーール");
             Gflg = true;
         }
@@ -164,6 +169,7 @@ public class PlayerController2 : MonoBehaviour
 
     void Update()
     {
+        var agentRigidbody = GetComponent<Rigidbody>();
 
         if (Time.time >= this.timeToEnableInputs)
         {
@@ -193,15 +199,16 @@ public class PlayerController2 : MonoBehaviour
                 {
                     // WaitからRunに遷移する
                     this.animator.SetBool(key_isRun, true);
-                    agent.GetComponent<NavMeshAgent>().isStopped = false;
-                    agent.SetDestination(GoalLine_PL.transform.position);
+                    transform.position += transform.forward * speed * Time.deltaTime;
+                    //agent.GetComponent<NavMeshAgent>().isStopped = false;
+                    //agent.SetDestination(GoalLine_PL.transform.position);
                 }
                 else if (flg == 0)
                 {
                     // RunからWaitに遷移する
                     this.animator.SetBool(key_isRun, false);
-                    agent.velocity = Vector3.zero;
-                    agent.GetComponent<NavMeshAgent>().isStopped = true;
+                    agentRigidbody.velocity = Vector3.zero;
+                    //agent.GetComponent<NavMeshAgent>().isStopped = true;
                 }
             }
             if (Dead == true)
