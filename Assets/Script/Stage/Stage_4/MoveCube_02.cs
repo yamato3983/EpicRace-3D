@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveCube_02 : MonoBehaviour
 {
     //“®‚­‘¬‚³
-    private float speed = 3.0f;
+    private float speed = 7.0f;
 
     //ƒJƒEƒ“ƒg
     private float timeCount;
@@ -24,19 +24,19 @@ public class MoveCube_02 : MonoBehaviour
         timeCount += Time.deltaTime;   //ÅŒã‚ÌƒtƒŒ[ƒ€‚©‚ç‚ÌŒo‰ßŽžŠÔ‚ð‰ÁŽZ
 
         //2•b
-        if (timeCount >= 2 && timeCount <= 4)
+        if (timeCount >= 1 && timeCount <= 3)
         {
             //‰º~
             MoveDown();
         }
 
-        if (timeCount >= 6 && timeCount <= 8)
+        if (timeCount >= 3.1 && timeCount <= 4)
         {
             //ã¸
             MoveUp();
         }
 
-        if (timeCount > 8.1)
+        if (timeCount > 4.1)
         {
             timeCount = 0;
         }
