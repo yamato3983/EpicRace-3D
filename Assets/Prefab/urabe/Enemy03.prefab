@@ -2009,8 +2009,6 @@ GameObject:
   - component: {fileID: 8509359818594566174}
   - component: {fileID: 8509359818532141792}
   - component: {fileID: 7263263178076034226}
-  - component: {fileID: 4608761598828402332}
-  - component: {fileID: 8509359818594566162}
   m_Layer: 0
   m_Name: Enemy03
   m_TagString: CPU
@@ -2105,52 +2103,6 @@ CapsuleCollider:
   m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &4608761598828402332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8509359818594566170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dfb468b59086ff44b25cff6b72ed9e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TargetObject: {fileID: 0}
-  TargetObject1: {fileID: 0}
-  TargetObject2: {fileID: 0}
-  TargetObject3: {fileID: 0}
-  TargetObject4: {fileID: 0}
-  nav_mesh_agent: {fileID: 8509359818532141792}
---- !u!114 &8509359818594566162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8509359818594566170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd1b078bbebc9c44b9e510bf377c197, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 0}
-  animator: {fileID: 0}
-  nav_mesh_agent: {fileID: 8509359818532141792}
-  m_targets:
-  - {fileID: 0}
-  - {fileID: 0}
-  m_destinationThreshold: 1
-  jumpPoint: {fileID: 0}
-  j_target: {fileID: 0}
-  cpuObject: {fileID: 8509359818594566170}
-  rb: {fileID: 8509359818594566174}
-  m_jumpTime: 0.5
-  jump_script: {fileID: 0}
-  j_flg: 0
-  upForce: 10
-  script_t1: {fileID: 0}
 --- !u!1 &8590612474107768845
 GameObject:
   m_ObjectHideFlags: 0
