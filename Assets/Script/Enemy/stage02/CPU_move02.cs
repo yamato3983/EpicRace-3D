@@ -3,224 +3,128 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
-
 public class CPU_move02 : MonoBehaviour
 {
-	[SerializeField, HideInInspector] NavMeshAgent agent;
-	[SerializeField, HideInInspector] Animator animator;
-	[SerializeField] NavMeshAgent nav_mesh_agent;
+    private CharacterController enemyController;
+    private Animator animator;
 
-	//コンベアーに乗ってるか
-	private bool conveyer;
+    //　目的地
+    private Vector3 destination;
+    [SerializeField]
+    private float walkSpeed = 5f;
+    //　速度
+    private Vector3 velocity;
+    //　移動方向
+    private Vector3 direction;
 
-	//橋関連で必要なもの
-	//ギミック1番目の箱用
-	GameObject PivotBox;
+    //カウントダウン用
+    GameObject GemeObject;
+    public Countdown script_t1;
 
-	//箱
-	public PivotAngle_Box script_b;
+    public GameObject Enemy;
 
-	//ギミック2番目のベルトコンベアー用
-	GameObject Gimmick_Conveyer;
+    //リスポーン
+    public GameObject rp1;
+ 
 
-	//ベルトコンベアー
-	public Gimmick_Conveyer script_c;
+    Vector3 pos1, pos2;
 
-	//カウントダウン用
-	GameObject GemeObject;
-	public Countdown script_t1;
+    private bool isRespon = false;
 
-	public GameObject Enemy;
+    public bool dead;
 
-	public GameObject rp1;
-	
-	public Rigidbody rb;
+    //NPCがゴールをしたかどうか
+    public bool goal;
 
-	Vector3 pos1;
+    // Start is called before the first frame update
+    void Start()
+    {
+        Vector3 tmp = GameObject.Find("GoalLine_CPU").transform.position;
+        GameObject.Find("GoalLine_CPU").transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
 
-	public bool dead;
-	//NPCがゴールをしたかどうか
-	public bool goal;
+        enemyController = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
+        destination = new Vector3(tmp.x, tmp.y, tmp.z);
+        velocity = Vector3.zero;
 
-	void Start()
-	{
-		NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
-		
-		agent = GetComponent<NavMeshAgent>();
-		animator = GetComponent<Animator>();
+        //リスポーン
+        rp1 = GameObject.Find("RespawnCPU");
+       
+        pos1 = rp1.transform.position;
+       
+    }
 
-		//開始時はNavmeshを切る
-		StartCoroutine("Dush");
-
-		//RigidodyのKinematicをスタート時はONにする
-		//agentRigidbody.isKinematic = true;
-
-		//ギミックコンベアー
-		PivotBox = GameObject.Find("PivotBox");
-
-		//ギミックコンベアー
-		Gimmick_Conveyer = GameObject.Find("Gimmick_Conveyer");
-
-		conveyer = false;
-
-		//リスポーン
-		rp1 = GameObject.Find("RespawnCPU");
-		
-		pos1 = rp1.transform.position;
-
-		dead = false;
-
-		goal = false;
-	}
-
-	void Update()
-	{
-		//アニメーションに設定した二つの値の切り替え
-		animator.SetFloat("Speed", agent.velocity.sqrMagnitude);
-
-		if (conveyer == true)
-		{
-			//rb.AddForce(transform.forward * Speed);
-		}
-	}
-
-	//コルーチンでスタート時の挙動を処理してる
-	private IEnumerator Dush()
-	{
-		NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
-
-		//カウントダウン中はストップしてる
-		if (script_t1.startflg == false)
-		{
-			nav_mesh_agent.isStopped = true;
-		}
-
-		//とりあえず4秒にしてるけど変更するかも
-		yield return new WaitForSeconds(4.0f);
-
-		//カウントダウンが0のときに走り出す
-		if (script_t1.startflg == true)
-		{
-			nav_mesh_agent.isStopped = false;
-		}
-	}
-
-	//タグの判定
-	private void OnTriggerEnter(Collider other)
-	{
-		var agentRigidbody = agent.GetComponent<Rigidbody>();
-
-		//死亡ゾーンに入った時の処理(ギミックの1番目)
-		if (other.tag == "Dead")
-		{
-			//リスポーン地点の処理
-			/*agent.Warp(new Vector3(8.0f, 5.0f, -1.5f));
-
-			//ナビゲーション関連の機能
-			NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
-
-			agent.enabled = true;*/
-
-			//Destroy(Enemy);
-		}
-
-		/*********ギミック1の処理*************/
-
-		//ギミックの通過判定
-		if (other.tag == "judge")
-		{
-			NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
-
-			//箱のスクリプトから参照させる用
-			PivotBox = GameObject.Find("PivotBox");
-			script_b = PivotBox.GetComponent<PivotAngle_Box>();
-
-
-			//2パターンの処理(0～6)
-			int value = 1;
-
-			switch (value)
-			{
-				//止める(一時的にNavmeshを止めて数秒後にONにする)
-				case 0:
-				case 1:
-				case 2:
-				case 3:
-					//ナビゲーションを止める
-					nav_mesh_agent.isStopped = true;
-					agentRigidbody.isKinematic = true;
-
-					//3秒後にCall関数を実行する
-					Invoke("Call", 3f);
-
-					break;
-
-				//進行する(NavmeshはON状態)
-				case 4:
-				case 5:
-					//ナビゲーションを止めない
-					nav_mesh_agent.isStopped = false;
-
-					break;
-			}
-		}
-
-		//橋が下がってる状態で橋の上に乗ってる状態の処理
-		if (script_b.gimmickFlag_Box == false && other.tag == "Gimmick_Box")
-		{
-			//NavmeshもRigidodyのKinematicもOFF
-			agent.enabled = false;
-			agentRigidbody.isKinematic = false;
-
-			//ナビゲーション関連の機能
-			NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
-
-			agent.Warp(new Vector3(pos1.x, pos1.y, pos1.z));
-
-			//NavmeshとRigidodyのKinematicがON
-			nav_mesh_agent.isStopped = false;
-			agent.enabled = true;
-			dead = true;
-		}
-
-		/********************************************/
-		//ギミック2番目通過判定
-		//橋が下がってる状態で橋の上に乗ってる状態の処理
-		if (other.tag == "Gimmick_Conveyer")
-		{
-			agentRigidbody.isKinematic = true;
-			conveyer = true;
-		}
-		else if (other.tag != "Gimmick_Conveyer")
-		{
-			conveyer = false;
-		}
-
-		if (conveyer == true)
+    // Update is called once per frame
+    void Update()
+    {
+        if (enemyController.isGrounded)
         {
-			agent.speed = 2;
-		}
+            velocity = Vector3.zero;
+            transform.LookAt(new Vector3(destination.x, transform.position.y, destination.z));
+            direction = (destination - transform.position).normalized;
+            StartCoroutine("Dush");
+            if (script_t1.startflg == true)
+            {
+                velocity = direction * walkSpeed;
+            }
+        }
+        velocity.y += Physics.gravity.y * Time.deltaTime;
+        enemyController.Move(velocity * Time.deltaTime);
 
-		else if(conveyer == false)
+        dead = false;
+    }
+
+    private IEnumerator Dush()
+    {
+        //カウントダウン中はストップしてる
+        if (script_t1.startflg == false)
         {
-			agent.speed = 5;
+            animator.SetFloat("Speed", 0.0f);
         }
 
-		//ゴールしたら
-		if (other.tag == "Goal")
-		{
-			goal = true;
-		}
-	}
+        //とりあえず4秒にしてるけど変更するかも
+        yield return new WaitForSeconds(3.0f);
 
-	//何秒後かに呼び出すための処理
-	void Call()
-	{
-		//動き出す
-		NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
-		nav_mesh_agent.isStopped = false;
-	}
+        //カウントダウンが0のときに走り出す
+        if (script_t1.startflg == true)
+        {
+            animator.SetFloat("Speed", 5.0f);
+        }
+    }
+
+    //タグの判定
+    private void OnTriggerEnter(Collider other)
+    {
+        //死亡ゾーンに入った時の処理(ギミックの1番目)
+        if (other.tag == "Dead")
+        {
+
+            dead = true;
+            transform.position = new Vector3(pos1.x, pos1.y, pos1.z);
+
+        }
+
+        if (other.tag == "Dead2")
+        {
+            dead = true;
+            transform.position = new Vector3(pos2.x, pos2.y, pos2.z);
+
+        }
+
+        if(other.tag == "Gimmick_Conveyer")
+        {
+            walkSpeed = 3.0f;
+        }
+
+        if (other.tag != "Gimmick_Conveyer")
+        {
+            walkSpeed = 4.5f;
+        }
+
+        if (other.tag == "Goal")
+        {
+            goal = true;
+            animator.SetFloat("Speed", 0.0f);
+        }
+    }
 }
-
-

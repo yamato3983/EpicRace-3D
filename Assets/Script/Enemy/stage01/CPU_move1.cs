@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class test : MonoBehaviour
+public class CPU_move1 : MonoBehaviour
 {
     private CharacterController enemyController;
     private Animator animator;
@@ -60,12 +60,13 @@ public class test : MonoBehaviour
         if (enemyController.isGrounded)
         {
             velocity = Vector3.zero;
-            Stop();
-            Dush();
-            direction = (destination - transform.position).normalized;
             transform.LookAt(new Vector3(destination.x, transform.position.y, destination.z));
-            velocity = direction * walkSpeed;
-            Debug.Log(destination);
+            direction = (destination - transform.position).normalized;
+            StartCoroutine("Dush");
+            if (script_t1.startflg == true)
+            {
+                velocity = direction * walkSpeed;
+            }
         }
         velocity.y += Physics.gravity.y * Time.deltaTime;
         enemyController.Move(velocity * Time.deltaTime);
@@ -94,7 +95,7 @@ public class test : MonoBehaviour
         //カウントダウンが0のときに走り出す
         if (script_t1.startflg == true)
         {
-            animator.SetFloat("Speed", 5.0f);
+            animator.SetFloat("Speed", 5.0f);    
         }
     }
 
@@ -119,6 +120,7 @@ public class test : MonoBehaviour
 
         if (other.tag == "Goal")
         {
+            goal = true;
             animator.SetFloat("Speed", 0.0f);
         }
     }

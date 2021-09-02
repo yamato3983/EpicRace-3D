@@ -7,7 +7,7 @@ public class Goal_01 : MonoBehaviour
 {
     //NPCのスクリプト
     GameObject Enemy;
-    public CPU_move01 script_cm01;
+    public CPU_move1 script_cm01;
 
     public bool stage01;
    
@@ -21,7 +21,7 @@ public class Goal_01 : MonoBehaviour
     void Update()
     {
         Enemy = GameObject.Find("Enemy");
-        script_cm01 = Enemy.GetComponent<CPU_move01>();
+        script_cm01 = Enemy.GetComponent<CPU_move1>();
 
         //NPCがゴールしたらシーンを変更する
         if (script_cm01.goal == true)
