@@ -22,10 +22,16 @@ public class PlayerController3 : MonoBehaviour
 
     GameObject Player;
 
+    //PivotBridgeが入る変数
+    GameObject PB_A;
+    GameObject PB_B;
+    PivotAngle_Bridge_A PB_A_Script; //PivotAngle_Bridge_Aが入る変数
+    PivotAngle_Bridge_B PB_B_Script; //PivotAngle_Bridge_Bが入る変数
+
     [SerializeField]
     GameObject GoalLine_PL;	// 移動予定地のオブジェクト
     //public Transform target = GameObject.Find("GoalLine_PL").transform;
-    public NavMeshAgent agent;
+    //public NavMeshAgent agent;
     int flg = 1;      //進むか止まるかのフラグ
 
     Vector3 tmp, tmp2;//リスポーンポイントの座標が入る変数
@@ -35,32 +41,24 @@ public class PlayerController3 : MonoBehaviour
     public bool Dead = false;
     public bool Cflg = false;
 
+
     public GameObject timer;
     public Countdown t1;
     private float timeToEnableInputs;
 
-    [SerializeField]
-    private float m_jumpTime = 0.0f;
-
-    [SerializeField]
-    private Transform jumpPoint = null;
-
-    [SerializeField]
-    private Transform j_target = null;
-
-    public bool j_flg;
+    float speed;
 
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        //agent = GetComponent<NavMeshAgent>();
 
-        agent.speed = 5.0f;
+        speed = 5.0f;
         HP = GameObject.Find("HP");
         gaugeCtrl = HP.GetComponent<Image>();
         gaugeCtrl.fillAmount = 1.0f;
 
         //カメラのフラグ初期はメインの為false
-        Cflg = false;
+        Cflg = true;
 
         Player = GameObject.Find("unitychan");
 
@@ -80,61 +78,84 @@ public class PlayerController3 : MonoBehaviour
         tmp = RP.transform.position;
         tmp2 = RP2.transform.position;
 
-        j_flg = false;
+        var agentRigidbody = GetComponent<Rigidbody>();
+        //RigidodyのKinematicをスタート時はOFFにする
+        agentRigidbody.isKinematic = false;
+    }
 
-        var agentRigidbody = agent.GetComponent<Rigidbody>();
-        //RigidodyのKinematicをスタート時はONにする
-        agentRigidbody.isKinematic = true;
+    private void OnTriggerStay(Collider other)
+    {
+
+
+        var agentRigidbody = GetComponent<Rigidbody>();
+
+        if (other.tag == "Dead")
+        {
+            Debug.Log("死んだ！！");
+            this.gameObject.SetActive(false);
+            Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
+            Dead = true;
+
+            flg = 0;
+        }
+        if (other.tag == "Dead")
+        {
+            Debug.Log("死んだ！！");
+            this.gameObject.SetActive(false);
+            Player.transform.position = new Vector3(tmp2.x, tmp2.y, tmp2.z);
+            Dead = true;
+            flg = 0;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        var agentRigidbody = GetComponent<Rigidbody>();
+        if (collision.gameObject.tag == "Dead" || collision.gameObject.tag == "Hammer")
+        {
+            Debug.Log("死んだ！！");
+            this.gameObject.SetActive(false);
+            Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
+            Dead = true;
+            flg = 0;
+        }
+        if (collision.gameObject.tag == "Dead_02")
+        {
+            Debug.Log("死んだ！！");
+            this.gameObject.SetActive(false);
+            Player.transform.position = new Vector3(tmp2.x, tmp2.y, tmp2.z);
+            Dead = true;
+            flg = 0;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        var agentRigidbody = agent.GetComponent<Rigidbody>();
+        var agentRigidbody = GetComponent<Rigidbody>();
 
         if (other.gameObject.tag == "Dead")
         {
             Debug.Log("死んだ！！");
             this.gameObject.SetActive(false);
-            agent.Warp(new Vector3(tmp.x, tmp.y, tmp.z));
+            Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
             Dead = true;
             flg = 0;
 
-            //NavmeshとRigidodyのKinematicがON
-            agentRigidbody.isKinematic = true;
-            agent.enabled = true;
-        }
-
-        if (other.gameObject.tag == "Hammer")
-        {
-            Debug.Log("死んだ！！");
-            this.gameObject.SetActive(false);
-            agent.Warp(new Vector3(tmp.x, tmp.y, tmp.z));
-            Dead = true;
-            flg = 0;
-
-            //NavmeshとRigidodyのKinematicがON
-            agentRigidbody.isKinematic = true;
-            agent.enabled = true;
         }
 
         if (other.gameObject.tag == "Dead_02")
         {
             Debug.Log("死んだ！！(回転");
             this.gameObject.SetActive(false);
-            agent.Warp(new Vector3(tmp2.x, tmp2.y, tmp2.z));
+            Player.transform.position = new Vector3(tmp2.x, tmp2.y, tmp2.z);
             Dead = true;
             flg = 0;
-
-
-            //NavmeshとRigidodyのKinematicがON
-            agentRigidbody.isKinematic = true;
-            agent.enabled = true;
         }
 
         if (other.tag == "Goal")
         {
-            NavMeshAgent agent = GetComponent<NavMeshAgent>();
-            agent.isStopped = true;
+            //NavMeshAgent agent = GetComponent<NavMeshAgent>();
+            //agent.isStopped = true;
             Debug.Log("ゴーーール");
             Gflg = true;
         }
@@ -152,153 +173,37 @@ public class PlayerController3 : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        //if (other.tag == "jump")
-        //{
-        //    agent.autoTraverseOffMeshLink = false;
-        //    agent.isStopped = true;
-
-        //    Debug.Log("ジャンプ");
-
-        //    rb.isKinematic = false;
-
-        //    Jump(j_target.position);
-        //    j_flg = true;
-        //}
-    }
-
-    private void Jump(Vector3 i_targetPos)
-    {
-        ShootFixedTime(i_targetPos, m_jumpTime);
-    }
-
-    private void ShootFixedTime(Vector3 i_targetPosition, float i_time)
-    {
-        float speedVec = ComputeVectorFromTime(i_targetPosition, i_time);
-        float angle = ComputeAngleFromTime(i_targetPosition, i_time);
-
-        if (speedVec <= 0.0f)
-        {
-            // その位置に着地させることは不可能のようだ！
-            Debug.LogWarning("!!");
-            return;
-        }
-
-        Vector3 vec = ConvertVectorToVector3(speedVec, angle, i_targetPosition);
-        SetRigidbody(vec);
-    }
-
-    private Vector3 ConvertVectorToVector3(float i_v0, float i_angle, Vector3 i_targetPosition)
-    {
-        Vector3 startPos = transform.position;
-        Vector3 targetPos = i_targetPosition;
-        startPos.y = 0.0f;
-        targetPos.y = 0.0f;
-
-        Vector3 dir = (targetPos - startPos).normalized;
-        Quaternion yawRot = Quaternion.FromToRotation(Vector3.right, dir);
-        Vector3 vec = i_v0 * Vector3.right;
-
-        vec = yawRot * Quaternion.AngleAxis(i_angle, Vector3.forward) * vec;
-
-        return vec;
-    }
-
-    private float ComputeVectorFromTime(Vector3 i_targetPosition, float i_time)
-    {
-        Vector2 vec = ComputeVectorXYFromTime(i_targetPosition, i_time);
-
-        float v_x = vec.x;
-        float v_y = vec.y;
-
-        float v0Square = v_x * v_x + v_y * v_y;
-        // 負数を平方根計算すると虚数になってしまう。
-
-        if (v0Square <= 0.0f)
-        {
-            return 0.0f;
-        }
-
-        float v0 = Mathf.Sqrt(v0Square);
-
-        return v0;
-    }
-
-    private float ComputeAngleFromTime(Vector3 i_targetPosition, float i_time)
-    {
-        Vector2 vec = ComputeVectorXYFromTime(i_targetPosition, i_time);
-
-        float v_x = vec.x;
-        float v_y = vec.y;
-
-        float rad = Mathf.Atan2(v_y, v_x);
-        float angle = rad * Mathf.Rad2Deg;
-
-        return angle;
-    }
-
-    private Vector2 ComputeVectorXYFromTime(Vector3 i_targetPosition, float i_time)
-    {
-        // 瞬間移動はちょっと……。
-        if (i_time <= 0.0f)
-        {
-            return Vector2.zero;
-        }
-
-
-        // xz平面の距離を計算。
-        Vector2 startPos = new Vector2(transform.position.x, transform.position.z);
-        Vector2 targetPos = new Vector2(i_targetPosition.x, i_targetPosition.z);
-        float distance = Vector2.Distance(targetPos, startPos);
-
-        float x = distance;
-
-        float g = -Physics.gravity.y;
-        float y0 = transform.position.y;
-        float y = i_targetPosition.y;
-        float t = i_time;
-
-        float v_x = x / t;
-        float v_y = (y - y0) / t + (g * t) / 2;
-
-        return new Vector2(v_x, v_y);
-    }
-
-    private void SetRigidbody(Vector3 i_shootVector)
-    {
-        // 速さベクトルのままAddForce()を渡してはいけないぞ。力(速さ×重さ)に変換するんだ
-        Vector3 force = new Vector3(0.0f, 0.56f, 0.18f);  //与える力;
-
-        rb.AddForce(force, ForceMode.Impulse);
-    }
-
     void Update()
     {
-        var agentRigidbody = agent.GetComponent<Rigidbody>();
+        var agentRigidbody = GetComponent<Rigidbody>();
 
         if (Time.time >= this.timeToEnableInputs)
         {
-            if (Gflg == false && Dead == false && j_flg == false)
+            if (Gflg == false && Dead == false)
             {
+                Cflg = false;
                 if (gaugeCtrl.fillAmount > 0.0f)
                 {
+
                     if (Input.GetMouseButton(0))
                     {
+                        //マウスが押されているときはゲージを減らし止まる
                         gaugeCtrl.fillAmount -= 0.0013f;
                         flg = 0;
                     }
 
                     else
                     {
+                        //マウスが押されていないときはゲージの回復
                         gaugeCtrl.fillAmount += 0.0005f;
                         // RunからWaitに遷移する
                         //this.animator.SetBool(key_isRun, false);
                         flg = 1;
                     }
                 }
-                else if (gaugeCtrl.fillAmount == 0.0f)
+                else if (gaugeCtrl.fillAmount <= 0.0f)
                 {
+                    //マウスが押されていないときはゲージの回復
                     gaugeCtrl.fillAmount += 0.0005f;
                     flg = 1;
                 }
@@ -306,30 +211,18 @@ public class PlayerController3 : MonoBehaviour
                 {
                     // WaitからRunに遷移する
                     this.animator.SetBool(key_isRun, true);
-                    agent.GetComponent<NavMeshAgent>().isStopped = false;
-                    agent.SetDestination(GoalLine_PL.transform.position);
+                    Player.transform.position += transform.forward * speed * Time.deltaTime;
+                    //agent.GetComponent<NavMeshAgent>().isStopped = false;
+                    //agent.SetDestination(GoalLine_PL.transform.position);
                 }
                 else if (flg == 0)
                 {
                     // RunからWaitに遷移する
                     this.animator.SetBool(key_isRun, false);
-                    agent.velocity = Vector3.zero;
-                    agent.GetComponent<NavMeshAgent>().isStopped = true;
+                    //agentRigidbody.velocity = Vector3.zero;
+                    //agent.GetComponent<NavMeshAgent>().isStopped = true;
                 }
             }
-
-
-            /*
-            //　オフメッシュリンク使用時に自分で移動を制御
-            if (agent.isOnOffMeshLink)
-            {
-                isUseOffmeshLink = true;
-                agent.isKinematic = false;
-                agent.isStopped = true;
-                OffMeshLinkProcess(JumpPos);
-            }
-            */
-
             if (Dead == true)
             {
                 // RunからWaitに遷移する
