@@ -28,6 +28,9 @@ TagManager:
   - Ground
   - Intermediate05
   - Start
+  - Hammer
+  - Gimmick_Cube
+  - Ring
   layers:
   - Default
   - TransparentFX
@@ -35,8 +38,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - BallGimmick
+  - Enemy
   - Lighting
   - Ground
   - Postprocessing
