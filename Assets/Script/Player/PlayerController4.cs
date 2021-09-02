@@ -28,12 +28,6 @@ public class PlayerController4 : MonoBehaviour
     PivotAngle_Bridge_A PB_A_Script; //PivotAngle_Bridge_Aが入る変数
     PivotAngle_Bridge_B PB_B_Script; //PivotAngle_Bridge_Bが入る変数
 
-    //PivotRollが入る変数
-    GameObject PR_A;
-    GameObject PR_B;
-    PivotAngle_Roll_A PR_A_Script;
-    PivotAngle_Roll_B PR_B_Script;
-
     [SerializeField]
     GameObject GoalLine_PL;	// 移動予定地のオブジェクト
     //public Transform target = GameObject.Find("GoalLine_PL").transform;
@@ -46,6 +40,7 @@ public class PlayerController4 : MonoBehaviour
     public bool Gflg = false;
     public bool Dead = false;
     public bool Cflg = false;
+    
 
     public GameObject timer;
     public Countdown t1;
@@ -101,12 +96,30 @@ public class PlayerController4 : MonoBehaviour
             Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
             Dead = true;
 
-            //NavmeshもRigidodyのKinematicもOFF
-            //agent.enabled = false;
-            //agentRigidbody.isKinematic = false;
             flg = 0;
         }
         if (other.tag == "Dead")
+        {
+            Debug.Log("死んだ！！");
+            this.gameObject.SetActive(false);
+            Player.transform.position = new Vector3(tmp2.x, tmp2.y, tmp2.z);
+            Dead = true;
+            flg = 0;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        var agentRigidbody = GetComponent<Rigidbody>();
+        if (collision.gameObject.tag == "Dead")
+        { 
+            Debug.Log("死んだ！！");
+            this.gameObject.SetActive(false);
+            Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
+            Dead = true;
+            flg = 0;
+        }
+        if (collision.gameObject.tag == "Dead_02")
         {
             Debug.Log("死んだ！！");
             this.gameObject.SetActive(false);
@@ -128,9 +141,6 @@ public class PlayerController4 : MonoBehaviour
             Dead = true;
             flg = 0;
 
-            //NavmeshとRigidodyのKinematicがON
-            agentRigidbody.isKinematic = true;
-            //agent.enabled = true;
         }
 
         if (other.gameObject.tag == "Dead_02")
@@ -140,11 +150,6 @@ public class PlayerController4 : MonoBehaviour
             Player.transform.position = new Vector3(tmp2.x, tmp2.y, tmp2.z);
             Dead = true;
             flg = 0;
-
-
-            //NavmeshとRigidodyのKinematicがON
-            agentRigidbody.isKinematic = true;
-            //agent.enabled = true;
         }
 
         if (other.tag == "Goal")
@@ -196,8 +201,10 @@ public class PlayerController4 : MonoBehaviour
                         flg = 1;
                     }
                 }
-                else if (gaugeCtrl.fillAmount == 0.0f)
+                else if (gaugeCtrl.fillAmount <= 0.0f)
                 {
+                    //マウスが押されていないときはゲージの回復
+                    gaugeCtrl.fillAmount += 0.0005f;
                     flg = 1;
                 }
                 if (flg == 1)
@@ -212,7 +219,7 @@ public class PlayerController4 : MonoBehaviour
                 {
                     // RunからWaitに遷移する
                     this.animator.SetBool(key_isRun, false);
-                    agentRigidbody.velocity = Vector3.zero;
+                    //agentRigidbody.velocity = Vector3.zero;
                     //agent.GetComponent<NavMeshAgent>().isStopped = true;
                 }
             }

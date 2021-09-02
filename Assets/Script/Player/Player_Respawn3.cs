@@ -24,10 +24,10 @@ public class Player_Respawn3 : MonoBehaviour
         if (PLScript3.Dead == true)
         {
             time2 += Time.deltaTime;
-            if (time2 >= 3.0f)
+            if (time2 >= 0.5f)
             {
                 time2 = 0.0f;
-                PLScript3.agent.enabled = true;
+                //PLScript3.agent.enabled = true;
                 Player3.gameObject.SetActive(true);
                 //PDead = false;
                 PLScript3.Dead = false;

@@ -24,7 +24,7 @@ public class Player_Respawn4 : MonoBehaviour
         if (PLScript4.Dead == true)
         {
             time2 += Time.deltaTime;
-            if (time2 >= 3.0f)
+            if (time2 >= 0.5f)
             {
                 time2 = 0.0f;
                 
