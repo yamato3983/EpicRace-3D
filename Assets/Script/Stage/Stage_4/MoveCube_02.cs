@@ -10,11 +10,13 @@ public class MoveCube_02 : MonoBehaviour
     //カウント
     private float timeCount;
 
+    [SerializeField]
+    private bool gimmickFlag_Wail;   //true:橋が架かってる false:橋が下りてる
 
     // Use this for initialization
     void Start()
     {
-
+        gimmickFlag_Wail = false;
     }
 
     // Update is called once per frame
@@ -24,19 +26,26 @@ public class MoveCube_02 : MonoBehaviour
         timeCount += Time.deltaTime;   //最後のフレームからの経過時間を加算
 
         //2秒
-        if (timeCount >= 1 && timeCount <= 3)
+        if (timeCount >= 1 && timeCount <= 1.7)
         {
             //下降
             MoveDown();
         }
+        if(timeCount >= 1.7 && timeCount <= 2.8)
+        {
+            //フラグの切り替え
+            gimmickFlag_Wail = true;
+        }
 
-        if (timeCount >= 3.1 && timeCount <= 4)
+        if (timeCount >= 3.0 && timeCount <= 4)
         {
             //上昇
             MoveUp();
+            //フラグの切り替え
+            gimmickFlag_Wail = false;
         }
 
-        if (timeCount > 4.1)
+        if (timeCount > 5.1)
         {
             timeCount = 0;
         }

@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class MoveCube_03 : MonoBehaviour
 {
+    //動く速さ
+    private float speed = 3.0f;
 
     //カウント
     private float timeCount;
 
+    [SerializeField]
+    private bool gimmickFlag_Wail;   //true:橋が架かってる false:橋が下りてる
 
     // Use this for initialization
     void Start()
     {
-
+        gimmickFlag_Wail = true;
     }
 
     // Update is called once per frame
@@ -26,54 +30,69 @@ public class MoveCube_03 : MonoBehaviour
         {
             //上昇
             MoveUp();
+            //フラグの切り替え
+            gimmickFlag_Wail = false;
+
+        }
+        if (timeCount >= 4.1 && timeCount <= 5.1)
+        {
+            //フラグの切り替え
+            //gimmickFlag_Wail = false;
         }
 
-        if (timeCount >= 5 && timeCount <= 5.75f)
+        if (timeCount >= 6 && timeCount <= 7.7)
         {
             //下降
             MoveDown();
+
+
         }
 
-        if (timeCount > 6f)
+
+        if (timeCount > 7.7)
         {
             timeCount = 0;
+            //フラグの切り替え
+            gimmickFlag_Wail = true;
         }
 
     }
 
     void MoveUp()
     {
-
-        //動く速さ
-         float speed = 3.0f;
-
         //transform取得
         Transform myTrans = this.transform;
         //現在の座標取得
         Vector3 pos = myTrans.position;
 
         //移動先
-        Vector3 direction = new Vector3(pos.x, pos.y + 6.35f, pos.z);
+        Vector3 direction = new Vector3(pos.x, 7f, pos.z);
 
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, direction, step);
+
+
     }
 
     void MoveDown()
     {
-
-        //動く速さ
-        float speed = 8.0f;
-
         //transform取得
         Transform myTrans = this.transform;
         //現在の座標取得
         Vector3 pos = myTrans.position;
 
         //移動先
-        Vector3 direction = new Vector3(pos.x, pos.y - 6.35f, pos.z);
+        Vector3 direction = new Vector3(pos.x, 2.02f, pos.z);
 
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, direction, step);
+
+
+    }
+
+    //ギミックフラグのゲッター
+    public bool Get_gimmickFlag_Wail()
+    {
+        return gimmickFlag_Wail;
     }
 }
