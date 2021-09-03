@@ -8,14 +8,24 @@ public class CPU_move04 : MonoBehaviour
     private CharacterController enemyController;
     private Animator animator;
 
+
     //　目的地
     private Vector3 destination;
     [SerializeField]
-    private float walkSpeed = 5.0f;
+    private float walkSpeed = 4.0f;
     //　速度
     private Vector3 velocity;
     //　移動方向
     private Vector3 direction;
+
+    //壁
+    GameObject MoveCube;
+    GameObject MoveCube2;
+    GameObject MoveCube3;
+
+    public MoveCube_01 cube1;
+    public MoveCube_02 cube2;
+    public MoveCube_03 cube3;
 
     //カウントダウン用
     GameObject GemeObject;
@@ -37,6 +47,8 @@ public class CPU_move04 : MonoBehaviour
     //NPCがゴールをしたかどうか
     public bool goal;
 
+    private bool dash;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +63,7 @@ public class CPU_move04 : MonoBehaviour
         //リスポーン
         rp1 = GameObject.Find("RespawnCPU");
         rp2 = GameObject.Find("RespawnCPU2");
+        rp3 = GameObject.Find("RespawnCPU3");
         pos1 = rp1.transform.position;
         pos2 = rp2.transform.position;
         pos3 = rp3.transform.position;
@@ -74,6 +87,7 @@ public class CPU_move04 : MonoBehaviour
         velocity.y += Physics.gravity.y * Time.deltaTime;
         enemyController.Move(velocity * Time.deltaTime);
 
+        Debug.Log("壁フラグ" + cube1.gimmickFlag_Wail);
         dead = false;
     }
 
@@ -91,36 +105,127 @@ public class CPU_move04 : MonoBehaviour
         //カウントダウンが0のときに走り出す
         if (script_t1.startflg == true)
         {
-            animator.SetFloat("Speed", 5.0f);
+            animator.SetFloat("Speed", 4.0f);
         }
     }
 
     //タグの判定
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
+        if(other.tag == "judge")
+        {
+            if(cube1.gimmickFlag_Wail == false)
+            {
+                walkSpeed = 0.0f;
+            }
+            if (cube1.gimmickFlag_Wail == true)
+            {  
+                 walkSpeed = 4.0f;
+            }  
+        }
+
+        if (other.tag == "judge2")
+        {
+            if (cube2.gimmickFlag_Wail == false)
+            {
+                walkSpeed = 0f;
+            }
+            if (cube2.gimmickFlag_Wail == true)
+            {
+                walkSpeed = 5.0f;
+            }
+        }
+
+        if (other.tag == "judge3")
+        {
+            if (cube3.gimmickFlag_Wail == false)
+            {
+                walkSpeed = 0f;
+            }
+            if (cube3.gimmickFlag_Wail == true)
+            {
+                walkSpeed = 5.0f;
+            }
+        }
+
+        if (other.tag == "judgeBrigge")
+        {
+            //2パターンの処理(0～6)
+            int value = Random.Range(0, 6);
+
+            switch (value)
+            {
+                //止める(一時的にNavmeshを止めて数秒後にONにする)
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                    walkSpeed = 0f;
+
+                    //3秒後にCall関数を実行する
+                    Invoke("Call", 3f);
+
+                    break;
+
+                //進行する(NavmeshはON状態)
+                case 4:
+                case 5:
+                    walkSpeed = 4.0f;
+
+                    break;
+            }
+        }
+
         //死亡ゾーンに入った時の処理(ギミックの1番目)
         if (other.tag == "Dead")
         {
-            dead = true;
+            //1秒後にCallRespawn1関数を実行する
+            Invoke("CallRespawn1", 1f);
+        }
 
-            transform.position = new Vector3(pos1.x, pos1.y, pos1.z);
-
+        if (other.tag == "Dead_02")
+        {
+            //1秒後にCallRespawn3関数を実行する
+            Invoke("CallRespawn3", 1f);
         }
 
         if (other.tag == "Hammer")
         {
-            dead = true;
-            transform.position = new Vector3(pos2.x, pos2.y, pos2.z);
+            //1秒後にCallRespawn2関数を実行する
+            Invoke("CallRespawn2", 1f);
 
         }
 
-        //dead = true;
-        //transform.position = new Vector3(pos3.x, pos3.y, pos3.z);
 
         if (other.tag == "Goal")
         {
             goal = true;
-            animator.SetFloat("Speed", 0.0f);
+            walkSpeed = 0f;
         }
+    }
+
+    //何秒後かに呼び出すための処理
+    void Call()
+    {
+        walkSpeed = 5.0f;
+    }
+
+    //復活のためのクールタイム用
+    void CallRespawn1()
+    {
+        dead = true;
+        transform.position = new Vector3(pos1.x, pos1.y, pos1.z);
+    }
+
+    void CallRespawn2()
+    {
+        dead = true;
+        transform.position = new Vector3(pos2.x, pos2.y, pos2.z);
+    }
+
+    void CallRespawn3()
+    {
+        dead = true;
+        transform.position = new Vector3(pos3.x, pos3.y, pos3.z);
     }
 }

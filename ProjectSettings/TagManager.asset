@@ -31,6 +31,8 @@ TagManager:
   - Hammer
   - Gimmick_Cube
   - Ring
+  - judge3
+  - judgeBrigge
   layers:
   - Default
   - TransparentFX

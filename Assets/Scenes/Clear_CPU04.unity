@@ -1452,7 +1452,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2086763670}
-        m_TargetAssemblyTypeName: retry03, Assembly-CSharp
+        m_TargetAssemblyTypeName: retry04, Assembly-CSharp
         m_MethodName: OnClickStartButton
         m_Mode: 1
         m_Arguments:
@@ -1510,7 +1510,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2086763665}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fc347f55bb5a184e85cd32929cc1d5d, type: 3}
+  m_Script: {fileID: 11500000, guid: 2395e144bb09ff04fa3a94676f56fbec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &4149657643491922 stripped
