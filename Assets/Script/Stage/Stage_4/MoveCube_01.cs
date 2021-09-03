@@ -11,7 +11,7 @@ public class MoveCube_01 : MonoBehaviour
     private float timeCount;
 
     [SerializeField]
-    private bool gimmickFlag_Wail;   //true:‹´‚ª‰Ë‚©‚Á‚Ä‚é false:‹´‚ª‰º‚è‚Ä‚é
+    public bool gimmickFlag_Wail;   //true:‹´‚ª‰Ë‚©‚Á‚Ä‚é false:‹´‚ª‰º‚è‚Ä‚é
 
     // Use this for initialization
     void Start()
