@@ -116,7 +116,7 @@ public class PlayerController4 : MonoBehaviour
         var agentRigidbody = GetComponent<Rigidbody>();
         if (collision.gameObject.tag == "Dead")
         { 
-            Debug.Log("死んだ！！");
+            Debug.Log("死んだ！！1");
             this.gameObject.SetActive(false);
             Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
             Dead = true;
@@ -124,7 +124,7 @@ public class PlayerController4 : MonoBehaviour
         }
         if (collision.gameObject.tag == "Hammer")
         {
-            Debug.Log("死んだ！！");
+            Debug.Log("死んだ！！2");
             this.gameObject.SetActive(false);
             Player.transform.position = new Vector3(tmp2.x, tmp2.y, tmp2.z);
             Dead = true;
