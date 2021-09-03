@@ -19,6 +19,7 @@ public class PlayerController4 : MonoBehaviour
 
     public GameObject RP;
     public GameObject RP2;
+    public GameObject RP3;
 
     GameObject Player;
 
@@ -34,7 +35,7 @@ public class PlayerController4 : MonoBehaviour
     //public NavMeshAgent agent;
     int flg = 1;      //進むか止まるかのフラグ
 
-    Vector3 tmp, tmp2;//リスポーンポイントの座標が入る変数
+    Vector3 tmp, tmp2, tmp3;//リスポーンポイントの座標が入る変数
     public Rigidbody rb;
 
     public bool Gflg = false;
@@ -75,38 +76,40 @@ public class PlayerController4 : MonoBehaviour
         //リスポーン一ポイントのデータを受け取る
         RP = GameObject.Find("RespawnPoint");
         RP2 = GameObject.Find("RespawnPoint2");
+        RP3 = GameObject.Find("RespawnPoint3");
         tmp = RP.transform.position;
         tmp2 = RP2.transform.position;
+        tmp3 = RP3.transform.position;
 
         var agentRigidbody = GetComponent<Rigidbody>();
         //RigidodyのKinematicをスタート時はOFFにする
         agentRigidbody.isKinematic = false;
     }
 
-    private void OnTriggerStay(Collider other)
-    {
+    //private void OnTriggerStay(Collider other)
+    //{
         
 
-        var agentRigidbody = GetComponent<Rigidbody>();
+    //    var agentRigidbody = GetComponent<Rigidbody>();
 
-        if (other.tag == "Dead")
-        {
-            Debug.Log("死んだ！！");
-            this.gameObject.SetActive(false);
-            Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
-            Dead = true;
+    //    if (other.tag == "Dead")
+    //    {
+    //        Debug.Log("死んだ！！");
+    //        this.gameObject.SetActive(false);
+    //        Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
+    //        Dead = true;
 
-            flg = 0;
-        }
-        if (other.tag == "Dead")
-        {
-            Debug.Log("死んだ！！");
-            this.gameObject.SetActive(false);
-            Player.transform.position = new Vector3(tmp2.x, tmp2.y, tmp2.z);
-            Dead = true;
-            flg = 0;
-        }
-    }
+    //        flg = 0;
+    //    }
+    //    if (other.tag == "Dead")
+    //    {
+    //        Debug.Log("死んだ！！");
+    //        this.gameObject.SetActive(false);
+    //        Player.transform.position = new Vector3(tmp2.x, tmp2.y, tmp2.z);
+    //        Dead = true;
+    //        flg = 0;
+    //    }
+    //}
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -119,7 +122,7 @@ public class PlayerController4 : MonoBehaviour
             Dead = true;
             flg = 0;
         }
-        if (collision.gameObject.tag == "Dead_02")
+        if (collision.gameObject.tag == "Hammer")
         {
             Debug.Log("死んだ！！");
             this.gameObject.SetActive(false);
@@ -127,6 +130,15 @@ public class PlayerController4 : MonoBehaviour
             Dead = true;
             flg = 0;
         }
+        if (collision.gameObject.tag == "Dead_02")
+        {
+            Debug.Log("死んだ！！3");
+            this.gameObject.SetActive(false);
+            Player.transform.position = new Vector3(tmp3.x, tmp3.y, tmp3.z);
+            Dead = true;
+            flg = 0;
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
