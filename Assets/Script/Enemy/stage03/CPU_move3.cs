@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class CPU_move04 : MonoBehaviour
+public class CPU_move3 : MonoBehaviour
 {
     private CharacterController enemyController;
     private Animator animator;
@@ -15,17 +15,26 @@ public class CPU_move04 : MonoBehaviour
     private float walkSpeed = 4.0f;
     //　速度
     private Vector3 velocity;
+
+    //　ジャンプ力
+    [SerializeField]
+    private float jumpPower = 0.5f;
+
     //　移動方向
     private Vector3 direction;
 
-    //壁
-    GameObject MoveCube;
-    GameObject MoveCube2;
-    GameObject MoveCube3;
+    [SerializeField]
+    public Rigidbody rb;
 
-    public MoveCube_01 cube1;
-    public MoveCube_02 cube2;
-    public MoveCube_03 cube3;
+
+    //ジャンプ台用のスクリプト
+    GameObject JumpPad;
+    public JumpPad jump_script;
+
+    public bool j_flg;
+
+    public float upForce = 50f; //上方向にかける力
+
 
     //カウントダウン用
     GameObject GemeObject;
@@ -36,18 +45,15 @@ public class CPU_move04 : MonoBehaviour
     //リスポーン
     public GameObject rp1;
     public GameObject rp2;
-    public GameObject rp3;
 
-    Vector3 pos1, pos2, pos3;
 
-    private bool isRespon = false;
+    Vector3 pos1, pos2;
 
     public bool dead;
 
     //NPCがゴールをしたかどうか
     public bool goal;
 
-    private bool dash;
 
     // Start is called before the first frame update
     void Start()
@@ -63,10 +69,10 @@ public class CPU_move04 : MonoBehaviour
         //リスポーン
         rp1 = GameObject.Find("RespawnCPU");
         rp2 = GameObject.Find("RespawnCPU2");
-        rp3 = GameObject.Find("RespawnCPU3");
+       
         pos1 = rp1.transform.position;
         pos2 = rp2.transform.position;
-        pos3 = rp3.transform.position;
+       
     }
 
     // Update is called once per frame
@@ -83,10 +89,11 @@ public class CPU_move04 : MonoBehaviour
                 velocity = direction * walkSpeed;
             }
         }
-       
+
         velocity.y += Physics.gravity.y * Time.deltaTime;
         enemyController.Move(velocity * Time.deltaTime);
 
+        j_flg = false;
         dead = false;
     }
 
@@ -108,90 +115,32 @@ public class CPU_move04 : MonoBehaviour
         }
     }
 
-    //タグの判定
+    //タグの判定(Stay)
     private void OnTriggerStay(Collider other)
     {
-        if(other.tag == "judge")
+        if (other.tag == "jump")
         {
-            if(cube1.gimmickFlag_Wail == false)
+            if (jump_script.Gimmick_Jump == true)
             {
-                walkSpeed = 0.0f;
-            }
-            if (cube1.gimmickFlag_Wail == true)
-            {  
-                 walkSpeed = 4.0f;
-            }  
-        }
-
-        if (other.tag == "judge2")
-        {
-            if (cube2.gimmickFlag_Wail == false)
-            {
-                walkSpeed = 0f;
-            }
-            if (cube2.gimmickFlag_Wail == true)
-            {
-                walkSpeed = 5.0f;
-            }
-        }
-
-        if (other.tag == "judge3")
-        {
-            if (cube3.gimmickFlag_Wail == false)
-            {
-                walkSpeed = 0f;
-            }
-            if (cube3.gimmickFlag_Wail == true)
-            {
-                walkSpeed = 5.0f;
-            }
-        }
-
-        if (other.tag == "judgeBrigge")
-        {
-            //2パターンの処理(0～6)
-            int value = Random.Range(0, 6);
-
-            switch (value)
-            {
-                //止める(一時的にNavmeshを止めて数秒後にONにする)
-                case 0:
-                case 1:
-                case 2:
-                case 3:
-                    walkSpeed = 0f;
-
-                    //3秒後にCall関数を実行する
-                    Invoke("Call", 3f);
-
-                    break;
-
-                //進行する(NavmeshはON状態)
-                case 4:
-                case 5:
-                    walkSpeed = 4.0f;
-
-                    break;
+              
+                velocity.y += jumpPower;
             }
         }
 
         //死亡ゾーンに入った時の処理(ギミックの1番目)
         if (other.tag == "Dead")
         {
-            //1秒後にCallRespawn1関数を実行する
-            Invoke("CallRespawn1", 1f);
+            j_flg = false;
+            //1秒後にCallRespawn2関数を実行する
+            Invoke("CallRespawn2", 1f);
         }
 
-        if (other.tag == "Dead_02")
-        {
-            //1秒後にCallRespawn3関数を実行する
-            Invoke("CallRespawn3", 1f);
-        }
 
         if (other.tag == "Hammer")
         {
-            //1秒後にCallRespawn2関数を実行する
-            Invoke("CallRespawn2", 1f);
+            
+            //1秒後にCallRespawn1関数を実行する
+            Invoke("CallRespawn1", 1f);
 
         }
 
@@ -222,9 +171,4 @@ public class CPU_move04 : MonoBehaviour
         transform.position = new Vector3(pos2.x, pos2.y, pos2.z);
     }
 
-    void CallRespawn3()
-    {
-        dead = true;
-        transform.position = new Vector3(pos3.x, pos3.y, pos3.z);
-    }
 }
