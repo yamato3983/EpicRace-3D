@@ -42,11 +42,11 @@ TagManager:
   - UI
   - BallGimmick
   - Enemy
-  - Lighting
+  - Player
   - Ground
   - Postprocessing
   - 
-  - 
+  - Lighting
   - 
   - 
   - 
