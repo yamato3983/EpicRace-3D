@@ -25,6 +25,8 @@ public class PlayerController3 : MonoBehaviour
     //PivotBridgeが入る変数
     GameObject PB_A;
     GameObject PB_B;
+    GameObject jumpend;
+
     PivotAngle_Bridge_A PB_A_Script; //PivotAngle_Bridge_Aが入る変数
     PivotAngle_Bridge_B PB_B_Script; //PivotAngle_Bridge_Bが入る変数
 
@@ -35,6 +37,7 @@ public class PlayerController3 : MonoBehaviour
     int flg = 1;      //進むか止まるかのフラグ
 
     Vector3 tmp, tmp2;//リスポーンポイントの座標が入る変数
+    Vector3 jp;
     public Rigidbody rb;
 
     public bool Gflg = false;
@@ -75,6 +78,8 @@ public class PlayerController3 : MonoBehaviour
         //リスポーン一ポイントのデータを受け取る
         RP = GameObject.Find("RespawnPoint");
         RP2 = GameObject.Find("RespawnPoint2");
+        jumpend = GameObject.Find("Jump_End");
+        jp = jumpend.transform.position;
         tmp = RP.transform.position;
         tmp2 = RP2.transform.position;
 
@@ -83,31 +88,7 @@ public class PlayerController3 : MonoBehaviour
         agentRigidbody.isKinematic = false;
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-
-
-        var agentRigidbody = GetComponent<Rigidbody>();
-
-        if (other.tag == "Dead")
-        {
-            Debug.Log("死んだ！！");
-            this.gameObject.SetActive(false);
-            Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
-            Dead = true;
-
-            flg = 0;
-        }
-        if (other.tag == "Dead")
-        {
-            Debug.Log("死んだ！！");
-            this.gameObject.SetActive(false);
-            Player.transform.position = new Vector3(tmp2.x, tmp2.y, tmp2.z);
-            Dead = true;
-            flg = 0;
-        }
-    }
-
+    
     private void OnCollisionEnter(Collision collision)
     {
         var agentRigidbody = GetComponent<Rigidbody>();
@@ -127,30 +108,12 @@ public class PlayerController3 : MonoBehaviour
             Dead = true;
             flg = 0;
         }
+        
     }
 
     private void OnTriggerEnter(Collider other)
     {
         var agentRigidbody = GetComponent<Rigidbody>();
-
-        if (other.gameObject.tag == "Dead")
-        {
-            Debug.Log("死んだ！！");
-            this.gameObject.SetActive(false);
-            Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
-            Dead = true;
-            flg = 0;
-
-        }
-
-        if (other.gameObject.tag == "Dead_02")
-        {
-            Debug.Log("死んだ！！(回転");
-            this.gameObject.SetActive(false);
-            Player.transform.position = new Vector3(tmp2.x, tmp2.y, tmp2.z);
-            Dead = true;
-            flg = 0;
-        }
 
         if (other.tag == "Goal")
         {
@@ -159,19 +122,10 @@ public class PlayerController3 : MonoBehaviour
             Debug.Log("ゴーーール");
             Gflg = true;
         }
-
-        if (other.gameObject.tag == "Respawn2")
-        {
-            Debug.Log("Respawn2にふれた");
-            Cflg = true;
-        }
-
-        if (other.gameObject.tag == "EndGimmick")
-        {
-            Debug.Log("EndGimmickにふれた");
-            Cflg = false;
-        }
+        
     }
+
+    
 
     void Update()
     {
@@ -195,9 +149,7 @@ public class PlayerController3 : MonoBehaviour
                     else
                     {
                         //マウスが押されていないときはゲージの回復
-                        gaugeCtrl.fillAmount += 0.0005f;
-                        // RunからWaitに遷移する
-                        //this.animator.SetBool(key_isRun, false);
+                        gaugeCtrl.fillAmount += 0.0005f;         
                         flg = 1;
                     }
                 }
@@ -212,15 +164,13 @@ public class PlayerController3 : MonoBehaviour
                     // WaitからRunに遷移する
                     this.animator.SetBool(key_isRun, true);
                     Player.transform.position += transform.forward * speed * Time.deltaTime;
-                    //agent.GetComponent<NavMeshAgent>().isStopped = false;
-                    //agent.SetDestination(GoalLine_PL.transform.position);
+                    
                 }
                 else if (flg == 0)
                 {
                     // RunからWaitに遷移する
                     this.animator.SetBool(key_isRun, false);
-                    //agentRigidbody.velocity = Vector3.zero;
-                    //agent.GetComponent<NavMeshAgent>().isStopped = true;
+                    
                 }
             }
             if (Dead == true)

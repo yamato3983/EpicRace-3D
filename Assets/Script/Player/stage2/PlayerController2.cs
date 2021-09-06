@@ -88,32 +88,7 @@ public class PlayerController2 : MonoBehaviour
         speed = 5.0f;
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        bool boxflg = PB_Script.gimmickFlag_Box;
-
-        var agentRigidbody = GetComponent<Rigidbody>();
-
-        if (other.tag == "Gimmick_Box" && boxflg == false)
-        {
-            Debug.Log("óéÇøÇÈÅIÅI");
-            //Cflg = false;
-
-            //NavmeshÇ‡RigidodyÇÃKinematicÇ‡OFF
-            //agent.enabled = false;
-            agentRigidbody.isKinematic = false;
-            flg = 0;
-        }
-        if (other.tag == "Gimmick_Conveyer")
-        {
-            speed = 2.0f;
-        }
-        else
-        {
-            speed = 5.0f;
-        }
-
-    }
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -167,6 +142,19 @@ public class PlayerController2 : MonoBehaviour
         }
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "Gimmick_Conveyer")
+        {
+            speed = 3.0f;
+        }
+        else
+        {
+            speed = 5.0f;
+        }
+
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         var agentRigidbody = GetComponent<Rigidbody>();
@@ -208,13 +196,14 @@ public class PlayerController2 : MonoBehaviour
                     else
                     {
                         gaugeCtrl.fillAmount += 0.0005f;
-                        // RunÇ©ÇÁWaitÇ…ëJà⁄Ç∑ÇÈ
-                        //this.animator.SetBool(key_isRun, false);
+                       
                         flg = 1;
                     }
                 }
                 else if (gaugeCtrl.fillAmount == 0.0f)
                 {
+                    gaugeCtrl.fillAmount += 0.0005f;
+
                     flg = 1;
                 }
                 if (flg == 1)
@@ -222,8 +211,7 @@ public class PlayerController2 : MonoBehaviour
                     // WaitÇ©ÇÁRunÇ…ëJà⁄Ç∑ÇÈ
                     this.animator.SetBool(key_isRun, true);
                     transform.position += transform.forward * speed * Time.deltaTime;
-                    //agent.GetComponent<NavMeshAgent>().isStopped = false;
-                    //agent.SetDestination(GoalLine_PL.transform.position);
+                    
                 }
                 else if (flg == 0)
                 {
