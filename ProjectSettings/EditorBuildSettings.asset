@@ -35,4 +35,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Clear_player03.unity
     guid: 42d0934acca141e45b548bb7e56a51c0
+  - enabled: 1
+    path: Assets/Scenes/Stage04.unity
+    guid: bcc55459e35262d4ab9deb282acb722f
+  - enabled: 1
+    path: Assets/Scenes/Clear_player04.unity
+    guid: f05b58b51bb4ec5418d7442cdfabdf1c
+  - enabled: 1
+    path: Assets/Scenes/Clear_CPU04.unity
+    guid: f79510fb38d5d5c4580f59d3dff5492d
   m_configObjects: {}
