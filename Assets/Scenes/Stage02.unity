@@ -2086,7 +2086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbece4076facca4469977b3a73ff60da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  script_cm02: {fileID: 0}
+  script_cm02: {fileID: 431013357}
   stage02: 0
 --- !u!4 &1998726542
 Transform:
