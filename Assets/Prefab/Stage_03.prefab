@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7492897928728252489}
   - component: {fileID: 9146697773985987630}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Hanm_hit
   m_TagString: Hammer
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 744201727565238098}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -1359,7 +1359,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7694266189340244683}
   - component: {fileID: 4900598505973938334}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: ball_2_hit
   m_TagString: Hammer
   m_Icon: {fileID: 0}
@@ -1388,7 +1388,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3640924563025795823}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -2162,7 +2162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8055640897446257479}
   - component: {fileID: 1578807051803434876}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: ball_hit
   m_TagString: Hammer
   m_Icon: {fileID: 0}
@@ -2191,7 +2191,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7032294914182646329}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -2206,7 +2206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3572827618793696547}
   - component: {fileID: 2279984392121154351}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: ball_hit
   m_TagString: Hammer
   m_Icon: {fileID: 0}
@@ -2235,7 +2235,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7122656738817423313}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -2402,7 +2402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3470240067811274749}
   - component: {fileID: 7974543501584570194}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Hanm_hit
   m_TagString: Hammer
   m_Icon: {fileID: 0}
@@ -2431,7 +2431,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7363293317501306624}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -3021,7 +3021,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7802476261280001120}
   - component: {fileID: 2229790764737889503}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Hanm_hit
   m_TagString: Hammer
   m_Icon: {fileID: 0}
@@ -3050,7 +3050,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9150877515279711986}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
