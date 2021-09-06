@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;//シーン切り替えに使用するライブラリ
 public class Goal_02 : MonoBehaviour
 {
     //NPCのスクリプト
-    GameObject Enemy02;
+    GameObject Enemy01;
     public CPU_move02 script_cm02;
 
     public bool stage02;
@@ -20,8 +20,8 @@ public class Goal_02 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Enemy02 = GameObject.Find("Enemy02");
-        script_cm02 = Enemy02.GetComponent<CPU_move02>();
+        Enemy01 = GameObject.Find("Enemy02");
+        script_cm02 = Enemy01.GetComponent<CPU_move02>();
 
         //NPCがゴールしたらシーンを変更する
         if (script_cm02.goal == true)
