@@ -114,7 +114,14 @@ public class PlayerController3 : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var agentRigidbody = GetComponent<Rigidbody>();
-
+        if (other.gameObject.tag == "Hammer")
+        {
+            Debug.Log("éÄÇÒÇæÅIÅI");
+            this.gameObject.SetActive(false);
+            Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
+            Dead = true;
+            flg = 0;
+        }
         if (other.tag == "Goal")
         {
             //NavMeshAgent agent = GetComponent<NavMeshAgent>();
