@@ -688,6 +688,16 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.x
       value: 0.4999991
       objectReference: {fileID: 0}
+    - target: {fileID: 375099173948464832, guid: 59a971262e3f2d442bb682f38dccba26,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 783991570050796228, guid: 59a971262e3f2d442bb682f38dccba26,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 961430951043251117, guid: 59a971262e3f2d442bb682f38dccba26,
         type: 3}
       propertyPath: m_Layer
@@ -773,10 +783,20 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.x
       value: 0.4999991
       objectReference: {fileID: 0}
+    - target: {fileID: 2884984575427658694, guid: 59a971262e3f2d442bb682f38dccba26,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3268829560444028809, guid: 59a971262e3f2d442bb682f38dccba26,
         type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433435984137930093, guid: 59a971262e3f2d442bb682f38dccba26,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3802962252928982574, guid: 59a971262e3f2d442bb682f38dccba26,
         type: 3}
@@ -803,6 +823,11 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.x
       value: 0.49999982
       objectReference: {fileID: 0}
+    - target: {fileID: 5237068232932198251, guid: 59a971262e3f2d442bb682f38dccba26,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5407124556986818775, guid: 59a971262e3f2d442bb682f38dccba26,
         type: 3}
       propertyPath: m_IsTrigger
@@ -818,6 +843,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.02
       objectReference: {fileID: 0}
+    - target: {fileID: 6427604637833278506, guid: 59a971262e3f2d442bb682f38dccba26,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6516287774829926336, guid: 59a971262e3f2d442bb682f38dccba26,
         type: 3}
       propertyPath: m_IsTrigger
@@ -832,6 +862,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 13.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 7330421651901459369, guid: 59a971262e3f2d442bb682f38dccba26,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7918233138654863098, guid: 59a971262e3f2d442bb682f38dccba26,
         type: 3}
