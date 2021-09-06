@@ -338,7 +338,7 @@ PrefabInstance:
     - target: {fileID: 4906319688167238216, guid: 10ad1f21e118c6941be45dfa4a1e5a9a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4906319688167238216, guid: 10ad1f21e118c6941be45dfa4a1e5a9a,
         type: 3}
@@ -855,6 +855,11 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.x
       value: 0.49999982
       objectReference: {fileID: 0}
+    - target: {fileID: 5407124556986818775, guid: 59a971262e3f2d442bb682f38dccba26,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5766839902011379921, guid: 59a971262e3f2d442bb682f38dccba26,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -890,7 +895,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1632225062548858981, guid: 59a971262e3f2d442bb682f38dccba26, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 59a971262e3f2d442bb682f38dccba26, type: 3}
 --- !u!1001 &596425615
 PrefabInstance:
@@ -2286,6 +2292,17 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 94f21c43635940b46899ef7bb406e771, type: 2}
+    - target: {fileID: 9500000, guid: 40046bae76ac54bffb59f14f47d9ba1b, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'Character1_Reference'\n\tTransform 'Character1_RightFoot'\n\tTransform
+        'Character1_LeftHandThumb3'\n\tTransform 'Character1_LeftFoot'\n\tTransform
+        'Character1_RightHandThumb1'\n\tTransform 'Character1_LeftHandIndex1'\n\tTransform
+        'Character1_LeftHandRing3'\n\tTransform 'Character1_RightHandRing2'\n\tTransform
+        'Character1_RightHandPinky3'\n\tTransform 'Character1_RightHand'\n\tand more
+        ...\n\tFrom animation clip 'mixamo.com'"
+      objectReference: {fileID: 0}
     - target: {fileID: 13600000, guid: 40046bae76ac54bffb59f14f47d9ba1b, type: 3}
       propertyPath: m_Height
       value: 1.7
@@ -2308,6 +2325,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 91656920}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1060794324 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2099929623467169013, guid: 59a971262e3f2d442bb682f38dccba26,
+    type: 3}
+  m_PrefabInstance: {fileID: 566396711}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1060794326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060794324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70cf3c90e4c9ed941a53d4e6cd99cef9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpForce: 11.2
 --- !u!1 &1115094366 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100338, guid: 40046bae76ac54bffb59f14f47d9ba1b,

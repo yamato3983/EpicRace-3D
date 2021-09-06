@@ -132,7 +132,22 @@ public class PlayerController3 : MonoBehaviour
         
     }
 
-    
+    private void OnTriggerStay(Collider other)
+    {
+        var agentRigidbody = GetComponent<Rigidbody>();
+        if (other.tag == "Hammer")
+        {
+            Debug.Log("éÄÇÒÇæÅIÅI");
+            this.gameObject.SetActive(false);
+            Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
+            Dead = true;
+            flg = 0;
+        }
+
+    }
+
+
+
 
     void Update()
     {
