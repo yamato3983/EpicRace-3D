@@ -178,20 +178,26 @@ public class CPU_move04 : MonoBehaviour
         //死亡ゾーンに入った時の処理(ギミックの1番目)
         if (other.tag == "Dead")
         {
+            dead = true;
+            Enemy.SetActive(false);
             //1秒後にCallRespawn1関数を実行する
-            Invoke("CallRespawn1", 1f);
+            Invoke("CallRespawn1", 2f);
         }
 
         if (other.tag == "Dead_02")
         {
+            dead = true;
+            Enemy.SetActive(false);
             //1秒後にCallRespawn3関数を実行する
-            Invoke("CallRespawn3", 1f);
+            Invoke("CallRespawn3", 2f);
         }
 
         if (other.tag == "Hammer")
         {
+            dead = true;
+            Enemy.SetActive(false);
             //1秒後にCallRespawn2関数を実行する
-            Invoke("CallRespawn2", 1f);
+            Invoke("CallRespawn2", 2f);
 
         }
 
@@ -212,19 +218,19 @@ public class CPU_move04 : MonoBehaviour
     //復活のためのクールタイム用
     void CallRespawn1()
     {
-        dead = true;
+        Enemy.SetActive(true);
         transform.position = new Vector3(pos1.x, pos1.y, pos1.z);
     }
 
     void CallRespawn2()
     {
-        dead = true;
+        Enemy.SetActive(true);
         transform.position = new Vector3(pos2.x, pos2.y, pos2.z);
     }
 
     void CallRespawn3()
     {
-        dead = true;
+        Enemy.SetActive(true);
         transform.position = new Vector3(pos3.x, pos3.y, pos3.z);
     }
 }

@@ -211,7 +211,7 @@ public class CPU_move03 : MonoBehaviour
 			agent.Warp(new Vector3(1.7f, 5f, 43f));
 
 			//ナビゲーション関連の機能
-			NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
+			//NavMeshAgent nav_mesh_agent = GetComponent<NavMeshAgent>();
 
 			agent.enabled = true;
 		}

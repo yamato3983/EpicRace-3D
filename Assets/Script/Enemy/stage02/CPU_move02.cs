@@ -98,10 +98,9 @@ public class CPU_move02 : MonoBehaviour
         //€–Sƒ][ƒ“‚É“ü‚Á‚½‚Ìˆ—(ƒMƒ~ƒbƒN‚Ì1”Ô–Ú)
         if (other.tag == "Dead")
         {
-
             dead = true;
-            transform.position = new Vector3(pos1.x, pos1.y, pos1.z);
-
+            Enemy.SetActive(false);
+            Invoke("CallRespawn1", 2f);
         }
 
         if (other.tag == "Dead2")
@@ -126,5 +125,10 @@ public class CPU_move02 : MonoBehaviour
             goal = true;
             animator.SetFloat("Speed", 0.0f);
         }
+    }
+    void CallRespawn1()
+    {
+        Enemy.SetActive(true);
+        transform.position = new Vector3(pos1.x, pos1.y, pos1.z);
     }
 }

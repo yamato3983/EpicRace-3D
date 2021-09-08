@@ -105,16 +105,16 @@ public class CPU_move1 : MonoBehaviour
         //éÄñSÉ]Å[ÉìÇ…ì¸Ç¡ÇΩéûÇÃèàóù(ÉMÉ~ÉbÉNÇÃ1î‘ñ⁄)
         if (other.tag == "Dead")
         {
-
             dead = true;
-            transform.position = new Vector3(pos1.x, pos1.y, pos1.z);
-
+            Enemy.SetActive(false);
+            Invoke("CallRespawn1", 2f);
         }
 
         if (other.tag == "Dead2")
         {
             dead = true;
-            transform.position = new Vector3(pos2.x, pos2.y, pos2.z);
+            Enemy.SetActive(false);
+            Invoke("CallRespawn2", 2f);
 
         }
 
@@ -123,5 +123,17 @@ public class CPU_move1 : MonoBehaviour
             goal = true;
             animator.SetFloat("Speed", 0.0f);
         }
+    }
+
+    void CallRespawn1()
+    {
+        Enemy.SetActive(true);
+        transform.position = new Vector3(pos1.x, pos1.y, pos1.z);
+    }
+
+    void CallRespawn2()
+    {
+        Enemy.SetActive(true);
+        transform.position = new Vector3(pos2.x, pos2.y, pos2.z);
     }
 }
