@@ -21,7 +21,7 @@ public class P_Goal04 : MonoBehaviour
     void Update()
     {
         unitychan = GameObject.Find("unitychan");
-        script_p04 = unitychan.GetComponent<PlayerController4>();
+        //script_p04 = unitychan.GetComponent<PlayerController4>();
 
         //NPCがゴールしたらシーンを変更する
         if (script_p04.Gflg == true)
