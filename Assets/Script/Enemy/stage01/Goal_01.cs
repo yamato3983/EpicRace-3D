@@ -21,7 +21,7 @@ public class Goal_01 : MonoBehaviour
     void Update()
     {
         Enemy = GameObject.Find("Enemy");
-        script_cm01 = Enemy.GetComponent<CPU_move1>();
+        //script_cm01 = Enemy.GetComponent<CPU_move1>();
 
         //NPCがゴールしたらシーンを変更する
         if (script_cm01.goal == true)

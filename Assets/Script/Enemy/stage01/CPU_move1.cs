@@ -142,7 +142,7 @@ public class CPU_move1 : MonoBehaviour
             Invoke("CallRespawn1", 2f);
         }
 
-        if (other.tag == "Dead2")
+        if (other.tag == "Dead_02")
         {
             dead = true;
             Enemy.SetActive(false);
