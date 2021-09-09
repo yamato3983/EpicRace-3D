@@ -95,6 +95,42 @@ public class CPU_move02 : MonoBehaviour
     //タグの判定
     private void OnTriggerEnter(Collider other)
     {
+        //ギミックの通過判定
+        if (other.tag == "judge")
+        {
+            //2パターンの処理(0～6)
+            int value = Random.Range(0, 6);
+
+            switch (value)
+            {
+                //止める
+                case 0:
+                case 1:
+
+                    walkSpeed = 0;
+                    //4秒後にCall関数を実行する
+                    Invoke("Call", 4f);
+
+                    break;
+
+                case 2:
+                case 3:
+
+                    walkSpeed = 0;
+                    //2秒後にCall関数を実行する
+                    Invoke("Call", 2f);
+
+                    break;
+
+                //進行する
+                case 4:
+                case 5:
+                    walkSpeed = 5;
+
+                    break;
+            }
+        }
+
         //死亡ゾーンに入った時の処理(ギミックの1番目)
         if (other.tag == "Dead")
         {
@@ -126,6 +162,14 @@ public class CPU_move02 : MonoBehaviour
             animator.SetFloat("Speed", 0.0f);
         }
     }
+
+    //何秒後かに呼び出すための処理
+    void Call()
+    {
+        //動き出す
+        walkSpeed = 5;
+    }
+
     void CallRespawn1()
     {
         Enemy.SetActive(true);
