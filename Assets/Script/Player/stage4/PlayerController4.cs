@@ -200,23 +200,26 @@ public class PlayerController4 : MonoBehaviour
                     if (Input.GetMouseButton(0))
                     {
                         //マウスが押されているときはゲージを減らし止まる
-                        gaugeCtrl.fillAmount -= 0.0013f;
+                        //gaugeCtrl.fillAmount -= 0.0013f;
+                        gaugeCtrl.fillAmount -= 0.0065f;
                         flg = 0;
                     }
 
                     else
                     {
                         //マウスが押されていないときはゲージの回復
-                        gaugeCtrl.fillAmount += 0.0005f;
+                        //gaugeCtrl.fillAmount += 0.0005f;
                         // RunからWaitに遷移する
                         //this.animator.SetBool(key_isRun, false);
+                        gaugeCtrl.fillAmount += 0.0025f;
                         flg = 1;
                     }
                 }
                 else if (gaugeCtrl.fillAmount <= 0.0f)
                 {
                     //マウスが押されていないときはゲージの回復
-                    gaugeCtrl.fillAmount += 0.0005f;
+                    //gaugeCtrl.fillAmount += 0.0005f;
+                    gaugeCtrl.fillAmount += 0.0025f;
                     flg = 1;
                 }
                 if (flg == 1)
