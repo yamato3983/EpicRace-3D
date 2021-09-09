@@ -477,7 +477,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100338, guid: 40046bae76ac54bffb59f14f47d9ba1b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 100338, guid: 40046bae76ac54bffb59f14f47d9ba1b, type: 3}
       propertyPath: m_TagString
@@ -568,7 +568,6 @@ MonoBehaviour:
   RP: {fileID: 361141754}
   RP2: {fileID: 0}
   GoalLine_PL: {fileID: 1914056051}
-  agent: {fileID: 0}
   rb: {fileID: 0}
   Gflg: 0
   Dead: 0
