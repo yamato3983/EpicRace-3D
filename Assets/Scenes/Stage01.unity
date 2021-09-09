@@ -326,7 +326,9 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Dead_02
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 448370654605366330, guid: 4f950286d51c66847832788d6a9280d8, type: 3}
+    - {fileID: 448370656149117071, guid: 4f950286d51c66847832788d6a9280d8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4f950286d51c66847832788d6a9280d8, type: 3}
 --- !u!1 &102672901 stripped
 GameObject:
