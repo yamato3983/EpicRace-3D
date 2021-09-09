@@ -1193,7 +1193,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1059243652}
-  - component: {fileID: 1059243651}
   m_Layer: 0
   m_Name: CameraManager
   m_TagString: Untagged
@@ -1201,20 +1200,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1059243651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1059243650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 154694b7877dd4646a4c7226d9e6774d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MainCamera: {fileID: 1648231900}
-  SubCamera: {fileID: 511046516}
 --- !u!4 &1059243652
 Transform:
   m_ObjectHideFlags: 0
