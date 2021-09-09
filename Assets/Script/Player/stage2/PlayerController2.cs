@@ -189,22 +189,22 @@ public class PlayerController2 : MonoBehaviour
                 {
                     if (Input.GetMouseButton(0))
                     {
-                        //gaugeCtrl.fillAmount -= 0.0013f;
-                        gaugeCtrl.fillAmount -= 0.0065f;
+                        gaugeCtrl.fillAmount -= 0.0013f;
+                        //gaugeCtrl.fillAmount -= 0.0065f;
                         flg = 0;
                     }
 
                     else
                     {
-                        //gaugeCtrl.fillAmount += 0.0005f;
-                        gaugeCtrl.fillAmount += 0.0025f;
+                        gaugeCtrl.fillAmount += 0.0005f;
+                        //gaugeCtrl.fillAmount += 0.0025f;
                         flg = 1;
                     }
                 }
                 else if (gaugeCtrl.fillAmount == 0.0f)
                 {
-                    //gaugeCtrl.fillAmount += 0.0005f;
-                    gaugeCtrl.fillAmount += 0.0025f;
+                    gaugeCtrl.fillAmount += 0.0005f;
+                    //gaugeCtrl.fillAmount += 0.0025f;
                     flg = 1;
                 }
                 if (flg == 1)
