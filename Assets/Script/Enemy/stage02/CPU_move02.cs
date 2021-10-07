@@ -98,8 +98,8 @@ public class CPU_move02 : MonoBehaviour
         //ギミックの通過判定
         if (other.tag == "judge")
         {
-            //2パターンの処理(0～6)
-            int value = Random.Range(0, 6);
+            //2パターンの処理(0～9)
+            int value = Random.Range(0, 10);
 
             switch (value)
             {
@@ -108,23 +108,43 @@ public class CPU_move02 : MonoBehaviour
                 case 1:
 
                     walkSpeed = 0;
-                    //4秒後にCall関数を実行する
-                    Invoke("Call", 4f);
-
-                    break;
-
-                case 2:
-                case 3:
-
-                    walkSpeed = 0;
                     //2秒後にCall関数を実行する
                     Invoke("Call", 2f);
 
                     break;
 
-                //進行する
+                //進行しない
+                case 2:
+                    walkSpeed = 0;
+                    //2秒後にCall関数を実行する
+                    Invoke("Call", 2.5f);
+                    break;
+
+                //進行しない
+                case 3:
                 case 4:
+
+                    walkSpeed = 0;
+                    //3秒後にCall関数を実行する
+                    Invoke("Call", 3f);
+
+                    break;
+
+                //進行しない
                 case 5:
+                case 6:
+
+                    walkSpeed = 0;
+                    //2秒後にCall関数を実行する
+                    Invoke("Call", 3.5f);
+
+                    break;
+
+
+                //進行する
+                case 7:
+                case 8:
+                case 9:
                     walkSpeed = 5;
 
                     break;
@@ -174,5 +194,10 @@ public class CPU_move02 : MonoBehaviour
     {
         Enemy.SetActive(true);
         transform.position = new Vector3(pos1.x, pos1.y, pos1.z);
+    }
+
+    public void Speed()
+    {
+        walkSpeed = 9;
     }
 }

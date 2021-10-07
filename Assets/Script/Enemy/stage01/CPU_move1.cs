@@ -29,6 +29,16 @@ public class CPU_move1 : MonoBehaviour
 
     Vector3 pos1, pos2;
 
+
+    // オブジェクトが停止するターゲットオブジェクトとの距離を格納する変数
+    public float stopDistance;
+    // オブジェクトがターゲットに向かって移動を開始する距離を格納する変数
+    public float moveDistance;
+
+    // ターゲットオブジェクトの Transformコンポーネントを格納する変数
+    public Transform target;
+
+
     private bool isRespon = false;
 
     public bool dead;
@@ -39,6 +49,8 @@ public class CPU_move1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
+
         Vector3 tmp = GameObject.Find("GoalLine_CPU").transform.position;
         GameObject.Find("GoalLine_CPU").transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
 
@@ -72,6 +84,15 @@ public class CPU_move1 : MonoBehaviour
         enemyController.Move(velocity * Time.deltaTime);
 
         dead = false;
+
+        // 変数 targetPos を作成してターゲットオブジェクトの座標を格納
+        Vector3 targetPos = target.position;
+
+        float current_speed = animator.GetFloat("Speed");
+
+        // モーション切り替えを10秒で完結させる
+        animator.SetFloat("Speed", current_speed + Time.deltaTime * 0.1f);
+
     }
 
     private IEnumerator Dush()
@@ -90,6 +111,11 @@ public class CPU_move1 : MonoBehaviour
         {
             animator.SetFloat("Speed", 5.0f);    
         }
+
+        if (walkSpeed == 0)
+        {
+            animator.SetFloat("Speed", 0.0f);
+        }
     }
 
     //タグの判定
@@ -98,8 +124,8 @@ public class CPU_move1 : MonoBehaviour
         //ギミックの通過判定
         if (other.tag == "judge")
         {
-            //2パターンの処理(0～6)
-            int value = Random.Range(0, 6);
+            //2パターンの処理(0～9)
+            int value = 1;//Random.Range(0, 10);
 
             switch (value)
             {
@@ -108,31 +134,48 @@ public class CPU_move1 : MonoBehaviour
                 case 1:
 
                     walkSpeed = 0;
-                    //4秒後にCall関数を実行する
-                    Invoke("Call", 4f);
-
-                    break;
-
-                case 2:
-                case 3:
-
-                    walkSpeed = 0;
                     //2秒後にCall関数を実行する
                     Invoke("Call", 2f);
 
                     break;
 
-                //進行する
+                //進行しない
+                case 2:
+                    walkSpeed = 0;
+                    //2秒後にCall関数を実行する
+                    Invoke("Call", 2.5f);
+                    break;
+
+                //進行しない
+                case 3:
                 case 4:
+
+                    walkSpeed = 0;
+                    //3秒後にCall関数を実行する
+                    Invoke("Call", 3f);
+
+                    break;
+
+                //進行しない
                 case 5:
+                case 6:
+
+                    walkSpeed = 0;
+                    //2秒後にCall関数を実行する
+                    Invoke("Call", 3.5f);
+
+                    break;
+
+
+                //進行する
+                case 7:
+                case 8:
+                case 9:
                     walkSpeed = 5;
 
                     break;
             }
         }
-
-
-
 
         //死亡ゾーンに入った時の処理(ギミックの1番目)
         if (other.tag == "Dead")
@@ -174,5 +217,11 @@ public class CPU_move1 : MonoBehaviour
     {
         Enemy.SetActive(true);
         transform.position = new Vector3(pos2.x, pos2.y, pos2.z);
+    }
+
+    //ObjectDistance用の関数
+    public void Speed()
+    {
+        walkSpeed = 9;
     }
 }
