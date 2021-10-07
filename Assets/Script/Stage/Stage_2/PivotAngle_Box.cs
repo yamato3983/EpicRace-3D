@@ -63,7 +63,7 @@ public class PivotAngle_Box : MonoBehaviour
         }
 
         //秒
-        if (timeCount >= 6f)
+        if (timeCount >= 4f)
         {
             timeCount = 0;
             Debug.Log("タイムリセット");
