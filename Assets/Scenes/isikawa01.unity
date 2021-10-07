@@ -202,6 +202,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7170850197609136828, guid: db887f379e01c2d4c92a0196b33f7fdd,
+        type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db887f379e01c2d4c92a0196b33f7fdd, type: 3}
 --- !u!1001 &102672900
@@ -1414,7 +1419,7 @@ Camera:
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 2
+  m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
   m_SensorSize: {x: 21, y: 15.2}
@@ -1429,8 +1434,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60.000004
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 8
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -1453,13 +1458,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1648231897}
-  m_LocalRotation: {x: 0.028350035, y: -0.96989703, z: 0.13884862, w: 0.19803303}
-  m_LocalPosition: {x: 10.2, y: 8.52, z: 1.13}
+  m_LocalRotation: {x: -0.09725828, y: 0.65599376, z: -0.12791945, w: -0.7374616}
+  m_LocalPosition: {x: 11.17, y: 12.82, z: -3.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 16.294, y: -156.92, z: 0}
+  m_LocalEulerAnglesHint: {x: 18.136, y: 277.28, z: 3.684}
 --- !u!114 &1648231902
 MonoBehaviour:
   m_ObjectHideFlags: 0
