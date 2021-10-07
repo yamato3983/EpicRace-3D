@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
         gaugeCtrl.fillAmount = 1.0f;
 
         //カメラのフラグ初期はメインの為false
-        Cflg = false;
+        Cflg = true;
 
         Player = GameObject.Find("unitychan");
 
@@ -102,7 +102,6 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         var agentRigidbody = GetComponent<Rigidbody>();
-        
         if (collision.gameObject.tag == "Dead")
         {
             Debug.Log("死んだ！！1");
@@ -199,12 +198,13 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Respawn2")
         {
             Debug.Log("Respawn2にふれた");
+            Cflg = true;
         }
 
         if (other.gameObject.tag == "EndGimmick")
         {
             Debug.Log("EndGimmickにふれた");
-            
+            Cflg = false;
         }
     }
 
@@ -216,7 +216,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Gflg == false && Dead == false)
             {
-                
+                Cflg = false;
                 if (gaugeCtrl.fillAmount > 0.0f)
                 {
 

@@ -18,7 +18,8 @@ public class CameraController : MonoBehaviour
 
     private float speed;
     private float timeCount; //ŠÔƒJƒEƒ“ƒg
-    
+
+
 
     void Start()
     {
