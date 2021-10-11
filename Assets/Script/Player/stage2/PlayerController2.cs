@@ -85,7 +85,7 @@ public class PlayerController2 : MonoBehaviour
         //RigidodyのKinematicをスタート時はONにする
         agentRigidbody.isKinematic = false;
 
-        speed = 5.0f;
+        speed = 7.0f;
     }
 
     
