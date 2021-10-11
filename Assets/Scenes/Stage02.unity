@@ -1377,7 +1377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 927dec1131b9bdc4fbe6c911727e61e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
+  walkSpeed: 7
   script_t1: {fileID: 1221339015}
   Enemy: {fileID: 431013356}
   rp1: {fileID: 0}

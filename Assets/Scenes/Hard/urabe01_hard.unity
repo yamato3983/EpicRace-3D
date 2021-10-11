@@ -3088,6 +3088,28 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6327863249644963312}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6327863249644963315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6327863249644963314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770c68068ca06f947b5aba1b6f0297c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 7
+  script_t1: {fileID: 1221339015}
+  Enemy: {fileID: 6327863249644963314}
+  rp1: {fileID: 1291097393}
+  rp2: {fileID: 731347481}
+  stopDistance: 0
+  moveDistance: 0
+  target: {fileID: 102672910}
+  dead: 0
+  goal: 0
 --- !u!1001 &7867622498431746277
 PrefabInstance:
   m_ObjectHideFlags: 0
