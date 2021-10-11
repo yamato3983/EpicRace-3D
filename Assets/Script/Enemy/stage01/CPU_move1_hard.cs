@@ -148,14 +148,14 @@ public class CPU_move1_hard : MonoBehaviour
                 //進行する
                 case 2:
                
-                    walkSpeed = 6;
+                    walkSpeed = 7;
 
                     break;
 
                 //進行する
                 case 3:
 
-                    walkSpeed = 7;
+                    walkSpeed = 7.5f;
 
                     break;
             }
@@ -188,7 +188,7 @@ public class CPU_move1_hard : MonoBehaviour
     void Call()
     {
         //動き出す
-        walkSpeed = 5;
+        walkSpeed = 7;
     }
 
     void CallRespawn1()
@@ -206,6 +206,6 @@ public class CPU_move1_hard : MonoBehaviour
     //ObjectDistance用の関数
     public void Speed()
     {
-        walkSpeed = 9;
+        walkSpeed = 10;
     }
 }
