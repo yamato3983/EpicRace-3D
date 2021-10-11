@@ -4574,7 +4574,7 @@ PrefabInstance:
       objectReference: {fileID: 434964936}
     - target: {fileID: 227007471, guid: 18e41b01ecb03bd489bd9b9ad3b9f3ec, type: 3}
       propertyPath: walkSpeed
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3784449785211847368, guid: 18e41b01ecb03bd489bd9b9ad3b9f3ec,
         type: 3}
@@ -4807,7 +4807,7 @@ Camera:
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 2
+  m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
   m_SensorSize: {x: 21, y: 15.2}
@@ -4822,8 +4822,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60.000004
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -4846,13 +4846,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1648231897}
-  m_LocalRotation: {x: 0.057809647, y: -0.4988848, z: 0.033376418, w: 0.8640938}
-  m_LocalPosition: {x: 7.92, y: 7.45, z: -1.33}
+  m_LocalRotation: {x: 0.19102132, y: 0.05436138, z: 0.0029946603, w: 0.9800749}
+  m_LocalPosition: {x: 3.25, y: 12.7, z: -1.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 15
-  m_LocalEulerAnglesHint: {x: 7.655, y: -60, z: 0}
+  m_LocalEulerAnglesHint: {x: 21.969, y: 6.669, z: 1.646}
 --- !u!114 &1648231902
 MonoBehaviour:
   m_ObjectHideFlags: 0
