@@ -53,7 +53,7 @@ public class PlayerController4 : MonoBehaviour
     {
         //agent = GetComponent<NavMeshAgent>();
 
-        speed = 5.0f;
+        speed = 7.0f;
         HP = GameObject.Find("HP");
         gaugeCtrl = HP.GetComponent<Image>();
         gaugeCtrl.fillAmount = 1.0f;
