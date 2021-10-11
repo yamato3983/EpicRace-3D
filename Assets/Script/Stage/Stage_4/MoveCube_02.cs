@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveCube_02 : MonoBehaviour
 {
     //動く速さ
-    private float speed = 7.0f;
+    private float speed = 10.0f;
 
     //カウント
     private float timeCount;
@@ -26,18 +26,18 @@ public class MoveCube_02 : MonoBehaviour
         timeCount += Time.deltaTime;   //最後のフレームからの経過時間を加算
 
         //2秒
-        if (timeCount >= 1 && timeCount <= 1.7)
+        if (timeCount >= 1 && timeCount <= 1.5)
         {
             //下降
             MoveDown();
         }
-        if(timeCount >= 1.7 && timeCount <= 2.8)
+        if(timeCount >= 1.5 && timeCount <= 1.6)
         {
             //フラグの切り替え
             gimmickFlag_Wail = true;
         }
 
-        if (timeCount >= 3.0 && timeCount <= 4)
+        if (timeCount >= 2.5 && timeCount <= 3)
         {
             //上昇
             MoveUp();
@@ -45,7 +45,7 @@ public class MoveCube_02 : MonoBehaviour
             gimmickFlag_Wail = false;
         }
 
-        if (timeCount > 5.1)
+        if (timeCount > 3)
         {
             timeCount = 0;
         }
