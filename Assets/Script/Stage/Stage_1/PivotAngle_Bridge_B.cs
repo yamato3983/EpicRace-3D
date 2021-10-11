@@ -25,7 +25,7 @@ public class PivotAngle_Bridge_B : MonoBehaviour
     {
         //‰Šú‰»
         step = 0;
-        speed = 130f;
+        speed = 180f;
 
         //Å‰‚Í‹´‚ª‰Ë‚©‚Á‚Ä‚é
         gimmickFlag_Bridge = true;
@@ -39,7 +39,7 @@ public class PivotAngle_Bridge_B : MonoBehaviour
         rot = this.transform.rotation;
 
         //2`4•b
-        if (timeCount >= 3f && timeCount <= 5)
+        if (timeCount >= 0.7f && timeCount <= 1.7f)
         {
 
             //‹´‚ğ‰º‚·
@@ -52,14 +52,14 @@ public class PivotAngle_Bridge_B : MonoBehaviour
         }
 
         //5`8•b
-        if (timeCount >= 6f && timeCount <= 6.7f)
+        if (timeCount >= 2.4f && timeCount <= 3.4f)
         {
             //‹´‚ğã‚°‚é
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, 0f), step);
             Debug.Log("2‰ñ–Ú");
 
         }
-        if(timeCount >= 6.75f)
+        if(timeCount >= 3.4f)
         {
             //‹´‚ªã‚ª‚Á‚Ä‚éó‘Ô
             gimmickFlag_Bridge = true;
