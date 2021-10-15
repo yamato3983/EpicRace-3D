@@ -25,7 +25,7 @@ public class PivotAngle_Box : MonoBehaviour
     {
         //‰Šú‰»
         step = 0;
-        speed = 120f;
+        speed = 180f;
 
         //Å‰‚Í’Ê‚ê‚é
         gimmickFlag_Box = true;
@@ -38,7 +38,7 @@ public class PivotAngle_Box : MonoBehaviour
         rot = this.transform.rotation; //Œ»İ‚ÌRotation‚ğæ“¾
 
         //0`2•b
-        if (timeCount >= 0f && timeCount <= 2f)
+        if (timeCount >= 0f && timeCount <= 1f)
         {
 
             //‹´‚ğ‰º‚·
@@ -51,7 +51,7 @@ public class PivotAngle_Box : MonoBehaviour
         }
 
         //2`4•b
-        if (timeCount >= 2f && timeCount <= 4f)
+        if (timeCount >= 2f && timeCount <= 3f)
         {
             //‹´‚ğã‚°‚é
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, 0f), step);
@@ -63,7 +63,7 @@ public class PivotAngle_Box : MonoBehaviour
         }
 
         //•b
-        if (timeCount >= 4f)
+        if (timeCount >=4f)
         {
             timeCount = 0;
             Debug.Log("ƒ^ƒCƒ€ƒŠƒZƒbƒg");
