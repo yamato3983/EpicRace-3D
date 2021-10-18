@@ -18,7 +18,7 @@ public class CPU_move3 : MonoBehaviour
 
     //　ジャンプ力
     [SerializeField]
-    private float jumpPower = 0.5f;
+    private float jumpPower = 2.0f;
 
     //　移動方向
     private Vector3 direction;
@@ -45,9 +45,10 @@ public class CPU_move3 : MonoBehaviour
     //リスポーン
     public GameObject rp1;
     public GameObject rp2;
+    public GameObject rp3;
 
 
-    Vector3 pos1, pos2;
+    Vector3 pos1, pos2, pos3;
 
     public bool dead;
 
@@ -69,9 +70,11 @@ public class CPU_move3 : MonoBehaviour
         //リスポーン
         rp1 = GameObject.Find("RespawnCPU");
         rp2 = GameObject.Find("RespawnCPU2");
+        rp3 = GameObject.Find("RespawnCPU3");
        
         pos1 = rp1.transform.position;
         pos2 = rp2.transform.position;
+        pos3 = rp3.transform.position;
        
     }
 
@@ -136,6 +139,14 @@ public class CPU_move3 : MonoBehaviour
             Invoke("CallRespawn2", 2f);
         }
 
+        if(other.tag == "Dead_02")
+        {
+            dead = true;
+            j_flg = false;
+            Enemy.SetActive(false);
+            Invoke("CallRespawn3", 2f);
+        }
+
 
         if (other.tag == "Hammer")
         {
@@ -171,6 +182,12 @@ public class CPU_move3 : MonoBehaviour
     {
         Enemy.SetActive(true);
         transform.position = new Vector3(pos2.x, pos2.y, pos2.z);
+    }
+
+    void CallRespawn3()
+    {
+        Enemy.SetActive(true);
+        transform.position = new Vector3(pos3.x, pos3.y, pos3.z);
     }
 
 }

@@ -86,12 +86,12 @@ public class CPU_move1 : MonoBehaviour
         dead = false;
 
         // 変数 targetPos を作成してターゲットオブジェクトの座標を格納
-        Vector3 targetPos = target.position;
+        //Vector3 targetPos = target.position;
 
-        float current_speed = animator.GetFloat("Speed");
+        //float current_speed = animator.GetFloat("Speed");
 
         // モーション切り替えを10秒で完結させる
-        animator.SetFloat("Speed", current_speed + Time.deltaTime * 0.1f);
+        //animator.SetFloat("Speed", current_speed + Time.deltaTime * 0.1f);
 
     }
 
@@ -118,6 +118,24 @@ public class CPU_move1 : MonoBehaviour
         }
     }
 
+    /*private void Respawn()
+    {
+        if (GameObject.Find("RespawnCPU2"))
+        {
+            if (CPU_Script.dead == true)
+            {
+                time += Time.deltaTime;
+                if (time >= 1.0f)
+                {
+                    time = 0.0f;
+                    CPU_Script.agent.enabled = true;
+                    Enemy.gameObject.SetActive(true);
+                    CPU_Script1.dead = false;
+                }
+            }
+        }
+    }*/
+
     //タグの判定
     private void OnTriggerEnter(Collider other)
     {
@@ -125,14 +143,13 @@ public class CPU_move1 : MonoBehaviour
         if (other.tag == "judge")
         {
             //2パターンの処理(0～9)
-            int value = Random.Range(0, 10);
+            int value = Random.Range(0, 5);
 
             switch (value)
             {
                 //止める
                 case 0:
-                case 1:
-
+                
                     walkSpeed = 0;
                     //2秒後にCall関数を実行する
                     Invoke("Call", 2f);
@@ -140,15 +157,14 @@ public class CPU_move1 : MonoBehaviour
                     break;
 
                 //進行しない
-                case 2:
+                case 1:
                     walkSpeed = 0;
                     //2秒後にCall関数を実行する
                     Invoke("Call", 2.5f);
                     break;
 
                 //進行しない
-                case 3:
-                case 4:
+                case 2:
 
                     walkSpeed = 0;
                     //3秒後にCall関数を実行する
@@ -157,21 +173,17 @@ public class CPU_move1 : MonoBehaviour
                     break;
 
                 //進行しない
-                case 5:
-                case 6:
-
+                case 3:
+               
                     walkSpeed = 0;
                     //2秒後にCall関数を実行する
                     Invoke("Call", 3.5f);
 
                     break;
 
-
                 //進行する
-                case 7:
-                case 8:
-                case 9:
-                    walkSpeed = 5;
+                case 4:
+                    walkSpeed = 7;
 
                     break;
             }
@@ -204,7 +216,7 @@ public class CPU_move1 : MonoBehaviour
     void Call()
     {
         //動き出す
-        walkSpeed = 5;
+        walkSpeed = 7;
     }
 
     void CallRespawn1()

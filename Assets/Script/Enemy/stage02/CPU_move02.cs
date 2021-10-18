@@ -11,7 +11,7 @@ public class CPU_move02 : MonoBehaviour
     //　目的地
     private Vector3 destination;
     [SerializeField]
-    private float walkSpeed = 5f;
+    private float walkSpeed = 7f;
     //　速度
     private Vector3 velocity;
     //　移動方向
@@ -25,7 +25,7 @@ public class CPU_move02 : MonoBehaviour
 
     //リスポーン
     public GameObject rp1;
- 
+    public GameObject rp2;
 
     Vector3 pos1, pos2;
 
@@ -35,6 +35,8 @@ public class CPU_move02 : MonoBehaviour
 
     //NPCがゴールをしたかどうか
     public bool goal;
+
+    private bool conflag;
 
     // Start is called before the first frame update
     void Start()
@@ -49,9 +51,10 @@ public class CPU_move02 : MonoBehaviour
 
         //リスポーン
         rp1 = GameObject.Find("RespawnCPU");
+        rp2 = GameObject.Find("RespawnCPU2");
        
         pos1 = rp1.transform.position;
-       
+        pos2 = rp2.transform.position;
     }
 
     // Update is called once per frame
@@ -71,6 +74,17 @@ public class CPU_move02 : MonoBehaviour
         velocity.y += Physics.gravity.y * Time.deltaTime;
         enemyController.Move(velocity * Time.deltaTime);
 
+        //コンベアー用
+        if(conflag == true)
+        {
+            walkSpeed = 3.0f;
+        }
+        if(conflag == false)
+        {
+            walkSpeed = 7.0f;
+
+        }
+        //死亡フラグ
         dead = false;
     }
 
@@ -88,7 +102,7 @@ public class CPU_move02 : MonoBehaviour
         //カウントダウンが0のときに走り出す
         if (script_t1.startflg == true)
         {
-            animator.SetFloat("Speed", 5.0f);
+            animator.SetFloat("Speed", 1.0f);
         }
     }
 
@@ -99,13 +113,12 @@ public class CPU_move02 : MonoBehaviour
         if (other.tag == "judge")
         {
             //2パターンの処理(0～9)
-            int value = Random.Range(0, 10);
+            int value = Random.Range(0, 5);
 
             switch (value)
             {
                 //止める
                 case 0:
-                case 1:
 
                     walkSpeed = 0;
                     //2秒後にCall関数を実行する
@@ -114,15 +127,14 @@ public class CPU_move02 : MonoBehaviour
                     break;
 
                 //進行しない
-                case 2:
+                case 1:
                     walkSpeed = 0;
                     //2秒後にCall関数を実行する
                     Invoke("Call", 2.5f);
                     break;
 
                 //進行しない
-                case 3:
-                case 4:
+                case 2:
 
                     walkSpeed = 0;
                     //3秒後にCall関数を実行する
@@ -131,9 +143,8 @@ public class CPU_move02 : MonoBehaviour
                     break;
 
                 //進行しない
-                case 5:
-                case 6:
-
+                case 3:
+                
                     walkSpeed = 0;
                     //2秒後にCall関数を実行する
                     Invoke("Call", 3.5f);
@@ -142,16 +153,15 @@ public class CPU_move02 : MonoBehaviour
 
 
                 //進行する
-                case 7:
-                case 8:
-                case 9:
-                    walkSpeed = 5;
+                case 4:
+               
+                    walkSpeed = 7;
 
                     break;
             }
         }
 
-        //死亡ゾーンに入った時の処理(ギミックの1番目)
+        //死亡ゾーンに入った時の処理(ギミックの1番目)簡単
         if (other.tag == "Dead")
         {
             dead = true;
@@ -163,17 +173,19 @@ public class CPU_move02 : MonoBehaviour
         {
             dead = true;
             transform.position = new Vector3(pos2.x, pos2.y, pos2.z);
-
+            Invoke("CallRespawn2", 2f);
         }
 
         if(other.tag == "Gimmick_Conveyer")
         {
+            conflag = true;
             walkSpeed = 3.0f;
         }
 
         if (other.tag != "Gimmick_Conveyer")
         {
-            walkSpeed = 4.5f;
+            conflag = false;
+            walkSpeed = 7.0f;
         }
 
         if (other.tag == "Goal")
@@ -187,7 +199,7 @@ public class CPU_move02 : MonoBehaviour
     void Call()
     {
         //動き出す
-        walkSpeed = 5;
+        walkSpeed = 7;
     }
 
     void CallRespawn1()
@@ -196,8 +208,14 @@ public class CPU_move02 : MonoBehaviour
         transform.position = new Vector3(pos1.x, pos1.y, pos1.z);
     }
 
+    void CallRespawn2()
+    {
+        Enemy.SetActive(true);
+        transform.position = new Vector3(pos2.x, pos2.y, pos2.z);
+    }
+
     public void Speed()
     {
-        walkSpeed = 9;
+        walkSpeed = 7;
     }
 }
