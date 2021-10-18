@@ -92,15 +92,8 @@ public class PlayerController3 : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         var agentRigidbody = GetComponent<Rigidbody>();
-        if (collision.gameObject.tag == "Dead" || collision.gameObject.tag == "Hammer")
-        {
-            Debug.Log("死んだ！！");
-            this.gameObject.SetActive(false);
-            Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
-            Dead = true;
-            flg = 0;
-        }
-        if (collision.gameObject.tag == "Dead_02")
+        
+        if (collision.gameObject.tag == "Dead")
         {
             Debug.Log("死んだ！！");
             this.gameObject.SetActive(false);
