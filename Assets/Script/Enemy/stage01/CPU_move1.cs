@@ -86,12 +86,12 @@ public class CPU_move1 : MonoBehaviour
         dead = false;
 
         // 変数 targetPos を作成してターゲットオブジェクトの座標を格納
-        //Vector3 targetPos = target.position;
+        Vector3 targetPos = target.position;
 
-        //float current_speed = animator.GetFloat("Speed");
+        float current_speed = animator.GetFloat("Speed");
 
         // モーション切り替えを10秒で完結させる
-        //animator.SetFloat("Speed", current_speed + Time.deltaTime * 0.1f);
+        animator.SetFloat("Speed", current_speed + Time.deltaTime * 0.1f);
 
     }
 
@@ -109,7 +109,7 @@ public class CPU_move1 : MonoBehaviour
         //カウントダウンが0のときに走り出す
         if (script_t1.startflg == true)
         {
-            animator.SetFloat("Speed", 5.0f);    
+            animator.SetFloat("Speed", 1.0f);    
         }
 
         if (walkSpeed == 0)
@@ -142,7 +142,7 @@ public class CPU_move1 : MonoBehaviour
         //ギミックの通過判定
         if (other.tag == "judge")
         {
-            //2パターンの処理(0～9)
+            //2パターンの処理(0～5)
             int value = Random.Range(0, 5);
 
             switch (value)

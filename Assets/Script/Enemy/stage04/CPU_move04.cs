@@ -37,9 +37,9 @@ public class CPU_move04 : MonoBehaviour
     public GameObject rp2;
     public GameObject rp3;
     public GameObject rp4;
-    public GameObject rp5;
+    //public GameObject rp5;
 
-    Vector3 pos1, pos2, pos3, pos4, pos5;
+    Vector3 pos1, pos2, pos3, pos4; //pos5;
 
     private bool isRespon = false;
 
@@ -66,12 +66,12 @@ public class CPU_move04 : MonoBehaviour
         rp2 = GameObject.Find("RespawnCPU2");
         rp3 = GameObject.Find("RespawnCPU3");
         rp4 = GameObject.Find("RespawnCPU4");
-        rp5 = GameObject.Find("RespawnCPU5");
+        //rp5 = GameObject.Find("RespawnCPU5");
         pos1 = rp1.transform.position;
         pos2 = rp2.transform.position;
         pos3 = rp3.transform.position;
         pos4 = rp4.transform.position;
-        pos5 = rp5.transform.position;
+        //pos5 = rp5.transform.position;
     }
 
     // Update is called once per frame
@@ -257,9 +257,9 @@ public class CPU_move04 : MonoBehaviour
         transform.position = new Vector3(pos4.x, pos4.y, pos4.z);
     }
 
-    void CallRespawn5()
+    /*void CallRespawn5()
     {
         Enemy.SetActive(true);
         transform.position = new Vector3(pos5.x, pos5.y, pos5.z);
-    }
+    }*/
 }
