@@ -8,11 +8,10 @@ public class CPU_move04 : MonoBehaviour
     private CharacterController enemyController;
     private Animator animator;
 
-
     //　目的地
     private Vector3 destination;
     [SerializeField]
-    private float walkSpeed = 4.0f;
+    private float walkSpeed = 7.0f;
     //　速度
     private Vector3 velocity;
     //　移動方向
@@ -37,8 +36,10 @@ public class CPU_move04 : MonoBehaviour
     public GameObject rp1;
     public GameObject rp2;
     public GameObject rp3;
+    public GameObject rp4;
+    public GameObject rp5;
 
-    Vector3 pos1, pos2, pos3;
+    Vector3 pos1, pos2, pos3, pos4, pos5;
 
     private bool isRespon = false;
 
@@ -64,9 +65,13 @@ public class CPU_move04 : MonoBehaviour
         rp1 = GameObject.Find("RespawnCPU");
         rp2 = GameObject.Find("RespawnCPU2");
         rp3 = GameObject.Find("RespawnCPU3");
+        rp4 = GameObject.Find("RespawnCPU4");
+        rp5 = GameObject.Find("RespawnCPU5");
         pos1 = rp1.transform.position;
         pos2 = rp2.transform.position;
         pos3 = rp3.transform.position;
+        pos4 = rp4.transform.position;
+        pos5 = rp5.transform.position;
     }
 
     // Update is called once per frame
@@ -104,7 +109,12 @@ public class CPU_move04 : MonoBehaviour
         //カウントダウンが0のときに走り出す
         if (script_t1.startflg == true)
         {
-            animator.SetFloat("Speed", 4.0f);
+            animator.SetFloat("Speed", 1.0f);
+        }
+
+        if (walkSpeed == 0)
+        {
+            animator.SetFloat("Speed", 0.0f);
         }
     }
 
@@ -114,12 +124,12 @@ public class CPU_move04 : MonoBehaviour
         if(other.tag == "judge")
         {
             if(cube1.gimmickFlag_Wail == false)
-            {
+            {  
                 walkSpeed = 0.0f;
             }
             if (cube1.gimmickFlag_Wail == true)
-            {  
-                 walkSpeed = 4.0f;
+            {
+                walkSpeed = 7.0f;
             }  
         }
 
@@ -127,11 +137,11 @@ public class CPU_move04 : MonoBehaviour
         {
             if (cube2.gimmickFlag_Wail == false)
             {
-                walkSpeed = 0f;
+                animator.SetFloat("Speed", 0.0f);
             }
             if (cube2.gimmickFlag_Wail == true)
             {
-                walkSpeed = 5.0f;
+                animator.SetFloat("Speed", 1.0f);
             }
         }
 
@@ -143,7 +153,7 @@ public class CPU_move04 : MonoBehaviour
             }
             if (cube3.gimmickFlag_Wail == true)
             {
-                walkSpeed = 5.0f;
+                walkSpeed = 7.0f;
             }
         }
 
@@ -169,7 +179,7 @@ public class CPU_move04 : MonoBehaviour
                 //進行する(NavmeshはON状態)
                 case 4:
                 case 5:
-                    walkSpeed = 4.0f;
+                    walkSpeed = 7.0f;
 
                     break;
             }
@@ -192,6 +202,14 @@ public class CPU_move04 : MonoBehaviour
             Invoke("CallRespawn3", 2f);
         }
 
+        if (other.tag == "Dead03")
+        {
+            dead = true;
+            Enemy.SetActive(false);
+            //1秒後にCallRespawn3関数を実行する
+            Invoke("CallRespawn4", 2f);
+        }
+
         if (other.tag == "Hammer")
         {
             dead = true;
@@ -200,7 +218,6 @@ public class CPU_move04 : MonoBehaviour
             Invoke("CallRespawn2", 2f);
 
         }
-
 
         if (other.tag == "Goal")
         {
@@ -212,7 +229,7 @@ public class CPU_move04 : MonoBehaviour
     //何秒後かに呼び出すための処理
     void Call()
     {
-        walkSpeed = 5.0f;
+        walkSpeed = 7.0f;
     }
 
     //復活のためのクールタイム用
@@ -232,5 +249,17 @@ public class CPU_move04 : MonoBehaviour
     {
         Enemy.SetActive(true);
         transform.position = new Vector3(pos3.x, pos3.y, pos3.z);
+    }
+
+    void CallRespawn4()
+    {
+        Enemy.SetActive(true);
+        transform.position = new Vector3(pos4.x, pos4.y, pos4.z);
+    }
+
+    void CallRespawn5()
+    {
+        Enemy.SetActive(true);
+        transform.position = new Vector3(pos5.x, pos5.y, pos5.z);
     }
 }

@@ -27,7 +27,10 @@ public class StartButton : MonoBehaviour
     {
         //NPCがゴールしたらシーンを変更する
 
-        SceneManager.LoadScene("Level");
+        //SceneManager.LoadScene("Level");
+
+          SceneManager.LoadScene("Stage01");
+        }
 
     }
 
@@ -44,4 +47,4 @@ public class StartButton : MonoBehaviour
         //SceneManager.LoadScene("urabe01");
     }*/
 
-}
+
