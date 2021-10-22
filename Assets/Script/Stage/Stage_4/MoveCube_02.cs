@@ -30,24 +30,27 @@ public class MoveCube_02 : MonoBehaviour
         {
             //下降
             MoveDown();
-        }
-        if(timeCount >= 1.5 && timeCount <= 1.6)
-        {
             //フラグの切り替え
             gimmickFlag_Wail = true;
         }
+        //if(timeCount >= 1.5 && timeCount <= 1.6)
+        //{
+        //    //フラグの切り替え
+        //    gimmickFlag_Wail = true;
+        //}
 
         if (timeCount >= 2.5 && timeCount <= 3)
         {
             //上昇
             MoveUp();
-            //フラグの切り替え
-            gimmickFlag_Wail = false;
+         
         }
 
         if (timeCount > 3)
         {
             timeCount = 0;
+            //フラグの切り替え
+            gimmickFlag_Wail = false;
         }
 
     }
@@ -74,7 +77,7 @@ public class MoveCube_02 : MonoBehaviour
         Vector3 pos = myTrans.position;
 
         //移動先
-        Vector3 direction = new Vector3(pos.x, 2.02f, pos.z);
+        Vector3 direction = new Vector3(pos.x, 0f, pos.z);
 
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, direction, step);
