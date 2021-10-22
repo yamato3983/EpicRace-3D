@@ -76,7 +76,7 @@ public class PlayerController2 : MonoBehaviour
         RP = GameObject.Find("RespawnPoint");
         RP2 = GameObject.Find("RespawnPoint2");
         tmp = RP.transform.position;
-        //tmp2 = RP2.transform.position;
+        tmp2 = RP2.transform.position;
 
         PB = GameObject.Find("PivotBox");
         PB_Script = PB.GetComponent<PivotAngle_Box>();
@@ -111,7 +111,7 @@ public class PlayerController2 : MonoBehaviour
         {
             Debug.Log("éÄÇÒÇæÅIÅI(âÒì]");
             this.gameObject.SetActive(false);
-            Player.transform.position = new Vector3(tmp2.x, tmp2.y, tmp2.z);
+            Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
             Dead = true;
             flg = 0;
 
@@ -131,6 +131,8 @@ public class PlayerController2 : MonoBehaviour
 
         if (other.gameObject.tag == "Respawn2")
         {
+            tmp = tmp2;
+      
             Debug.Log("Respawn2Ç…Ç”ÇÍÇΩ");
             Cflg = true;
         }
