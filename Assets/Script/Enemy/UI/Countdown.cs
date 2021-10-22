@@ -7,6 +7,9 @@ public class Countdown : MonoBehaviour
 {
 	public Text timerText;
 	public Text message;
+	public AudioClip sound1;
+	AudioSource audioSource;
+
 
 	public float totalTime;
 	int seconds;
@@ -14,10 +17,15 @@ public class Countdown : MonoBehaviour
 	//true:スタート、false:カウントダウン中
 	public bool startflg;
 
+	bool sound;
+
 	// Use this for initialization
 	void Start()
 	{
+		//Componentを取得
+		audioSource = GetComponent<AudioSource>();
 		startflg = false;
+		sound = false;
 	}
 
 	// Update is called once per frame
@@ -31,6 +39,7 @@ public class Countdown : MonoBehaviour
 		//2秒以上はスタートフラグはfalseにしてる
 		if(totalTime > 1)
         {
+			sound = true;
 			startflg = false;
 		}
 		//0のときに画面にGOという文字を出したいため/フラグはtrue
@@ -47,5 +56,10 @@ public class Countdown : MonoBehaviour
 			timerText.text = "";
 		}
 
+		if(sound == true)
+        {
+			//音(sound1)を鳴らす
+			audioSource.PlayOneShot(sound1);
+		}
 	}
 }
