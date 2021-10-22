@@ -82,7 +82,7 @@ public class MoveCube_01 : MonoBehaviour
         Vector3 pos = myTrans.position;
 
         //à⁄ìÆêÊ
-        Vector3 direction = new Vector3(pos.x, 2.02f, pos.z);
+        Vector3 direction = new Vector3(pos.x, 0f, pos.z);
 
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, direction, step);
