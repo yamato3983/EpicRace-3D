@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Clear_CPU04.unity
     guid: f79510fb38d5d5c4580f59d3dff5492d
+  - enabled: 1
+    path: Assets/Scenes/Guide.unity
+    guid: 623c47610411fb048b051d27885e645f
   m_configObjects: {}

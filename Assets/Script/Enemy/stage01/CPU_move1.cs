@@ -64,6 +64,8 @@ public class CPU_move1 : MonoBehaviour
         rp2 = GameObject.Find("RespawnCPU2");
         pos1 = rp1.transform.position;
         pos2 = rp2.transform.position;
+
+        dead = false;
     }
 
     // Update is called once per frame
@@ -83,15 +85,13 @@ public class CPU_move1 : MonoBehaviour
         velocity.y += Physics.gravity.y * Time.deltaTime;
         enemyController.Move(velocity * Time.deltaTime);
 
-        dead = false;
-
         // 変数 targetPos を作成してターゲットオブジェクトの座標を格納
         Vector3 targetPos = target.position;
 
-        float current_speed = animator.GetFloat("Speed");
+       // float current_speed = animator.GetFloat("Speed");
 
         // モーション切り替えを10秒で完結させる
-        animator.SetFloat("Speed", current_speed + Time.deltaTime * 0.1f);
+        //animator.SetFloat("Speed", current_speed + Time.deltaTime * 0.1f);
 
     }
 
@@ -143,7 +143,7 @@ public class CPU_move1 : MonoBehaviour
         if (other.tag == "judge")
         {
             //2パターンの処理(0～5)
-            int value = Random.Range(0, 5);
+            int value = Random.Range(0, 2);
 
             switch (value)
             {
@@ -157,7 +157,7 @@ public class CPU_move1 : MonoBehaviour
                     break;
 
                 //進行しない
-                case 1:
+                /*case 1:
                     walkSpeed = 0;
                     //2秒後にCall関数を実行する
                     Invoke("Call", 2.5f);
@@ -179,10 +179,10 @@ public class CPU_move1 : MonoBehaviour
                     //2秒後にCall関数を実行する
                     Invoke("Call", 3.5f);
 
-                    break;
+                    break;*/
 
                 //進行する
-                case 4:
+                case 1:
                     walkSpeed = 7;
 
                     break;
@@ -221,12 +221,14 @@ public class CPU_move1 : MonoBehaviour
 
     void CallRespawn1()
     {
+        dead = false;
         Enemy.SetActive(true);
         transform.position = new Vector3(pos1.x, pos1.y, pos1.z);
     }
 
     void CallRespawn2()
     {
+        dead = false;
         Enemy.SetActive(true);
         transform.position = new Vector3(pos2.x, pos2.y, pos2.z);
     }
