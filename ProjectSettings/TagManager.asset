@@ -33,6 +33,7 @@ TagManager:
   - Ring
   - judge3
   - judgeBrigge
+  - Roller
   layers:
   - Default
   - TransparentFX

@@ -22,40 +22,40 @@ public class GimmickLift_Move : MonoBehaviour
 
         timeCount += Time.deltaTime;  //最後のフレームからの経過時間を加算
 
-        if (timeCount >= 0 && timeCount <= 0.5)
+        if (timeCount >= 0 && timeCount <= 0.2)
         {
             // 速度_velocityで移動する（ローカル座標）
             transform.localPosition -= _velocity_x * Time.deltaTime;
         }
-        if (timeCount >= 0.5 && timeCount <= 1)
+        if (timeCount >= 0.2 && timeCount <=0.4)
         {
             // 速度_velocityで移動する（ローカル座標）
             transform.localPosition -= _velocity_x * Time.deltaTime;
         }
 
-        if (timeCount >= 1 && timeCount <= 1.5)
+        if (timeCount >= 0.6 && timeCount <= 0.8)
         {
             // 速度_velocityで移動する（ローカル座標）
             transform.localPosition -= _velocity_y * Time.deltaTime;
         }
 
-        if (timeCount >= 1.5 && timeCount <= 2)
+        if (timeCount >= 1.0 && timeCount <= 1.2)
         {
             // 速度_velocityで移動する（ローカル座標）
             transform.localPosition += _velocity_x * Time.deltaTime;
         }
-        if (timeCount >= 2 && timeCount <= 2.5)
+        if (timeCount >= 1.2 && timeCount <= 1.4)
         {
             // 速度_velocityで移動する（ローカル座標）
             transform.localPosition += _velocity_x * Time.deltaTime;
         }
-        if (timeCount >= 2.5 && timeCount <= 3)
+        if (timeCount >= 1.6 && timeCount <= 1.8)
         {
             // 速度_velocityで移動する（ローカル座標）
             transform.localPosition += _velocity_y * Time.deltaTime;
         }
 
-        if (timeCount >= 3)
+        if (timeCount >= 2f)
         {
             timeCount = 0;
         }
