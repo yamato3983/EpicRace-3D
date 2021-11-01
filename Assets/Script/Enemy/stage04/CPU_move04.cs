@@ -125,7 +125,7 @@ public class CPU_move04 : MonoBehaviour
         {
             if(cube1.gimmickFlag_Wail == false)
             {  
-                walkSpeed = 0.0f;
+                walkSpeed = 0;
             }
             if (cube1.gimmickFlag_Wail == true)
             {
@@ -137,11 +137,11 @@ public class CPU_move04 : MonoBehaviour
         {
             if (cube2.gimmickFlag_Wail == false)
             {
-                animator.SetFloat("Speed", 0.0f);
+                walkSpeed = 0;
             }
             if (cube2.gimmickFlag_Wail == true)
             {
-                animator.SetFloat("Speed", 1.0f);
+                walkSpeed = 7.0f;
             }
         }
 
@@ -149,7 +149,7 @@ public class CPU_move04 : MonoBehaviour
         {
             if (cube3.gimmickFlag_Wail == false)
             {
-                walkSpeed = 0f;
+                walkSpeed = 0;
             }
             if (cube3.gimmickFlag_Wail == true)
             {
