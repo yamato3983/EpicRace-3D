@@ -1,0 +1,39 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Yokoari_Respawn4 : MonoBehaviour
+{
+    GameObject Player4;
+    YokoariController4 PLScript4;
+    private float time2 = 0.0f;
+    Rigidbody rb4;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        Player4 = GameObject.Find("yokoaridance");
+        PLScript4 = Player4.GetComponent<YokoariController4>();
+        rb4 = PLScript4.rb;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (PLScript4.Dead == true)
+        {
+            time2 += Time.deltaTime;
+            if (time2 >= 0.5f)
+            {
+                time2 = 0.0f;
+
+                Player4.gameObject.SetActive(true);
+
+                PLScript4.Dead = false;
+            }
+        }
+
+
+    }
+}

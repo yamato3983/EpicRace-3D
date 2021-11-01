@@ -1,10 +1,9 @@
-using UnityEngine;
-using UnityEngine.AI;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
-
-public class YokoariController : MonoBehaviour
+public class YokoariController2 : MonoBehaviour
 {
     GameObject HP;
     //imageのコンポーネント
@@ -84,20 +83,21 @@ public class YokoariController : MonoBehaviour
         tmp = RP.transform.position;
         tmp2 = RP2.transform.position;
 
-        //ステージギミックからデータを受け取る
-        PB_A = GameObject.Find("PivotBridge_A");
-        PB_A_Script = PB_A.GetComponent<PivotAngle_Bridge_A>();
-        PB_B = GameObject.Find("PivotBridge_B");
-        PB_B_Script = PB_B.GetComponent<PivotAngle_Bridge_B>();
-
-        PR_A = GameObject.Find("PivotRoll_A");
-        PR_A_Script = PR_A.GetComponent<PivotAngle_Roll_A>();
-        PR_B = GameObject.Find("PivotRoll_B");
-        PR_B_Script = PR_B.GetComponent<PivotAngle_Roll_B>();
-
         var agentRigidbody = GetComponent<Rigidbody>();
         //RigidodyのKinematicをスタート時はOFFにする
         agentRigidbody.isKinematic = false;
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "Gimmick_Conveyer")
+        {
+            speed = 3.0f;
+        }
+        else
+        {
+            speed = 7.0f;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -123,39 +123,6 @@ public class YokoariController : MonoBehaviour
 
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        //橋のギミックのフラグを代入
-        bool bridgeAflg = PB_A_Script.gimmickFlag_Bridge;
-        bool bridgeBflg = PB_B_Script.gimmickFlag_Bridge;
-
-        //回転ギミックのフラグを代入
-        bool rollAflg = PR_A_Script.gimmickFlag_Roll;
-        bool rollBflg = PR_B_Script.gimmickFlag_Roll;
-
-        var agentRigidbody = GetComponent<Rigidbody>();
-
-        if (other.tag == "Gimmick_Bridge" && bridgeBflg == false)
-        {
-            Debug.Log("死んだ！！");
-            this.gameObject.SetActive(false);
-            Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
-            Dead = true;
-
-            //NavmeshもRigidodyのKinematicもOFF
-            //agent.enabled = false;
-            //agentRigidbody.isKinematic = false;
-            flg = 0;
-        }
-        if (other.tag == "Gimmick_Roll" && rollBflg == false)
-        {
-            Debug.Log("死んだ！！");
-            this.gameObject.SetActive(false);
-            Player.transform.position = new Vector3(tmp2.x, tmp2.y, tmp2.z);
-            Dead = true;
-            flg = 0;
-        }
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -199,7 +166,9 @@ public class YokoariController : MonoBehaviour
         if (other.gameObject.tag == "Respawn2")
         {
             Debug.Log("Respawn2にふれた");
+            tmp = tmp2;
             Cflg = true;
+
         }
 
         if (other.gameObject.tag == "EndGimmick")

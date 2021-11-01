@@ -3,8 +3,7 @@ using UnityEngine.AI;
 using System.Collections;
 using UnityEngine.UI;
 
-
-public class YokoariController : MonoBehaviour
+public class YokoariController4 : MonoBehaviour
 {
     GameObject HP;
     //imageのコンポーネント
@@ -20,6 +19,8 @@ public class YokoariController : MonoBehaviour
 
     public GameObject RP;
     public GameObject RP2;
+    public GameObject RP3;
+    public GameObject RP4;
 
     GameObject Player;
 
@@ -29,24 +30,19 @@ public class YokoariController : MonoBehaviour
     PivotAngle_Bridge_A PB_A_Script; //PivotAngle_Bridge_Aが入る変数
     PivotAngle_Bridge_B PB_B_Script; //PivotAngle_Bridge_Bが入る変数
 
-    //PivotRollが入る変数
-    GameObject PR_A;
-    GameObject PR_B;
-    PivotAngle_Roll_A PR_A_Script;
-    PivotAngle_Roll_B PR_B_Script;
-
     [SerializeField]
     GameObject GoalLine_PL;	// 移動予定地のオブジェクト
     //public Transform target = GameObject.Find("GoalLine_PL").transform;
     //public NavMeshAgent agent;
     int flg = 1;      //進むか止まるかのフラグ
 
-    Vector3 tmp, tmp2;//リスポーンポイントの座標が入る変数
+    Vector3 tmp, tmp2, tmp3, tmp4;//リスポーンポイントの座標が入る変数
     public Rigidbody rb;
 
     public bool Gflg = false;
     public bool Dead = false;
     public bool Cflg = false;
+
 
     public GameObject timer;
     public Countdown t1;
@@ -81,24 +77,42 @@ public class YokoariController : MonoBehaviour
         //リスポーン一ポイントのデータを受け取る
         RP = GameObject.Find("RespawnPoint");
         RP2 = GameObject.Find("RespawnPoint2");
+        RP3 = GameObject.Find("RespawnPoint3");
+        RP4 = GameObject.Find("RespawnPoint4");
         tmp = RP.transform.position;
         tmp2 = RP2.transform.position;
-
-        //ステージギミックからデータを受け取る
-        PB_A = GameObject.Find("PivotBridge_A");
-        PB_A_Script = PB_A.GetComponent<PivotAngle_Bridge_A>();
-        PB_B = GameObject.Find("PivotBridge_B");
-        PB_B_Script = PB_B.GetComponent<PivotAngle_Bridge_B>();
-
-        PR_A = GameObject.Find("PivotRoll_A");
-        PR_A_Script = PR_A.GetComponent<PivotAngle_Roll_A>();
-        PR_B = GameObject.Find("PivotRoll_B");
-        PR_B_Script = PR_B.GetComponent<PivotAngle_Roll_B>();
+        tmp3 = RP3.transform.position;
+        tmp4 = RP4.transform.position;
 
         var agentRigidbody = GetComponent<Rigidbody>();
         //RigidodyのKinematicをスタート時はOFFにする
         agentRigidbody.isKinematic = false;
     }
+
+    //private void OnTriggerStay(Collider other)
+    //{
+
+
+    //    var agentRigidbody = GetComponent<Rigidbody>();
+
+    //    if (other.tag == "Dead")
+    //    {
+    //        Debug.Log("死んだ！！");
+    //        this.gameObject.SetActive(false);
+    //        Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
+    //        Dead = true;
+
+    //        flg = 0;
+    //    }
+    //    if (other.tag == "Dead")
+    //    {
+    //        Debug.Log("死んだ！！");
+    //        this.gameObject.SetActive(false);
+    //        Player.transform.position = new Vector3(tmp2.x, tmp2.y, tmp2.z);
+    //        Dead = true;
+    //        flg = 0;
+    //    }
+    //}
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -111,50 +125,16 @@ public class YokoariController : MonoBehaviour
             Dead = true;
             flg = 0;
         }
-
+        
         if (collision.gameObject.tag == "Dead_02")
         {
             Debug.Log("死んだ！！3");
             this.gameObject.SetActive(false);
-            Player.transform.position = new Vector3(tmp2.x, tmp2.y, tmp2.z);
+            Player.transform.position = new Vector3(tmp3.x, tmp3.y, tmp3.z);
             Dead = true;
             flg = 0;
         }
 
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        //橋のギミックのフラグを代入
-        bool bridgeAflg = PB_A_Script.gimmickFlag_Bridge;
-        bool bridgeBflg = PB_B_Script.gimmickFlag_Bridge;
-
-        //回転ギミックのフラグを代入
-        bool rollAflg = PR_A_Script.gimmickFlag_Roll;
-        bool rollBflg = PR_B_Script.gimmickFlag_Roll;
-
-        var agentRigidbody = GetComponent<Rigidbody>();
-
-        if (other.tag == "Gimmick_Bridge" && bridgeBflg == false)
-        {
-            Debug.Log("死んだ！！");
-            this.gameObject.SetActive(false);
-            Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
-            Dead = true;
-
-            //NavmeshもRigidodyのKinematicもOFF
-            //agent.enabled = false;
-            //agentRigidbody.isKinematic = false;
-            flg = 0;
-        }
-        if (other.tag == "Gimmick_Roll" && rollBflg == false)
-        {
-            Debug.Log("死んだ！！");
-            this.gameObject.SetActive(false);
-            Player.transform.position = new Vector3(tmp2.x, tmp2.y, tmp2.z);
-            Dead = true;
-            flg = 0;
-        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -169,23 +149,21 @@ public class YokoariController : MonoBehaviour
             Dead = true;
             flg = 0;
 
-            //NavmeshとRigidodyのKinematicがON
-            agentRigidbody.isKinematic = true;
-            //agent.enabled = true;
         }
 
-        if (other.gameObject.tag == "Dead_02")
+        if (other.gameObject.tag == "Respawn4")
         {
-            Debug.Log("死んだ！！(回転");
+            Debug.Log("Respawn4にふれた");
+            tmp3 = tmp4;
+        }
+
+        if (other.gameObject.tag == "Hammer")
+        {
+            Debug.Log("死んだ！！2");
             this.gameObject.SetActive(false);
             Player.transform.position = new Vector3(tmp2.x, tmp2.y, tmp2.z);
             Dead = true;
             flg = 0;
-
-
-            //NavmeshとRigidodyのKinematicがON
-            agentRigidbody.isKinematic = true;
-            //agent.enabled = true;
         }
 
         if (other.tag == "Goal")
@@ -225,7 +203,6 @@ public class YokoariController : MonoBehaviour
                     {
                         //マウスが押されているときはゲージを減らし止まる
                         gaugeCtrl.fillAmount -= 0.0013f;
-
                         //gaugeCtrl.fillAmount -= 0.0065f;
                         flg = 0;
                     }
@@ -236,14 +213,15 @@ public class YokoariController : MonoBehaviour
                         gaugeCtrl.fillAmount += 0.0005f;
                         // RunからWaitに遷移する
                         //this.animator.SetBool(key_isRun, false);
+                        //gaugeCtrl.fillAmount += 0.0025f;
                         flg = 1;
                     }
                 }
-                else if (gaugeCtrl.fillAmount == 0.0f)
+                else if (gaugeCtrl.fillAmount <= 0.0f)
                 {
                     //マウスが押されていないときはゲージの回復
-                    gaugeCtrl.fillAmount += 0.0005f;
-                    //gaugeCtrl.fillAmount += 0.0025f;
+                    //gaugeCtrl.fillAmount += 0.0005f;
+                    gaugeCtrl.fillAmount += 0.0025f;
                     flg = 1;
                 }
                 if (flg == 1)
