@@ -38,6 +38,8 @@ public class CPU_move02 : MonoBehaviour
 
     private bool conflag;
 
+    private bool juage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +57,10 @@ public class CPU_move02 : MonoBehaviour
        
         pos1 = rp1.transform.position;
         pos2 = rp2.transform.position;
+
+        juage = false;
+        //死亡フラグ
+        dead = false;
     }
 
     // Update is called once per frame
@@ -79,13 +85,11 @@ public class CPU_move02 : MonoBehaviour
         {
             walkSpeed = 3.0f;
         }
-        if(conflag == false)
+        if(juage == true && conflag == false)
         {
-            walkSpeed = 7.0f;
+            //walkSpeed = 7.0f;
 
         }
-        //死亡フラグ
-        dead = false;
     }
 
     private IEnumerator Dush()
@@ -104,16 +108,23 @@ public class CPU_move02 : MonoBehaviour
         {
             animator.SetFloat("Speed", 1.0f);
         }
+
+        if (walkSpeed == 0)
+        {
+            animator.SetFloat("Speed", 0.0f);
+        }
     }
 
     //タグの判定
     private void OnTriggerEnter(Collider other)
     {
+        //2パターンの処理(0～5)
+        int value = Random.Range(0, 5);
+
         //ギミックの通過判定
         if (other.tag == "judge")
         {
-            //2パターンの処理(0～9)
-            int value = Random.Range(0, 5);
+            juage = true;
 
             switch (value)
             {
@@ -160,6 +171,10 @@ public class CPU_move02 : MonoBehaviour
                     break;
             }
         }
+        if (other.tag != "judge")
+        {
+            juage = false;
+        }
 
         //死亡ゾーンに入った時の処理(ギミックの1番目)簡単
         if (other.tag == "Dead")
@@ -185,7 +200,7 @@ public class CPU_move02 : MonoBehaviour
         if (other.tag != "Gimmick_Conveyer")
         {
             conflag = false;
-            walkSpeed = 7.0f;
+           // walkSpeed = 5.0f;
         }
 
         if (other.tag == "Goal")
@@ -216,6 +231,6 @@ public class CPU_move02 : MonoBehaviour
 
     public void Speed()
     {
-        walkSpeed = 7;
+        walkSpeed = 5;
     }
 }

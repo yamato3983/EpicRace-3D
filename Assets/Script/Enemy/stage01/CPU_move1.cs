@@ -104,7 +104,7 @@ public class CPU_move1 : MonoBehaviour
         }
 
         //とりあえず4秒にしてるけど変更するかも
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(2.0f);
 
         //カウントダウンが0のときに走り出す
         if (script_t1.startflg == true)
@@ -139,12 +139,11 @@ public class CPU_move1 : MonoBehaviour
     //タグの判定
     private void OnTriggerEnter(Collider other)
     {
+        //2パターンの処理(0～5)
+        int value = Random.Range(0, 2);
         //ギミックの通過判定
         if (other.tag == "judge")
         {
-            //2パターンの処理(0～5)
-            int value = Random.Range(0, 2);
-
             switch (value)
             {
                 //止める
