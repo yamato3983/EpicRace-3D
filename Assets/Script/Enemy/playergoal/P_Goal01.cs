@@ -7,7 +7,7 @@ public class P_Goal01 : MonoBehaviour
 {
     //NPCのスクリプト
     GameObject unitychan;
-    public PlayerController script_p01;
+    public YokoariController script_p01;
 
     public bool stage01;
 
@@ -20,7 +20,7 @@ public class P_Goal01 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        unitychan = GameObject.Find("unitychan");
+        unitychan = GameObject.Find("yokoaridance");
         //script_p01 = unitychan.GetComponent<PlayerController>();
 
         //NPCがゴールしたらシーンを変更する

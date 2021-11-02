@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;//シーン切り替えに使用するライブラリ
 public class P_Goal04 : MonoBehaviour
 {
     //NPCのスクリプト
-    GameObject unitychan;
-    public PlayerController4 script_p04;
+    GameObject yokoaridance;
+    public YokoariController4 script_p04;
 
     public bool stage04;
 
@@ -20,7 +20,7 @@ public class P_Goal04 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        unitychan = GameObject.Find("unitychan");
+        yokoaridance = GameObject.Find("yokoaridance");
         //script_p04 = unitychan.GetComponent<PlayerController4>();
 
         //NPCがゴールしたらシーンを変更する
