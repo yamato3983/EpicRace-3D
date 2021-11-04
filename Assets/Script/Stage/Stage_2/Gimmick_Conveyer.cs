@@ -24,7 +24,7 @@ public class Gimmick_Conveyer : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SpeedUp(m_speedUpTime));
+       //StartCoroutine(SpeedUp(m_speedUpTime));
     }
 
     void Update()
@@ -32,6 +32,7 @@ public class Gimmick_Conveyer : MonoBehaviour
         ScrollUV();
     }
 
+    /*
     void OnCollisionEnter(Collision other)
     {
         var body = other.gameObject.GetComponent<Rigidbody>();
@@ -55,6 +56,7 @@ public class Gimmick_Conveyer : MonoBehaviour
             m_hitObjects.Remove(body);
         }
     }
+    */
 
     /// <summary>
     /// テクスチャのUV値をスクロールさせて、ベルトコンベアの見た目を表現する
@@ -67,6 +69,7 @@ public class Gimmick_Conveyer : MonoBehaviour
         material.mainTextureOffset = offset;
     }
 
+   /*
     IEnumerator SpeedUp(float i_time)
     {
         while (true)
@@ -86,5 +89,7 @@ public class Gimmick_Conveyer : MonoBehaviour
             }
         }
     }
+    */
+ 
 
 }
