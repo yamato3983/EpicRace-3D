@@ -147,7 +147,7 @@ public class YokoariController3 : MonoBehaviour
                     if (Input.GetMouseButton(0))
                     {
                         //マウスが押されているときはゲージを減らし止まる
-                        gaugeCtrl.fillAmount -= 0.0013f;
+                        gaugeCtrl.fillAmount -= 0.0026f;
                         //gaugeCtrl.fillAmount -= 0.0065f;
                         flg = 0;
                     }
@@ -155,7 +155,7 @@ public class YokoariController3 : MonoBehaviour
                     else
                     {
                         //マウスが押されていないときはゲージの回復
-                        gaugeCtrl.fillAmount += 0.0005f;
+                        gaugeCtrl.fillAmount += 0.0010f;
                         //gaugeCtrl.fillAmount += 0.0025f;
                         flg = 1;
                     }
@@ -163,7 +163,7 @@ public class YokoariController3 : MonoBehaviour
                 else if (gaugeCtrl.fillAmount <= 0.0f)
                 {
                     //マウスが押されていないときはゲージの回復
-                    gaugeCtrl.fillAmount += 0.0005f;
+                    gaugeCtrl.fillAmount += 0.0010f;
                     //gaugeCtrl.fillAmount += 0.0025f;
                     flg = 1;
                 }
