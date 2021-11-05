@@ -12,7 +12,7 @@ public class CPU_move3 : MonoBehaviour
     //　目的地
     private Vector3 destination;
     [SerializeField]
-    private float walkSpeed = 4.0f;
+    private float walkSpeed = 7.0f;
     //　速度
     private Vector3 velocity;
 
@@ -109,12 +109,12 @@ public class CPU_move3 : MonoBehaviour
         }
 
         //とりあえず4秒にしてるけど変更するかも
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(2.0f);
 
         //カウントダウンが0のときに走り出す
         if (script_t1.startflg == true)
         {
-            animator.SetFloat("Speed", 4.0f);
+            animator.SetFloat("Speed", 1.0f);
         }
     }
 

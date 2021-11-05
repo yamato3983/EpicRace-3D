@@ -2221,6 +2221,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 8700265219898697891, guid: 0a39baf593800ba429e1df0e164bbad3,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700265219898697892, guid: 0a39baf593800ba429e1df0e164bbad3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.08
+      objectReference: {fileID: 0}
     - target: {fileID: 8700265219898697892, guid: 0a39baf593800ba429e1df0e164bbad3,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -2547,6 +2557,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5222769163860261501, guid: 3caf263b63c1f7e4ea8e112256da1069,
     type: 3}
   m_PrefabInstance: {fileID: 427296883}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &967030139 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 814484783153989062, guid: 0cd2c054ab7383f4f81f7dcd3c911864,
+    type: 3}
+  m_PrefabInstance: {fileID: 849762004}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &975783393
 PrefabInstance:
@@ -4115,7 +4131,7 @@ MonoBehaviour:
   Enemy: {fileID: 1333006650}
   rp1: {fileID: 1251823465}
   rp2: {fileID: 648065795}
-  rp3: {fileID: 0}
+  rp3: {fileID: 967030139}
   dead: 0
   goal: 0
 --- !u!54 &1333006654 stripped
