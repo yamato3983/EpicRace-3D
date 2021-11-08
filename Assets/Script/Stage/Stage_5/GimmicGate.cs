@@ -2,20 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GimmickElevator : MonoBehaviour
+public class GimmicGate : MonoBehaviour
 {
     // 移動速度
     [SerializeField] private Vector3 _velocity_x;
     [SerializeField] private Vector3 _velocity_y;
     [SerializeField] private Vector3 _velocity_z;
 
-    public float MovingDistance = 0;
-    private float StartPos;
+    //追加カウント
+    [SerializeField] private float plusCount;
 
     //時間カウント
     private float timeCount;
-
-    Vector3 objPosition; // オブジェクトの位置を記録
 
     private void Start()
     {
@@ -27,21 +25,21 @@ public class GimmickElevator : MonoBehaviour
 
         timeCount += Time.deltaTime;  //最後のフレームからの経過時間を加算
 
-        if (timeCount >= 0 && timeCount <= 1f)
+        if (timeCount >= (0 + plusCount) && (timeCount < 0.6f + plusCount))
         {
             // 速度_velocityで移動する（ローカル座標）
-            transform.localPosition += _velocity_y * Time.deltaTime;
+            transform.localPosition += _velocity_x * Time.deltaTime;
 
         }
-        if (timeCount >= 2f && timeCount <= 3f)
+        if (timeCount >= (1.0f)  && timeCount <= (1.6f + plusCount))
         {
             // 速度_velocityで移動する（ローカル座標）
-            transform.localPosition -= _velocity_y * Time.deltaTime;
+            transform.localPosition -= _velocity_x * Time.deltaTime;
         }
-        if (timeCount >= 4f)
+        if (timeCount >= (1.9f))
         {
             timeCount = 0;
         }
-        
+
     }
 }
