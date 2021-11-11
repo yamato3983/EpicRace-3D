@@ -151,7 +151,7 @@ public class CPU_move1 : MonoBehaviour
                 
                     walkSpeed = 0;
                     //2ïbå„Ç…Callä÷êîÇé¿çsÇ∑ÇÈ
-                    Invoke("Call", 2f);
+                    Invoke("Call", 5f);
 
                     break;
 
