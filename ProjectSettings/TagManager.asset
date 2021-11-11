@@ -35,6 +35,8 @@ TagManager:
   - judgeBrigge
   - Roller
   - Respawn4
+  - BlockBar
+  - Gate
   layers:
   - Default
   - TransparentFX
