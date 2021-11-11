@@ -139,8 +139,8 @@ public class CPU_move1 : MonoBehaviour
     //タグの判定
     private void OnTriggerEnter(Collider other)
     {
-        //2パターンの処理(0～5)
-        int value = Random.Range(0, 2);
+        //2パターンの処理(0～1)
+        int value = 0; //Random.Range(0, 2);
         //ギミックの通過判定
         if (other.tag == "judge")
         {
@@ -155,30 +155,28 @@ public class CPU_move1 : MonoBehaviour
 
                     break;
 
-                //進行しない
-                /*case 1:
+                //進行する
+                case 1:
+                    walkSpeed = 9;
+
+                    break;
+            }
+        }
+
+        //ギミックの通過判定
+        if (other.tag == "judge2")
+        {
+            int value1 = Random.Range(0, 2);
+            switch (value1)
+            {
+                //止める
+                case 0:
+
                     walkSpeed = 0;
                     //2秒後にCall関数を実行する
-                    Invoke("Call", 2.5f);
-                    break;
-
-                //進行しない
-                case 2:
-
-                    walkSpeed = 0;
-                    //3秒後にCall関数を実行する
                     Invoke("Call", 3f);
 
                     break;
-
-                //進行しない
-                case 3:
-               
-                    walkSpeed = 0;
-                    //2秒後にCall関数を実行する
-                    Invoke("Call", 3.5f);
-
-                    break;*/
 
                 //進行する
                 case 1:
@@ -187,7 +185,6 @@ public class CPU_move1 : MonoBehaviour
                     break;
             }
         }
-
         //死亡ゾーンに入った時の処理(ギミックの1番目)
         if (other.tag == "Dead")
         {
@@ -235,6 +232,6 @@ public class CPU_move1 : MonoBehaviour
     //ObjectDistance用の関数
     public void Speed()
     {
-        walkSpeed = 9;
+        walkSpeed = 11;
     }
 }

@@ -118,14 +118,13 @@ public class CPU_move02 : MonoBehaviour
     //タグの判定
     private void OnTriggerEnter(Collider other)
     {
-        //2パターンの処理(0～5)
-        int value = Random.Range(0, 5);
 
         //ギミックの通過判定
         if (other.tag == "judge")
         {
-            juage = true;
-
+            //juage = true;
+            //2パターンの処理(0～5)
+            int value = Random.Range(0, 3);
             switch (value)
             {
                 //止める
@@ -154,7 +153,7 @@ public class CPU_move02 : MonoBehaviour
                     break;
 
                 //進行しない
-                case 3:
+                /*case 3:
                 
                     walkSpeed = 0;
                     //2秒後にCall関数を実行する
@@ -168,12 +167,8 @@ public class CPU_move02 : MonoBehaviour
                
                     walkSpeed = 7;
 
-                    break;
+                    break;*/
             }
-        }
-        if (other.tag != "judge")
-        {
-            juage = false;
         }
 
         //死亡ゾーンに入った時の処理(ギミックの1番目)簡単
@@ -231,6 +226,6 @@ public class CPU_move02 : MonoBehaviour
 
     public void Speed()
     {
-        walkSpeed = 5;
+        walkSpeed = 7;
     }
 }
