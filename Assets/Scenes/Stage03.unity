@@ -2361,7 +2361,6 @@ GameObject:
   - component: {fileID: 969282096}
   - component: {fileID: 969282095}
   - component: {fileID: 969282094}
-  - component: {fileID: 969282093}
   m_Layer: 0
   m_Name: JumpPad_CPU (2)
   m_TagString: jump
@@ -2383,19 +2382,6 @@ Transform:
   m_Father: {fileID: 659826109}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &969282093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 969282091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70cf3c90e4c9ed941a53d4e6cd99cef9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpForce: 11.2
 --- !u!114 &969282094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2408,7 +2394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a54cda4447485d642b6ee442e90a2442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 0.2
+  jumpForce: 5
 --- !u!135 &969282095
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5149,7 +5135,6 @@ GameObject:
   - component: {fileID: 2045963882}
   - component: {fileID: 2045963881}
   - component: {fileID: 2045963880}
-  - component: {fileID: 2045963879}
   m_Layer: 0
   m_Name: JumpPad_CPU (1)
   m_TagString: jump
@@ -5171,19 +5156,6 @@ Transform:
   m_Father: {fileID: 659826109}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2045963879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2045963877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70cf3c90e4c9ed941a53d4e6cd99cef9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpForce: 11.2
 --- !u!114 &2045963880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5196,7 +5168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a54cda4447485d642b6ee442e90a2442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 0.2
+  jumpForce: 5
 --- !u!135 &2045963881
 SphereCollider:
   m_ObjectHideFlags: 0
