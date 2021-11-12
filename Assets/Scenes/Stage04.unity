@@ -4526,7 +4526,6 @@ GameObject:
   - component: {fileID: 1147434380}
   - component: {fileID: 1147434379}
   - component: {fileID: 1147434378}
-  - component: {fileID: 1147434377}
   m_Layer: 0
   m_Name: JumpPad_CPU
   m_TagString: jump
@@ -4534,19 +4533,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1147434377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1147434376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70cf3c90e4c9ed941a53d4e6cd99cef9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpForce: 11.2
 --- !u!114 &1147434378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4559,7 +4545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a54cda4447485d642b6ee442e90a2442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 0.2
+  jumpForce: 5
 --- !u!135 &1147434379
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4910,7 +4896,6 @@ GameObject:
   - component: {fileID: 1194603560}
   - component: {fileID: 1194603559}
   - component: {fileID: 1194603558}
-  - component: {fileID: 1194603557}
   m_Layer: 0
   m_Name: JumpPad_CPU (1)
   m_TagString: jump
@@ -4918,19 +4903,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1194603557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1194603556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70cf3c90e4c9ed941a53d4e6cd99cef9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpForce: 11.2
 --- !u!114 &1194603558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4943,7 +4915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a54cda4447485d642b6ee442e90a2442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 0.2
+  jumpForce: 5
 --- !u!135 &1194603559
 SphereCollider:
   m_ObjectHideFlags: 0
