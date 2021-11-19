@@ -86,15 +86,14 @@ public class PlayerController5 : MonoBehaviour
             flg = 0;
         }
 
-        if (collision.gameObject.tag == "Dead_02")
+        if (collision.gameObject.tag == "Roller")
         {
-            Debug.Log("死んだ！！3");
+            Debug.Log("死んだ！！1");
             this.gameObject.SetActive(false);
-            Player.transform.position = new Vector3(tmp2.x, tmp2.y, tmp2.z);
+            Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
             Dead = true;
             flg = 0;
         }
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -128,10 +127,9 @@ public class PlayerController5 : MonoBehaviour
             tmp = tmp2;
         }
 
-        if (other.gameObject.tag == "EndGimmick")
+        if (other.gameObject.tag == "jump")
         {
-            Debug.Log("EndGimmickにふれた");
-            Cflg = false;
+            Debug.Log("jumpに触れた");
         }
     }
 
