@@ -15,6 +15,8 @@ public class GimmicGate : MonoBehaviour
     //時間カウント
     private float timeCount;
 
+    public bool GateFlag = false;
+
     private void Start()
     {
         timeCount = 0;
@@ -25,18 +27,33 @@ public class GimmicGate : MonoBehaviour
 
         timeCount += Time.deltaTime;  //最後のフレームからの経過時間を加算
 
-        if (timeCount >= (0 + plusCount) && (timeCount < 0.6f + plusCount))
+        if (timeCount >= (0 + plusCount) && (timeCount < 0.8f + plusCount))
         {
+
+            //GateFlag = false;
+
             // 速度_velocityで移動する（ローカル座標）
             transform.localPosition += _velocity_x * Time.deltaTime;
 
+            GateFlag = true;
+
         }
-        if (timeCount >= (1.0f)  && timeCount <= (1.6f + plusCount))
+        if(timeCount >= 0.8f && timeCount <= 1.2f)
+        {
+            GateFlag = true;
+        }
+        if (timeCount >= (1.2f)  && timeCount <= (2.0f + plusCount))
         {
             // 速度_velocityで移動する（ローカル座標）
             transform.localPosition -= _velocity_x * Time.deltaTime;
+
+            GateFlag = false;
         }
-        if (timeCount >= (1.9f))
+        if(timeCount >= 2.0f && timeCount <= 2.4f)
+        {
+            GateFlag = false;
+        }
+        if (timeCount >= (2.4f))
         {
             timeCount = 0;
         }
