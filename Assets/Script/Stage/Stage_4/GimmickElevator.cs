@@ -17,6 +17,8 @@ public class GimmickElevator : MonoBehaviour
 
     Vector3 objPosition; // オブジェクトの位置を記録
 
+    public bool LiftFlag = true; //true:通れる false:通れない
+
     private void Start()
     {
         timeCount = 0;
@@ -32,11 +34,27 @@ public class GimmickElevator : MonoBehaviour
             // 速度_velocityで移動する（ローカル座標）
             transform.localPosition += _velocity_y * Time.deltaTime;
 
+            //通れない
+            LiftFlag = false;
+
+        }
+        if(timeCount >=1f && timeCount <= 2f)
+        {
+            //通れる
+            LiftFlag = true;
         }
         if (timeCount >= 2f && timeCount <= 3f)
         {
             // 速度_velocityで移動する（ローカル座標）
             transform.localPosition -= _velocity_y * Time.deltaTime;
+
+            //通れない
+            LiftFlag = false;
+        }
+        if(timeCount>= 3f && timeCount<= 4f)
+        {
+            //通れる
+            LiftFlag = true;
         }
         if (timeCount >= 4f)
         {
