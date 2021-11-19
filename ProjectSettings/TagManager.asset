@@ -37,6 +37,7 @@ TagManager:
   - Respawn4
   - BlockBar
   - Gate
+  - Task
   layers:
   - Default
   - TransparentFX
