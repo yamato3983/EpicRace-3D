@@ -37,6 +37,9 @@ TagManager:
   - Respawn4
   - BlockBar
   - Gate
+  - Gimmick_Conveyer_2
+  - Gimmick_Move
+  - RollBar
   layers:
   - Default
   - TransparentFX
