@@ -54,7 +54,7 @@ public class GimmickElevator : MonoBehaviour
         if(timeCount>= 3f && timeCount<= 4f)
         {
             //’Ê‚ê‚é
-            LiftFlag = true;
+            //LiftFlag = true;
         }
         if (timeCount >= 4f)
         {
