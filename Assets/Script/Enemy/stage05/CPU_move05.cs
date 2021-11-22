@@ -35,6 +35,9 @@ public class CPU_move05 : MonoBehaviour
 
     public float upForce = 50f; //上方向にかける力
 
+    GameObject GimmickElevator;
+    public GimmickElevator el1;
+
 
     //カウントダウン用
     GameObject GemeObject;
@@ -98,6 +101,7 @@ public class CPU_move05 : MonoBehaviour
 
         j_flg = false;
         dead = false;
+        Debug.Log("abc" + el1.LiftFlag);
     }
 
     private IEnumerator Dush()
@@ -116,14 +120,19 @@ public class CPU_move05 : MonoBehaviour
         {
             animator.SetFloat("Speed", 1.0f);
         }
+
+        if (walkSpeed == 0)
+        {
+            animator.SetFloat("Speed", 0.0f);
+        }
     }
 
     //タグの判定(Stay)
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
 
         //2パターンの処理(0～1)
-        int value = 0; //Random.Range(0, 2);
+        int value = Random.Range(0, 3);
         //ギミックの通過判定
         if (other.tag == "judge")
         {
@@ -133,15 +142,19 @@ public class CPU_move05 : MonoBehaviour
                 case 0:
 
                     walkSpeed = 0;
-                    //2秒後にCall関数を実行する
-                    Invoke("Call", 5f);
+                    //〇秒後にCall関数を実行する
+                    Invoke("Call", 6f);
 
                     break;
 
                 //進行する
                 case 1:
-                    walkSpeed = 9;
+                    walkSpeed = 0;
+                    Invoke("Call", 3f);
+                    break;
 
+                case 2:
+                    walkSpeed = 7;
                     break;
             }
         }
@@ -190,10 +203,44 @@ public class CPU_move05 : MonoBehaviour
         }
     }
 
-    //何秒後かに呼び出すための処理
-    void Call()
+    private void OnTriggerStay(Collider other)
     {
-        walkSpeed = 5.0f;
+        //リフトの通過判定
+        if (other.tag == "judge2")
+        {
+            switch (el1.LiftFlag)
+            {
+                case false:
+                    walkSpeed = 0;
+                    Debug.Log("abc1" + walkSpeed);
+                    break;
+
+                case true:
+                    walkSpeed = 2;
+                    Debug.Log("abc2" + walkSpeed);
+                    break;
+            }
+        }
+        //リフトが上昇してるとき
+        if (other.tag == "up")
+        {
+            switch (el1.LiftFlag)
+            {
+                case true:
+                    walkSpeed = 7;
+                    break;
+
+                case false:
+                    walkSpeed = 0;
+                    break;
+            }
+        }
+    }
+
+        //何秒後かに呼び出すための処理
+        void Call()
+    {
+        walkSpeed = 7.0f;
     }
 
     //復活のためのクールタイム用
