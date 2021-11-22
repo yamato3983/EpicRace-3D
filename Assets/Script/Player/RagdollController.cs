@@ -16,7 +16,7 @@ public class RagdollController : MonoBehaviour
     {
         foreach (Rigidbody rigidbody in ragdollRigidbodies)
         {
-            rigidbody.isKinematic = !isEnabled;
+            //rigidbody.isKinematic = !isEnabled;
             animator.enabled = !isEnabled;
         }
     }

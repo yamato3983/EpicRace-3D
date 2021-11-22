@@ -3,6 +3,7 @@ using UnityEngine.AI;
 using System.Collections;
 using UnityEngine.UI;
 
+
 public class PlayerController5 : MonoBehaviour
 {
     GameObject HP;
@@ -39,6 +40,8 @@ public class PlayerController5 : MonoBehaviour
 
     float speed;
 
+    Rigidbody[] ragdollRigidbodies;
+
     void Start()
     {
         //agent = GetComponent<NavMeshAgent>();
@@ -69,10 +72,11 @@ public class PlayerController5 : MonoBehaviour
         tmp = RP.transform.position;
         tmp2 = RP2.transform.position;
 
-        var agentRigidbody = GetComponent<Rigidbody>();
-        //RigidodyのKinematicをスタート時はOFFにする
-        agentRigidbody.isKinematic = false;
+        ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();
+        
     }
+
+    
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -93,6 +97,10 @@ public class PlayerController5 : MonoBehaviour
             Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
             Dead = true;
             flg = 0;
+        }
+        if (collision.gameObject.tag == "BlockBar")
+        {
+            Debug.Log("Hit BlockBar");
         }
     }
 
