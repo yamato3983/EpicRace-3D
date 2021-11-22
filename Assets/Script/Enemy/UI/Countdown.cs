@@ -9,7 +9,11 @@ public class Countdown : MonoBehaviour
 	public Text message;
 	public AudioClip sound1;
 	AudioSource audioSource;
-
+	private Sprite sprite;
+	public Image image;
+	public Image image1;
+	public Image image2;
+	
 
 	public float totalTime;
 	int seconds;
@@ -35,22 +39,50 @@ public class Countdown : MonoBehaviour
 		
 		seconds = (int)totalTime;
 		timerText.text = seconds.ToString();
+		
 
 		//2秒以上はスタートフラグはfalseにしてる
-		if(totalTime > 1)
+		/*if (totalTime == 3)
         {
+			sprite = Resources.Load<Sprite>("3");
+			image = this.GetComponent<Image>();
+			image.sprite = sprite;
 			sound = true;
 			startflg = false;
 		}
+
+		//2秒以上はスタートフラグはfalseにしてる
+		if (totalTime == 2)
+		{
+			sprite = Resources.Load<Sprite>("2");
+			image = this.GetComponent<Image>();
+			image.sprite = sprite;
+			sound = true;
+			startflg = false;
+		}
+
 		//0のときに画面にGOという文字を出したいため/フラグはtrue
+		if (totalTime == 1)
+		{
+			sprite = Resources.Load<Sprite>("1");
+			image = this.GetComponent<Image>();
+			image.sprite = sprite;
+			timerText.text = "GO";
+			startflg = true;
+		}*/
+
+		if (totalTime >= 3)
+		{
+			sound = true;
+			startflg = false;
+		}
 		if (totalTime <= 1)
 		{
 			timerText.text = "GO";
 			startflg = true;
 		}
-
-		//GOの文字が出た後にtextの文字を消す
-		if (totalTime <= 0)
+			//GOの文字が出た後にtextの文字を消す
+			if (totalTime <= 0)
 		{
 			totalTime = 0;
 			timerText.text = "";
