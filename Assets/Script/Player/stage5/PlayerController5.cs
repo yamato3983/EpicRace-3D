@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
 using UnityEngine.UI;
-
+[RequireComponent(typeof(Animator))]
 
 public class PlayerController5 : MonoBehaviour
 {
@@ -73,10 +73,33 @@ public class PlayerController5 : MonoBehaviour
         tmp2 = RP2.transform.position;
 
         ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();
+        SetRagdoll(false);
+        
+
+    }
+
+    void SetRagdoll(bool isEnabled)
+    {
+        foreach (Rigidbody rigidbody in ragdollRigidbodies)
+        {
+            //rigidbody.isKinematic = !isEnabled;
+            animator.enabled = !isEnabled;
+        }
+    }
+    private IEnumerator Test()
+    {
+        SetRagdoll(true);
+        flg = 0;
+        yield return new WaitForSeconds(1.5f);
+        SetRagdoll(false);
+        animator.enabled = true;
+        this.gameObject.SetActive(false);
+        Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
+        Dead = true;
         
     }
 
-    
+
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -88,6 +111,7 @@ public class PlayerController5 : MonoBehaviour
             Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
             Dead = true;
             flg = 0;
+            SetRagdoll(false);
         }
 
         if (collision.gameObject.tag == "Roller")
@@ -101,6 +125,7 @@ public class PlayerController5 : MonoBehaviour
         if (collision.gameObject.tag == "BlockBar")
         {
             Debug.Log("Hit BlockBar");
+            StartCoroutine(Test());
         }
     }
 
