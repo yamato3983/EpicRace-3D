@@ -38,6 +38,7 @@ TagManager:
   - BlockBar
   - Gate
   - Task
+  - Lift
   layers:
   - Default
   - TransparentFX

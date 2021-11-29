@@ -1908,7 +1908,7 @@ GameObject:
   - component: {fileID: 620558830}
   m_Layer: 0
   m_Name: Elevato_1
-  m_TagString: Untagged
+  m_TagString: Lift
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3326,7 +3326,7 @@ GameObject:
   - component: {fileID: 1326317148}
   m_Layer: 0
   m_Name: Elevato_2
-  m_TagString: Untagged
+  m_TagString: Lift
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
