@@ -38,7 +38,6 @@ public class CPU_move05 : MonoBehaviour
     GameObject GimmickElevator;
     public GimmickElevator el1;
 
-
     //カウントダウン用
     GameObject GemeObject;
     public Countdown script_t1;
@@ -131,34 +130,6 @@ public class CPU_move05 : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        //2パターンの処理(0～1)
-        int value = Random.Range(0, 3);
-        //ギミックの通過判定
-        if (other.tag == "judge")
-        {
-            switch (value)
-            {
-                //止める
-                case 0:
-
-                    walkSpeed = 0;
-                    //〇秒後にCall関数を実行する
-                    Invoke("Call", 6f);
-
-                    break;
-
-                //進行する
-                case 1:
-                    walkSpeed = 0;
-                    Invoke("Call", 3f);
-                    break;
-
-                case 2:
-                    walkSpeed = 7;
-                    break;
-            }
-        }
-
         if (other.tag == "jump")
         {
             if (jump_script.Gimmick_Jump == true)
@@ -205,40 +176,91 @@ public class CPU_move05 : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        //2パターンの処理(0～1)
+        int value = Random.Range(0, 3);
+        //ギミックの通過判定
+        if (other.tag == "judge")
+        {
+            switch (value)
+            {
+                //止める
+                case 0:
+
+                    walkSpeed = 0;
+                    //〇秒後にCall関数を実行する
+                    Invoke("Call", 6f);
+
+                    break;
+
+                //進行する
+                case 1:
+                    walkSpeed = 7;
+                    break;
+
+                case 2:
+                    walkSpeed = 0;
+                    Invoke("Call", 2f);
+                    break;
+            }
+        }
         //リフトの通過判定
         if (other.tag == "judge2")
         {
             switch (el1.LiftFlag)
             {
                 case false:
-                    walkSpeed = 0;
-                    Debug.Log("abc1" + walkSpeed);
+                    walkSpeed = 4f;
+
                     break;
 
                 case true:
-                    walkSpeed = 2;
-                    Debug.Log("abc2" + walkSpeed);
+                    walkSpeed = 0;
+
                     break;
             }
         }
-        //リフトが上昇してるとき
-        if (other.tag == "up")
+        //2パターンの処理(0～1)
+        int value1 = 0;//Random.Range(0, 3);
+        //ギミックの通過判定
+        if (other.tag == "judge3")
         {
-            switch (el1.LiftFlag)
+            switch (value1)
             {
-                case true:
-                    walkSpeed = 7;
+                //止める
+                case 0:
+
+                    walkSpeed = 0;
+                    //〇秒後にCall関数を実行する
+                    Invoke("Call", 6.5f);
+
                     break;
 
-                case false:
+                //進行する
+                case 1:
                     walkSpeed = 0;
+                    Invoke("Call", 0.5f);
+                    break;
+
+                case 2:
+                    walkSpeed = 0;
+                    Invoke("Call", 3.5f);
                     break;
             }
+        }
+        
+        //リフトが上昇してるとき
+        if (other.tag == "up" && el1.LiftFlag == true)
+        {
+            walkSpeed = 3f;
+        }
+        if (other.tag == "up" && el1.LiftFlag == false)
+        {
+            walkSpeed = 0;
         }
     }
 
-        //何秒後かに呼び出すための処理
-        void Call()
+    //何秒後かに呼び出すための処理
+    void Call()
     {
         walkSpeed = 7.0f;
     }
@@ -261,5 +283,4 @@ public class CPU_move05 : MonoBehaviour
         Enemy.SetActive(true);
         transform.position = new Vector3(pos3.x, pos3.y, pos3.z);
     }
-
 }
