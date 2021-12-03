@@ -2,48 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Respawn5 : MonoBehaviour
+public class Player_Respawn6 : MonoBehaviour
 {
-    GameObject Player5;
-    PlayerController5 PLScript5;
+    GameObject Player6;
+    PlayerController6 PLScript6;
     private float time2 = 0.0f;
     Rigidbody rb4;
 
     // Start is called before the first frame update
     void Start()
     {
-        Player5 = GameObject.Find("unitychan");
-        PLScript5 = Player5.GetComponent<PlayerController5>();
-        rb4 = PLScript5.rb;
+        Player6 = GameObject.Find("unitychan");
+        PLScript6 = Player6.GetComponent<PlayerController6>();
+        rb4 = PLScript6.rb;
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (PLScript5.Dead == true)
+        if (PLScript6.Dead == true)
         {
             time2 += Time.deltaTime;
             if (time2 >= 0.5f)
             {
                 time2 = 0.0f;
 
-                Player5.gameObject.SetActive(true);
+                Player6.gameObject.SetActive(true);
 
-                PLScript5.Dead = false;
+                PLScript6.Dead = false;
             }
         }
-        if (PLScript5.Rag == true)
+        if (PLScript6.Rag == true)
         {
             time2 += Time.deltaTime;
             if (time2 >= 2.0f)
             {
                 time2 = 0.0f;
 
-                Player5.gameObject.SetActive(true);
+                Player6.gameObject.SetActive(true);
 
-                PLScript5.Dead = false;
-                PLScript5.Rag = false;
+                PLScript6.Dead = false;
+                PLScript6.Rag = false;
             }
         }
 

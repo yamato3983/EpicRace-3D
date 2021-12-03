@@ -33,6 +33,19 @@ public class Player_Respawn4 : MonoBehaviour
                 PLScript4.Dead = false;
             }
         }
+        if (PLScript4.Rag == true)
+        {
+            time2 += Time.deltaTime;
+            if (time2 >= 2.0f)
+            {
+                time2 = 0.0f;
+
+                Player4.gameObject.SetActive(true);
+
+                PLScript4.Dead = false;
+                PLScript4.Rag = false;
+            }
+        }
 
 
     }
