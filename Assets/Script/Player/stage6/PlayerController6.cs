@@ -4,7 +4,7 @@ using System.Collections;
 using UnityEngine.UI;
 [RequireComponent(typeof(Animator))]
 
-public class PlayerController5 : MonoBehaviour
+public class PlayerController6 : MonoBehaviour
 {
     GameObject HP;
     //imageのコンポーネント
@@ -44,7 +44,7 @@ public class PlayerController5 : MonoBehaviour
     float speed;
 
     Rigidbody[] ragdollRigidbodies;
-
+    // Start is called before the first frame update
     void Start()
     {
         speed = 7.0f;
@@ -78,6 +78,7 @@ public class PlayerController5 : MonoBehaviour
 
         ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();
         SetRagdoll(false);
+
     }
 
     void SetRagdoll(bool isEnabled)
@@ -99,9 +100,6 @@ public class PlayerController5 : MonoBehaviour
         Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
 
     }
-
-
-
     private void OnCollisionEnter(Collision collision)
     {
         var agentRigidbody = GetComponent<Rigidbody>();
@@ -146,8 +144,6 @@ public class PlayerController5 : MonoBehaviour
 
         if (other.tag == "Goal")
         {
-            //NavMeshAgent agent = GetComponent<NavMeshAgent>();
-            //agent.isStopped = true;
             Debug.Log("ゴーーール");
             Gflg = true;
         }

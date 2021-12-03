@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
 using UnityEngine.UI;
+[RequireComponent(typeof(Animator))]
 
 public class PlayerController4 : MonoBehaviour
 {
@@ -23,16 +24,9 @@ public class PlayerController4 : MonoBehaviour
 
     GameObject Player;
 
-    //PivotBridgeが入る変数
-    GameObject PB_A;
-    GameObject PB_B;
-    PivotAngle_Bridge_A PB_A_Script; //PivotAngle_Bridge_Aが入る変数
-    PivotAngle_Bridge_B PB_B_Script; //PivotAngle_Bridge_Bが入る変数
-
     [SerializeField]
     GameObject GoalLine_PL;	// 移動予定地のオブジェクト
-    //public Transform target = GameObject.Find("GoalLine_PL").transform;
-    //public NavMeshAgent agent;
+    
     int flg = 1;      //進むか止まるかのフラグ
 
     Vector3 tmp, tmp2, tmp3;//リスポーンポイントの座標が入る変数
@@ -41,7 +35,7 @@ public class PlayerController4 : MonoBehaviour
     public bool Gflg = false;
     public bool Dead = false;
     public bool Cflg = false;
-    
+    public bool Rag =false;
 
     public GameObject timer;
     public Countdown t1;
@@ -49,10 +43,10 @@ public class PlayerController4 : MonoBehaviour
 
     float speed;
 
+    Rigidbody[] ragdollRigidbodies;
+
     void Start()
     {
-        //agent = GetComponent<NavMeshAgent>();
-
         speed = 7.0f;
         HP = GameObject.Find("HP");
         gaugeCtrl = HP.GetComponent<Image>();
@@ -63,10 +57,7 @@ public class PlayerController4 : MonoBehaviour
 
         Player = GameObject.Find("unitychan");
 
-        //timer = GameObject.Find("Timer");
-        //t1 = timer.GetComponent<Countdown>();
         this.timeToEnableInputs = Time.time + 3.0f;
-
 
         // 自分に設定されているAnimatorコンポーネントを習得する
         this.animator = GetComponent<Animator>();
@@ -84,32 +75,29 @@ public class PlayerController4 : MonoBehaviour
         var agentRigidbody = GetComponent<Rigidbody>();
         //RigidodyのKinematicをスタート時はOFFにする
         agentRigidbody.isKinematic = false;
+
+        ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();
+        SetRagdoll(false);
     }
 
-    //private void OnTriggerStay(Collider other)
-    //{
-        
-
-    //    var agentRigidbody = GetComponent<Rigidbody>();
-
-    //    if (other.tag == "Dead")
-    //    {
-    //        Debug.Log("死んだ！！");
-    //        this.gameObject.SetActive(false);
-    //        Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
-    //        Dead = true;
-
-    //        flg = 0;
-    //    }
-    //    if (other.tag == "Dead")
-    //    {
-    //        Debug.Log("死んだ！！");
-    //        this.gameObject.SetActive(false);
-    //        Player.transform.position = new Vector3(tmp2.x, tmp2.y, tmp2.z);
-    //        Dead = true;
-    //        flg = 0;
-    //    }
-    //}
+    void SetRagdoll(bool isEnabled)
+    {
+        foreach (Rigidbody rigidbody in ragdollRigidbodies)
+        {
+            //rigidbody.isKinematic = !isEnabled;
+            animator.enabled = !isEnabled;
+        }
+    }
+    private IEnumerator Test()
+    {
+        Rag = true;
+        SetRagdoll(true);
+        yield return new WaitForSeconds(1.0f);
+        SetRagdoll(false);
+        animator.enabled = true;
+        this.gameObject.SetActive(false);
+        Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -121,15 +109,9 @@ public class PlayerController4 : MonoBehaviour
             Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
             Dead = true;
             flg = 0;
+            SetRagdoll(false);
         }
-        if (collision.gameObject.tag == "Hammer")
-        {
-            Debug.Log("死んだ！！2");
-            this.gameObject.SetActive(false);
-            Player.transform.position = new Vector3(tmp2.x, tmp2.y, tmp2.z);
-            Dead = true;
-            flg = 0;
-        }
+        
         if (collision.gameObject.tag == "Dead_02")
         {
             Debug.Log("死んだ！！3");
@@ -154,6 +136,11 @@ public class PlayerController4 : MonoBehaviour
             flg = 0;
 
         }
+        if (other.gameObject.tag == "Hammer")
+        {
+            Debug.Log("死んだ！！Hammer");
+            StartCoroutine(Test());
+        }
 
         if (other.gameObject.tag == "Dead_02")
         {
@@ -175,6 +162,7 @@ public class PlayerController4 : MonoBehaviour
         if (other.gameObject.tag == "Respawn2")
         {
             Debug.Log("Respawn2にふれた");
+            tmp = tmp2;
             Cflg = true;
         }
 
@@ -200,8 +188,7 @@ public class PlayerController4 : MonoBehaviour
                     if (Input.GetMouseButton(0))
                     {
                         //マウスが押されているときはゲージを減らし止まる
-                        gaugeCtrl.fillAmount -= 0.0013f;
-                        //gaugeCtrl.fillAmount -= 0.0065f;
+                        gaugeCtrl.fillAmount -= 0.0013f; 
                         flg = 0;
                     }
 
@@ -209,10 +196,11 @@ public class PlayerController4 : MonoBehaviour
                     {
                         //マウスが押されていないときはゲージの回復
                         gaugeCtrl.fillAmount += 0.0005f;
-                        // RunからWaitに遷移する
-                        //this.animator.SetBool(key_isRun, false);
-                        //gaugeCtrl.fillAmount += 0.0025f;
                         flg = 1;
+                    }
+                    if (Rag == true)
+                    {
+                        flg = 0;
                     }
                 }
                 else if (gaugeCtrl.fillAmount <= 0.0f)
@@ -227,15 +215,13 @@ public class PlayerController4 : MonoBehaviour
                     // WaitからRunに遷移する
                     this.animator.SetBool(key_isRun, true);
                     Player.transform.position += transform.forward * speed * Time.deltaTime;
-                    //agent.GetComponent<NavMeshAgent>().isStopped = false;
-                    //agent.SetDestination(GoalLine_PL.transform.position);
+                    
                 }
                 else if (flg == 0)
                 {
                     // RunからWaitに遷移する
                     this.animator.SetBool(key_isRun, false);
-                    //agentRigidbody.velocity = Vector3.zero;
-                    //agent.GetComponent<NavMeshAgent>().isStopped = true;
+                    
                 }
             }
             if (Dead == true)
