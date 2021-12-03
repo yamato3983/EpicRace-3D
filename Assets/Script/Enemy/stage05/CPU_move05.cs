@@ -18,7 +18,7 @@ public class CPU_move05 : MonoBehaviour
 
     //　ジャンプ力
     [SerializeField]
-    private float jumpPower = 2.0f;
+    private float jumpPower = 500.0f;
 
     //　移動方向
     private Vector3 direction;
@@ -26,6 +26,12 @@ public class CPU_move05 : MonoBehaviour
     [SerializeField]
     public Rigidbody rb;
 
+    GameObject Gate_1;
+    public GimmicGate gate_script;
+    GameObject Gate_3;
+    public GimmicGate gate_script3;
+    GameObject Gate_6;
+    public GimmicGate gate_script6;
 
     //ジャンプ台用のスクリプト
     GameObject JumpPad;
@@ -129,8 +135,38 @@ public class CPU_move05 : MonoBehaviour
     //タグの判定(Stay)
     private void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "judge4")
+        {
+            Invoke("Call", 3f);
+            /*if(gate_script.GateFlag == true)
+            {
+                walkSpeed = 0f;
+            }
+            if (gate_script.GateFlag == false)
+            {
+                walkSpeed = 7f;
+            }
 
-        if (other.tag == "jump")
+            if (gate_script3.GateFlag == true)
+            {
+                walkSpeed = 7f;
+            }
+            if (gate_script3.GateFlag == false)
+            {
+                walkSpeed = 0f;
+            }
+
+            if (gate_script6.GateFlag == true)
+            {
+                walkSpeed = 7f;
+            }
+            if (gate_script6.GateFlag == false)
+            {
+                walkSpeed = 0f;
+            }*/
+        }
+
+            if (other.tag == "jump")
         {
             if (jump_script.Gimmick_Jump == true)
             {
@@ -219,8 +255,24 @@ public class CPU_move05 : MonoBehaviour
                     break;
             }
         }
+        //リフトの通過判定
+        if (other.tag == "up2")
+        {
+            switch (el1.LiftFlag)
+            {
+                case false:
+                    walkSpeed = 7f;
+
+                    break;
+
+                case true:
+                    walkSpeed = 0;
+
+                    break;
+            }
+        }
         //2パターンの処理(0～1)
-        int value1 = 0;//Random.Range(0, 3);
+        int value1 = 1;//Random.Range(0, 3);
         //ギミックの通過判定
         if (other.tag == "judge3")
         {
@@ -238,7 +290,7 @@ public class CPU_move05 : MonoBehaviour
                 //進行する
                 case 1:
                     walkSpeed = 0;
-                    Invoke("Call", 0.5f);
+                    Invoke("Call", 0.2f);
                     break;
 
                 case 2:

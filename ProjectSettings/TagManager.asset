@@ -40,6 +40,10 @@ TagManager:
   - Task
   - up
   - up2
+  - RollBar
+  - Gimmick_Conveyer_2
+  - Gimmick_Move
+  - judge4
   layers:
   - Default
   - TransparentFX
