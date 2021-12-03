@@ -33,20 +33,8 @@ public class Gimmick_Move_plus: MonoBehaviour
             // 速度_velocityで移動する（ローカル座標）
             transform.localPosition -= _velocity * Time.deltaTime;
         }
-        if (timeCount >= 1.5f && timeCount <= 2.1f)
-        {
-            // 速度_velocityで移動する（ローカル座標）
-            transform.localPosition -= _velocity * Time.deltaTime;
-        }
 
-
-        if (timeCount >= 2.4f && timeCount <= 3.0f)
-        {
-            // 速度_velocityで移動する（ローカル座標）
-            transform.localPosition += _velocity * Time.deltaTime;
-        }
-
-        if(timeCount >= 3f)
+        if(timeCount >= 1.8f)
         {
             timeCount = 0;
         }
