@@ -134,6 +134,11 @@ public class PlayerController6 : MonoBehaviour
             Debug.Log("死んだ！！Roller");
             StartCoroutine(Test());
         }
+        if (collision.gameObject.tag == "RollBar")
+        {
+            Debug.Log("死んだ！！RollBar");
+            StartCoroutine(Test());
+        }
         if (collision.gameObject.tag == "BlockBar")
         {
             Debug.Log("Hit BlockBar");

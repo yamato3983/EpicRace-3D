@@ -690,6 +690,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: yokoaridance
       objectReference: {fileID: 0}
+    - target: {fileID: 2071384663845687742, guid: c206b8212a417c34ba9ce10633e232e8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c206b8212a417c34ba9ce10633e232e8, type: 3}
 --- !u!114 &192345181 stripped
@@ -2211,12 +2216,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7059533552408654990, guid: 04c1824fc3492df41a60f8e26a86a679, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 04c1824fc3492df41a60f8e26a86a679, type: 3}
---- !u!4 &612899828 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1726244027705494276, guid: c206b8212a417c34ba9ce10633e232e8,
-    type: 3}
-  m_PrefabInstance: {fileID: 192345180}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &624920778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3338,7 +3337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100338, guid: 40046bae76ac54bffb59f14f47d9ba1b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100338, guid: 40046bae76ac54bffb59f14f47d9ba1b, type: 3}
       propertyPath: m_TagString
@@ -3350,7 +3349,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400100, guid: 40046bae76ac54bffb59f14f47d9ba1b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.65
+      value: 19.38
       objectReference: {fileID: 0}
     - target: {fileID: 400100, guid: 40046bae76ac54bffb59f14f47d9ba1b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3551,8 +3550,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7ec19dc21a50e3449594bfb2ccf5690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RP: {fileID: 0}
-  RP2: {fileID: 0}
+  RP: {fileID: 1839777154}
+  RP2: {fileID: 647285699}
   GoalLine_PL: {fileID: 5324518}
   rb: {fileID: 0}
   Gflg: 0
@@ -4607,7 +4606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb979a0722aa434aacdad8c7a5e6cf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 612899828}
+  target: {fileID: 1115094371}
   smoothing: 5
   angle: 0
   step: 0
@@ -5261,7 +5260,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1839777154}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a1fac7f76274ed45ab330448a3f3e7c, type: 3}
+  m_Script: {fileID: 11500000, guid: 52ac4a5348062c644a00fd3a74531681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1879086266

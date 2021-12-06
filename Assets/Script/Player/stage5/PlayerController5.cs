@@ -20,7 +20,7 @@ public class PlayerController5 : MonoBehaviour
 
     public GameObject RP;
     public GameObject RP2;
-    public GameObject RP3;
+    //public GameObject RP3;
 
     GameObject Player;
 
@@ -67,10 +67,10 @@ public class PlayerController5 : MonoBehaviour
         //リスポーン一ポイントのデータを受け取る
         RP = GameObject.Find("RespawnPoint");
         RP2 = GameObject.Find("RespawnPoint2");
-        RP3 = GameObject.Find("RespawnPoint3");
+        //RP3 = GameObject.Find("RespawnPoint3");
         tmp = RP.transform.position;
         tmp2 = RP2.transform.position;
-        tmp3 = RP3.transform.position;
+        //tmp3 = RP3.transform.position;
 
         var agentRigidbody = GetComponent<Rigidbody>();
         //RigidodyのKinematicをスタート時はOFFにする
@@ -120,6 +120,7 @@ public class PlayerController5 : MonoBehaviour
             Debug.Log("死んだ！！Roller");
             StartCoroutine(Test());
         }
+        
         if (collision.gameObject.tag == "BlockBar")
         {
             Debug.Log("Hit BlockBar");

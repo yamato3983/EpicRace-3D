@@ -20,20 +20,30 @@ public class Player_Respawn3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //bool PDead = PLScript.Dead;
         if (PLScript3.Dead == true)
         {
             time2 += Time.deltaTime;
             if (time2 >= 0.5f)
             {
                 time2 = 0.0f;
-                //PLScript3.agent.enabled = true;
+
                 Player3.gameObject.SetActive(true);
-                //PDead = false;
+
                 PLScript3.Dead = false;
             }
         }
+        if (PLScript3.Rag == true)
+        {
+            time2 += Time.deltaTime;
+            if (time2 >= 2.0f)
+            {
+                time2 = 0.0f;
 
+                Player3.gameObject.SetActive(true);
 
+                PLScript3.Dead = false;
+                PLScript3.Rag = false;
+            }
+        }
     }
 }

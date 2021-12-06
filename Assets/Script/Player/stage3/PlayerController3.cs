@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
 using UnityEngine.UI;
+[RequireComponent(typeof(Animator))]
 
 public class PlayerController3 : MonoBehaviour
 {
@@ -43,6 +44,7 @@ public class PlayerController3 : MonoBehaviour
     public bool Gflg = false;
     public bool Dead = false;
     public bool Cflg = false;
+    public bool Rag = false;
 
 
     public GameObject timer;
@@ -50,6 +52,7 @@ public class PlayerController3 : MonoBehaviour
     private float timeToEnableInputs;
 
     float speed;
+    Rigidbody[] ragdollRigidbodies;
 
     void Start()
     {
@@ -86,9 +89,31 @@ public class PlayerController3 : MonoBehaviour
         var agentRigidbody = GetComponent<Rigidbody>();
         //RigidodyのKinematicをスタート時はOFFにする
         agentRigidbody.isKinematic = false;
+
+        ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();
+        SetRagdoll(false);
     }
 
-    
+    void SetRagdoll(bool isEnabled)
+    {
+        foreach (Rigidbody rigidbody in ragdollRigidbodies)
+        {
+            //rigidbody.isKinematic = !isEnabled;
+            animator.enabled = !isEnabled;
+        }
+    }
+    private IEnumerator Test()
+    {
+        Rag = true;
+        SetRagdoll(true);
+        yield return new WaitForSeconds(1.0f);
+        SetRagdoll(false);
+        animator.enabled = true;
+        this.gameObject.SetActive(false);
+        Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
+
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         var agentRigidbody = GetComponent<Rigidbody>();
@@ -109,11 +134,8 @@ public class PlayerController3 : MonoBehaviour
         var agentRigidbody = GetComponent<Rigidbody>();
         if (other.gameObject.tag == "Hammer")
         {
-            Debug.Log("死んだ！！");
-            this.gameObject.SetActive(false);
-            Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
-            Dead = true;
-            flg = 0;
+            Debug.Log("死んだ！！Hammer");
+            StartCoroutine(Test());
         }
         if (other.tag == "Goal")
         {
@@ -125,19 +147,19 @@ public class PlayerController3 : MonoBehaviour
         
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        var agentRigidbody = GetComponent<Rigidbody>();
-        if (other.tag == "Hammer")
-        {
-            Debug.Log("死んだ！！");
-            this.gameObject.SetActive(false);
-            Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
-            Dead = true;
-            flg = 0;
-        }
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    var agentRigidbody = GetComponent<Rigidbody>();
+    //    if (other.tag == "Hammer")
+    //    {
+    //        Debug.Log("死んだ！！");
+    //        this.gameObject.SetActive(false);
+    //        Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
+    //        Dead = true;
+    //        flg = 0;
+    //    }
 
-    }
+    //}
 
 
 
@@ -168,6 +190,10 @@ public class PlayerController3 : MonoBehaviour
                         gaugeCtrl.fillAmount += 0.0005f;   
                         //gaugeCtrl.fillAmount += 0.0025f;
                         flg = 1;
+                    }
+                    if (Rag == true)
+                    {
+                        flg = 0;
                     }
                 }
                 else if (gaugeCtrl.fillAmount <= 0.0f)
