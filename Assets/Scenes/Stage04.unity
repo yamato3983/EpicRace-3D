@@ -3673,7 +3673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb378b493e3544247b6c0a725327b018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  script_p04: {fileID: 1808421474}
+  script_p04: {fileID: 1115094367}
   stage04: 0
 --- !u!114 &966370604
 MonoBehaviour:
@@ -4310,6 +4310,7 @@ MonoBehaviour:
   Gflg: 0
   Dead: 0
   Cflg: 0
+  Rag: 0
   timer: {fileID: 2052581378}
   t1: {fileID: 0}
 --- !u!1 &1117131001
@@ -7522,18 +7523,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1926113589}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1808421474 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8969947816389871600, guid: a32ba0f137d021347b4b6f04f8c449e4,
-    type: 3}
-  m_PrefabInstance: {fileID: 1926113589}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1808421473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d616e21e9a89bc4b936148021bb776d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1838226272
 PrefabInstance:
   m_ObjectHideFlags: 0

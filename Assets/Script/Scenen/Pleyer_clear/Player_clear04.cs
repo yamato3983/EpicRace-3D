@@ -13,7 +13,7 @@ public class Player_clear04 : MonoBehaviour
     }
     public void OnClickStartButton()
     {
-        SceneManager.LoadScene("Stage04");
+        SceneManager.LoadScene("Stage05");
     }
 
 }

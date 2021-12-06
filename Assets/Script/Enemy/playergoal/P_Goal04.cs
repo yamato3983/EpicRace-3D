@@ -7,7 +7,7 @@ public class P_Goal04 : MonoBehaviour
 {
     //NPCのスクリプト
     GameObject yokoaridance;
-    public YokoariController4 script_p04;
+    public PlayerController4 script_p04;
 
     public bool stage04;
 

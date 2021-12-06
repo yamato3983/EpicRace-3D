@@ -7,7 +7,7 @@ public class P_Goal03 : MonoBehaviour
 {
     //NPCのスクリプト
     GameObject unitychan;
-    public YokoariController3 script_p03;
+    public PlayerController3 script_p03;
 
     public bool stage03;
 

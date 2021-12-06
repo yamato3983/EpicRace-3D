@@ -76,9 +76,9 @@ public class CPU_move05 : MonoBehaviour
         velocity = Vector3.zero;
 
         //ÉäÉXÉ|Å[Éì
-        rp1 = GameObject.Find("RespawnCPU");
-        rp2 = GameObject.Find("RespawnCPU2");
-        rp3 = GameObject.Find("RespawnCPU3");
+        //rp1 = GameObject.Find("RespawnCPU");
+        //rp2 = GameObject.Find("RespawnCPU2");
+        //rp3 = GameObject.Find("RespawnCPU3");
 
         pos1 = rp1.transform.position;
         //pos2 = rp2.transform.position;
@@ -106,7 +106,6 @@ public class CPU_move05 : MonoBehaviour
 
         j_flg = false;
         dead = false;
-        Debug.Log("abc" + el1.LiftFlag);
     }
 
     private IEnumerator Dush()
