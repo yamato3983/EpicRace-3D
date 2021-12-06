@@ -100,6 +100,22 @@ public class PlayerController6 : MonoBehaviour
         Player.transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
 
     }
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "Gimmick_Conveyer")
+        {
+            speed = 10.0f;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Gimmick_Conveyer")
+        {
+            speed = 7.0f;
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         var agentRigidbody = GetComponent<Rigidbody>();
@@ -153,8 +169,13 @@ public class PlayerController6 : MonoBehaviour
             Debug.Log("Respawn2�ɂӂꂽ");
             tmp = tmp2;
         }
+        if (other.gameObject.tag == "Respawn4")
+        {
+            Debug.Log("Respawn3�ɂӂꂽ");
+            tmp = tmp3;
+        }
 
-        if (other.gameObject.tag == "jump")
+            if (other.gameObject.tag == "jump")
         {
             Debug.Log("jump�ɐG�ꂽ");
         }
