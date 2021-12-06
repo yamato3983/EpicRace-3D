@@ -21,6 +21,7 @@ public class PlayerController4 : MonoBehaviour
     public GameObject RP;
     public GameObject RP2;
     public GameObject RP3;
+    public GameObject RP4;
 
     GameObject Player;
 
@@ -29,7 +30,7 @@ public class PlayerController4 : MonoBehaviour
     
     int flg = 1;      //進むか止まるかのフラグ
 
-    Vector3 tmp, tmp2, tmp3;//リスポーンポイントの座標が入る変数
+    Vector3 tmp, tmp2, tmp3, tmp4;//リスポーンポイントの座標が入る変数
     public Rigidbody rb;
 
     public bool Gflg = false;
@@ -68,9 +69,11 @@ public class PlayerController4 : MonoBehaviour
         RP = GameObject.Find("RespawnPoint");
         RP2 = GameObject.Find("RespawnPoint2");
         RP3 = GameObject.Find("RespawnPoint3");
+        RP4 = GameObject.Find("RespawnPoint4");
         tmp = RP.transform.position;
         tmp2 = RP2.transform.position;
         tmp3 = RP3.transform.position;
+        tmp4 = RP4.transform.position;
 
         var agentRigidbody = GetComponent<Rigidbody>();
         //RigidodyのKinematicをスタート時はOFFにする
@@ -142,15 +145,6 @@ public class PlayerController4 : MonoBehaviour
             StartCoroutine(Test());
         }
 
-        if (other.gameObject.tag == "Dead_02")
-        {
-            Debug.Log("死んだ！！(回転");
-            this.gameObject.SetActive(false);
-            Player.transform.position = new Vector3(tmp2.x, tmp2.y, tmp2.z);
-            Dead = true;
-            flg = 0;
-        }
-
         if (other.tag == "Goal")
         {
             //NavMeshAgent agent = GetComponent<NavMeshAgent>();
@@ -162,15 +156,19 @@ public class PlayerController4 : MonoBehaviour
         if (other.gameObject.tag == "Respawn2")
         {
             Debug.Log("Respawn2にふれた");
-            tmp = tmp2;
-            Cflg = true;
+            tmp = tmp2;   
+        }
+        if (other.gameObject.tag == "Respawn3")
+        {
+            Debug.Log("Respawn3にふれた");
+            tmp = tmp3;
+        }
+        if (other.gameObject.tag == "Respawn4")
+        {
+            Debug.Log("Respawn4にふれた");
+            tmp = tmp4;
         }
 
-        if (other.gameObject.tag == "EndGimmick")
-        {
-            Debug.Log("EndGimmickにふれた");
-            Cflg = false;
-        }
     }
 
     void Update()

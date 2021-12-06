@@ -44,6 +44,7 @@ TagManager:
   - Gimmick_Conveyer_2
   - Gimmick_Move
   - judge4
+  - Respawn3
   layers:
   - Default
   - TransparentFX
