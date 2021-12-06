@@ -12,10 +12,19 @@ public class move06 : MonoBehaviour
     private Vector3 destination;
     [SerializeField]
     private float walkSpeed = 1.0f;
+
+    //　ジャンプ力
+    [SerializeField]
+    private float jumpPower = 15.0f;
+
     //　速度
     private Vector3 velocity;
     //　移動方向
     private Vector3 direction;
+
+    //ジャンプ台用のスクリプト
+    GameObject JumpPad;
+    public JumpPad jump_script;
 
     //カウントダウン用
     GameObject GemeObject;
@@ -40,9 +49,13 @@ public class move06 : MonoBehaviour
     // ターゲットオブジェクトの Transformコンポーネントを格納する変数
     public Transform target;
 
+    private bool move;
+    private bool judge;
+
 
     private bool isRespon = false;
 
+    private bool jump;
     public bool dead;
 
     //NPCがゴールをしたかどうか
@@ -62,11 +75,13 @@ public class move06 : MonoBehaviour
         velocity = Vector3.zero;
 
         //リスポーン
-       /* rp1 = GameObject.Find("RespawnCPU");
-        rp2 = GameObject.Find("RespawnCPU2");
-        pos1 = rp1.transform.position;
-        pos2 = rp2.transform.position;*/
+        /* rp1 = GameObject.Find("RespawnCPU");
+         rp2 = GameObject.Find("RespawnCPU2");
+         pos1 = rp1.transform.position;
+         pos2 = rp2.transform.position;*/
 
+        judge = false;
+        move = false;
         dead = false;
     }
 
@@ -93,7 +108,7 @@ public class move06 : MonoBehaviour
         //コンベアー用
         if (conflag == true)
         {
-            walkSpeed = 9.0f;
+            walkSpeed = 10.0f;
         }
         if (conflag == false)
         {
@@ -101,6 +116,17 @@ public class move06 : MonoBehaviour
 
         }
 
+        if (move == true)
+        {
+            this.gameObject.transform.Translate(0, 0, 0.035f);
+        }
+
+        if (judge == true && move == false)
+        {
+            walkSpeed = 0.0f;
+        }
+
+        
 
         // float current_speed = animator.GetFloat("Speed");
 
@@ -153,8 +179,21 @@ public class move06 : MonoBehaviour
     //タグの判定
     private void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "jump")
+        {
+            jump = true;
+        }
+        if (jump == true)
+        {
+            if (jump_script.Gimmick_Jump == true)
+            {
+                velocity.y += jumpPower;
+            }
+        }
+
         if (other.tag == "judge")
         {
+            judge = true;
             //2パターンの処理(0～1)
             int value = 1; //Random.Range(0, 2);
                            //ギミックの通過判定
@@ -165,7 +204,7 @@ public class move06 : MonoBehaviour
 
                     walkSpeed = 0;
                     //2秒後にCall関数を実行する
-                    Invoke("Call", 5f);
+                    Invoke("Call", 3f);
 
                     break;
             }
@@ -226,6 +265,13 @@ public class move06 : MonoBehaviour
         if(other.tag == "Gimmick_Move")
         {
             walkSpeed = 0;
+            move = true;
+        }
+
+        if (other.tag != "Gimmick_Move")
+        {
+            walkSpeed = 7;
+            move = false;
         }
 
         if (other.tag == "Goal")
@@ -238,6 +284,7 @@ public class move06 : MonoBehaviour
     //何秒後かに呼び出すための処理
     void Call()
     {
+        judge = false;
         //動き出す
         walkSpeed = 7;
     }
