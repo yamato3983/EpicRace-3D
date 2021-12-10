@@ -58,6 +58,7 @@ public class CPU_move05 : MonoBehaviour
 
     Vector3 pos1, pos2, pos3;
 
+    private bool jump;
     public bool dead;
 
     //NPCÇ™ÉSÅ[ÉãÇÇµÇΩÇ©Ç«Ç§Ç©
@@ -80,7 +81,7 @@ public class CPU_move05 : MonoBehaviour
         //rp2 = GameObject.Find("RespawnCPU2");
         //rp3 = GameObject.Find("RespawnCPU3");
 
-        pos1 = rp1.transform.position;
+        //pos1 = rp1.transform.position;
         //pos2 = rp2.transform.position;
         //pos3 = rp3.transform.position;
 
@@ -165,7 +166,11 @@ public class CPU_move05 : MonoBehaviour
             }*/
         }
 
-            if (other.tag == "jump")
+        if (other.tag == "jump")
+        {
+            jump = true;
+        }
+        if (jump == true)
         {
             if (jump_script.Gimmick_Jump == true)
             {

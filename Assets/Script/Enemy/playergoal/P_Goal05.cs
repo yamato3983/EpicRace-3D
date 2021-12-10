@@ -27,7 +27,7 @@ public class P_Goal05 : MonoBehaviour
         if (script_p05.Gflg == true)
         {
             stage05 = true;
-            SceneManager.LoadScene("Clear_player05", LoadSceneMode.Single);
+            SceneManager.LoadScene("clear_player05", LoadSceneMode.Single);
         }
     }
 }

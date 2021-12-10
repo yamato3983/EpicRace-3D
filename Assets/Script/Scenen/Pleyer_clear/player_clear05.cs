@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class player_clear05 : MonoBehaviour
+public class clear_player05 : MonoBehaviour
 {
     void Update()
     {
