@@ -47,7 +47,7 @@ public class PlayerController6 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = 7.0f;
+        speed = 8.0f;
         HP = GameObject.Find("HP");
         gaugeCtrl = HP.GetComponent<Image>();
         gaugeCtrl.fillAmount = 1.0f;
@@ -112,7 +112,7 @@ public class PlayerController6 : MonoBehaviour
     {
         if (collision.gameObject.tag == "Gimmick_Conveyer")
         {
-            speed = 7.0f;
+            speed = 8.0f;
         }
     }
 
