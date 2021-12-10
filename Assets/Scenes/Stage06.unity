@@ -3027,6 +3027,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy06
       objectReference: {fileID: 0}
+    - target: {fileID: 2081833152345502560, guid: 4db648cbed7e9b34fa7ecf9acf30c7b6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2081833152345502561, guid: 4db648cbed7e9b34fa7ecf9acf30c7b6,
         type: 3}
       propertyPath: rp1
@@ -4983,7 +4988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70cf3c90e4c9ed941a53d4e6cd99cef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 160
+  jumpForce: 170
 --- !u!135 &1867561407
 SphereCollider:
   m_ObjectHideFlags: 0
