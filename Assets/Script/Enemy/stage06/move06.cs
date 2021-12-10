@@ -36,7 +36,7 @@ public class move06 : MonoBehaviour
 
     //リスポーン
     public GameObject rp1;
-    //public GameObject rp2;
+    public GameObject rp2;
 
     Vector3 pos1, pos2;
 
@@ -77,9 +77,9 @@ public class move06 : MonoBehaviour
 
         //リスポーン
          rp1 = GameObject.Find("RespawnCPU");
-         //rp2 = GameObject.Find("RespawnCPU2");
+         rp2 = GameObject.Find("RespawnCPU2");
          pos1 = rp1.transform.position;
-         //pos2 = rp2.transform.position;
+         pos2 = rp2.transform.position;
 
         judge = false;
         move = false;
@@ -183,13 +183,13 @@ public class move06 : MonoBehaviour
     {
         if (other.tag == "jump")
         {
+            velocity.y += jumpPower;
             jump = true;
         }
         if (jump == true)
         {
             //if (jump_script.Gimmick_Jump == true)
             //{
-            velocity.y += jumpPower;
             jump = false;
             //}
         }
@@ -207,7 +207,7 @@ public class move06 : MonoBehaviour
 
                     walkSpeed = 0;
                     //2秒後にCall関数を実行する
-                    Invoke("Call", 5.5f);
+                    Invoke("Call", 5f);
 
                     break;
             }
@@ -240,6 +240,12 @@ public class move06 : MonoBehaviour
             dead = true;
             Enemy.SetActive(false);
             Invoke("CallRespawn1", 2f);
+        }
+        if (other.tag == "Roller")
+        {
+            dead = true;
+            Enemy.SetActive(false);
+            Invoke("CallRespawn2", 2f);
         }
         //死亡ゾーンに入った時の処理(ギミックの1番目)
         if (other.tag == "Dead")
