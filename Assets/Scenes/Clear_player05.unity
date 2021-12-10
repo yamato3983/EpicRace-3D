@@ -1620,7 +1620,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2086763670}
-        m_TargetAssemblyTypeName: Player_clear04, Assembly-CSharp
+        m_TargetAssemblyTypeName: player_clear05, Assembly-CSharp
         m_MethodName: OnClickStartButton
         m_Mode: 1
         m_Arguments:
@@ -1678,6 +1678,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2086763665}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e305886246cff9347b54cde088bf9e5d, type: 3}
+  m_Script: {fileID: 11500000, guid: 923d817494838c945bff89086eea570f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
