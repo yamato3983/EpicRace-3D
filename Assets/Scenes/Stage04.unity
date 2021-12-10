@@ -3886,7 +3886,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb378b493e3544247b6c0a725327b018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  script_p04: {fileID: 0}
+  script_p04: {fileID: 1172908314}
   stage04: 0
 --- !u!114 &966370604
 MonoBehaviour:

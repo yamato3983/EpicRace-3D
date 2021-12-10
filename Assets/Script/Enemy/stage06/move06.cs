@@ -15,7 +15,7 @@ public class move06 : MonoBehaviour
 
     //　ジャンプ力
     [SerializeField]
-    private float jumpPower = 15.0f;
+    private float jumpPower = 10.0f;
 
     //　速度
     private Vector3 velocity;
@@ -23,8 +23,8 @@ public class move06 : MonoBehaviour
     private Vector3 direction;
 
     //ジャンプ台用のスクリプト
-    GameObject JumpPad;
-    public JumpPad jump_script;
+    //GameObject JumpPad_CPU;
+    //public JumpPad jump_script;
 
     //カウントダウン用
     GameObject GemeObject;
@@ -35,7 +35,7 @@ public class move06 : MonoBehaviour
     private bool conflag;
 
     //リスポーン
-    //public GameObject rp1;
+    public GameObject rp1;
     //public GameObject rp2;
 
     Vector3 pos1, pos2;
@@ -48,6 +48,7 @@ public class move06 : MonoBehaviour
 
     // ターゲットオブジェクトの Transformコンポーネントを格納する変数
     public Transform target;
+    public Transform target1;
 
     private bool move;
     private bool judge;
@@ -75,10 +76,10 @@ public class move06 : MonoBehaviour
         velocity = Vector3.zero;
 
         //リスポーン
-        /* rp1 = GameObject.Find("RespawnCPU");
-         rp2 = GameObject.Find("RespawnCPU2");
+         rp1 = GameObject.Find("RespawnCPU");
+         //rp2 = GameObject.Find("RespawnCPU2");
          pos1 = rp1.transform.position;
-         pos2 = rp2.transform.position;*/
+         //pos2 = rp2.transform.position;
 
         judge = false;
         move = false;
@@ -104,6 +105,7 @@ public class move06 : MonoBehaviour
 
         // 変数 targetPos を作成してターゲットオブジェクトの座標を格納
         Vector3 targetPos = target.position;
+        Vector3 targetPos1 = target1.position;
 
         //コンベアー用
         if (conflag == true)
@@ -116,7 +118,7 @@ public class move06 : MonoBehaviour
 
         }
 
-        if (move == true)
+        /*if (move == true)
         {
             this.gameObject.transform.Translate(0, 0, 0.035f);
         }
@@ -124,7 +126,7 @@ public class move06 : MonoBehaviour
         if (judge == true && move == false)
         {
             walkSpeed = 0.0f;
-        }
+        }*/
 
         
 
@@ -185,10 +187,11 @@ public class move06 : MonoBehaviour
         }
         if (jump == true)
         {
-            if (jump_script.Gimmick_Jump == true)
-            {
-                velocity.y += jumpPower;
-            }
+            //if (jump_script.Gimmick_Jump == true)
+            //{
+            velocity.y += jumpPower;
+            jump = false;
+            //}
         }
 
         if (other.tag == "judge")
@@ -204,7 +207,7 @@ public class move06 : MonoBehaviour
 
                     walkSpeed = 0;
                     //2秒後にCall関数を実行する
-                    Invoke("Call", 3f);
+                    Invoke("Call", 5.5f);
 
                     break;
             }
@@ -232,6 +235,12 @@ public class move06 : MonoBehaviour
                     break;
             }
         }
+        if(other.tag == "RollBar")
+        {
+            dead = true;
+            Enemy.SetActive(false);
+            Invoke("CallRespawn1", 2f);
+        }
         //死亡ゾーンに入った時の処理(ギミックの1番目)
         if (other.tag == "Dead")
         {
@@ -251,7 +260,7 @@ public class move06 : MonoBehaviour
         if (other.tag == "Gimmick_Conveyer")
         {
             conflag = true;
-            walkSpeed = 9.0f;
+            walkSpeed = 10.0f;
         }
         if (other.tag != "Gimmick_Conveyer")
         {
@@ -262,7 +271,7 @@ public class move06 : MonoBehaviour
             }
         }
 
-        if(other.tag == "Gimmick_Move")
+        /*if(other.tag == "Gimmick_Move")
         {
             walkSpeed = 0;
             move = true;
@@ -272,7 +281,7 @@ public class move06 : MonoBehaviour
         {
             walkSpeed = 7;
             move = false;
-        }
+        }*/
 
         if (other.tag == "Goal")
         {
