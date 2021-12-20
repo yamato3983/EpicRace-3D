@@ -45,6 +45,7 @@ TagManager:
   - Gimmick_Move
   - judge4
   - Respawn3
+  - Yokoari
   layers:
   - Default
   - TransparentFX
