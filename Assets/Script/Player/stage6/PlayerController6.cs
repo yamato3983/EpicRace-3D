@@ -27,7 +27,7 @@ public class PlayerController6 : MonoBehaviour
     [SerializeField]
     GameObject GoalLine_PL; // 移動予定地のオブジェクト
 
-    int flg = 1;      //進むか止まるかのフラグ
+    public int flg = 1;      //進むか止まるかのフラグ
 
     Vector3 tmp, tmp2, tmp3;//リスポーンポイントの座標が入る変数
     public Rigidbody rb;
@@ -53,7 +53,7 @@ public class PlayerController6 : MonoBehaviour
         gaugeCtrl.fillAmount = 1.0f;
 
         //カメラのフラグ初期はメインの為false
-        Cflg = true;
+        Cflg = false;
 
         Player = GameObject.Find("unitychan");
 
@@ -113,6 +113,11 @@ public class PlayerController6 : MonoBehaviour
         if (collision.gameObject.tag == "Gimmick_Conveyer")
         {
             speed = 8.0f;
+        }
+
+        if (collision.gameObject.name == "Gimmick_Move_PC")
+        {
+            transform.SetParent(null);
         }
     }
 
@@ -178,6 +183,7 @@ public class PlayerController6 : MonoBehaviour
         {
             Debug.Log("Respawn3にふれた");
             tmp = tmp3;
+            Cflg = true;
         }
 
             if (other.gameObject.tag == "jump")
@@ -186,15 +192,17 @@ public class PlayerController6 : MonoBehaviour
         }
     }
 
+   
+
     void Update()
     {
         var agentRigidbody = GetComponent<Rigidbody>();
 
         if (Time.time >= this.timeToEnableInputs)
         {
-            if (Gflg == false && Dead == false)
+            if (Gflg == false && Dead == false && Cflg == false)
             {
-                Cflg = false;
+                //Cflg = false;
                 if (gaugeCtrl.fillAmount > 0.0f)
                 {
 
