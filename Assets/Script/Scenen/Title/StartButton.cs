@@ -29,7 +29,7 @@ public class StartButton : MonoBehaviour
 
         //SceneManager.LoadScene("Level");
 
-          SceneManager.LoadScene("Stage01");
+          SceneManager.LoadScene("SelectStage");
         }
 
     }
