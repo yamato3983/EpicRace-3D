@@ -29,6 +29,8 @@ public class CameraController : MonoBehaviour
     //初期状態 Rotation
     private Quaternion _initialCamRotation;
 
+    private Quaternion rot2;
+
 
     void Start()
     {
@@ -37,6 +39,8 @@ public class CameraController : MonoBehaviour
         offset = transform.position - target.position;
         //初期回転の保存
         _initialCamRotation = this.gameObject.transform.rotation;
+
+        rot2 = transform.rotation;
     }
 
     void Update()
@@ -45,6 +49,14 @@ public class CameraController : MonoBehaviour
         {
             //自分の位置、ターゲット、速度
             transform.position = Vector3.MoveTowards(transform.position, mtarget.transform.position, mspeed);
+            if (rot2.y >= 0f)
+            {
+                transform.Rotate(new Vector3(0, -30, 0) * Time.deltaTime);
+            }
+            else if (rot2.y <= 0f)
+            {
+                pscript.Cflg = false;
+            }
         }
         else
         {
@@ -55,7 +67,14 @@ public class CameraController : MonoBehaviour
                     Time.deltaTime * smoothing
                 );
         }
-        
-        
+
+
+    }
+    void BRotate()
+    {
+        if (rot2.y > -0.22f)
+        {
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, -25, 0), 0.3f);
+        }
     }
 }
