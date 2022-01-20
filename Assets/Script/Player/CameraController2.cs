@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class CameraController2 : MonoBehaviour
 {
     public Transform target;
     public float smoothing = 5f;
@@ -34,7 +34,7 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-      offset = transform.position - target.position;
+        offset = transform.position - target.position;
     }
 
     void Update()
@@ -46,5 +46,5 @@ public class CameraController : MonoBehaviour
                 Time.deltaTime * smoothing
             );
     }
-    
+
 }
