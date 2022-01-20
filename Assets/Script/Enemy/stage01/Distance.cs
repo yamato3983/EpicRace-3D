@@ -13,11 +13,11 @@ public class Distance : MonoBehaviour
     void Start()
     {
         goalSlider = GetComponent<Slider>();
-        float maxnum = 140f;
-        float nownum = 140f;
+        //float maxnum = 140f;
+        //float nownum = 140f;
 
-        goalSlider.maxValue = maxnum;
-        goalSlider.value = nownum;
+        //goalSlider.maxValue = maxnum;
+        //goalSlider.value = nownum;
     }
 
     void Update()
