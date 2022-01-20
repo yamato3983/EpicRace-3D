@@ -130,18 +130,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7867622498431746277}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &42421428 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2936421582782555158, guid: 7ff5607be13e2864da194f096bd6a8e0,
-    type: 3}
-  m_PrefabInstance: {fileID: 1131362026}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24c98b6a5926fd4489030f613280e52d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &48049880
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1159,7 +1147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 787cce8c5a59e834489e27d2ce06f698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  script_p05: {fileID: 42421428}
+  script_p05: {fileID: 0}
   stage05: 0
 --- !u!114 &225100037
 MonoBehaviour:
@@ -1199,6 +1187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 229193627}
   - component: {fileID: 229193626}
+  - component: {fileID: 229193628}
   m_Layer: 0
   m_Name: StelsManager
   m_TagString: Untagged
@@ -1218,11 +1207,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af918499676fbe478a3e246cd188bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Stels01: {fileID: 77193971}
-  Stels02: {fileID: 1463685876}
-  Stels03: {fileID: 415612261}
-  Stels04: {fileID: 1829110009}
-  Stels05: {fileID: 1772565851}
 --- !u!4 &229193627
 Transform:
   m_ObjectHideFlags: 0
@@ -1237,6 +1221,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 57
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &229193628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229193625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e0e1c385db60a4d8ac751829269068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Stels01: {fileID: 77193971}
+  Stels02: {fileID: 1463685876}
+  Stels03: {fileID: 415612261}
+  Stels04: {fileID: 1829110009}
+  Stels05: {fileID: 1772565851}
 --- !u!1001 &246719650
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3519,6 +3520,7 @@ GameObject:
   - component: {fileID: 680818421}
   - component: {fileID: 680818420}
   - component: {fileID: 680818419}
+  - component: {fileID: 680818424}
   m_Layer: 0
   m_Name: Rolle02
   m_TagString: Untagged
@@ -3538,12 +3540,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86599af9a87a46642908813a0c5ee729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Gologolo: {fileID: 680818418}
-  StartPoint: {fileID: 1034801324}
-  Start_P: {x: 0, y: 0, z: 0}
-  _velocity_x: {x: 10, y: 0, z: 0}
-  _velocity_y: {x: 0, y: -5, z: 0}
-  _velocity_z: {x: 0, y: 0, z: 10}
 --- !u!136 &680818420
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3621,6 +3617,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 90}
+--- !u!114 &680818424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680818418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49384ba65c5bc3a4b8e0c20baf1872d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Gologolo: {fileID: 680818418}
+  StartPoint: {fileID: 1034801324}
+  Start_P: {x: 0, y: 0, z: 0}
+  _velocity_x: {x: 10, y: 0, z: 0}
+  _velocity_y: {x: 0, y: -5, z: 0}
+  _velocity_z: {x: 0, y: 0, z: 10}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -4179,6 +4193,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e581a7fb186bc64c873cde93ffc95d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1027464986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027464980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1204098070ed624aad8f63da1d79de0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Yokoari: {fileID: 1027464980}
@@ -5040,7 +5066,8 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: 0.0000014829141
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2936421582782555158, guid: 7ff5607be13e2864da194f096bd6a8e0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7ff5607be13e2864da194f096bd6a8e0, type: 3}
 --- !u!1001 &1143115597
 PrefabInstance:
@@ -5827,6 +5854,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e581a7fb186bc64c873cde93ffc95d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1280724360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280724354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1204098070ed624aad8f63da1d79de0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Yokoari: {fileID: 1280724354}
@@ -7832,6 +7871,7 @@ GameObject:
   - component: {fileID: 1968168622}
   - component: {fileID: 1968168621}
   - component: {fileID: 1968168620}
+  - component: {fileID: 1968168625}
   m_Layer: 0
   m_Name: Rolle01
   m_TagString: Untagged
@@ -7851,12 +7891,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86599af9a87a46642908813a0c5ee729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Gologolo: {fileID: 1968168619}
-  StartPoint: {fileID: 1034801324}
-  Start_P: {x: 0, y: 0, z: 0}
-  _velocity_x: {x: 10, y: 0, z: 0}
-  _velocity_y: {x: 0, y: 5, z: 0}
-  _velocity_z: {x: 0, y: 0, z: -10}
 --- !u!136 &1968168621
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7934,6 +7968,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 90}
+--- !u!114 &1968168625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968168619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49384ba65c5bc3a4b8e0c20baf1872d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Gologolo: {fileID: 1968168619}
+  StartPoint: {fileID: 1034801324}
+  Start_P: {x: 0, y: 0, z: 0}
+  _velocity_x: {x: 10, y: 0, z: 0}
+  _velocity_y: {x: 0, y: 5, z: 0}
+  _velocity_z: {x: 0, y: 0, z: -10}
 --- !u!1001 &1995111564
 PrefabInstance:
   m_ObjectHideFlags: 0
