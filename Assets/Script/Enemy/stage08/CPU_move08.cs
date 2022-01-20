@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class CPU_move07 : MonoBehaviour
+public class CPU_move08 : MonoBehaviour
 {
     private CharacterController enemyController;
     private Animator animator;
@@ -38,27 +38,19 @@ public class CPU_move07 : MonoBehaviour
 
     private bool conflag;
 
-    private bool juage;
+    private bool judge;
 
     // Start is called before the first frame update
     void Start()
     {
-        Vector3 tmp = GameObject.Find("GoalLine_CPU").transform.position;
-        GameObject.Find("GoalLine_CPU").transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
-
+        Vector3 tmp = GameObject.Find("judge").transform.position;
+        GameObject.Find("judge").transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
         enemyController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         destination = new Vector3(tmp.x, tmp.y, tmp.z);
         velocity = Vector3.zero;
 
-        //リスポーン
-        rp1 = GameObject.Find("RespawnCPU");
-        rp2 = GameObject.Find("RespawnCPU2");
-
-        //pos1 = rp1.transform.position;
-        //pos2 = rp2.transform.position;
-
-        juage = false;
+        judge = false;
         //死亡フラグ
         dead = false;
     }
@@ -77,6 +69,7 @@ public class CPU_move07 : MonoBehaviour
                 velocity = direction * walkSpeed;
             }
         }
+
         velocity.y += Physics.gravity.y * Time.deltaTime;
         enemyController.Move(velocity * Time.deltaTime);
 
@@ -108,63 +101,14 @@ public class CPU_move07 : MonoBehaviour
     //タグの判定
     private void OnTriggerEnter(Collider other)
     {
-
-        //1番目のギミック
+        //1番目
         if (other.tag == "judge")
         {
-            walkSpeed = 0;
-            //2秒後にCall関数を実行する
-            Invoke("Call", 1.5f);
-
-        }
-
-        //2番目のギミック
-        if (other.tag == "judge2")
-        {
-            walkSpeed = 0;
-            //2秒後にCall関数を実行する
-            Invoke("Call", 1.1f);
-
-        }
-
-        if (other.tag == "judge3")
-        {
-            //4パターンの処理(0～4)
-            int value = Random.Range(0, 3);
-            switch (value)
-            {
-                //止める
-                case 0:
-
-                    walkSpeed = 0;
-                    //2秒後にCall関数を実行する
-                    Invoke("Call", 1.1f);
-
-                    break;
-
-                case 1:
-
-                    walkSpeed = 0;
-                    Invoke("Call", 2.2f);
-
-                    break;
-
-                case 2:
-
-                    walkSpeed = 7;
-                    break;
-            }
-        }
-
-        if (other.tag == "judge4")
-        {
-            walkSpeed = 0;
-            //2秒後にCall関数を実行する
-            Invoke("Call", 1f);
+            judge = true;
         }
     }
 
-        //int value = 0;//Random.Range(0, 3);
+    //int value = 0;//Random.Range(0, 3);
 
     //何秒後かに呼び出すための処理
     void Call()
