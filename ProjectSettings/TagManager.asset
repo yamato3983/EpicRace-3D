@@ -46,6 +46,7 @@ TagManager:
   - judge4
   - Respawn3
   - Yokoari
+  - Shark
   layers:
   - Default
   - TransparentFX
