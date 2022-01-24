@@ -21,7 +21,7 @@ public class GimmcikHusya : MonoBehaviour
     public bool gimmickFlag_Bata;   //true:’Ê‚ê‚é false:’Ê‚ê‚È‚¢
 
 
-    private void Start()
+    void Start()
     {
         //‰Šú‰»
         step = 0;
