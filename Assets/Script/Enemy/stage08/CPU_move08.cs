@@ -39,10 +39,16 @@ public class CPU_move08 : MonoBehaviour
     private bool conflag;
 
     private bool judge;
+    private bool judge2;
+    private bool judge3;
 
     // Start is called before the first frame update
     void Start()
     {
+        judge = false;
+        //死亡フラグ
+        dead = false;
+
         Vector3 tmp = GameObject.Find("judge").transform.position;
         GameObject.Find("judge").transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
         enemyController = GetComponent<CharacterController>();
@@ -50,9 +56,13 @@ public class CPU_move08 : MonoBehaviour
         destination = new Vector3(tmp.x, tmp.y, tmp.z);
         velocity = Vector3.zero;
 
-        judge = false;
-        //死亡フラグ
-        dead = false;
+        //リスポーン
+        rp1 = GameObject.Find("RespawnCPU");
+        //rp2 = GameObject.Find("RespawnCPU2");
+
+        pos1 = rp1.transform.position;
+        //pos2 = rp2.transform.position;
+
     }
 
     // Update is called once per frame
@@ -60,9 +70,41 @@ public class CPU_move08 : MonoBehaviour
     {
         if (enemyController.isGrounded)
         {
+            if (judge == true)
+            {
+                Vector3 tmp = GameObject.Find("judge1").transform.position;
+                GameObject.Find("judge1").transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
+                enemyController = GetComponent<CharacterController>();
+                animator = GetComponent<Animator>();
+                destination = new Vector3(tmp.x, tmp.y, tmp.z);
+                
+            }
+
+            if(judge2 == true)
+            {
+                Vector3 tmp = GameObject.Find("judge2").transform.position;
+                GameObject.Find("judge2").transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
+                enemyController = GetComponent<CharacterController>();
+                animator = GetComponent<Animator>();
+                destination = new Vector3(tmp.x, tmp.y, tmp.z);
+                
+            }
+
+            if(judge3 == true)
+            {
+                Vector3 tmp = GameObject.Find("GoalLine_CPU").transform.position;
+                GameObject.Find("GoalLine_CPU").transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
+
+                enemyController = GetComponent<CharacterController>();
+                animator = GetComponent<Animator>();
+                destination = new Vector3(tmp.x, tmp.y, tmp.z);
+                
+            }
+
             velocity = Vector3.zero;
             transform.LookAt(new Vector3(destination.x, transform.position.y, destination.z));
             direction = (destination - transform.position).normalized;
+
             StartCoroutine("Dush");
             if (script_t1.startflg == true)
             {
@@ -99,18 +141,39 @@ public class CPU_move08 : MonoBehaviour
     }
 
     //タグの判定
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         //1番目
         if (other.tag == "judge")
         {
             judge = true;
         }
+
+        //2番目
+        if(other.tag == "judge2")
+        {
+            judge2 = true;
+        }
+
+        if(other.tag == "judge3")
+        {
+            judge3 = true;
+        }
     }
 
-    //int value = 0;//Random.Range(0, 3);
+    private void OnTriggerEnter(Collider other)
+    {
+        //死亡ゾーンに入った時の処理(ギミックの1番目)
+        if (other.tag == "Dead")
+        {
+            dead = true;
+            Enemy.SetActive(false);
+            Invoke("CallRespawn1", 2f);
+        }
+    }
 
-    //何秒後かに呼び出すための処理
+
+        //何秒後かに呼び出すための処理
     void Call()
     {
         //動き出す
