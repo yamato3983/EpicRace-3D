@@ -8,6 +8,9 @@ public class GimmickStels : MonoBehaviour
     //時間カウント
     private float timeCount;
 
+    //ギミックのフラグ
+    public bool StelsFlag;
+
     public GameObject Stels01;
     public GameObject Stels02;
     public GameObject Stels03;
@@ -18,6 +21,7 @@ public class GimmickStels : MonoBehaviour
     void Start()
     {
         timeCount = 0;
+        StelsFlag = true; //true:ある false:なし
     }
 
     // Update is called once per frame
@@ -38,6 +42,8 @@ public class GimmickStels : MonoBehaviour
             Stels03.SetActive(false);
             Stels04.SetActive(false);
             Stels05.SetActive(false);
+
+            StelsFlag = false; //消える
         }
         if (timeCount >= 1.0f && timeCount <= 2.0f)
         {
@@ -46,6 +52,8 @@ public class GimmickStels : MonoBehaviour
             Stels03.SetActive(true);
             Stels04.SetActive(true);
             Stels05.SetActive(true);
+
+            StelsFlag = true; //ある
 
         }
         if(timeCount >= 2.0f)
