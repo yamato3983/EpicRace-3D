@@ -148,16 +148,15 @@ public class PlayerController8 : MonoBehaviour
             Turn_R = false;
             StartCoroutine(Test());
         }
-        if (collision.gameObject.tag == "RollBar")
+        if (collision.gameObject.tag == "Yokoari")
         {
-            Debug.Log("死んだ！！RollBar");
+            Debug.Log("死んだ！！Yokoari");
+            Turn_L = false;
+            Turn_S = true;
+            Turn_R = false;
             StartCoroutine(Test());
         }
-        if (collision.gameObject.tag == "BlockBar")
-        {
-            Debug.Log("Hit BlockBar");
-            //StartCoroutine(Test());
-        }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -188,11 +187,10 @@ public class PlayerController8 : MonoBehaviour
             Debug.Log("Respawn2にふれた");
             tmp = tmp2;
         }
-        if (other.gameObject.tag == "Respawn4")
+        if (other.gameObject.tag == "Respawn3")
         {
             Debug.Log("Respawn3にふれた");
             tmp = tmp3;
-            Cflg = true;
         }
 
         if (other.gameObject.tag == "Turn_L")
