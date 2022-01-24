@@ -23,6 +23,10 @@ public class CPU_move08 : MonoBehaviour
 
     public GameObject Enemy;
 
+    //カウントダウン用
+    GameObject StelsManager;
+    public GimmickStels script_s1;
+
     //リスポーン
     public GameObject rp1;
     public GameObject rp2;
@@ -37,6 +41,7 @@ public class CPU_move08 : MonoBehaviour
     public bool goal;
 
     private bool conflag;
+    private bool stelsflg;
 
     private bool judge;
     private bool judge2;
@@ -49,6 +54,8 @@ public class CPU_move08 : MonoBehaviour
         //死亡フラグ
         dead = false;
 
+        stelsflg = true;
+
         Vector3 tmp = GameObject.Find("judge").transform.position;
         GameObject.Find("judge").transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
         enemyController = GetComponent<CharacterController>();
@@ -58,11 +65,8 @@ public class CPU_move08 : MonoBehaviour
 
         //リスポーン
         rp1 = GameObject.Find("RespawnCPU");
-        //rp2 = GameObject.Find("RespawnCPU2");
 
         pos1 = rp1.transform.position;
-        //pos2 = rp2.transform.position;
-
     }
 
     // Update is called once per frame
@@ -163,6 +167,19 @@ public class CPU_move08 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //穴
+        /*if (other.tag == "up")
+        {
+            if (script_s1.StelsFlag == false)
+            {
+                walkSpeed = 0;
+            }
+            else
+            {
+                walkSpeed = 7;
+            }
+        }*/
+
         //死亡ゾーンに入った時の処理(ギミックの1番目)
         if (other.tag == "Dead")
         {
