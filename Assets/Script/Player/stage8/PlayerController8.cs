@@ -43,6 +43,8 @@ public class PlayerController8 : MonoBehaviour
 
     float speed;
 
+    public bool Turn_L, Turn_R, Turn_S;
+
     Rigidbody[] ragdollRigidbodies;
     // Start is called before the first frame update
     void Start()
@@ -67,10 +69,10 @@ public class PlayerController8 : MonoBehaviour
         //リスポーン一ポイントのデータを受け取る
         RP = GameObject.Find("RespawnPoint");
         RP2 = GameObject.Find("RespawnPoint2");
-        RP3 = GameObject.Find("RespawnPoint3");
+        //RP3 = GameObject.Find("RespawnPoint3");
         tmp = RP.transform.position;
         tmp2 = RP2.transform.position;
-        tmp3 = RP3.transform.position;
+        //tmp3 = RP3.transform.position;
 
         var agentRigidbody = GetComponent<Rigidbody>();
         //RigidodyのKinematicをスタート時はOFFにする
@@ -78,6 +80,10 @@ public class PlayerController8 : MonoBehaviour
 
         ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();
         SetRagdoll(false);
+
+        Turn_L = false;
+        Turn_R = false;
+        Turn_S = false;
 
     }
 
@@ -137,6 +143,9 @@ public class PlayerController8 : MonoBehaviour
         if (collision.gameObject.tag == "Roller")
         {
             Debug.Log("死んだ！！Roller");
+            Turn_L = false;
+            Turn_S = true;
+            Turn_R = false;
             StartCoroutine(Test());
         }
         if (collision.gameObject.tag == "RollBar")
@@ -186,7 +195,22 @@ public class PlayerController8 : MonoBehaviour
             Cflg = true;
         }
 
-        if (other.gameObject.tag == "jump")
+        if (other.gameObject.tag == "Turn_L")
+        {
+            Debug.Log("Turn_Lにふれた");
+            Turn_L = true;
+        }
+        if (other.gameObject.tag == "Turn_S")
+        {
+            Debug.Log("Turn_Sにふれた");
+            Turn_S = true;
+        }
+        if (other.gameObject.tag == "Turn_R")
+        {
+            Debug.Log("Turn_Rにふれた");
+            Turn_R = true;
+        }
+            if (other.gameObject.tag == "jump")
         {
             Debug.Log("jumpに触れた");
         }
@@ -237,6 +261,24 @@ public class PlayerController8 : MonoBehaviour
                     this.animator.SetBool(key_isRun, true);
                     Player.transform.position += transform.forward * speed * Time.deltaTime;
 
+                }
+                if(Turn_S == true)
+                {
+                    transform.rotation = Quaternion.AngleAxis(-90, new Vector3(0, 1, 0));
+                    Turn_S = false;
+                    
+                }
+                if (Turn_L == true)
+                {
+                    transform.rotation = Quaternion.AngleAxis(-180, new Vector3(0, 1, 0));
+                    Turn_L = false;
+                    
+                }
+                if (Turn_R == true)
+                {
+                    transform.rotation = Quaternion.AngleAxis(0, new Vector3(0, 1, 0));
+                    Turn_R = false;
+                    
                 }
                 else if (flg == 0)
                 {
