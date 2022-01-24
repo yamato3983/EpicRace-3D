@@ -163,23 +163,40 @@ public class CPU_move08 : MonoBehaviour
         {
             judge3 = true;
         }
+
+        //ヨコアリぞーん
+        if (other.tag == "judgeBrigge")
+        {
+            //4パターンの処理(0～4)
+            int value = 0;// Random.Range(0, 3);
+            switch (value)
+            {
+                //止める
+                case 0: 
+                    
+                    walkSpeed = 0;
+                    //2秒後にCall関数を実行する
+                    Invoke("Call", 2f);
+              
+                    break;
+
+                case 1:
+
+                    walkSpeed = 0;
+                    Invoke("Call", 2.2f);
+
+                    break;
+
+                case 2:
+
+                    walkSpeed = 7;
+                    break;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        //穴
-        /*if (other.tag == "up")
-        {
-            if (script_s1.StelsFlag == false)
-            {
-                walkSpeed = 0;
-            }
-            else
-            {
-                walkSpeed = 7;
-            }
-        }*/
-
         //死亡ゾーンに入った時の処理(ギミックの1番目)
         if (other.tag == "Dead")
         {
