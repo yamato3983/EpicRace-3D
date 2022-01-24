@@ -47,6 +47,9 @@ TagManager:
   - Respawn3
   - Yokoari
   - Shark
+  - Turn_L
+  - Turn_S
+  - Turn_R
   layers:
   - Default
   - TransparentFX
