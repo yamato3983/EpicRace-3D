@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class YokoariMove : MonoBehaviour
+public class YokoariMove_X : MonoBehaviour
 {
     // ˆÚ“®‘¬“x
     [SerializeField] private Vector3 _velocity;

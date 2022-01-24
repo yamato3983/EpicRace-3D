@@ -21,7 +21,7 @@ public class GimmcikHusya : MonoBehaviour
     public bool gimmickFlag_Bata;   //true:通れる false:通れない
 
 
-    void Start()
+    private void Start()
     {
         //初期化
         step = 0;
@@ -31,7 +31,7 @@ public class GimmcikHusya : MonoBehaviour
         gimmickFlag_Bata = true;
     }
 
-    void Update()
+    private void Update()
     {
         timeCount += Time.deltaTime;   //最後のフレームからの経過時間を加算
         step = speed * Time.deltaTime; //スピードと最終フレームの時間を掛け合わせる
