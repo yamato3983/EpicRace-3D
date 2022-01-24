@@ -1215,9 +1215,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 229193625}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8af918499676fbe478a3e246cd188bfd, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a857aaca9ca1084298e57b1e88de547, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StelsFlag: 0
   Stels01: {fileID: 77193971}
   Stels02: {fileID: 1463685876}
   Stels03: {fileID: 415612261}
@@ -3538,12 +3539,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86599af9a87a46642908813a0c5ee729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Gologolo: {fileID: 680818418}
-  StartPoint: {fileID: 1034801324}
-  Start_P: {x: 0, y: 0, z: 0}
-  _velocity_x: {x: 10, y: 0, z: 0}
-  _velocity_y: {x: 0, y: -5, z: 0}
-  _velocity_z: {x: 0, y: 0, z: 10}
 --- !u!136 &680818420
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4181,11 +4176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e581a7fb186bc64c873cde93ffc95d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Yokoari: {fileID: 1027464980}
-  StartPoint: {fileID: 1034801324}
-  EndPoint: {fileID: 774653267}
-  Start_P: {x: 0, y: 0, z: 0}
-  End_P: {x: 0, y: 0, z: 0}
 --- !u!1 &1034801324
 GameObject:
   m_ObjectHideFlags: 0
@@ -5829,11 +5819,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e581a7fb186bc64c873cde93ffc95d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Yokoari: {fileID: 1280724354}
-  StartPoint: {fileID: 112212413}
-  EndPoint: {fileID: 388584945}
-  Start_P: {x: 0, y: 0, z: 0}
-  End_P: {x: 0, y: 0, z: 0}
 --- !u!1001 &1328529474
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7851,12 +7836,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86599af9a87a46642908813a0c5ee729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Gologolo: {fileID: 1968168619}
-  StartPoint: {fileID: 1034801324}
-  Start_P: {x: 0, y: 0, z: 0}
-  _velocity_x: {x: 10, y: 0, z: 0}
-  _velocity_y: {x: 0, y: 5, z: 0}
-  _velocity_z: {x: 0, y: 0, z: -10}
 --- !u!136 &1968168621
 CapsuleCollider:
   m_ObjectHideFlags: 0
