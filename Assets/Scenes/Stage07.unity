@@ -570,7 +570,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 144898890}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1f1b7914b82f2d4b948bf362bbc7adb, type: 3}
+  m_Script: {fileID: 11500000, guid: 123f497c702c3384dbe46a4ad484b82f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   angle: 0
@@ -2529,7 +2529,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 718344913}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1f1b7914b82f2d4b948bf362bbc7adb, type: 3}
+  m_Script: {fileID: 11500000, guid: 123f497c702c3384dbe46a4ad484b82f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   angle: 0
@@ -5392,7 +5392,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef0defa4551198f4baab7242fb4b1b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _velocity: {x: 0, y: 0, z: -3}
 --- !u!4 &1355032080 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8930938772657856540, guid: a32ba0f137d021347b4b6f04f8c449e4,
@@ -8203,7 +8202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef0defa4551198f4baab7242fb4b1b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _velocity: {x: 0, y: 0, z: 3}
 --- !u!4 &2060912442 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8930938772657856540, guid: a32ba0f137d021347b4b6f04f8c449e4,
