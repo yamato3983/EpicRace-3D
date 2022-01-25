@@ -223,7 +223,7 @@ public class PlayerController8 : MonoBehaviour
 
         if (Time.time >= this.timeToEnableInputs)
         {
-            if (Gflg == false && Dead == false && Cflg == false)
+            if (Gflg == false && Dead == false)
             {
                 //Cflg = false;
                 if (gaugeCtrl.fillAmount > 0.0f)
@@ -286,11 +286,11 @@ public class PlayerController8 : MonoBehaviour
 
                 }
             }
-            if (Cflg == true)
-            {
-                // Run‚©‚çWait‚É‘JˆÚ‚·‚é
-                this.animator.SetBool(key_isRun, false);
-            }
+            //if (Cflg == true)
+            //{
+            //    // Run‚©‚çWait‚É‘JˆÚ‚·‚é
+            //    this.animator.SetBool(key_isRun, false);
+            //}
             if (Dead == true)
             {
                 // Run‚©‚çWait‚É‘JˆÚ‚·‚é
