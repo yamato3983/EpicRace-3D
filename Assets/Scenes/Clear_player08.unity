@@ -1546,14 +1546,13 @@ GameObject:
   - component: {fileID: 2086763669}
   - component: {fileID: 2086763668}
   - component: {fileID: 2086763667}
-  - component: {fileID: 2086763670}
   m_Layer: 5
-  m_Name: stageup06
+  m_Name: stageup08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2086763666
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1619,8 +1618,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2086763670}
-        m_TargetAssemblyTypeName: Player_clear06, Assembly-CSharp
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Player_clear04, Assembly-CSharp
         m_MethodName: OnClickStartButton
         m_Mode: 1
         m_Arguments:
@@ -1669,15 +1668,3 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2086763665}
   m_CullTransparentMesh: 1
---- !u!114 &2086763670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2086763665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61aa8b9297161e44bad35d0781d5622e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
