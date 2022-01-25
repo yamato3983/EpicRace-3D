@@ -1281,6 +1281,7 @@ MonoBehaviour:
   Stels03: {fileID: 415612261}
   Stels04: {fileID: 1829110009}
   Stels05: {fileID: 1772565851}
+  Stels06: {fileID: 1739868097}
 --- !u!4 &229193627
 Transform:
   m_ObjectHideFlags: 0
@@ -2920,7 +2921,7 @@ PrefabInstance:
     - target: {fileID: 3030639957183519627, guid: 371adae5f91db42409ceee3613595242,
         type: 3}
       propertyPath: m_Name
-      value: Stels05 (1)
+      value: Stels06
       objectReference: {fileID: 0}
     - target: {fileID: 3148733179987608233, guid: 371adae5f91db42409ceee3613595242,
         type: 3}
@@ -7425,6 +7426,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &1739868097 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3030639957183519627, guid: 371adae5f91db42409ceee3613595242,
+    type: 3}
+  m_PrefabInstance: {fileID: 350817835}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1768814028
 PrefabInstance:
   m_ObjectHideFlags: 0

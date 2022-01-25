@@ -16,6 +16,7 @@ public class GimmickStels : MonoBehaviour
     public GameObject Stels03;
     public GameObject Stels04;
     public GameObject Stels05;
+    public GameObject Stels06;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,7 @@ public class GimmickStels : MonoBehaviour
             Stels03.SetActive(false);
             Stels04.SetActive(false);
             Stels05.SetActive(false);
+            Stels06.SetActive(false);
 
             StelsFlag = false; //è¡Ç¶ÇÈ
         }
@@ -52,6 +54,7 @@ public class GimmickStels : MonoBehaviour
             Stels03.SetActive(true);
             Stels04.SetActive(true);
             Stels05.SetActive(true);
+            Stels06.SetActive(true);
 
             StelsFlag = true; //Ç†ÇÈ
 
