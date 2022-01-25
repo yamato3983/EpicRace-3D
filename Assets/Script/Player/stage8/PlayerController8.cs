@@ -191,6 +191,7 @@ public class PlayerController8 : MonoBehaviour
         {
             Debug.Log("Respawn3‚É‚Ó‚ê‚½");
             tmp = tmp3;
+            Cflg = true;
         }
 
         if (other.gameObject.tag == "Turn_L")
@@ -284,6 +285,11 @@ public class PlayerController8 : MonoBehaviour
                     this.animator.SetBool(key_isRun, false);
 
                 }
+            }
+            if (Cflg == true)
+            {
+                // Run‚©‚çWait‚É‘JˆÚ‚·‚é
+                this.animator.SetBool(key_isRun, false);
             }
             if (Dead == true)
             {
