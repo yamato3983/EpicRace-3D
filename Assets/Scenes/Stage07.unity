@@ -1542,7 +1542,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RP: {fileID: 361141754}
   RP2: {fileID: 22671768}
-  RP3: {fileID: 0}
+  RP3: {fileID: 1228232396}
   GoalLine_PL: {fileID: 1094668857}
   flg: 1
   rb: {fileID: 0}
@@ -4599,6 +4599,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c59fb0018089af34dab63e1c1517a5c3, type: 3}
+--- !u!1 &1228232396 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7483769240341168196, guid: c59fb0018089af34dab63e1c1517a5c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1228232395}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1240799824 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8123017986773138086, guid: a32ba0f137d021347b4b6f04f8c449e4,

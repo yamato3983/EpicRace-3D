@@ -119,12 +119,12 @@ public class PlayerController7 : MonoBehaviour
            
             StartCoroutine(Test());
         }
-        if (collision.gameObject.tag == "Yokoari")
-        {
-            Debug.Log("死んだ！！Yokoari");
+        //if (collision.gameObject.tag == "Yokoari")
+        //{
+        //    Debug.Log("死んだ！！Yokoari");
             
-            StartCoroutine(Test());
-        }
+        //    StartCoroutine(Test());
+        //}
 
     }
 
@@ -160,6 +160,12 @@ public class PlayerController7 : MonoBehaviour
         {
             Debug.Log("Respawn3にふれた");
             tmp = tmp3;
+        }
+        if (other.gameObject.tag == "Yokoari")
+        {
+            Debug.Log("死んだ！！Yokoari");
+
+            StartCoroutine(Test());
         }
 
         if (other.gameObject.tag == "jump")
