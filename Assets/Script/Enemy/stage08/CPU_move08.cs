@@ -204,6 +204,12 @@ public class CPU_move08 : MonoBehaviour
             Enemy.SetActive(false);
             Invoke("CallRespawn1", 2f);
         }
+
+        if (other.tag == "Goal")
+        {
+            goal = true;
+            walkSpeed = 0f;
+        }
     }
 
 

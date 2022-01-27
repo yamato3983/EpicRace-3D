@@ -195,6 +195,12 @@ public class CPU_move07 : MonoBehaviour
         {
             dead = false;
         }
+
+        if (other.tag == "Goal")
+        {
+            goal = true;
+            walkSpeed = 0f;
+        }
     }
 
 
