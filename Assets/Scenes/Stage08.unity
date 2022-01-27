@@ -624,7 +624,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 112212413}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.72, y: 5.48, z: -13.19}
+  m_LocalPosition: {x: -26.72, y: 5, z: -13.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3244,7 +3244,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 388584945}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.72, y: 5.48, z: -26.45}
+  m_LocalPosition: {x: -26.72, y: 5, z: -26.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4054,10 +4054,15 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.0060000005
       objectReference: {fileID: 0}
+    - target: {fileID: 8969947816389871602, guid: a32ba0f137d021347b4b6f04f8c449e4,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8969947816389871603, guid: a32ba0f137d021347b4b6f04f8c449e4,
         type: 3}
       propertyPath: m_UseGravity
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8969947816389871600, guid: a32ba0f137d021347b4b6f04f8c449e4, type: 3}
@@ -4100,7 +4105,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 774653267}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.09, y: 5.48, z: -13.19}
+  m_LocalPosition: {x: -20.09, y: 5, z: -13.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4388,7 +4393,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1034801324}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.09, y: 5.48, z: -26.47}
+  m_LocalPosition: {x: -20.09, y: 5, z: -26.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6863,10 +6868,15 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.0060000005
       objectReference: {fileID: 0}
+    - target: {fileID: 8969947816389871602, guid: a32ba0f137d021347b4b6f04f8c449e4,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8969947816389871603, guid: a32ba0f137d021347b4b6f04f8c449e4,
         type: 3}
       propertyPath: m_UseGravity
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8969947816389871600, guid: a32ba0f137d021347b4b6f04f8c449e4, type: 3}
