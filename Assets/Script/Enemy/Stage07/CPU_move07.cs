@@ -53,9 +53,9 @@ public class CPU_move07 : MonoBehaviour
 
         //リスポーン
         rp1 = GameObject.Find("RespawnCPU");
-        rp2 = GameObject.Find("RespawnCPU2");
+        //rp2 = GameObject.Find("RespawnCPU2");
 
-        //pos1 = rp1.transform.position;
+        pos1 = rp1.transform.position;
         //pos2 = rp2.transform.position;
 
         juage = false;
@@ -138,14 +138,14 @@ public class CPU_move07 : MonoBehaviour
 
                     walkSpeed = 0;
                     //2秒後にCall関数を実行する
-                    Invoke("Call", 1.1f);
+                    Invoke("Call", 1.0f);
 
                     break;
 
                 case 1:
 
                     walkSpeed = 0;
-                    Invoke("Call", 2.2f);
+                    Invoke("Call", 2.0f);
 
                     break;
 
@@ -158,13 +158,45 @@ public class CPU_move07 : MonoBehaviour
 
         if (other.tag == "judge4")
         {
-            walkSpeed = 0;
-            //2秒後にCall関数を実行する
-            Invoke("Call", 1f);
+            int value = Random.Range(0, 3);
+            switch (value)
+            {
+                //止める
+                case 0:
+
+                    walkSpeed = 0;
+                    //2秒後にCall関数を実行する
+                    Invoke("Call", 1.0f);
+
+                    break;
+
+                case 1:
+
+                    walkSpeed = 0;
+                    Invoke("Call", 2.0f);
+
+                    break;
+
+                case 2:
+
+                    walkSpeed = 7;
+                    break;
+            }
+        }
+
+        //死亡ゾーンに入った時の処理(ギミックの1番目)
+        if (other.tag == "Yokoari")
+        {
+            dead = true;
+            Enemy.SetActive(false);
+            Invoke("CallRespawn1", 0.9f);
+        }
+        else
+        {
+            dead = false;
         }
     }
 
-        //int value = 0;//Random.Range(0, 3);
 
     //何秒後かに呼び出すための処理
     void Call()

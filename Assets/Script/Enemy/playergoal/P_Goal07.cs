@@ -7,7 +7,7 @@ public class P_Goal07 : MonoBehaviour
 {
     //NPCのスクリプト
     GameObject unitychan;
-    //public PlayerController7 script_p07;
+    public PlayerController7 script_p07;
 
     public bool stage07;
 
@@ -23,10 +23,10 @@ public class P_Goal07 : MonoBehaviour
         unitychan = GameObject.Find("unitychan");
 
         //NPCがゴールしたらシーンを変更する
-        /*if (script_p07.Gflg == true)
+        if (script_p07.Gflg == true)
         {
             stage07 = true;
             SceneManager.LoadScene("clear_player07", LoadSceneMode.Single);
-        }*/
+        }
     }
 }
