@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GimmickCanon : MonoBehaviour
+public class GimmickCanon_2 : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("’e‚Ì”­ËêŠ")]
@@ -12,7 +12,11 @@ public class GimmickCanon : MonoBehaviour
 
     [SerializeField]
     [Tooltip("’e‚Ì‘¬‚³")]
-    private float speed = 50f;
+    private float speed = 80f;
+
+    [SerializeField]
+    [Tooltip("”­ËŠÔŠu")]
+    private float timer;
 
     private float timeCount;
 
@@ -40,7 +44,7 @@ public class GimmickCanon : MonoBehaviour
 
         timeCount += 1;
 
-        if (timeCount % 320  == 0)
+        if (timeCount % timer == 0)
         {
 
             // ’e‚ğ”­Ë‚·‚éêŠ
@@ -60,9 +64,9 @@ public class GimmickCanon : MonoBehaviour
             newBall.name = bullet.name;
 
             // oŒ»‚³‚¹‚½ƒ{[ƒ‹‚ğ0.8•bŒã‚ÉÁ‚·
-            Destroy(newBall, 1.5f);
+            Destroy(newBall, 3f);
 
-         
+
         }
     }
 }

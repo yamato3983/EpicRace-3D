@@ -5,51 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Shootable
-  - Goal
-  - CPU
-  - judge
-  - Stage
-  - Gimmick
-  - Dead
-  - Gimmick_Roll
-  - Gimmick_Bridge
-  - judge2
-  - Dead_02
-  - Respawn2
-  - EndGimmick
-  - Intermediate
-  - Intermediate02
-  - Intermediate03
-  - Intermediate04
-  - jump
-  - Gimmick_Conveyer
-  - Gimmick_Box
-  - Landing
-  - Ground
-  - Intermediate05
-  - Start
-  - Hammer
-  - Gimmick_Cube
-  - Ring
-  - judge3
-  - judgeBrigge
-  - Roller
-  - Respawn4
-  - BlockBar
-  - Gate
-  - Task
-  - up
-  - up2
-  - RollBar
-  - Gimmick_Conveyer_2
-  - Gimmick_Move
-  - judge4
-  - Respawn3
-  - Yokoari
   - Shark
-  - Turn_L
-  - Turn_S
-  - Turn_R
+  - Dead
   layers:
   - Default
   - TransparentFX
@@ -57,13 +14,13 @@ TagManager:
   - 
   - Water
   - UI
-  - BallGimmick
-  - Enemy
-  - Player
+  - 
+  - 
+  - Lighting
   - Ground
   - Postprocessing
   - 
-  - Lighting
+  - 
   - 
   - 
   - 
