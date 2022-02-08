@@ -7,6 +7,16 @@ TagManager:
   - Shootable
   - Shark
   - Dead
+  - Goal
+  - CPU
+  - Yokoari
+  - judge2
+  - judge
+  - judge4
+  - judge3
+  - Respawn2
+  - Turn_R
+  - Turn_S
   layers:
   - Default
   - TransparentFX
