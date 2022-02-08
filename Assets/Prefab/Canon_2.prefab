@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2065686747276866263}
   - component: {fileID: 8337493211095865565}
   - component: {fileID: 4906144540390118149}
-  - component: {fileID: 7178671166312058635}
+  - component: {fileID: 3459968214175545633}
   m_Layer: 0
   m_Name: Canon_2
   m_TagString: Dead
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 7215386513959394482}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -11.670176, y: 10.051785, z: -4.840592}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -113,7 +113,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7178671166312058635
+--- !u!114 &3459968214175545633
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,8 +122,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7215386513959394482}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd0579965d69da447a57d3c50cd80990, type: 3}
+  m_Script: {fileID: 11500000, guid: 771e86b992945ea46addc34cacb62bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleObject: {fileID: 886249974911280210, guid: e66a3195c2c03254bb6c4dadcd2c35e8,
+  particleObject: {fileID: 886249974911280210, guid: 03bb9e3bee137414f9064fb01244d3ea,
     type: 3}

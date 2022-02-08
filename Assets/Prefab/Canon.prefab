@@ -122,8 +122,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 3338769845196256226}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd0579965d69da447a57d3c50cd80990, type: 3}
+  m_Script: {fileID: 11500000, guid: 771e86b992945ea46addc34cacb62bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleObject: {fileID: 886249974911280210, guid: e66a3195c2c03254bb6c4dadcd2c35e8,
+  particleObject: {fileID: 886249974911280210, guid: 03bb9e3bee137414f9064fb01244d3ea,
     type: 3}
