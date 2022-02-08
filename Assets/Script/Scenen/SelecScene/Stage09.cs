@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Player_clear08 : MonoBehaviour
+public class Stage09 : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -10,6 +10,11 @@ public class Player_clear08 : MonoBehaviour
     }
 
     // Update is called once per frame
+    void Update()
+    {
+
+    }
+
     public void OnClickStartButton()
     {
         SceneManager.LoadScene("Stage09");
