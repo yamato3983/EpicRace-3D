@@ -78,41 +78,43 @@ public class move09 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //自分の位置、ターゲット、速度
-        if (juage == false && juage2 == false)
+        Dush();
+        //conflag = true;
+        if (conflag == true)
         {
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed);
-        }
-        if (juage == true)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, target2.transform.position, speed);
-        }
+            //自分の位置、ターゲット、速度
+            if (juage == false && juage2 == false)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed);
+            }
+            if (juage == true)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, target2.transform.position, speed);
+            }
 
-        if (juage2 == true && juage == false)
-        {
-            juage = false;
-            Boat_CPU.position = Vector3.MoveTowards(transform.position, target3.transform.position, speed);
+            if (juage2 == true && juage == false)
+            {
+                juage = false;
+                Boat_CPU.position = Vector3.MoveTowards(transform.position, target3.transform.position, speed);
+            }
         }
-        // velocity.y += Physics.gravity.y * Time.deltaTime;
-        //enemyController.Move(velocity * Time.deltaTime);
-
     }
 
-    private IEnumerator Dush()
+    private void Dush()
     {
         //カウントダウン中はストップしてる
         if (script_t1.startflg == false)
         {
-            //animator.SetFloat("Speed", 0.0f);
+            //speed = 0;
         }
 
         //とりあえず4秒にしてるけど変更するかも
-        yield return new WaitForSeconds(2.0f);
+        //yield return new WaitForSeconds(2.0f);
 
         //カウントダウンが0のときに走り出す
         if (script_t1.startflg == true)
         {
-            //animator.SetFloat("Speed", 1.0f);
+            conflag = true;
         }
 
         //if (walkSpeed == 0)
@@ -142,45 +144,23 @@ public class move09 : MonoBehaviour
 
 
 
-        /*//2番目のギミック
-        if (other.tag == "judge2")
+        //1番目のギミック
+        if (other.tag == "judge3")
         {
-            walkSpeed = 0;
-            //2秒後にCall関数を実行する
+            speed = 0;
+            //1秒後にCall関数を実行する
             Invoke("Call", 1.1f);
 
         }
 
-        if (other.tag == "judge3")
+        if (other.tag == "judge4")
         {
-            //4パターンの処理(0～4)
-            int value = Random.Range(0, 3);
-            switch (value)
-            {
-                //止める
-                case 0:
-
-                    walkSpeed = 0;
-                    //2秒後にCall関数を実行する
-                    Invoke("Call", 1.0f);
-
-                    break;
-
-                case 1:
-
-                    walkSpeed = 0;
-                    Invoke("Call", 2.0f);
-
-                    break;
-
-                case 2:
-
-                    walkSpeed = 7;
-                    break;
-            }
+            speed = 0;
+            //2秒後にCall関数を実行する
+            Invoke("Call", 2.0f);
         }
 
-        if (other.tag == "judge4")
+        /*if (other.tag == "judge4")
         {
             int value = Random.Range(0, 3);
             switch (value)
@@ -218,13 +198,13 @@ public class move09 : MonoBehaviour
         else
         {
             dead = false;
-        }
+        }*/
 
         if (other.tag == "Goal")
         {
             goal = true;
-            walkSpeed = 0f;
-        }*/
+            speed = 0;
+        }
     }
 
 
@@ -232,7 +212,7 @@ public class move09 : MonoBehaviour
     void Call()
     {
         //動き出す
-       // walkSpeed = 7;
+       speed = 0.04f;
     }
 
     void CallRespawn1()

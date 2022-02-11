@@ -64,7 +64,7 @@ public class GimmickCanon_2 : MonoBehaviour
             newBall.name = bullet.name;
 
             // èoåªÇ≥ÇπÇΩÉ{Å[ÉãÇ0.8ïbå„Ç…è¡Ç∑
-            Destroy(newBall, 3f);
+            Destroy(newBall, 2.5f);
 
 
         }
