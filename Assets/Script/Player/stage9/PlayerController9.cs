@@ -172,11 +172,13 @@ public class PlayerController9 : MonoBehaviour
         {
             Debug.Log("Turn_S�ɂӂꂽ");
             Turn_S = true;
+            Cflg = false;
         }
         if (other.gameObject.tag == "Turn_R")
         {
             Debug.Log("Turn_R�ɂӂꂽ");
             Turn_R = true;
+            Cflg = true;
         }
         if (other.gameObject.tag == "jump")
         {

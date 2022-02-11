@@ -378,6 +378,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db887f379e01c2d4c92a0196b33f7fdd, type: 3}
+--- !u!1 &121287365 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2936421583584984858, guid: 7ff5607be13e2864da194f096bd6a8e0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1131362026}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &127021713 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 908670585902932092, guid: d5f4dcb5d826456449f4bf3ef85b8cbb,
@@ -5960,7 +5966,7 @@ Camera:
   far clip plane: 1000
   field of view: 60.000004
   orthographic: 1
-  orthographic size: 8
+  orthographic size: 9
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -5999,16 +6005,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1648231897}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adb979a0722aa434aacdad8c7a5e6cf8, type: 3}
+  m_Script: {fileID: 11500000, guid: de61a8833b9568a459adbfe8757fb1a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1811680521}
   smoothing: 100
   angle: 0
   step: 0
-  targetObject: {fileID: 0}
+  targetObject: {fileID: 121287365}
   mtarget: {fileID: 0}
   mspeed: 0
+  cam: {fileID: 1648231900}
 --- !u!1 &1653003000
 GameObject:
   m_ObjectHideFlags: 0
