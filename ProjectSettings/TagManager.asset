@@ -17,6 +17,7 @@ TagManager:
   - Respawn2
   - Turn_R
   - Turn_S
+  - judge5
   layers:
   - Default
   - TransparentFX

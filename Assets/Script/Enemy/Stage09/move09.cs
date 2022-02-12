@@ -157,6 +157,13 @@ public class move09 : MonoBehaviour
         {
             speed = 0;
             //2•bŒã‚ÉCallŠÖ”‚ğÀs‚·‚é
+            Invoke("Call1", 3.0f);
+        }
+
+        if (other.tag == "judge5")
+        {
+            speed = 0;
+            //2•bŒã‚ÉCallŠÖ”‚ğÀs‚·‚é
             Invoke("Call", 2.0f);
         }
 
@@ -186,13 +193,13 @@ public class move09 : MonoBehaviour
                     walkSpeed = 7;
                     break;
             }
-        }
+        }*/
 
         //€–Sƒ][ƒ“‚É“ü‚Á‚½‚Ìˆ—(ƒMƒ~ƒbƒN‚Ì1”Ô–Ú)
-        if (other.tag == "Yokoari")
+        /*if (other.tag == "Yokoari")
         {
             dead = true;
-            Enemy.SetActive(false);
+            //Enemy.SetActive(false);
             Invoke("CallRespawn1", 0.9f);
         }
         else
@@ -215,9 +222,15 @@ public class move09 : MonoBehaviour
        speed = 0.04f;
     }
 
+    void Call1()
+    {
+        //“®‚«o‚·
+        speed = 0.1f;
+    }
+
     void CallRespawn1()
     {
-        //Enemy.SetActive(true);
+        //Boat_CPU.SetActive(true);
         //transform.position = new Vector3(pos1.x, pos1.y, pos1.z);
     }
 
