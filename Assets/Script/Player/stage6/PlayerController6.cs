@@ -183,7 +183,7 @@ public class PlayerController6 : MonoBehaviour
         {
             Debug.Log("Respawn3�ɂӂꂽ");
             tmp = tmp3;
-            Cflg = true;
+            //Cflg = true;
         }
 
             if (other.gameObject.tag == "jump")
